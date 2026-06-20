@@ -188,7 +188,8 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
     * **data movement & locality** → the data layer;
     * **matching tasks to heterogeneous resources** (cores, memory, GPU,
       cloud) → the resource scheduler;
-    * **completion / history / state** → persistence.
+    * **completion / history / state** → persistence;
+    * **knowing what happened — logs, failures, alerts** → observability.
   * Each concern is a place a tool genuinely *can* help — and exactly the same
     place a tool can be added *needlessly*. The layer is justified by the
     concern, not by its existence.
@@ -214,8 +215,9 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
     you actually need?"*
 * **Visual:** A single dense vertical/stacked diagram showing the full
   over-engineered pipeline (web service → resource manager → DAG engine →
-  containerized steps → templating DSL → persistence/DB → the actual compute).
-  This is a **new custom layout** (the "Rube Goldberg stack").
+  containerized steps → templating DSL → persistence/DB → observability/SaaS
+  dashboards → the actual compute). This is a **new custom layout** (the
+  "Rube Goldberg stack").
 * **Transition:** *"Step one to taming it: give every box a name."*
 
 ### Slide 7 — Decompose the layers (7:30–9:00)
@@ -233,15 +235,19 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
   * **Containerization** — packages the environment: **Apptainer** on HPC;
     **Docker** on the cloud.
   * **Persistence / database** — tracks state, results, and history.
+  * **Observability** — knowing what happened: logs, failures, alerts;
+    `stdout`/`stderr` + `cron` mail in research, **Datadog** and friends in
+    industry.
   * The parallel matters for *this* room: REU students here will touch Slurm
     and Apptainer, but many will graduate into Kubernetes (our on-prem cloud)
-    or industry stacks built on Airflow and Docker. *Same six layers, every
-    time — only the brand names change.*
-  * Land it: *"Every box on the last slide is one of these six. Most workflows
-    need one or two — not all six."*
+    or industry stacks built on Airflow, Docker, and Datadog. *Same handful of
+    layers, every time — only the brand names change.*
+  * Land it: *"Every box on the last slide is one of these layers. Most
+    workflows need one or two — not all of them."*
 * **Visual:** The Slide 6 diagram re-rendered with each layer labeled and
   color-coded; alongside each layer, a small *academic | industry* tool pair
-  (Slurm | Kubernetes · Make/Nextflow | Airflow · Apptainer | Docker).
+  (Slurm | Kubernetes · Make/Nextflow | Airflow · Apptainer | Docker ·
+  logs+cron | Datadog).
 * **Transition:** *"And here's the trap that spans both worlds: the tools that
   promise to *tame* this complexity often just *move* it."*
 
@@ -263,13 +269,28 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
   * **The anchor line (say it):** *"This could have been a Makefile and a
     cron-job!"* — the lament of everyone who has watched a team sink a quarter
     into standing up a "stack" for a job a Makefile and `cron` would have run.
+  * **Worked example — observability.** Take just *one* concern and watch the
+    pendulum swing:
+    * **The humble version (UNIX glory 🙂):** redirect `stdout`/`stderr` to a
+      dated log file (`>> run.$(date +%F).log 2>&1`), and let `cron` email you
+      the moment a job exits non-zero. That's monitoring *and* alerting, in
+      zero new infrastructure, using tools that have shipped with the OS for
+      forty years.
+    * **The maximal version:** a SaaS observability platform (Datadog and
+      friends) plus a cloud-cron / scheduler-as-a-service, promising dashboards
+      that "solve all your problems." There is enough out there for a CTO to
+      sink a **$200M budget** chasing cloud-native promises — to learn the
+      exit code of a nightly job.
+    * The point isn't that Datadog is bad; it's that the gap between
+      `2>&1 | mail` and a seven-figure platform is *enormous*, and most teams
+      land far higher than their problem requires.
   * **The academic vs. industry nuance:** the layers are the same, but the
     *problems each layer solves are not*. Industry optimizes for always-on
-    services, SLAs, multi-tenancy, and continuous data — Airflow earns its
-    keep there. Academic research workflows are usually bursty, batch, and
-    finite — which is exactly why the heavyweight industry platform is so often
-    the wrong import. Don't cargo-cult an industry stack onto a research
-    problem (or vice-versa).
+    services, SLAs, multi-tenancy, and continuous data — Airflow and Datadog
+    earn their keep there. Academic research workflows are usually bursty,
+    batch, and finite — which is exactly why the heavyweight industry platform
+    is so often the wrong import. Don't cargo-cult an industry stack onto a
+    research problem (or vice-versa).
   * This is *not* anti-tool — it's anti-*reflexive*-tool. Airflow, Kubernetes,
     and Nextflow are right for real problems; the merchant's sin is selling
     them as the *default*. The antidote is asking what each layer earns.
@@ -572,9 +593,11 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
   * *"Merchants of complexity."* (Slide 8; reprised in the Slide 18 close.)
   * *"This could have been a Makefile and a cron-job."* (Slide 8; the
     industry-platform lament — reusable any time someone over-builds.)
-  * *"Same six layers — only the brand names change."* (Slide 7; the
+  * *"`2>&1` and a cron email vs. a $200M observability bill."* (Slide 8; the
+    observability swing — the widest gap between humble and maximal.)
+  * *"Same handful of layers — only the brand names change."* (Slide 7; the
     academic↔industry parallel, Slurm/Kubernetes · Make/Airflow ·
-    Apptainer/Docker.)
+    Apptainer/Docker · logs+cron/Datadog.)
   * *"Which axis are you on?"* (Slide 9; reprised on Slide 15.)
   * *"The simplest thing that works."* (Slide 3; the walk-off on Slide 18.)
 * **Risk register:**
