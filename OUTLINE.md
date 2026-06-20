@@ -18,14 +18,17 @@ whole thing *purr* like a rebuilt hot-rod roaring to life. But that same
 satisfaction is a temptation: complexity can get away from you and quietly
 erode both reliability and rationality. It is easy to look at the landscape
 and conclude that real science requires assembling all of it. This talk argues
-for judgment instead. We open with a deliberately absurd over-engineered stack
-— the *"Perfection"* gag — to shock the room with how baroque a workflow *can*
-get, then state the thesis plainly: **start simple; add complexity only where
-it earns its keep.** The posture is not anti-complexity or anti-tool — I've
-been building and debugging workflows since before Kubernetes or Azure
-existed, and I built HyperShell myself because GNU Parallel wasn't right for
-HPC — it's about *maturing with* the complexity rather than being seduced by
-it.
+for judgment instead. A short prelude grounds the room — a quick *About RCAC*
+for any community visitors, and an *About Me* that frames my cross-cutting
+perspective at the **systems · science · software** triple-point — so the
+playfulness that follows reads as an expert at ease, not a novice complaining.
+Then we open with a deliberately absurd over-engineered stack — the
+*"Perfection"* gag — to shock the room with how baroque a workflow *can* get,
+and state the thesis plainly: **start simple; add complexity only where it
+earns its keep.** The posture is not anti-complexity or anti-tool — I've been
+building and debugging workflows since before Kubernetes or Azure existed, and
+I built HyperShell myself because GNU Parallel wasn't right for HPC — it's
+about *maturing with* the complexity rather than being seduced by it.
 We give the room a small on-ramp (capability vs. capacity computing), dissect
 the over-engineered stack into named layers so the zoo becomes legible, and
 then deliver the load-bearing idea: workflow tools live on **two distinct
@@ -40,6 +43,10 @@ opening gag: **real perfection is the simplest thing that works.**
 
 ## 2) Narrative spine
 
+* **Who's talking, and from where.** A brief prelude: RCAC's role (for
+  visitors) and, more importantly, *my* vantage point — a facilitator who cuts
+  across **systems, science, and software**. That cross-domain "unicorn"
+  perspective is what earns the judgment the rest of the talk trades on.
 * **This is a craft worth loving.** Operationalizing research workflows — from
   a Jupyter notebook to scale-out automation on a supercomputer — is deeply
   satisfying work. The goal is *getting the job done at scale*, and getting a
@@ -73,73 +80,124 @@ opening gag: **real perfection is the simplest thing that works.**
 
 | Time | Slide | Focus |
 |---|---|---|
-| 0:00–0:45 | 1 | Title + intro |
-| 0:45–2:15 | 2 | Cold open — the "Perfection" over-engineered stack |
-| 2:15–3:15 | 3 | Thesis card — *complexity must earn its keep* |
-| 3:15–4:00 | 4 | The Zoo — literal logo-wall of the landscape (backdrop) |
-| 4:00–5:00 | 5 | On-ramp — capability vs. capacity |
-| 5:00–6:00 | 6 | Why the layers exist (concern → layer) |
-| 6:00–7:30 | 7 | Anatomy of an over-engineered workflow (centerpiece) |
-| 7:30–9:00 | 8 | Decompose the layers |
-| 9:00–10:30 | 9 | "Merchants of complexity" (incl. academic vs. industry) |
-| 10:30–11:15 | 10 | Two axes, not one ladder (framework reveal) |
-| 11:15–12:30 | 11 | Axis 1 — executor/scale: the bash loop |
-| 12:30–14:00 | 12 | Axis 1 — Slurm job array |
-| 14:00–15:30 | 13 | Axis 1 — HyperShell (extreme executor end) |
-| 15:30–17:00 | 14 | Axis 2 — "Make is all you need" |
-| 17:00–19:00 | 15 | Axis 2 — Nextflow as the justified endpoint |
-| 19:00–21:00 | 16 | The decision ladder + "earn its keep" checklist |
-| 21:00–23:15 | 17 | Data management — locality & storage tiers |
-| 23:15–24:45 | 18 | One agentic beat — agents as operators |
-| 24:45–26:15 | 19 | Closing — real perfection is simplicity |
-| 26:15–28:15 | 20 | Resources & contact |
+| 0:00–0:30 | 1 | Title (lean cover) |
+| 0:30–1:15 | 2 | About RCAC — the center & where I sit (compressible) |
+| 1:15–2:30 | 3 | About Me — systems · science · software triple-point |
+| 2:30–4:00 | 4 | Cold open — the "Perfection" over-engineered stack |
+| 4:00–4:45 | 5 | Thesis card — *complexity must earn its keep* |
+| 4:45–5:30 | 6 | The Zoo — literal logo-wall of the landscape (backdrop) |
+| 5:30–6:30 | 7 | On-ramp — capability vs. capacity |
+| 6:30–7:30 | 8 | Why the layers exist (concern → layer) |
+| 7:30–9:00 | 9 | Anatomy of an over-engineered workflow (centerpiece) |
+| 9:00–10:30 | 10 | Decompose the layers |
+| 10:30–12:00 | 11 | "Merchants of complexity" (incl. academic vs. industry) |
+| 12:00–12:45 | 12 | Two axes, not one ladder (framework reveal) |
+| 12:45–13:45 | 13 | Axis 1 — executor/scale: the bash loop |
+| 13:45–15:00 | 14 | Axis 1 — Slurm job array |
+| 15:00–16:15 | 15 | Axis 1 — HyperShell (extreme executor end) |
+| 16:15–17:45 | 16 | Axis 2 — "Make is all you need" |
+| 17:45–19:30 | 17 | Axis 2 — Nextflow as the justified endpoint |
+| 19:30–21:30 | 18 | The decision ladder + "earn its keep" checklist |
+| 21:30–23:30 | 19 | Data management — locality & storage tiers |
+| 23:30–25:00 | 20 | One agentic beat — agents as operators |
+| 25:00–26:30 | 21 | Closing — real perfection is simplicity |
+| 26:30–28:30 | 22 | Resources & contact |
 
-*Target delivery ~28:15 with a ~90s cushion for the cold-open laugh, the
-HDMI tax, and transitions. Twenty physical slides; the Zoo (Slide 4) is a
-deliberately short ~45s backdrop, paid for by tightening transitions on the
-executor-axis rungs.*
+*Target delivery ~28:30 with a ~90s cushion for the cold-open laugh, the
+HDMI tax, and transitions. Twenty-two physical slides. The prelude (Slides
+2–3) is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisker
+executor-axis rungs (Slides 13–15). About RCAC (Slide 2) is the first to cut
+if time slips; About Me (Slide 3) is must-tell.*
 
 ## 4) Slide-by-slide talking points
 
-### Slide 1 — Title (0:00–0:45)
+### Slide 1 — Title (0:00–0:30) · lean cover
 
-* **Core message:** Who I am and what the next half hour is about: getting the
-  job done at scale, *from Jupyter to supercomputers* — from someone who loves
-  this craft and has been doing it a long time.
-* **Talking points:**
+* **Core message:** Name, title, talk title — fast. The deep self-intro lives
+  on the next two slides, so keep this to a clean ~30s landing.
+* **Talking points (brief — don't linger; About Me does the contextualizing):**
   * Geoffrey Lentner, Principal AI Scientist at Purdue's Rosen Center for
     Advanced Computing.
-  * Topic, said positively: how to take research and data analysis **from a
-    Jupyter notebook to scale-out automation on a supercomputer** — and how to
-    do it *without* losing your mind.
-  * Establish credibility *gently* (this is the anti-grumpy-old-man anchor):
-    I've been building and debugging research workflows since before
-    Kubernetes, before "the cloud" was a product you could buy — long enough
-    to have strong opinions, and long enough to have *earned* them. I build
-    tools too (HyperShell); I'm an enthusiast first.
-  * **What this talk is (set expectations honestly, up front — four things at
-    once):**
-    1. *A glimpse of what I'm passionate about and do for a living* — this is
-       my actual job at a real HPC center.
-    2. *A general survey* of the workflow + data-management landscape, so you
-       have the map even if you never need all of it.
-    3. *Practical advice you can use now* — even if this isn't your summer
-       project, you'll leave with a portable rule of thumb and a few commands
-       worth knowing.
-    4. *Honest about scope.* Thirty minutes is short; I'll dive into a couple
-       of **narrow slices** I know well (what I actually watch researchers do
-       on our HPC) and tell you plainly where they sit in the bigger picture
-       and what I'm skipping.
-  * One-line promise: by the end you'll have a mental model for deciding how
-    much machinery your workflow actually needs — so you can enjoy the craft
-    without getting buried by it. *You don't have to be "a workflows person"
-    today for this to be useful later.*
+  * The talk in one line, said positively: how to take research and data
+    analysis **from a Jupyter notebook to scale-out automation on a
+    supercomputer** — and how to do it *without* losing your mind.
 * **Visual:** Purdue 2026 cover layout — black field, gold border, centered
   title/subtitle, **RCAC** horizontal mark, venue + date in the upper margin.
+* **Transition:** *"First, two quick frames — where this work happens, and
+  where I sit in it."*
+
+### Slide 2 — About RCAC · the center & where I sit (0:30–1:15) · compressible
+
+* **Core message:** A fast orientation to the Rosen Center for any community
+  visitors — but really a setup for *where I fit*: a versatile member who cuts
+  across the **systems, science, and software** teams.
+* **Talking points (keep to ~45s):**
+  * One-liner on RCAC: research computing & data services at Purdue — "RCAC
+    for short," part of Purdue IT.
+  * The pillars, named quickly: we **operate Top500 supercomputers** with
+    PB-scale storage; we support **scientific applications**; we run the
+    **Envision Center** (a nod — *we're standing in it*); and we do **research
+    software engineering**.
+  * **The real move (squiggle-box highlight):** my work cuts *across* these —
+    systems, science, and software at once. *"I don't live in one of these
+    boxes; my job is to move between them."* This is the hand-off into About Me.
+  * **REU framing, said openly:** *"Most of you have been here a few weeks and
+    have already heard about RCAC — so I'll be quick. This is mostly for any
+    visitors, and an excuse to show you where I sit."*
+* **Visual:** Port of the existing PowerPoint — title "Rosen Center for Advanced
+  Computing," subtitle "Research computing and data services at Purdue
+  University"; a photo cluster (machine-room aisle, the *Fortress* mural, a
+  staffer at a rack) on the left; bulleted pillars on the right with hand-drawn
+  **squiggle boxes** around the cross-cutting ones (systems / science /
+  software). Purdue+RCAC marks, `rcac.purdue.edu` QR. (Source image to be
+  supplied by Geoffrey; new themed layout.)
+* **Transition:** *"That cross-cutting seat is the whole reason I see this the
+  way I do — so, a bit more about me."*
+* **Delivery note:** This is the compressible slide. If the prior session ran
+  long, collapse to one sentence ("you know RCAC; here's where I sit") and move
+  straight to About Me.
+
+### Slide 3 — About Me · systems · science · software (1:15–2:30) · must-tell
+
+* **Core message:** My perspective *is* the argument. The credibility that lets
+  me say "add complexity only when it earns its keep" comes from sitting at the
+  **triple-point** of systems, science, and software — the "unicorn"
+  facilitator who knows enough of each to translate between all three.
+* **Talking points (60–90s — this is the anti-grumpy-old-man anchor):**
+  * The Venn framing: research-computing facilitation is a *triple-point* job.
+    *"I know more Linux than most scientists, more about hardware — NUMA
+    domains, interconnects — than most software engineers, and more science
+    than most systems people. Not deepest in any one; fluent across all
+    three."* That breadth is the rare thing — the "unicorn."
+  * The personal arc (mirrors the talk's own *Jupyter → scale-out* journey):
+    trained as an **astrophysicist** → **data science at scale on HPC** →
+    **full-stack research software engineering** → now **AI / agentic
+    workflows**. Each step added a domain without abandoning the last.
+  * Earned authority, said warmly: I've been building and debugging research
+    workflows **since before Kubernetes, before "the cloud" was a product you
+    could buy** — long enough to have strong opinions, and long enough to have
+    *earned* them. I build tools too (HyperShell). *Enthusiast first.*
+  * **What this talk is (set expectations honestly — four jobs at once):**
+    (1) a glimpse of what I'm passionate about and do for a living; (2) a
+    general *survey* / map of the landscape; (3) *practical advice you can use
+    now*, even if workflows aren't your summer project — a portable rule of
+    thumb and a few commands; (4) *honest about scope* — deep on a couple of
+    narrow slices I know from the trenches, explicit about what I'm skipping.
+  * One-line promise: by the end you'll have a mental model for deciding how
+    much machinery your workflow actually needs. *You don't have to be "a
+    workflows person" today for this to be useful later.*
+* **Visual:** Port of the existing "About Me" slide — a three-circle Venn
+  (**Systems · Science · Software**) with role labels placed by overlap, a
+  headshot + name/contact block on the left. **Redesign the labels** to map
+  cleanly onto the three domains and the triple-point (e.g. the center =
+  *facilitator / the unicorn*; pairwise overlaps and single-domain anchors
+  chosen to tell the systems↔science↔software story rather than list every job
+  title). Exact label set is a TODO. (Source image/headshot to be supplied by
+  Geoffrey; new themed layout — the "triple-point Venn.")
 * **Transition:** *"Now — because I love this stuff, let me start with my
   favorite cautionary tale."*
 
-### Slide 2 — Cold open · the "Perfection" stack (0:45–2:15)
+### Slide 4 — Cold open · the "Perfection" stack (2:30–4:00)
 
 * **Core message:** Workflows can be over-engineered into absurdity. Laugh,
   then turn.
@@ -161,7 +219,7 @@ executor-axis rungs.*
 * **Delivery note:** Use the silence after "does the work of a `for` loop."
   Let the laugh land before the thesis.
 
-### Slide 3 — Thesis card (2:15–3:15)
+### Slide 5 — Thesis card (4:00–4:45)
 
 * **Core message:** The single sentence everything hangs on — framed as
   *discipline born of love for the craft*, not distaste for it.
@@ -173,7 +231,7 @@ executor-axis rungs.*
     of the most satisfying things in this job. The danger is precisely that
     the satisfaction tempts you to add *more* than the problem needs.
   * Two failure modes: under-engineering (manual, unrepeatable, doesn't
-    scale) and over-engineering (the Slide 2 monster). The craft — and the
+    scale) and over-engineering (the Slide 4 monster). The craft — and the
     *fun* — is in finding the floor that actually solves your problem.
   * Frame the talk: we'll build a vocabulary for *naming* complexity and a
     *decision tool* for *adding* it deliberately — so you can mature *with* the
@@ -183,7 +241,7 @@ executor-axis rungs.*
 * **Transition:** *"Now — before any advice — let me show you the whole zoo at
   once, so you see what we're up against."*
 
-### Slide 4 — The Zoo · a literal logo-wall (3:15–4:00) · backdrop, ~45s
+### Slide 6 — The Zoo · a literal logo-wall (4:45–5:30) · backdrop, ~45s
 
 * **Core message:** *Look how much is out there.* One intentionally dense
   spread of brand logos — the whole landscape at a glance — as the backdrop
@@ -198,7 +256,7 @@ executor-axis rungs.*
     deep on the few slices I know best from our HPC."*
   * Foreshadow the structure: the apparent chaos is actually organized — the
     logos cluster into a *handful of layers* (next slides) and, later, onto
-    *two axes* (Slide 10). *"By the end, you'll be able to drop any logo on
+    *two axes* (Slide 12). *"By the end, you'll be able to drop any logo on
     this wall — even a new one — into the right box."*
   * Bias, owned: *"I'm weighting this toward what I actually see researchers
     run on our systems; industry leans on a different corner of the same wall,
@@ -222,7 +280,7 @@ executor-axis rungs.*
 * **Delivery note:** Resist the urge to narrate logos — the *density* is the
   message. ~45s max; the wall is wallpaper for the spoken framing.
 
-### Slide 5 — On-ramp: capability vs. capacity (4:00–5:00)
+### Slide 7 — On-ramp: capability vs. capacity (5:30–6:30)
 
 * **Core message:** Two kinds of computing, told through one archetypal
   contrast: the *monolith* vs. the *layered stack*. This talk is about the
@@ -259,11 +317,11 @@ executor-axis rungs.*
   **Right:** the same work as a *stack of labeled layers* (application →
   orchestration → data → scheduler → containers) sitting over a swarm of
   independent tasks. The right panel deliberately previews the layer
-  vocabulary that Slides 7–8 will decompose.
+  vocabulary that Slides 9–10 will decompose.
 * **Transition:** *"Before we judge any of those layers, it's worth asking why
   they exist at all."*
 
-### Slide 6 — Why the layers exist (5:00–6:00)
+### Slide 8 — Why the layers exist (6:30–7:30)
 
 * **Core message:** Each layer answers a real operational concern. The
   scaffolding isn't arbitrary — every legitimate concern spawned its own
@@ -287,18 +345,18 @@ executor-axis rungs.*
   * The honest version of the thesis: the question is never "is this layer
     good?" It's *"do I have this concern, today, at a scale that the layer
     below can't handle?"*
-* **Visual:** The Slide 5 layer stack, annotated — each layer paired with the
-  operational concern that justifies it (concern → layer). Sets up Slide 7 as
+* **Visual:** The Slide 7 layer stack, annotated — each layer paired with the
+  operational concern that justifies it (concern → layer). Sets up Slide 9 as
   "what happens when you grab every layer whether or not you have the concern."
 * **Transition:** *"Now grab every layer at once, whether you need it or not —
   and you get this."*
 
-### Slide 7 — Anatomy of an over-engineered workflow (6:00–7:30) · centerpiece
+### Slide 9 — Anatomy of an over-engineered workflow (7:30–9:00) · centerpiece
 
 * **Core message:** The "shock" slide — one dense diagram of a maximalist
   workflow stack. The visual centerpiece of the talk.
 * **Talking points:**
-  * This is the Slide 2 gag drawn seriously: a full Rube Goldberg stack with
+  * This is the Slide 4 gag drawn seriously: a full Rube Goldberg stack with
     every layer present at once.
   * Don't explain it yet — let the density do the work. *"This is real. People
     build this. Sometimes they even need to."*
@@ -308,11 +366,11 @@ executor-axis rungs.*
   over-engineered pipeline (web service → resource manager → DAG engine →
   containerized steps → templating DSL → persistence/DB → observability/SaaS
   dashboards → the actual compute). This is a **new custom layout** (the
-  "Rube Goldberg stack"). It is the dense Zoo of Slide 4 collapsed into a
+  "Rube Goldberg stack"). It is the dense Zoo of Slide 6 collapsed into a
   single *teetering* stack — same tools, now stacked instead of scattered.
 * **Transition:** *"Step one to taming it: give every box a name."*
 
-### Slide 8 — Decompose the layers (7:30–9:00)
+### Slide 10 — Decompose the layers (9:00–10:30)
 
 * **Core message:** The zoo is a finite set of named layers — and those layers
   are *universal*. The academic stack and the industry stack solve the same
@@ -336,14 +394,14 @@ executor-axis rungs.*
     layers, every time — only the brand names change.*
   * Land it: *"Every box on the last slide is one of these layers. Most
     workflows need one or two — not all of them."*
-* **Visual:** The Slide 7 diagram re-rendered with each layer labeled and
+* **Visual:** The Slide 9 diagram re-rendered with each layer labeled and
   color-coded; alongside each layer, a small *academic | industry* tool pair
   (Slurm | Kubernetes · Make/Nextflow | Airflow · Apptainer | Docker ·
   logs+cron | Datadog).
 * **Transition:** *"And here's the trap that spans both worlds: the tools that
   promise to *tame* this complexity often just *move* it."*
 
-### Slide 9 — "Merchants of complexity" (9:00–10:30) · recurring callback
+### Slide 11 — "Merchants of complexity" (10:30–12:00) · recurring callback
 
 * **Core message:** The deeper trap isn't tools that *add* complexity — it's
   the ones that *promise to tame it* and instead just relocate it into a new
@@ -399,7 +457,7 @@ executor-axis rungs.*
   a cron-job."*
 * **Transition:** *"Here's the tool I'll give you to be a skeptical buyer."*
 
-### Slide 10 — Two axes, not one ladder (10:30–11:15) · framework reveal · must-not-skip
+### Slide 12 — Two axes, not one ladder (12:00–12:45) · framework reveal · must-not-skip
 
 * **Core message:** The load-bearing idea. Workflow tools live on **two
   different axes**, answering two different questions.
@@ -429,7 +487,7 @@ executor-axis rungs.*
 * **Transition:** *"Let's climb Axis 1 — my slice of it — and stop the moment
   it earns its keep."*
 
-### Slide 11 — Axis 1 · the bash loop (11:15–12:30)
+### Slide 13 — Axis 1 · the bash loop (12:45–13:45)
 
 * **Core message:** The floor of the executor axis. Start here. Often, stay
   here.
@@ -449,7 +507,7 @@ executor-axis rungs.*
   "code/definition" treatment used later for Make/Nextflow.
 * **Transition:** *"Need it to run across the cluster? Climb one rung."*
 
-### Slide 12 — Axis 1 · Slurm job array (12:30–14:00)
+### Slide 14 — Axis 1 · Slurm job array (13:45–15:00)
 
 * **Core message:** The next rung: let the scheduler fan out independent
   tasks across the cluster.
@@ -471,7 +529,7 @@ executor-axis rungs.*
   ```
 * **Transition:** *"And the extreme end of pure execution at scale —"*
 
-### Slide 13 — Axis 1 · HyperShell (14:00–15:30)
+### Slide 15 — Axis 1 · HyperShell (15:00–16:15)
 
 * **Core message:** HyperShell is the far end of the executor axis: pure
   distributed task execution at scale, still no DAG. It's also my own worked
@@ -485,7 +543,7 @@ executor-axis rungs.*
     is wonderful, but it wasn't right for HPC** (multi-node over SSH, scheduler
     integration, fault tolerance at scale). The concern was real, the existing
     rung couldn't meet it, so a new rung was justified. *That* is how you're
-    allowed to add complexity — and it's exactly the checklist from Slide 16 in
+    allowed to add complexity — and it's exactly the checklist from Slide 18 in
     action.
   * It earns its keep when task volume is enormous and you want elastic
     parallelism without standing up a DAG engine.
@@ -573,7 +631,7 @@ executor-axis rungs.*
   ```
 * **Transition:** *"So: two axes, several rungs each. Here's how to decide."*
 
-### Slide 16 — The decision ladder + checklist (19:00–21:00) · must-not-skip
+### Slide 18 — The decision ladder + checklist (19:30–21:30) · must-not-skip
 
 * **Core message:** The single portable artifact: both axes on one visual,
   plus a verbal checklist for deciding when to climb.
@@ -596,7 +654,7 @@ executor-axis rungs.*
   photograph.
 * **Transition:** *"One more thing the tools won't save you from: the data."*
 
-### Slide 17 — Data management · locality & tiers (21:00–23:15)
+### Slide 19 — Data management · locality & tiers (21:30–23:30)
 
 * **Core message:** Data movement is usually the real bottleneck, and tiering
   is the researcher's job. The simplest tiering is a one-line `rsync`.
@@ -621,7 +679,7 @@ executor-axis rungs.*
   RCAC system names, plus the on-slide rsync snippet.
 * **Transition:** *"There's one new operator showing up in all of this."*
 
-### Slide 18 — One agentic beat · agents as operators (23:15–24:45)
+### Slide 20 — One agentic beat · agents as operators (23:30–25:00)
 
 * **Core message:** AI agents are becoming operators and consumers of these
   same workflow tools — and the thesis doesn't change.
@@ -632,20 +690,20 @@ executor-axis rungs.*
   * Agents are starting to *drive* these tools — submitting jobs, staging
     data, assembling pipelines — through interfaces like MCP servers.
   * The same rule holds, maybe more so: give the agent the *simplest* tool
-    that works, and *verify* the result. An agent that reaches for the Slide 7
+    that works, and *verify* the result. An agent that reaches for the Slide 9
     monster is just as wrong as a human who does.
   * Keep this to one beat — it's a signpost, not a theme.
 * **Visual:** A single clean panel: an agent loop node feeding into the
-  decision ladder from Slide 16, captioned *"same rule: simplest thing that
+  decision ladder from Slide 18, captioned *"same rule: simplest thing that
   works, then verify."*
 * **Transition:** *"Which brings me back to where we started."*
 
-### Slide 19 — Closing · real perfection is simplicity (24:45–26:15)
+### Slide 21 — Closing · real perfection is simplicity (25:00–26:30)
 
 * **Core message:** Invert the cold open. The over-engineered stack wasn't
   perfection; the simplest thing that works is.
 * **Talking points:**
-  * Call back to Slide 2: *"Remember the beautiful, elegant machine that did
+  * Call back to Slide 4: *"Remember the beautiful, elegant machine that did
     the work of a `for` loop?"*
   * The inversion: *"Real perfection isn't the most impressive stack. It's the
     least machinery that actually solves your problem."*
@@ -657,11 +715,11 @@ executor-axis rungs.*
     actually understand is one of the best feelings in this work. Build for
     that. *"Don't be a merchant of complexity — be a buyer who knows the price,
     and an engineer who loves a stack that purrs."*
-* **Visual:** The inverted "Perfection" beat — the Slide 2 gag re-rendered
+* **Visual:** The inverted "Perfection" beat — the Slide 4 gag re-rendered
   minimal: a single clean box ("a `for` loop") where the monster used to be.
 * **Transition:** *"Here's where to find everything."*
 
-### Slide 20 — Resources & contact (26:15–28:15)
+### Slide 22 — Resources & contact (26:30–28:30)
 
 * **Core message:** Where to learn more; how to reach me.
 * **Talking points:**
@@ -678,23 +736,26 @@ executor-axis rungs.*
 
 ## 5) Slide architecture
 
-* **Total:** ~18 narrative beats across **20 physical slides**.
-* **Pacing:** ~90s average. The cold open (Slide 2) runs long with the laugh;
-  the Zoo (Slide 4) is a deliberately short ~45s backdrop; the centerpiece
-  anatomy (Slide 7), the Nextflow justification (Slide 15), the decision
-  ladder (Slide 16), and data management (Slide 17) each take ~120s. The
-  executor-axis rungs (Slides 11–13) move briskly — they're a climb, not
+* **Total:** ~20 narrative beats across **22 physical slides**.
+* **Pacing:** ~90s average. The prelude (Slides 1–3) is fast: a ~30s title,
+  a ~45s About RCAC, and a 60–90s About Me. The cold open (Slide 4) runs long
+  with the laugh; the Zoo (Slide 6) is a deliberately short ~45s backdrop; the
+  centerpiece anatomy (Slide 9), the Nextflow justification (Slide 17), the
+  decision ladder (Slide 18), and data management (Slide 19) each take ~120s.
+  The executor-axis rungs (Slides 13–15) move briskly — they're a climb, not
   three full stops.
 * **Layout inheritance:** all slides inherit from the Purdue 2026 template
   family documented in `THEME.md` (to be ported from `../2026-nairr-workshop-talk/`)
   — cover, section divider, content, two-panel split, card grid, closing card
   — with **RCAC** marks substituted for generic Purdue marks. New custom
-  layouts unique to this deck: the **Zoo logo-wall** (Slide 4), the **Rube
-  Goldberg stack** (Slides 7–8), the **two-axis decision ladder** (Slides 10,
-  16), and the **storage-tier diagram** (Slide 17).
+  layouts unique to this deck: the **About RCAC** layout (photo cluster +
+  squiggle-boxed pillars, Slide 2), the **triple-point Venn** (Slide 3), the
+  **Zoo logo-wall** (Slide 6), the **Rube Goldberg stack** (Slides 9–10), the
+  **two-axis decision ladder** (Slides 12, 18), and the **storage-tier
+  diagram** (Slide 19).
 * **Two code aesthetics, kept distinct (per GOAL.md):** a *terminal-window*
-  treatment for **commands you run** (Slides 11, 12, 13, 17) and a
-  *code/definition* treatment for **workflow definitions** (Slides 14, 15).
+  treatment for **commands you run** (Slides 13, 14, 15, 19) and a
+  *code/definition* treatment for **workflow definitions** (Slides 16, 17).
   Do not blur the two.
 
 ## 6) Must-not-skip slides
@@ -703,20 +764,23 @@ If the prior session runs long, the HDMI adapter dies, or the moderator
 flashes the two-minute card early, these still must be told for the talk to
 cohere:
 
-1. **Slide 2 — the cold open.** Without the gag there's no rhetorical posture
+1. **Slide 3 — About Me.** The systems · science · software triple-point is the
+   credibility that licenses the whole thesis; it's also the anti-grumpy anchor.
+2. **Slide 4 — the cold open.** Without the gag there's no rhetorical posture
    and no payoff to invert at the end.
-2. **Slide 10 — two axes, not one ladder.** The core intellectual contribution.
+3. **Slide 12 — two axes, not one ladder.** The core intellectual contribution.
    Everything technical hangs on it.
-3. **Slide 16 — the decision ladder + checklist.** The single most portable
+4. **Slide 18 — the decision ladder + checklist.** The single most portable
    artifact; the thing undergrads carry home.
-4. **Slide 19 — real perfection is simplicity.** The inversion that closes
+5. **Slide 21 — real perfection is simplicity.** The inversion that closes
    the loop. Without it the talk has no exit.
 
-Compressible if time slips: Slide 4 (the Zoo — a few seconds of backdrop, or
-cut entirely), Slide 5 (on-ramp — one line if the room is HPC-literate),
-Slide 12 (Slurm array — can be a verbal mention between bash loop and
-HyperShell), Slide 18 (agentic beat — one sentence). Never compress 2, 10,
-16, or 19.
+Compressible if time slips: Slide 2 (About RCAC — first to cut; one sentence if
+the room already knows RCAC), Slide 6 (the Zoo — a few seconds of backdrop, or
+cut entirely), Slide 7 (on-ramp — one line if the room is HPC-literate),
+Slide 14 (Slurm array — can be a verbal mention between bash loop and
+HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
+18, or 21.
 
 ## 7) Delivery aids
 
@@ -725,26 +789,30 @@ HyperShell), Slide 18 (agentic beat — one sentence). Never compress 2, 10,
   > loop. Today is about telling the difference between complexity you need
   > and complexity you've been sold."*
 * **Recurring rhetorical beats:**
-  * *"Does it earn its keep?"* (Thesis on Slide 3; the literal checklist on
-    Slide 16; reprised on Slides 15 and 17.)
-  * *"Merchants of complexity."* (Slide 9; reprised in the Slide 19 close.)
-  * *"This could have been a Makefile and a cron-job."* (Slide 9; the
+  * *"The unicorn at the triple-point."* (About Me on Slide 3; the
+    systems · science · software cross-domain perspective that earns the
+    judgment the rest of the talk trades on. Reprised implicitly whenever the
+    academic↔industry parallel comes up.)
+  * *"Does it earn its keep?"* (Thesis on Slide 5; the literal checklist on
+    Slide 18; reprised on Slides 17 and 19.)
+  * *"Merchants of complexity."* (Slide 11; reprised in the Slide 21 close.)
+  * *"This could have been a Makefile and a cron-job."* (Slide 11; the
     industry-platform lament — reusable any time someone over-builds.)
-  * *"`2>&1` and a cron email vs. a $200M observability bill."* (Slide 9; the
+  * *"`2>&1` and a cron email vs. a $200M observability bill."* (Slide 11; the
     observability swing — the widest gap between humble and maximal.)
-  * *"Same handful of layers — only the brand names change."* (Slide 8; the
+  * *"Same handful of layers — only the brand names change."* (Slide 10; the
     academic↔industry parallel, Slurm/Kubernetes · Make/Airflow ·
     Apptainer/Docker · logs+cron/Datadog.)
-  * *"Which axis are you on?"* (Slide 10; reprised on Slide 16.)
-  * *"The simplest thing that works."* (Slide 3; the walk-off on Slide 19.)
-  * *"Make it purr."* (Love-of-craft counterweight — Slide 1 setup, Slide 3
-    thesis framing, Slide 19 payoff. Keeps the whole talk on the
+  * *"Which axis are you on?"* (Slide 12; reprised on Slide 18.)
+  * *"The simplest thing that works."* (Slide 5; the walk-off on Slide 21.)
+  * *"Make it purr."* (Love-of-craft counterweight — Slide 3 (About Me) setup,
+    Slide 5 thesis framing, Slide 21 payoff. Keeps the whole talk on the
     enthusiast-with-judgment side, not the grumpy-old-man side.)
-  * *"The map outlasts the tools."* (Honest-scoping beat — Slide 10 reveal,
-    reprised on Slides 13 and 15. Signals the deep dives are deliberately
+  * *"The map outlasts the tools."* (Honest-scoping beat — Slide 12 reveal,
+    reprised on Slides 15 and 17. Signals the deep dives are deliberately
     chosen narrow slices, names what's skipped, and owns the academic-HPC
     bias as a strength. The takeaway is the two *questions*, not the brands.)
-* **The four jobs of this talk (keep all four alive — Slide 1 names them):**
+* **The four jobs of this talk (keep all four alive — Slide 3 names them):**
   (1) show what I'm passionate about and do for a living; (2) give a general
   *survey* / map of the landscape; (3) leave every student with practical
   advice useful *now* — a portable rule of thumb and a few commands — *even if
@@ -753,23 +821,23 @@ HyperShell), Slide 18 (agentic beat — one sentence). Never compress 2, 10,
   rest. If a slide drifts away from all four, it's a candidate to cut or
   reframe.
 * **Risk register:**
-  * *Time slips.* Collapse Slide 12 (Slurm array) into a verbal aside first;
-    then trim Slide 5 to one line, and drop the Slide 4 Zoo to a few seconds.
-    Never compress 2, 10, 16, 19.
+  * *Time slips.* Cut Slide 2 (About RCAC) to one sentence first; then collapse
+    Slide 14 (Slurm array) into a verbal aside, trim Slide 7 to one line, and
+    drop the Slide 6 Zoo to a few seconds. Never compress 3, 4, 12, 18, 21.
   * *Time expands.* Add a second worked example to the data-management slide
-    (Slide 17), or expand the nf-core beat on Slide 15.
-  * *HPC-novice room.* Slow down on Slide 5 (capability vs. capacity) and
-    Slide 11 (the bash loop); these are the undergrad on-ramps.
-  * *Practitioner-heavy room.* Lean into the asides (GNU Parallel on Slide 13,
-    the Make-in-data-science history on Slide 14) and move faster through the
+    (Slide 19), or expand the nf-core beat on Slide 17.
+  * *HPC-novice room.* Slow down on Slide 7 (capability vs. capacity) and
+    Slide 13 (the bash loop); these are the undergrad on-ramps.
+  * *Practitioner-heavy room.* Lean into the asides (GNU Parallel on Slide 15,
+    the Make-in-data-science history on Slide 16) and move faster through the
     on-ramp.
   * ***Tone drift — the "old man yells at cloud" failure mode.*** The single
     biggest delivery risk: the thesis, the merchants beat, and the cron-job
     lament can stack up into pure grumbling. **Antidote:** front-load the
-    love-of-craft (Slides 1, 3), keep HyperShell as living proof I build
-    *and* love new tools (Slide 13), and land Slide 19 on the *purr*, not on
-    austerity. If you feel yourself getting cranky on stage, name a tool you
-    genuinely love and why it earned its keep.
+    love-of-craft (Slide 3 About Me, Slide 5 thesis), keep HyperShell as living
+    proof I build *and* love new tools (Slide 15), and land Slide 21 on the
+    *purr*, not on austerity. If you feel yourself getting cranky on stage,
+    name a tool you genuinely love and why it earned its keep.
 * **Hallway-track routing:** Snakemake vs. Nextflow vs. Parsl/Dask debates,
   Kubernetes-vs-Slurm, MCP server design, and "which tool for my specific
   pipeline" — all routed to the hallway after the closing card. The talk is a
@@ -777,27 +845,37 @@ HyperShell), Slide 18 (agentic beat — one sentence). Never compress 2, 10,
 
 ## 8) Open TODOs for Geoffrey
 
-* **Slide 2 / Slide 19.** Pick the best "Perfection" meme image for the cold
+* **Slide 2 (About RCAC).** Supply source assets to port the existing
+  PowerPoint: the machine-room / *Fortress* mural / rack photos and the
+  `rcac.purdue.edu` QR. Confirm the current pillar wording and which pillars
+  get the **squiggle-box** cross-cutting highlight (systems / science /
+  software). Geoffrey to relay local file paths.
+* **Slide 3 (About Me).** Supply the headshot. **Redesign the Venn labels** to
+  map cleanly onto systems · science · software and the triple-point (center =
+  facilitator/unicorn); decide the final label set vs. the old example
+  (HPC / Facilitator / Developer / RSE / Technologist / Data Scientist / AI /
+  Educator / Astrophysicist). Geoffrey to relay the local image path.
+* **Slide 4 / Slide 21.** Pick the best "Perfection" meme image for the cold
   open and decide how the inversion re-renders it minimally (the `for`-loop
   box). Optionally consider a custom Purdue-style absurd-stack illustration if
   it reads better than the meme — purely an aesthetic call.
-* **Slide 4 (the Zoo).** Lock the final logo set, grouping, and
+* **Slide 6 (the Zoo).** Lock the final logo set, grouping, and
   size-by-popularity layout.
-* **Slide 7.** Final visual direction for the dense "anatomy" diagram — exact
+* **Slide 9.** Final visual direction for the dense "anatomy" diagram — exact
   boxes, vertical vs. layered orientation, and how it re-renders into the
-  labeled Slide 8 version.
-* **Slides 11–15.** Confirm the on-slide snippets are the ones you want to
+  labeled Slide 10 version.
+* **Slides 13–17.** Confirm the on-slide snippets are the ones you want to
   stand behind on stage (all snippets are currently on-slide per the agreed
   direction). Decide whether `analyze.sh` is a good through-line example or
   whether to swap in a domain example (bioinformatics? astronomy?).
-* **Slide 13.** HyperShell self-disclosure is now framed as a *feature* — the
+* **Slide 15.** HyperShell self-disclosure is now framed as a *feature* — the
   worked example of complexity that earned its keep (a better GNU Parallel for
   HPC). Confirm you're comfortable with that level of self-reference on stage.
-* **Slide 17.** Confirm the exact RCAC tier names/marketing names and any
+* **Slide 19.** Confirm the exact RCAC tier names/marketing names and any
   current guidance you want to cite (Fortress / Data Depot / Scratch).
-* **Slide 20.** Finalize the resource list and which three links get QR codes.
+* **Slide 22.** Finalize the resource list and which three links get QR codes.
 * **Scaffolding.** Slidev version pin and a dev port distinct from siblings
   (3032/3033/3034) — proposed **3035**. To be settled in `ROADMAP.md`, not here.
-* **Visual identity.** Port `THEME.md` from the NAIRR deck and note the four
-  new custom layouts (Zoo logo-wall, Rube Goldberg stack, two-axis ladder,
-  storage tiers).
+* **Visual identity.** Port `THEME.md` from the NAIRR deck and note the six
+  new custom layouts (About RCAC, triple-point Venn, Zoo logo-wall, Rube
+  Goldberg stack, two-axis ladder, storage tiers).

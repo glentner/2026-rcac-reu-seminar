@@ -22,7 +22,7 @@ Present in the repo:
 - `GOAL.md` — the original brief and idea dump (source material; do not treat
   as the spec — `OUTLINE.md` supersedes it).
 - `OUTLINE.md` — **the content source of truth.** Complete slide-by-slide
-  outline: 19 slides, 30-minute budget, talking points, visuals, transitions,
+  outline: 22 slides, 30-minute budget, talking points, visuals, transitions,
   delivery aids, open TODOs.
 - `AGENTS.md` — this file.
 
@@ -73,13 +73,24 @@ judgment from an enthusiast**, never as anti-tool grumbling.
   "Make is all you need" until it isn't; Nextflow's complexity is justified by
   containers, dataflow DAG, `-resume`, executor portability, nf-core.
 The payoff artifact is a **two-axis decision ladder** + a verbal "does this
-layer earn its keep?" checklist (Slide 16). This is the thing undergrads carry
+layer earn its keep?" checklist (Slide 18). This is the thing undergrads carry
 home and what distinguishes the talk from a tool catalog.
 
-**Narrative arc (20 slides):** title → cold-open "Perfection" over-engineered
-stack gag → thesis card → **the Zoo (literal logo-wall backdrop, ~45s)** →
-on-ramp (capability *monolith* vs. capacity *layered stack*) → why the layers
-exist (concern → layer) → anatomy of an over-engineered workflow (centerpiece
+**Prelude (the self-intro, settled):** the talk opens with a short personal
+frame before the gag — a lean ~30s **title**, an **About RCAC** slide (fast
+orientation for visitors; really a setup for *where Geoffrey sits* across the
+systems/science/software teams, with squiggle-box highlights), and an
+**About Me** slide built on a **systems · science · software triple-point Venn**
+(the "unicorn" facilitator framing; astrophysics → data-science-at-scale →
+full-stack RSE → AI/agentic). About Me carries the credibility + four-jobs
+beat (moved off the title) and is the anti-grumpy-old-man anchor; About RCAC
+is the first slide to cut if time slips, About Me is must-tell.
+
+**Narrative arc (22 slides):** lean title → **About RCAC (where I sit)** →
+**About Me (triple-point Venn)** → cold-open "Perfection" over-engineered stack
+gag → thesis card → **the Zoo (literal logo-wall backdrop, ~45s)** → on-ramp
+(capability *monolith* vs. capacity *layered stack*) → why the layers exist
+(concern → layer) → anatomy of an over-engineered workflow (centerpiece
 "shock" diagram) → decompose the named layers (with academic↔industry tool
 pairs) → "merchants of complexity" → two-axis reveal → climb Axis 1
 (bash/Slurm/HyperShell) → climb Axis 2 (Make/Nextflow) → decision ladder +
@@ -96,8 +107,8 @@ These emerged from explicit tone/framing corrections. Internalize them:
   cloud." Counterweight everywhere: love of the craft, a stack that *purrs*,
   "from Jupyter to scale-out automation on supercomputers," and earned
   authority (building/debugging workflows since before Kubernetes or Azure).
-  See `OUTLINE.md` Slides 1, 3, 9, 13, 19 and the tone-drift risk-register
-  entry.
+  See `OUTLINE.md` Slides 3 (About Me), 5, 11, 15, 21 and the tone-drift
+  risk-register entry.
 - **Not anti-tool — anti-*reflexive*-tool.** New tools are good; Geoffrey built
   HyperShell. HyperShell is the worked example of complexity that *earned its
   keep* (a better GNU Parallel for HPC). The "merchants" are the *pitch* that
@@ -133,15 +144,22 @@ To be formalized in `THEME.md`. Defaults agreed so far:
   (`../2026-globus-world/`, `../2026-midwestrcd-talk/`) for the *chrome*. (The
   in-slide terminal-window treatment for command snippets is a deliberate,
   separate content device — not the deck chrome.)
-- **New custom layouts unique to this deck:** the **Zoo logo-wall** (Slide 4),
-  the **Rube Goldberg stack** (Slides 7–8), the **two-axis decision ladder**
-  (Slides 10, 16), and the **storage-tier diagram** (Slide 17).
+- **New custom layouts unique to this deck:** the **About RCAC** layout
+  (photo cluster + squiggle-boxed pillars, Slide 2), the **triple-point Venn**
+  (Slide 3), the **Zoo logo-wall** (Slide 6), the **Rube Goldberg stack**
+  (Slides 9–10), the **two-axis decision ladder** (Slides 12, 18), and the
+  **storage-tier diagram** (Slide 19).
+- **Prelude images (Geoffrey to supply):** the About RCAC photo cluster
+  (machine room / *Fortress* mural / rack) + `rcac.purdue.edu` QR, and the
+  About Me headshot. Both are ports of existing PowerPoint slides; Geoffrey
+  relays local file paths. The About Me Venn labels are to be **redesigned**
+  to map onto systems · science · software (center = facilitator/unicorn).
 - **Cold-open image:** use the best X-Men "Perfection" meme image; this is a
   private, non-published talk, so real logos and the meme are fine to use
   directly (no rights work). A custom Purdue-style absurd-stack illustration
-  for the cold open (Slide 2) and its inversion (Slide 19) is optional and
+  for the cold open (Slide 4) and its inversion (Slide 21) is optional and
   purely an aesthetic choice.
-- **Zoo logo-wall (Slide 4):** use the real, best brand logos, grouped by
+- **Zoo logo-wall (Slide 6):** use the real, best brand logos, grouped by
   layer with size ≈ popularity.
 - When porting Slidev specifics, mind the NAIRR hazards: MDC mode is on (no
   blank lines inside inline `<svg>`), `provider: none` for fonts (no licensed
@@ -163,7 +181,7 @@ To be formalized in `THEME.md`. Defaults agreed so far:
 ## Workflow / next steps
 
 1. Iterate on `OUTLINE.md` with Geoffrey until approved (in progress).
-2. Port `THEME.md` from the NAIRR deck, adapted (note the four new layouts).
+2. Port `THEME.md` from the NAIRR deck, adapted (note the six new layouts).
 3. Author `ROADMAP.md` (phased Slidev build, YAML frontmatter) — only after
    `OUTLINE.md` is approved.
 4. Create the `/continue` (and optionally `/release`) skill under
@@ -181,8 +199,10 @@ To be formalized in `THEME.md`. Defaults agreed so far:
 
 ## Open TODOs
 
-The live list lives in `OUTLINE.md` §8. Highlights: pick the best "Perfection"
-meme image and lock the Zoo logo set/layout; finalize the through-line example
-(`analyze.sh` vs. a domain example); confirm exact RCAC storage-tier names
-(Fortress / Data Depot / Scratch); finalize Slide 20 resources and QR-code
-links; settle Slidev version pin and dev port in `ROADMAP.md`.
+The live list lives in `OUTLINE.md` §8. Highlights: supply prelude assets
+(About RCAC photos/QR; About Me headshot) and redesign the triple-point Venn
+labels; pick the best "Perfection" meme image and lock the Zoo logo
+set/layout; finalize the through-line example (`analyze.sh` vs. a domain
+example); confirm exact RCAC storage-tier names (Fortress / Data Depot /
+Scratch); finalize Slide 22 resources and QR-code links; settle Slidev version
+pin and dev port in `ROADMAP.md`.
