@@ -72,6 +72,14 @@ opening gag: **real perfection is the simplest thing that works.**
   (parallelism → failure tracking → retries → cross-node scale-out), and at
   the extreme end a dedicated executor is a **pressure-release valve** for the
   scheduler itself.
+* **Make reaches further than it looks — the difference is *control*, not
+  *capability*.** Before selling Nextflow, I walk it back honestly: containers,
+  cluster executors, resume, and modularity can all be *shimmed into Make* with
+  conventions (a `$(RUN)` template, atomic `mv`, child-Makefiles). The reason
+  to climb isn't that Make *can't* — it's that a framework makes these the
+  *framework's* job. That delegation buys **human scalability**: like a
+  language's built-in packaging index, Nextflow + nf-core offloads complexity
+  to a *shared community problem* via forced, uniform plug-points.
 * **Data is the hard part.** The bottleneck is usually data movement and
   locality, not CPU. Tier your data deliberately; the simplest tiering is an
   `rsync` in your job script.
@@ -100,8 +108,9 @@ opening gag: **real perfection is the simplest thing that works.**
 | 13:30–14:15 | 14 | Axis 1 — `xargs` (the first taming) |
 | 14:15–15:15 | 15 | Axis 1 — Slurm job array |
 | 15:15–16:45 | 16 | Axis 1 — HyperShell + the pressure-release valve |
-| 16:45–18:00 | 17 | Axis 2 — "Make is all you need" |
-| 18:00–19:30 | 18 | Axis 2 — Nextflow as the justified endpoint |
+| 16:45–17:30 | 17 | Axis 2 — "Make is all you need" |
+| 17:30–18:15 | 17b | Axis 2 — how far Make really reaches (bridge) |
+| 18:15–19:30 | 18 | Axis 2 — Nextflow as the justified endpoint |
 | 19:30–21:15 | 19 | The decision ladder + "earn its keep" checklist |
 | 21:15–23:00 | 20 | Data management — locality & storage tiers |
 | 23:00–24:15 | 21 | One agentic beat — agents as operators |
@@ -109,7 +118,8 @@ opening gag: **real perfection is the simplest thing that works.**
 | 25:45–28:00 | 23 | Resources & contact |
 
 *Target delivery ~28:00 with a ~2min cushion for the cold-open laugh, the
-HDMI tax, and transitions. Twenty-three physical slides. The prelude (Slides
+HDMI tax, and transitions. Twenty-three numbered beats (Slide 17b is a
+slide-reverse, not a new physical slide). The prelude (Slides
 2–3) is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisk
 executor-axis rungs (Slides 13–16) — the climb is four fast snippets, not four
 full stops. About RCAC (Slide 2) and the `xargs` rung (Slide 14) are the first
@@ -653,8 +663,10 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     Makefile *is* a reproducible pipeline.
   * The provocation: *"Make is all you need"* — before you reach for a
     bespoke workflow engine, ask whether a Makefile already does it.
-  * Where it strains: no built-in containers, no cluster-aware execution, no
-    automatic resume across environments, weak handling of dynamic fan-out.
+  * Where it strains *out of the box*: no built-in containers, no cluster-aware
+    execution, no automatic resume, weak handling of dynamic fan-out. **But
+    "out of the box" is doing a lot of work in that sentence** — hold that
+    thought; the very next beat walks it back.
 * **Visual:** "Code/definition" treatment (distinct from the terminal
   aesthetic) of a small Makefile:
   ```makefile path=null start=null
@@ -663,27 +675,83 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
 
   all: $(patsubst samples/%.fastq,results/%.out,$(wildcard samples/*.fastq))
   ```
-* **Transition:** *"When Make genuinely runs out of road — and only then —
-  you climb to a real workflow engine."*
+* **Transition:** *"Before I sell you the next rung, let me be honest about how
+  far this one actually reaches — look at that same Makefile again."*
+
+### Slide 17b — Axis 2 · how far Make really reaches (bridge beat) · must-not-skip
+
+* **Core message:** The honest rebuttal *to myself*: most of the things people
+  reach for Nextflow to get, you *can* shim into Make with a little
+  convention. The same Makefile, re-read with a new lens. The real difference
+  isn't *capability* — it's *who owns the control*: with Make **you** own the
+  patterns; with a framework, the framework does.
+* **Delivery mechanic (settled):** literally reverse one slide — bring the
+  Slide 17 Makefile back up and let the room squint at it again. No new
+  snippet; talk *over* the existing one. This keeps Slide 17 lean and makes
+  the rebuttal feel earned, not bolted on.
+* **Talking points (the four shims — brisk, ~45–60s total):**
+  * **Containers** — a variable template that wraps each recipe in an
+    Apptainer image: define `RUN = apptainer exec image.sif` and prefix the
+    recipe with `$(RUN)`. Reproducible environments, no framework required.
+  * **Scale-out executors** — the *same* trick for Slurm: `RUN = srun ...`
+    drops every recipe onto the cluster. The executor is just another
+    variable.
+  * **Resume / fault-tolerance** — Make *already* resumes: it rebuilds only
+    what's missing or stale. The one gotcha is the lying half-written target
+    after a crash; the fix is a one-line **atomic `mv`** — write to a temp
+    file, then `mv` into place so a target only exists if it completed. (This
+    is the pattern I actually use.)
+  * **Modularity** — conventions + child-Makefiles checked into Git: a parent
+    Makefile that delegates to per-stage child Makefiles gives you composable,
+    versioned pipeline modules.
+* **The honest pivot (the load-bearing line):** *"So Make is not incapable —
+  I can shim all of this. Nextflow isn't right because Make **can't**; it's a
+  different trade. It takes these patterns I'd otherwise own by hand and makes
+  them the framework's job — forced, uniform plug-points instead of my private
+  conventions."*
+* **Visual:** Reuse the Slide 17 Makefile verbatim. Optional: four small
+  margin annotations pointing at the recipe line — *"← wrap with $(RUN) for
+  containers / srun"*, *"← atomic mv ⇒ safe resume"*, *"← child-make ⇒
+  modules"* — revealed one at a time. Keep it light; the point is "same code,
+  new lens."
+* **Transition:** *"That's the case *for* doing it yourself. Here's why a whole
+  community decided to stop."*
 
 ### Slide 18 — Axis 2 · Nextflow as the justified endpoint (18:00–19:30) · must-not-skip
 
-* **Core message:** Nextflow is the top of the orchestration axis — and its
-  complexity is *justified* by features Make can't give you.
+* **Core message:** Nextflow is the top of the orchestration axis. The point
+  isn't that Make *can't* (17b just showed it can) — it's that Nextflow makes
+  these things the **framework's** job, and that delegation buys you something
+  Make patterns don't: *human* scalability through shared infrastructure.
 * **Talking points:**
-  * What you actually get for the added complexity:
-    * **Containers** — per-process reproducible environments, built in.
+  * Reframe, not "Make can't": each of these is a capability you'd otherwise
+    own *by hand* (Slide 17b), now owned by the framework via forced,
+    uniform plug-points:
+    * **Containers** — per-process reproducible environments, declared, not
+      shimmed.
     * **Dataflow DAG** — dynamic fan-out/fan-in driven by channels, not a
-      static target list.
-    * **`-resume` caching** — restart a failed pipeline and skip completed
-      work automatically.
-    * **Executor portability** — the *same* pipeline runs on Slurm, on
-      Kubernetes, on the cloud, by changing one config line.
-    * **nf-core** — a curated library of peer-reviewed pipelines you can
-      adopt instead of writing your own.
-  * The honest framing: this is a *lot* of machinery. It earns its keep when
-    you have real inter-task dependencies, heterogeneous environments, long
-    pipelines that fail partway, or a community pipeline that already exists.
+      static target list. *This is the one that genuinely doesn't reduce to a
+      Make pattern* — dynamic, data-driven topology, not a fixed target graph.
+    * **`-resume` caching** — content-aware resume across runs and
+      environments, beyond Make's mtime + my atomic-`mv` trick.
+    * **Executor portability** — the *same* pipeline runs on Slurm,
+      Kubernetes, or the cloud by changing one config line (vs. my `RUN =`
+      template, which I maintain myself).
+    * **nf-core** — a curated library of peer-reviewed pipelines you adopt
+      instead of writing your own.
+  * **The deeper argument — human scalability (the real "earns its keep"):**
+    this is the *packaging* story all over again. Python, Node, and Rust ship
+    with build systems and a package index; they offload complexity to a
+    *shared community problem* so you don't each reinvent it. Nextflow's
+    forced plug-system + nf-core is the same move for pipelines. **You can be
+    master of your own domain — and honestly that's where you should start —
+    but a shared framework lets a whole community plug things together and do
+    amazing things *because* the plug-points are forced and uniform.**
+  * The honest framing: this is a *lot* of machinery, and it relocates control
+    to the framework. It earns its keep when you have genuine dynamic
+    dependencies, heterogeneous environments shared across people, or a
+    community pipeline that already exists — i.e. when the problem is bigger
+    than one person's conventions.
   * If you don't have those needs, Slide 17 was your answer.
   * **Where this sits / what I'm skipping (15s, honest — and owning the bias):**
     I picked Nextflow because it's what I most often see *researchers* actually
