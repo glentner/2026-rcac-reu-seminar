@@ -1,6 +1,6 @@
 # REU Summer Seminar 2026 — Talk Outline
 
-> **Venue:** Summer REU Seminar Series · Envision Center, Purdue University, West Lafayette, IN &nbsp;|&nbsp; **Budget:** 30 minutes
+> **Venue:** Summer REU Seminar Series · Envision Center, Purdue University, West Lafayette, IN &nbsp;|&nbsp; **Slot:** 45 minutes &nbsp;|&nbsp; **Target:** ~30 minutes (leave ~10–15 for Q&A) &nbsp;|&nbsp; **Ceiling:** 40 minutes
 > **Speaker:** Geoffrey Lentner, Principal AI Scientist, Rosen Center for Advanced Computing (RCAC), Purdue University
 > **Working title:** *Workflow Engineering, Data Management, and Advanced Automation — or, How Not to Build a Rube Goldberg Machine*
 > A refinement of last year's REU seminar (*Data Management and Workflow Templates*). That talk cataloged the zoo; this one gives the zoo a spine. Primary audience is REU undergraduates; RC professionals get the in-jokes and asides.
@@ -88,7 +88,7 @@ opening gag: **real perfection is the simplest thing that works.**
 * **Real perfection is simplicity.** Invert the cold-open gag and send them
   home with resources.
 
-## 3) 30-minute time budget
+## 3) Time budget (45-min slot · ~30-min target · 40-min ceiling)
 
 | Time | Slide | Focus |
 |---|---|---|
@@ -112,18 +112,22 @@ opening gag: **real perfection is the simplest thing that works.**
 | 17:30–18:15 | 17b | Axis 2 — how far Make really reaches (bridge) |
 | 18:15–19:30 | 18 | Axis 2 — Nextflow as the justified endpoint |
 | 19:30–21:15 | 19 | The decision ladder + "earn its keep" checklist |
-| 21:15–23:00 | 20 | Data management — locality & storage tiers |
-| 23:00–24:15 | 21 | One agentic beat — agents as operators |
-| 24:15–25:45 | 22 | Closing — real perfection is simplicity |
-| 25:45–28:00 | 23 | Resources & contact |
+| 21:15–22:45 | 20A | Data management — locality & storage tiers (the concept) |
+| 22:45–24:00 | 20B | Staging — the same ownership ladder, one more time |
+| 24:00–25:15 | 21 | One agentic beat — agents as operators |
+| 25:15–26:45 | 22 | Closing — real perfection is simplicity |
+| 26:45–29:00 | 23 | Resources & contact |
 
-*Target delivery ~28:00 with a ~2min cushion for the cold-open laugh, the
-HDMI tax, and transitions. Twenty-three numbered beats (Slide 17b is a
-slide-reverse, not a new physical slide). The prelude (Slides
-2–3) is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisk
+*Target delivery ~29:00 with a ~1–2min cushion for the cold-open laugh, the
+HDMI tax, and transitions — comfortably inside the ~30-min target and far
+under the 40-min ceiling, leaving ~10–15min for Q&A in the 45-min slot.
+Twenty-four numbered beats (Slide 17b is a slide-reverse, not a new physical
+slide; the data beat is now two slides, 20A + 20B). The prelude (Slides 2–3)
+is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisk
 executor-axis rungs (Slides 13–16) — the climb is four fast snippets, not four
-full stops. About RCAC (Slide 2) and the `xargs` rung (Slide 14) are the first
-to cut if time slips; About Me (Slide 3) is must-tell.*
+full stops. If time slips, the first cuts are About RCAC (Slide 2), the
+`xargs` rung (Slide 14), and the 6-property trade-off diagram on 20A
+(collapse to the bare cold→warm→hot ladder); About Me (Slide 3) is must-tell.*
 
 ## 4) Slide-by-slide talking points
 
@@ -401,7 +405,7 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
   * **Data movement / staging** — gets bytes to where the compute is:
     **`rsync`** for the hand-rolled version, **Globus** (Transfer / Flows) for
     the managed, automated version on research infrastructure. (RCAC is a
-    strong Globus partner here — more on that at Slide 20.)
+    strong Globus partner here — more on that at Slide 20B.)
   * **Templating / DSL** — parameterizes task definitions (e.g. Jinja-style).
   * **Containerization** — packages the environment: **Apptainer** on HPC;
     **Docker** on the cloud.
@@ -765,7 +769,7 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     center**, and I'll stand behind it. But it's one orchestrator among many:
     **Snakemake** (Python/Make-flavored, huge in bioinformatics),
     **CWL/Cromwell**, **Parsl**, **Luigi**, and — over in industry —
-    **Airflow**. I can't do justice to all of them in thirty minutes, and I
+    **Airflow**. I can't do justice to all of them in one talk, and I
     won't pretend to: I'm deep on the academic-HPC slice and shallow on the
     always-on industry side. Place each on the *orchestration* axis and apply
     the same checklist.
@@ -826,61 +830,86 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
 * **Transition:** *"One more thing the tools won't save you from — the data.
   And it's the *same* decision, one more time."*
 
-### Slide 20 — Data management · locality & tiers (21:15–23:00)
+### Slide 20A — Data management · locality & storage tiers (the concept) (21:15–22:45)
 
-* **Core message:** Data locality is its own important concept — movement, not
-  CPU, is usually the real bottleneck — but the *way you handle it* is **the
-  same ownership lesson, a third time.** You own the bottom rung (a one-line
-  `rsync`); you hand control to the framework only when manual staging stops
-  scaling.
-* **Talking points:**
-  * **Name the callback up front:** *"This is a different problem — bytes, not
-    tasks — but watch: it's the **same shape** we've now seen three times."*
-  * **The tiers (RCAC concretely):** *Fortress* (tape — cold, archival),
-    *Data Depot* (spinning disk — warm, project storage), *Scratch* (all-flash
-    — hot, fast-local for active jobs). Note the rhyme: cold→warm→hot is itself
-    a *"don't pay for the fast tier until you need it"* ladder — same grammar as
-    the decision ladder.
-  * There is no perfect filesystem overlay that auto-tiers for you. In its
-    absence, *you* tier in the application layer — and that's fine; **owning it
-    by hand is the right starting point.**
+* **Core message:** Data locality is the part the tools *won't* save you from —
+  movement, not CPU, is usually the real bottleneck. Storage is **tiered**
+  because no single medium wins on every axis; choosing a tier is itself an
+  *"earn its keep"* decision — *don't pay for the fast tier until you need it.*
+* **Talking points (~90s):**
+  * **The bottleneck reframe:** for capacity/throughput workflows the wall is
+    usually *getting bytes to the compute*, not the compute itself. Locality
+    is a first-class design concern, not an afterthought.
+  * **No medium wins on everything — the trade-off space (the keeper idea from
+    last year):** storage systems differ along several axes at once —
+    **capacity, performance, cost, safety/recoverability, security, longevity/
+    durability.** That's *why* there isn't one filesystem; you pick the tier
+    whose trade-offs match the moment.
+  * **The tiers (RCAC concretely), as a cold→warm→hot ladder:** *Fortress*
+    (tape — cold, archival, cheap-and-durable, slow), *Data Depot* (spinning
+    disk — warm, persistent project storage), *Scratch* (all-flash — hot,
+    fast-local for active jobs, not for keeping). Same rung grammar as the
+    Slide 19 decision ladder: each step up costs more and buys speed.
+  * **The earn-its-keep tie-in (say it):** *"don't pay for the fast tier until
+    you need it"* — the storage version of the whole talk. Scratch is the
+    HyperShell/Nextflow of storage: powerful, and wrong if your problem doesn't
+    need it.
+  * Skip the hardware primer: this room doesn't need "what is persistence" or
+    photos of an Optane stick — the *concept* (tiers + trade-offs) is the
+    teachable thing.
+* **Visual:** Port last year's **storage-property diagram** — the cluster of
+  labeled circles for the six trade-off axes (**Capacity · Performance · Cost ·
+  Safety · Security · Longevity/Durability**), re-skinned into the Purdue 2026
+  chrome — paired with the **cold→warm→hot tier ladder** (Fortress · Data
+  Depot · Scratch) drawn in the Slide 19 rung grammar. This is the
+  photograph-slide for the data section.
+* **Transition:** *"So you've picked your tiers. Now — how do you actually move
+  the bytes between them? Same decision as everything else today."*
+* **Delivery note:** the 6-property diagram is the compressible part. If time
+  slips, name two or three axes verbally (cost · speed · durability) and lean on
+  the tier ladder alone.
+
+### Slide 20B — Staging · the same ownership ladder, one more time (22:45–24:00)
+
+* **Core message:** Moving data between tiers is **the same ownership decision,
+  a third time.** You own the bottom rung (a one-line `rsync`); you hand control
+  to the framework only when manual staging stops scaling.
+* **Talking points (~75s):**
+  * **Name the callback up front:** *"Bytes, not tasks — but watch: it's the
+    **same shape** we've now seen three times."*
   * **The bottom rung — you own it:** an `rsync` into fast storage at the top of
-    your job script, compute, then `rsync` results back:
+    your job script, compute, then `rsync` results back. No framework required;
+    owning it by hand is the right starting point.
     ```sh path=null start=null
     rsync -a $DEPOT/project/input/ $SCRATCH/run/input/
     ./run_pipeline $SCRATCH/run/
     rsync -a $SCRATCH/run/output/ $DEPOT/project/output/
     ```
   * **The next rung — the framework owns it:** make staging an explicit,
-    dependency-tracked workflow step (exactly the Axis 2 climb from Slide 18,
-    now applied to data). Same trade as before: you give up hand-wired control
-    for the framework's plug-points — worth it only when staging-by-hand stops
-    scaling.
-  * **The framework-owns-it rung, concretely at RCAC — Globus Flows (own the
-    partnership beat):** the managed version of this rung is **Globus** —
-    **Transfer** for movement, **Flows** for automated, dependency-aware
-    staging pipelines. This is exactly "the framework owns it" for data: you
-    declare the flow, Globus runs it. *"We're a strong partner with Globus on
-    this: we have dedicated staff building automated Globus Flows for data
-    management, and I'm deploying Multi-User Endpoints across our campus
-    clusters — our Anvil MEP was the first public MEP worldwide, which we've
-    showcased at Globus World two years running."* (Parsl + **Globus Compute**
-    is the executor-axis sibling of the same ecosystem — callback to Slide 16.)
-  * Keep it proportionate: this is the *managed* rung, not the starting point.
-    The thesis still holds — `rsync` first; reach for Flows when automated,
-    repeatable, multi-party staging earns its keep.
-  * **The explicit callback (land it):** *"Same rule, third time: stage simply
-    first; hand control to a framework only when owning it yourself stops
-    paying off. Tasks, then orchestration, now data — one lesson about
-    ownership stakes, wearing three costumes."*
-* **Visual:** A cold→warm→hot tier diagram (tape · disk · flash) with the RCAC
-  system names, drawn in the **same rung/ladder grammar as Slide 19** (and the
-  same subtle *"you own it → framework owns it"* echo across the rsync rung vs.
-  the workflow-managed rung), plus the on-slide rsync snippet.
+    dependency-tracked workflow step (the Axis 2 climb from Slide 18, now
+    applied to data). Same trade: you give up hand-wired control for the
+    framework's plug-points — worth it only when staging-by-hand stops scaling.
+  * **Concretely at RCAC — Globus (spoken aside, ~15s, keep it light):** the
+    managed version of this rung is **Globus Transfer** (movement) +
+    **Globus Flows** (automated, dependency-aware staging). *"We're a strong
+    Globus partner: dedicated staff building automated Flows, and we're rolling
+    out Multi-User Endpoints across our clusters — Anvil was the first public
+    MEP worldwide."* Then move on — don't let the partnership beat hijack the
+    teaching beat. (Parsl + **Globus Compute** is the executor-axis sibling of
+    the same ecosystem — callback to Slide 16.)
+  * **The explicit callback (land it — this is the payoff, give it room):**
+    *"Same rule, third time: stage simply first; hand control to a framework
+    only when owning it yourself stops paying off. Tasks, then orchestration,
+    now data — one lesson about ownership stakes, wearing three costumes."*
+* **Visual:** The two-rung **ownership ladder** — bottom rung labeled *"you own
+  it"* with the `rsync` snippet on it; top rung labeled *"framework owns it"*
+  (Globus Flows / workflow-managed staging) — reusing the Slide 19
+  *"you own it → framework owns it"* gradient. Keep the Globus marks small; the
+  ladder is the message.
 * **Transition:** *"There's one new operator showing up in all of this — and it
   obeys the same rule."*
 
-### Slide 21 — One agentic beat · agents as operators (23:00–24:15)
+### Slide 21 — One agentic beat · agents as operators (24:00–25:15)
 
 * **Core message:** AI agents are becoming operators and consumers of these
   same workflow tools — and the thesis doesn't change.
@@ -899,7 +928,7 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
   works, then verify."*
 * **Transition:** *"Which brings me back to where we started."*
 
-### Slide 22 — Closing · real perfection is simplicity (24:15–25:45)
+### Slide 22 — Closing · real perfection is simplicity (25:15–26:45)
 
 * **Core message:** Invert the cold open. The over-engineered stack wasn't
   perfection; the simplest thing that works is.
@@ -924,7 +953,7 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
   monster used to be, in the deck's own chrome.
 * **Transition:** *"Here's where to find everything."*
 
-### Slide 23 — Resources & contact (25:45–28:00)
+### Slide 23 — Resources & contact (26:45–29:00)
 
 * **Core message:** Where to learn more; how to reach me.
 * **Talking points:**
@@ -936,7 +965,7 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     (`github.com/purduercac/rcac-mcp`), and `globus-mcp`
     (`github.com/purduercac/globus-mcp`) — the agentic-era thread behind the
     one beat on Slide 21. (`globus-mcp` also nods to the **Globus partnership**
-    from Slide 20 — Flows / Compute / MEPs.)
+    from Slide 20B — Flows / Compute / MEPs.)
   * **RCAC docs** — cluster user guides, the throughput/workflow guides, and
     the data-tier guides (Fortress / Data Depot / Scratch).
   * **Tool docs (just the significant ones):** GNU Make and Nextflow / nf-core
@@ -959,15 +988,18 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
 
 ## 5) Slide architecture
 
-* **Total:** ~21 narrative beats across **23 physical slides**.
+* **Total:** ~22 narrative beats across **24 physical slides** (the data beat
+  is two slides, 20A + 20B; Slide 17b is a slide-reverse, not a new physical
+  slide).
 * **Pacing:** ~75s average. The prelude (Slides 1–3) is fast: a ~30s title,
   a ~45s About RCAC, and a 60–90s About Me. The cold open (Slide 4) runs long
   with the laugh; the Zoo (Slide 6) is a deliberately short ~45s backdrop; the
   centerpiece anatomy (Slide 9), the HyperShell pressure-release beat
-  (Slide 16), the Nextflow justification (Slide 18), the decision ladder
-  (Slide 19), and data management (Slide 20) each take ~120s. The
-  executor-axis rungs (Slides 13–16) move briskly — four fast snippets
-  climbing one vertical, not four full stops.
+  (Slide 16), the Nextflow justification (Slide 18), and the decision ladder
+  (Slide 19) each take ~120s. The data beat is split: 20A (tiers + trade-off
+  diagram) ~90s, 20B (ownership ladder + `rsync`) ~75s. The executor-axis
+  rungs (Slides 13–16) move briskly — four fast snippets climbing one vertical,
+  not four full stops.
 * **Layout inheritance:** all slides inherit from the Purdue 2026 template
   family documented in `THEME.md` (to be ported from `../2026-nairr-workshop-talk/`)
   — cover, section divider, content, two-panel split, card grid, closing card
@@ -975,10 +1007,11 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
   layouts unique to this deck: the **About RCAC** layout (photo cluster +
   squiggle-boxed pillars, Slide 2), the **triple-point Venn** (Slide 3), the
   **Zoo logo-wall** (Slide 6), the **Rube Goldberg stack** (Slides 9–10), the
-  **two-axis decision ladder** (Slides 12, 19), and the **storage-tier
-  diagram** (Slide 20).
+  **two-axis decision ladder** (Slides 12, 19), the **storage-property +
+  tier diagram** (Slide 20A, ported from last year's circle diagram), and the
+  **data-staging ownership ladder** (Slide 20B).
 * **Two code aesthetics, kept distinct (per GOAL.md):** a *terminal-window*
-  treatment for **commands you run** (Slides 13, 14, 15, 16, 20) and a
+  treatment for **commands you run** (Slides 13, 14, 15, 16, 20B) and a
   *code/definition* treatment for **workflow definitions** (Slides 17, 18).
   Do not blur the two.
 
@@ -1003,12 +1036,13 @@ cohere:
    the loop. Without it the talk has no exit.
 
 Compressible if time slips: Slide 2 (About RCAC — first to cut; one sentence if
-the room already knows RCAC), Slide 14 (`xargs` — collapse to one sentence and
-fold GNU Parallel in verbally), Slide 6 (the Zoo — a few seconds of backdrop,
-or cut entirely), Slide 7 (on-ramp — one line if the room is HPC-literate),
-Slide 15 (Slurm array — can be a verbal mention between `xargs` and
-HyperShell), Slide 21 (agentic beat — one sentence). Never compress 3, 4, 12,
-16, 19, or 22.
+ the room already knows RCAC), Slide 14 (`xargs` — collapse to one sentence and
+ fold GNU Parallel in verbally), Slide 6 (the Zoo — a few seconds of backdrop,
+ or cut entirely), Slide 7 (on-ramp — one line if the room is HPC-literate),
+ Slide 15 (Slurm array — can be a verbal mention between `xargs` and
+ HyperShell), the 6-property diagram on Slide 20A (collapse to the bare
+ cold→warm→hot ladder), Slide 21 (agentic beat — one sentence). Never compress
+ 3, 4, 12, 16, 19, 20B, or 22.
 
 ## 7) Delivery aids
 
@@ -1022,7 +1056,7 @@ HyperShell), Slide 21 (agentic beat — one sentence). Never compress 3, 4, 12,
     judgment the rest of the talk trades on. Reprised implicitly whenever the
     academic↔industry parallel comes up.)
   * *"Does it earn its keep?"* (Thesis on Slide 5; the literal checklist on
-    Slide 19; reprised on Slides 16, 18, and 20.)
+    Slide 19; reprised on Slides 16, 18, 20A, and 20B.)
   * *"A pressure-release valve for the scheduler."* (Slide 16; the executor
     axis's system-level payoff — a million job-steps DDoS `slurmctld`, so an
     executor takes one allocation and meters tasks internally. This is what
@@ -1063,10 +1097,10 @@ HyperShell), Slide 21 (agentic beat — one sentence). Never compress 3, 4, 12,
     Slide 14 (`xargs`) to one sentence and Slide 15 (Slurm array) into a verbal
     aside, trim Slide 7 to one line, and drop the Slide 6 Zoo to a few seconds.
     Never compress 3, 4, 12, 16, 19, 22.
-  * *Time expands.* Add a second worked example to the data-management slide
-    (Slide 20), expand the nf-core beat on Slide 18, or give the executor-axis
-    callouts more air (the ParaFly/GNU Parallel/HTCondor asides on Slides
-    14–16).
+  * *Time expands.* Restore the full 6-property trade-off diagram on Slide 20A
+    (or add a second worked staging example on Slide 20B), expand the nf-core
+    beat on Slide 18, or give the executor-axis callouts more air (the
+    ParaFly/GNU Parallel/HTCondor asides on Slides 14–16).
   * *HPC-novice room.* Slow down on Slide 7 (capability vs. capacity) and
     Slide 13 (the bash loop); these are the undergrad on-ramps.
   * *Practitioner-heavy room.* Lean into the executor-axis asides (GNU Parallel
@@ -1123,12 +1157,20 @@ HyperShell), Slide 21 (agentic beat — one sentence). Never compress 3, 4, 12,
   RPC/controller pressure) against how you want to phrase the "DDoS" line for a
   mixed REU audience. (4) Confirm the HTCondor "heavyweight rung above /
   competing with" framing.
-* **Slide 20 (data tiers).** Confirm the exact RCAC tier names/marketing names
+* **Slide 20A/20B (data).** Confirm the exact RCAC tier names/marketing names
   and any current guidance you want to cite (Fortress / Data Depot / Scratch).
-* **Slide 23 (resources).** Finalize the resource list and which three links
-  get QR codes.
+  For 20A, confirm the six trade-off axes to label on the ported circle diagram
+  (Capacity / Performance / Cost / Safety / Security / Longevity-Durability) and
+  whether all six survive or you'd rather show fewer. For 20B, confirm the
+  Globus partnership phrasing (dedicated Flows staff; campus-wide MEP rollout;
+  Anvil = first public MEP worldwide; Globus World showings) and how much to
+  say aloud vs. leave to the `globus-mcp` QR on Slide 23.
+* **Slide 23 (resources).** Finalize the resource list and which links get QR
+  codes (proposed 5-code row: HyperShell · PEARC'26 · rcac-mcp · globus-mcp ·
+  Nextflow/nf-core; cull to 4 if the row gets crowded).
 * **Scaffolding.** Slidev version pin and a dev port distinct from siblings
   (3032/3033/3034) — proposed **3035**. To be settled in `ROADMAP.md`, not here.
-* **Visual identity.** Port `THEME.md` from the NAIRR deck and note the six
+* **Visual identity.** Port `THEME.md` from the NAIRR deck and note the seven
   new custom layouts (About RCAC, triple-point Venn, Zoo logo-wall, Rube
-  Goldberg stack, two-axis ladder, storage tiers).
+  Goldberg stack, two-axis ladder, storage-property + tier diagram on 20A, and
+  the data-staging ownership ladder on 20B).
