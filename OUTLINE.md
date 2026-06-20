@@ -778,52 +778,88 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
 
 ### Slide 19 — The decision ladder + checklist (19:30–21:15) · must-not-skip
 
-* **Core message:** The single portable artifact: both axes on one visual,
-  plus a verbal checklist for deciding when to climb.
+* **Core message:** The single portable artifact. It now encodes **two** ideas
+  at once, not one: *which axis / how far up* (the rungs) **and** *who owns the
+  wiring — you or the framework* (the control gradient). The carry-home test
+  fuses them: **"have I outgrown owning this by hand?"**
 * **Talking points:**
   * Show both axes together with their rungs:
     * *Executor:* bash loop → `xargs` → Slurm array → HyperShell
       (→ HTCondor, greyed as the heavyweight rung above).
     * *Orchestration:* Makefile → Nextflow.
-  * The **"does it earn its keep?"** checklist — climb a rung only if you can
-    say yes to one:
-    * Am I hitting a real *scale* wall (too many tasks for the current rung)?
-    * Do tasks have genuine *dependencies* I'm currently faking by hand?
-    * Do I need *reproducible environments* I can't get otherwise?
-    * Do I need to *resume* expensive partial runs?
-    * Do I need to *port* this pipeline to another system?
-    * Is there an *existing community pipeline* (nf-core) that already solves
-      this?
-  * Land the thesis again: *"If the answer is no, you're done. Stop climbing."*
-* **Visual:** The full two-axis **decision ladder** (new custom layout) on
-  the left; the six-item checklist on the right. This is the slide to
-  photograph.
-* **Transition:** *"One more thing the tools won't save you from: the data."*
+  * **The second dimension (the new spine, from 17b/18):** climbing isn't only
+    about *capability* — it's about *control*. Left of each axis you **own the
+    patterns** (a bash loop, a Makefile + conventions); right, the **framework
+    owns them** via forced, uniform plug-points. Moving right trades your
+    private cleverness for *human* scalability — a shared problem solved once
+    for everyone (the packaging-index move from Slide 18).
+  * The **"does it earn its keep?"** checklist — grouped by axis so the two
+    questions stay distinct; climb a rung only if you can say yes:
+    * *Executor (scale):* Am I hitting a real *scale* wall the current rung
+      can't take — **or am I about to DDoS the shared scheduler?** (the Slide 16
+      pressure-release-valve callback: at the extreme, "earns its keep" is
+      about protecting the *shared system*, not just me).
+    * *Orchestration (relationships):* Do tasks have genuine *dependencies* —
+      especially *dynamic* fan-out — I'm currently faking by hand? Do I need
+      *reproducible environments*, *resume* of expensive partial runs, or to
+      *port* the pipeline elsewhere?
+  * **The meta-test that ties it together (say this one slowly):**
+    *"Have I outgrown owning this by hand — is this now a **shared** problem,
+    not a personal one?"* If yes, that's when a framework (and an `nf-core`-style
+    community pipeline) earns its keep; if no, your conventions are still the
+    right tool.
+  * Land the thesis — both directions, so it isn't purely deflationary:
+    *"If the answer is no, you're done — stop climbing. And when it's finally
+    yes, climb without guilt: that's the rung earning its keep."*
+* **Visual:** The full two-axis **decision ladder** (new custom layout) on the
+  left, with a subtle left→right **"you own it → framework owns it"** gradient
+  running under each axis (Make/bash = you; Nextflow/HyperShell = framework).
+  On the right, the checklist **grouped under the two axis headings**, with the
+  *"outgrown owning it by hand?"* meta-test set apart as the single boxed
+  takeaway. This is the slide to photograph.
+* **Transition:** *"One more thing the tools won't save you from — the data.
+  And it's the *same* decision, one more time."*
 
 ### Slide 20 — Data management · locality & tiers (21:15–23:00)
 
-* **Core message:** Data movement is usually the real bottleneck, and tiering
-  is the researcher's job. The simplest tiering is a one-line `rsync`.
+* **Core message:** Data locality is its own important concept — movement, not
+  CPU, is usually the real bottleneck — but the *way you handle it* is **the
+  same ownership lesson, a third time.** You own the bottom rung (a one-line
+  `rsync`); you hand control to the framework only when manual staging stops
+  scaling.
 * **Talking points:**
+  * **Name the callback up front:** *"This is a different problem — bytes, not
+    tasks — but watch: it's the **same shape** we've now seen three times."*
   * **The tiers (RCAC concretely):** *Fortress* (tape — cold, archival),
     *Data Depot* (spinning disk — warm, project storage), *Scratch* (all-flash
-    — hot, fast-local for active jobs).
+    — hot, fast-local for active jobs). Note the rhyme: cold→warm→hot is itself
+    a *"don't pay for the fast tier until you need it"* ladder — same grammar as
+    the decision ladder.
   * There is no perfect filesystem overlay that auto-tiers for you. In its
-    absence, *you* tier in the application layer.
-  * **Simplest version:** an `rsync` into fast storage at the top of your job
-    script, compute, then `rsync` results back:
+    absence, *you* tier in the application layer — and that's fine; **owning it
+    by hand is the right starting point.**
+  * **The bottom rung — you own it:** an `rsync` into fast storage at the top of
+    your job script, compute, then `rsync` results back:
     ```sh path=null start=null
     rsync -a $DEPOT/project/input/ $SCRATCH/run/input/
     ./run_pipeline $SCRATCH/run/
     rsync -a $SCRATCH/run/output/ $DEPOT/project/output/
     ```
-  * **More sophisticated:** make staging an explicit workflow step with
-    dependency relationships (this is exactly where Axis 2 earns its keep).
-  * The thesis applies here too: stage simply first; add a data-orchestration
-    layer only when manual staging stops scaling.
-* **Visual:** A cold→warm→hot tier diagram (tape · disk · flash) with the
-  RCAC system names, plus the on-slide rsync snippet.
-* **Transition:** *"There's one new operator showing up in all of this."*
+  * **The next rung — the framework owns it:** make staging an explicit,
+    dependency-tracked workflow step (exactly the Axis 2 climb from Slide 18,
+    now applied to data). Same trade as before: you give up hand-wired control
+    for the framework's plug-points — worth it only when staging-by-hand stops
+    scaling.
+  * **The explicit callback (land it):** *"Same rule, third time: stage simply
+    first; hand control to a framework only when owning it yourself stops
+    paying off. Tasks, then orchestration, now data — one lesson about
+    ownership stakes, wearing three costumes."*
+* **Visual:** A cold→warm→hot tier diagram (tape · disk · flash) with the RCAC
+  system names, drawn in the **same rung/ladder grammar as Slide 19** (and the
+  same subtle *"you own it → framework owns it"* echo across the rsync rung vs.
+  the workflow-managed rung), plus the on-slide rsync snippet.
+* **Transition:** *"There's one new operator showing up in all of this — and it
+  obeys the same rule."*
 
 ### Slide 21 — One agentic beat · agents as operators (23:00–24:15)
 
