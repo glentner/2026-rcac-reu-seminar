@@ -65,9 +65,13 @@ opening gag: **real perfection is the simplest thing that works.**
 * **Two axes, not one ladder.** The thing to carry home: *executor/scale*
   (run many tasks) and *orchestration/DSL* (relate tasks) are different
   questions. Most workflows only ever need one of them.
-* **Each rung is real.** Bash loop, Slurm array, HyperShell one-liner;
-  Makefile, Nextflow process. Real artifacts, shown on screen, climbed only
-  as far as the problem demands.
+* **Each rung is real.** Bash loop, `xargs`, Slurm array, HyperShell
+  one-liner; Makefile, Nextflow process. Real artifacts, shown on screen,
+  climbed only as far as the problem demands. The executor axis is its own
+  little zoo: each rung exists because the one below it hit a wall
+  (parallelism → failure tracking → retries → cross-node scale-out), and at
+  the extreme end a dedicated executor is a **pressure-release valve** for the
+  scheduler itself.
 * **Data is the hard part.** The bottleneck is usually data movement and
   locality, not CPU. Tier your data deliberately; the simplest tiering is an
   `rsync` in your job script.
@@ -92,22 +96,24 @@ opening gag: **real perfection is the simplest thing that works.**
 | 9:00–10:30 | 10 | Decompose the layers |
 | 10:30–12:00 | 11 | "Merchants of complexity" (incl. academic vs. industry) |
 | 12:00–12:45 | 12 | Two axes, not one ladder (framework reveal) |
-| 12:45–13:45 | 13 | Axis 1 — executor/scale: the bash loop |
-| 13:45–15:00 | 14 | Axis 1 — Slurm job array |
-| 15:00–16:15 | 15 | Axis 1 — HyperShell (extreme executor end) |
-| 16:15–17:45 | 16 | Axis 2 — "Make is all you need" |
-| 17:45–19:30 | 17 | Axis 2 — Nextflow as the justified endpoint |
-| 19:30–21:30 | 18 | The decision ladder + "earn its keep" checklist |
-| 21:30–23:30 | 19 | Data management — locality & storage tiers |
-| 23:30–25:00 | 20 | One agentic beat — agents as operators |
-| 25:00–26:30 | 21 | Closing — real perfection is simplicity |
-| 26:30–28:30 | 22 | Resources & contact |
+| 12:45–13:30 | 13 | Axis 1 — executor/scale: the bash loop |
+| 13:30–14:15 | 14 | Axis 1 — `xargs` (the first taming) |
+| 14:15–15:15 | 15 | Axis 1 — Slurm job array |
+| 15:15–16:45 | 16 | Axis 1 — HyperShell + the pressure-release valve |
+| 16:45–18:00 | 17 | Axis 2 — "Make is all you need" |
+| 18:00–19:30 | 18 | Axis 2 — Nextflow as the justified endpoint |
+| 19:30–21:15 | 19 | The decision ladder + "earn its keep" checklist |
+| 21:15–23:00 | 20 | Data management — locality & storage tiers |
+| 23:00–24:15 | 21 | One agentic beat — agents as operators |
+| 24:15–25:45 | 22 | Closing — real perfection is simplicity |
+| 25:45–28:00 | 23 | Resources & contact |
 
-*Target delivery ~28:30 with a ~90s cushion for the cold-open laugh, the
-HDMI tax, and transitions. Twenty-two physical slides. The prelude (Slides
-2–3) is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisker
-executor-axis rungs (Slides 13–15). About RCAC (Slide 2) is the first to cut
-if time slips; About Me (Slide 3) is must-tell.*
+*Target delivery ~28:00 with a ~2min cushion for the cold-open laugh, the
+HDMI tax, and transitions. Twenty-three physical slides. The prelude (Slides
+2–3) is paid for by a lean ~30s title, a tighter thesis/Zoo, and brisk
+executor-axis rungs (Slides 13–16) — the climb is four fast snippets, not four
+full stops. About RCAC (Slide 2) and the `xargs` rung (Slide 14) are the first
+to cut if time slips; About Me (Slide 3) is must-tell.*
 
 ## 4) Slide-by-slide talking points
 
@@ -463,8 +469,9 @@ if time slips; About Me (Slide 3) is must-tell.*
   different axes**, answering two different questions.
 * **Talking points:**
   * **Axis 1 — Executor / scale:** *how do I run many tasks?* From a bash
-    loop to a Slurm job array to HyperShell. Pure parallel execution; no
-    relationships between tasks.
+    loop, to `xargs`, to a Slurm job array, to HyperShell (with HTCondor the
+    heavyweight beyond). Pure parallel execution; no relationships between
+    tasks.
   * **Axis 2 — Orchestration / DSL:** *how do I express relationships between
     tasks?* From a Makefile to Nextflow. This is where DAGs, dependencies,
     and dataflow live.
@@ -487,16 +494,19 @@ if time slips; About Me (Slide 3) is must-tell.*
 * **Transition:** *"Let's climb Axis 1 — my slice of it — and stop the moment
   it earns its keep."*
 
-### Slide 13 — Axis 1 · the bash loop (12:45–13:45)
+### Slide 13 — Axis 1 · the bash loop (12:45–13:30)
 
 * **Core message:** The floor of the executor axis. Start here. Often, stay
   here.
 * **Talking points:**
-  * The humblest workflow: a shell loop submitting or running tasks.
+  * The humblest workflow: a shell loop running tasks one after another.
   * It's repeatable, it's legible, it's version-controllable. For a few dozen
     independent tasks it is *the correct answer*.
-  * Where it breaks: no parallelism beyond the node, no retry, no bookkeeping
-    when you have thousands of tasks.
+  * You can fake parallelism with `&` and `wait` and tame the output with
+    redirections — but the moment you want N-at-a-time throttling you're
+    hand-rolling a job pool. That's the wall.
+  * Where it breaks: no real concurrency control, no failure tracking, no
+    bookkeeping when you have thousands of tasks.
 * **Visual:** Terminal-window treatment of a real on-slide snippet:
   ```sh path=null start=null
   for s in samples/*.fastq; do
@@ -505,19 +515,59 @@ if time slips; About Me (Slide 3) is must-tell.*
   ```
   Use the clean "terminal window" aesthetic for *commands*, distinct from the
   "code/definition" treatment used later for Make/Nextflow.
-* **Transition:** *"Need it to run across the cluster? Climb one rung."*
+* **Transition:** *"Want it to actually run in parallel without hand-rolling a
+  job pool? One small step."*
 
-### Slide 14 — Axis 1 · Slurm job array (13:45–15:00)
+### Slide 14 — Axis 1 · `xargs` (the first taming) (13:30–14:15) · compressible
+
+* **Core message:** The first rung that *earns its keep*: `xargs -P` gives you
+  real node-local parallelism with throttling, for free, with a tool you
+  already have. The concern was "run many at once without DDoS-ing my own
+  laptop"; this answers it.
+* **Talking points (keep brisk — ~45s):**
+  * `xargs -P N` runs up to N tasks at a time — a bounded worker pool the bash
+    loop made you write by hand. One flag, real concurrency.
+  * **The feature ratchet starts here (say it as the through-line):** the
+    bash loop gave us *iteration*; `xargs` adds *bounded parallelism*. Each
+    rung from here adds exactly one missing capability.
+  * **Conversational callouts (don't put them on the slide):** this is a
+    crowded little niche. **ParaFly** (born from Trinity in bioinformatics)
+    is roughly `xargs` with a *failure log* you can re-run — it adds *failure
+    tracking*. **GNU Parallel** is the Swiss-army version: throttling, retries
+    *from* its job log, `{}` substitution — it adds *retries*. But all three
+    top out at a single node (GNU Parallel strains past ~1000 threads and has
+    no real multi-node story). *That* ceiling is the next wall.
+  * Where it breaks: still one node. The cluster is right there and you can't
+    reach it.
+* **Visual:** Terminal-window snippet (same fastq through-line):
+  ```sh path=null start=null
+  ls samples/*.fastq | xargs -P 8 -I{} \
+      sh -c './analyze.sh "$1" > "results/$(basename "$1").out"' _ {}
+  ```
+  Optional tiny grey margin note naming the niche — *"cf. ParaFly, GNU
+  Parallel"* — but keep the focus on the one snippet.
+* **Transition:** *"Bounded parallelism on one node — now I want the whole
+  cluster. Hand it to the scheduler."*
+* **Delivery note:** This is the compressible executor rung. If time slips,
+  collapse to one sentence ("`xargs -P` parallelizes the loop; GNU Parallel
+  adds retries") and jump to the Slurm array.
+
+### Slide 15 — Axis 1 · Slurm job array (14:15–15:15)
 
 * **Core message:** The next rung: let the scheduler fan out independent
-  tasks across the cluster.
+  tasks *across the cluster*. This is the wall `xargs`/GNU Parallel hit —
+  multi-node — solved by the resource manager itself.
 * **Talking points:**
   * A job array runs N copies of one script, each indexed by
     `$SLURM_ARRAY_TASK_ID`. The scheduler handles placement, queuing, and
-    parallelism for free.
+    cross-node parallelism for free — the capability `xargs` lacked.
   * This earns its keep when: you have many tasks, you want them spread across
-    nodes, and you want the scheduler's accounting/retry behavior.
+    nodes, and you want the scheduler's accounting and requeue behavior.
   * It's still *just the executor axis* — no relationships between tasks.
+  * **Plant the limit (sets up HyperShell):** a job array is *one scheduler
+    decision per task*. That's fine for hundreds, even thousands. But arrays
+    have size ceilings (`MaxArraySize`), and a million-task array means a
+    million submissions hammering the central controller. Hold that thought.
 * **Visual:** Terminal/code split — the `#SBATCH` header and the array body
   on-slide:
   ```sh path=null start=null
@@ -527,44 +577,71 @@ if time slips; About Me (Slide 3) is must-tell.*
   s=$(ls samples/*.fastq | sed -n "$((SLURM_ARRAY_TASK_ID+1))p")
   ./analyze.sh "$s" > "results/$(basename "$s").out"
   ```
-* **Transition:** *"And the extreme end of pure execution at scale —"*
+* **Transition:** *"Now push to a *million* tasks — and you hit a wall that
+  isn't about your code at all."*
 
-### Slide 15 — Axis 1 · HyperShell (15:00–16:15)
+### Slide 16 — Axis 1 · HyperShell + the pressure-release valve (15:15–16:45) · must-not-skip
 
 * **Core message:** HyperShell is the far end of the executor axis: pure
-  distributed task execution at scale, still no DAG. It's also my own worked
-  example of complexity that **earned its keep** — proof this talk isn't
-  anti-tool.
+  distributed task execution at *extreme* scale, still no DAG. The reason it
+  earns its keep over a Slurm array is concrete and system-level — it's a
+  **pressure-release valve** for the scheduler. It's also my own worked
+  example of complexity that earned its keep, so this is where the talk proves
+  it isn't anti-tool.
 * **Talking points:**
-  * One tool turns a stream of inputs into thousands of parallel tasks across
-    many nodes via SSH or the scheduler — without writing array boilerplate.
+  * One tool turns a stream of inputs into hundreds of thousands of parallel
+    tasks across many nodes — via SSH *or* inside a Slurm allocation — without
+    writing array boilerplate. (Show the one-liner; it's the same idiom as
+    `xargs`, just scaled out.)
+  * **The pressure-release-valve punchline (the heart of the slide):** at a
+    million tasks the bottleneck isn't your code — it's *shared
+    infrastructure*. Two walls hit at once: (1) **array-size ceilings** — you
+    literally can't express it as one array; and (2) **controller RPC
+    pressure** — a million individual job-step starts is a self-inflicted
+    *DDoS* on `slurmctld`, the one daemon every other user on the machine
+    depends on. A workflow executor grabs **one allocation and meters the
+    tasks internally**, so the central scheduler sees *one* job, not a million.
+    *That's* the concrete reason a dedicated executor exists at scale — it
+    protects the machine, not just your convenience. **"Earn its keep" stops
+    being about you and starts being about the shared system.**
   * It's *my* tool (full disclosure) — and that's the point, not a caveat. I
-    built it because the layer below genuinely ran out of road: **GNU Parallel
-    is wonderful, but it wasn't right for HPC** (multi-node over SSH, scheduler
-    integration, fault tolerance at scale). The concern was real, the existing
-    rung couldn't meet it, so a new rung was justified. *That* is how you're
-    allowed to add complexity — and it's exactly the checklist from Slide 18 in
+    built it because the rung below genuinely ran out of road: **GNU Parallel
+    is wonderful, but it wasn't right for HPC**, and a job array DDoS-es the
+    controller at extreme counts. The concern was real, the existing rungs
+    couldn't meet it, so a new rung was justified — the Slide 19 checklist in
     action.
-  * It earns its keep when task volume is enormous and you want elastic
-    parallelism without standing up a DAG engine.
-  * The honest boundary: if a bash loop or a Slurm array already does it,
-    HyperShell is over-kill too. Even the author says: don't reach for it until
-    the rung below stops scaling.
-  * **Where this sits / what I'm skipping (15s, honest):** HyperShell is *my*
-    answer at the extreme executor end, shaped by what I see on **our** HPC.
-    Same niche, other tools: **GNU Parallel** (single-node), **Slurm arrays**
-    (built-in), **Ray** / **Dask** (Python-native, also creep onto Axis 2).
-    Pick whatever fills the *executor* box for you — the box is the point, not
-    the brand.
+  * The honest boundary: if a bash loop, `xargs`, or a Slurm array already
+    does it, HyperShell is over-kill too. Even the author says: don't reach
+    for it until the rung below stops scaling.
+  * **The rung *above* (conversational, ~10s):** beyond HyperShell sits
+    **HTCondor** — the heavyweight high-throughput system this is, in a sense,
+    competing with. Enormously capable, but genuinely hard for a lone user to
+    stand up and tame. HyperShell is the *right-sized middle*: more than an
+    array, far less than running your own Condor pool.
+  * **Where this sits / what I'm skipping (10s, honest):** same niche, other
+    tools — **GNU Parallel** (single-node), **ParaFly** / **TaskFarmer** /
+    **Launcher** (HPC siblings), **Ray** / **Dask** (Python-native, creep onto
+    Axis 2). Pick whatever fills the *executor* box for you — the box is the
+    point, not the brand.
 * **Visual:** Terminal-window one-liner, the real HyperShell idiom on-slide:
   ```sh path=null start=null
   seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster' > task.out
   ```
-  Caption: *hypershell.readthedocs.io · `hs --help`*.
-* **Transition:** *"None of that handles tasks that depend on each other.
-  For that we change axes entirely."*
+  Plus a small **"earned its keep" feature callout box** (v2.8 — accurate to
+  the release notes; pick 3–4, don't read them all):
+  * **Database in-the-loop** — SQLite or PostgreSQL; task history,
+    fault-tolerance, **automated retries** persisted across runs.
+  * **Extreme, elastic scale-out** — staggered launch to **1000+ nodes /
+    250k+ workers** without crashing the server; scale clients down to zero.
+  * **Resource-aware scheduling** — per-task cores / memory / walltime with
+    client-side backfilling.
+  * **Task groups** — lightweight dependency management between tasks.
+  Caption: *hypershell.readthedocs.io · `hs --help` · v2.8*.
+* **Transition:** *"That's pure execution — a million unrelated tasks. None of
+  it handles tasks that *depend* on each other. For that we change axes
+  entirely."*
 
-### Slide 14 — Axis 2 · "Make is all you need" (15:30–17:00)
+### Slide 17 — Axis 2 · "Make is all you need" (16:45–18:00)
 
 * **Core message:** The orchestration axis starts with a tool you already
   have. Make expresses *relationships*, and for a huge fraction of workflows
@@ -589,7 +666,7 @@ if time slips; About Me (Slide 3) is must-tell.*
 * **Transition:** *"When Make genuinely runs out of road — and only then —
   you climb to a real workflow engine."*
 
-### Slide 15 — Axis 2 · Nextflow as the justified endpoint (17:00–19:00) · must-not-skip
+### Slide 18 — Axis 2 · Nextflow as the justified endpoint (18:00–19:30) · must-not-skip
 
 * **Core message:** Nextflow is the top of the orchestration axis — and its
   complexity is *justified* by features Make can't give you.
@@ -607,7 +684,7 @@ if time slips; About Me (Slide 3) is must-tell.*
   * The honest framing: this is a *lot* of machinery. It earns its keep when
     you have real inter-task dependencies, heterogeneous environments, long
     pipelines that fail partway, or a community pipeline that already exists.
-  * If you don't have those needs, Slide 14 was your answer.
+  * If you don't have those needs, Slide 17 was your answer.
   * **Where this sits / what I'm skipping (15s, honest — and owning the bias):**
     I picked Nextflow because it's what I most often see *researchers* actually
     reach for on our HPC — that's the **view from the trenches at a real HPC
@@ -631,13 +708,14 @@ if time slips; About Me (Slide 3) is must-tell.*
   ```
 * **Transition:** *"So: two axes, several rungs each. Here's how to decide."*
 
-### Slide 18 — The decision ladder + checklist (19:30–21:30) · must-not-skip
+### Slide 19 — The decision ladder + checklist (19:30–21:15) · must-not-skip
 
 * **Core message:** The single portable artifact: both axes on one visual,
   plus a verbal checklist for deciding when to climb.
 * **Talking points:**
   * Show both axes together with their rungs:
-    * *Executor:* bash loop → Slurm array → HyperShell.
+    * *Executor:* bash loop → `xargs` → Slurm array → HyperShell
+      (→ HTCondor, greyed as the heavyweight rung above).
     * *Orchestration:* Makefile → Nextflow.
   * The **"does it earn its keep?"** checklist — climb a rung only if you can
     say yes to one:
@@ -654,7 +732,7 @@ if time slips; About Me (Slide 3) is must-tell.*
   photograph.
 * **Transition:** *"One more thing the tools won't save you from: the data."*
 
-### Slide 19 — Data management · locality & tiers (21:30–23:30)
+### Slide 20 — Data management · locality & tiers (21:15–23:00)
 
 * **Core message:** Data movement is usually the real bottleneck, and tiering
   is the researcher's job. The simplest tiering is a one-line `rsync`.
@@ -679,7 +757,7 @@ if time slips; About Me (Slide 3) is must-tell.*
   RCAC system names, plus the on-slide rsync snippet.
 * **Transition:** *"There's one new operator showing up in all of this."*
 
-### Slide 20 — One agentic beat · agents as operators (23:30–25:00)
+### Slide 21 — One agentic beat · agents as operators (23:00–24:15)
 
 * **Core message:** AI agents are becoming operators and consumers of these
   same workflow tools — and the thesis doesn't change.
@@ -694,11 +772,11 @@ if time slips; About Me (Slide 3) is must-tell.*
     monster is just as wrong as a human who does.
   * Keep this to one beat — it's a signpost, not a theme.
 * **Visual:** A single clean panel: an agent loop node feeding into the
-  decision ladder from Slide 18, captioned *"same rule: simplest thing that
+  decision ladder from Slide 19, captioned *"same rule: simplest thing that
   works, then verify."*
 * **Transition:** *"Which brings me back to where we started."*
 
-### Slide 21 — Closing · real perfection is simplicity (25:00–26:30)
+### Slide 22 — Closing · real perfection is simplicity (24:15–25:45)
 
 * **Core message:** Invert the cold open. The over-engineered stack wasn't
   perfection; the simplest thing that works is.
@@ -719,7 +797,7 @@ if time slips; About Me (Slide 3) is must-tell.*
   minimal: a single clean box ("a `for` loop") where the monster used to be.
 * **Transition:** *"Here's where to find everything."*
 
-### Slide 22 — Resources & contact (26:30–28:30)
+### Slide 23 — Resources & contact (25:45–28:00)
 
 * **Core message:** Where to learn more; how to reach me.
 * **Talking points:**
@@ -736,14 +814,15 @@ if time slips; About Me (Slide 3) is must-tell.*
 
 ## 5) Slide architecture
 
-* **Total:** ~20 narrative beats across **22 physical slides**.
-* **Pacing:** ~90s average. The prelude (Slides 1–3) is fast: a ~30s title,
+* **Total:** ~21 narrative beats across **23 physical slides**.
+* **Pacing:** ~75s average. The prelude (Slides 1–3) is fast: a ~30s title,
   a ~45s About RCAC, and a 60–90s About Me. The cold open (Slide 4) runs long
   with the laugh; the Zoo (Slide 6) is a deliberately short ~45s backdrop; the
-  centerpiece anatomy (Slide 9), the Nextflow justification (Slide 17), the
-  decision ladder (Slide 18), and data management (Slide 19) each take ~120s.
-  The executor-axis rungs (Slides 13–15) move briskly — they're a climb, not
-  three full stops.
+  centerpiece anatomy (Slide 9), the HyperShell pressure-release beat
+  (Slide 16), the Nextflow justification (Slide 18), the decision ladder
+  (Slide 19), and data management (Slide 20) each take ~120s. The
+  executor-axis rungs (Slides 13–16) move briskly — four fast snippets
+  climbing one vertical, not four full stops.
 * **Layout inheritance:** all slides inherit from the Purdue 2026 template
   family documented in `THEME.md` (to be ported from `../2026-nairr-workshop-talk/`)
   — cover, section divider, content, two-panel split, card grid, closing card
@@ -751,11 +830,11 @@ if time slips; About Me (Slide 3) is must-tell.*
   layouts unique to this deck: the **About RCAC** layout (photo cluster +
   squiggle-boxed pillars, Slide 2), the **triple-point Venn** (Slide 3), the
   **Zoo logo-wall** (Slide 6), the **Rube Goldberg stack** (Slides 9–10), the
-  **two-axis decision ladder** (Slides 12, 18), and the **storage-tier
-  diagram** (Slide 19).
+  **two-axis decision ladder** (Slides 12, 19), and the **storage-tier
+  diagram** (Slide 20).
 * **Two code aesthetics, kept distinct (per GOAL.md):** a *terminal-window*
-  treatment for **commands you run** (Slides 13, 14, 15, 19) and a
-  *code/definition* treatment for **workflow definitions** (Slides 16, 17).
+  treatment for **commands you run** (Slides 13, 14, 15, 16, 20) and a
+  *code/definition* treatment for **workflow definitions** (Slides 17, 18).
   Do not blur the two.
 
 ## 6) Must-not-skip slides
@@ -770,17 +849,21 @@ cohere:
    and no payoff to invert at the end.
 3. **Slide 12 — two axes, not one ladder.** The core intellectual contribution.
    Everything technical hangs on it.
-4. **Slide 18 — the decision ladder + checklist.** The single most portable
+4. **Slide 16 — HyperShell + the pressure-release valve.** The executor-axis
+   payoff: the system-level reason an executor earns its keep (`slurmctld`
+   DDoS) and the worked example that proves the talk isn't anti-tool.
+5. **Slide 19 — the decision ladder + checklist.** The single most portable
    artifact; the thing undergrads carry home.
-5. **Slide 21 — real perfection is simplicity.** The inversion that closes
+6. **Slide 22 — real perfection is simplicity.** The inversion that closes
    the loop. Without it the talk has no exit.
 
 Compressible if time slips: Slide 2 (About RCAC — first to cut; one sentence if
-the room already knows RCAC), Slide 6 (the Zoo — a few seconds of backdrop, or
-cut entirely), Slide 7 (on-ramp — one line if the room is HPC-literate),
-Slide 14 (Slurm array — can be a verbal mention between bash loop and
-HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
-18, or 21.
+the room already knows RCAC), Slide 14 (`xargs` — collapse to one sentence and
+fold GNU Parallel in verbally), Slide 6 (the Zoo — a few seconds of backdrop,
+or cut entirely), Slide 7 (on-ramp — one line if the room is HPC-literate),
+Slide 15 (Slurm array — can be a verbal mention between `xargs` and
+HyperShell), Slide 21 (agentic beat — one sentence). Never compress 3, 4, 12,
+16, 19, or 22.
 
 ## 7) Delivery aids
 
@@ -794,8 +877,18 @@ HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
     judgment the rest of the talk trades on. Reprised implicitly whenever the
     academic↔industry parallel comes up.)
   * *"Does it earn its keep?"* (Thesis on Slide 5; the literal checklist on
-    Slide 18; reprised on Slides 17 and 19.)
-  * *"Merchants of complexity."* (Slide 11; reprised in the Slide 21 close.)
+    Slide 19; reprised on Slides 16, 18, and 20.)
+  * *"A pressure-release valve for the scheduler."* (Slide 16; the executor
+    axis's system-level payoff — a million job-steps DDoS `slurmctld`, so an
+    executor takes one allocation and meters tasks internally. This is what
+    turns "earn its keep" from a convenience argument into a
+    shared-infrastructure argument; the strongest single reason on Axis 1.)
+  * *"Each rung adds one capability."* (The executor-axis feature ratchet —
+    iteration → bounded parallelism (`xargs`) → failure tracking (ParaFly) →
+    retries (GNU Parallel) → cross-node (Slurm array) → extreme scale +
+    infra-protection (HyperShell) → heavyweight (HTCondor). Slides 13–16;
+    reprised on the Slide 19 ladder.)
+  * *"Merchants of complexity."* (Slide 11; reprised in the Slide 22 close.)
   * *"This could have been a Makefile and a cron-job."* (Slide 11; the
     industry-platform lament — reusable any time someone over-builds.)
   * *"`2>&1` and a cron email vs. a $200M observability bill."* (Slide 11; the
@@ -803,13 +896,13 @@ HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
   * *"Same handful of layers — only the brand names change."* (Slide 10; the
     academic↔industry parallel, Slurm/Kubernetes · Make/Airflow ·
     Apptainer/Docker · logs+cron/Datadog.)
-  * *"Which axis are you on?"* (Slide 12; reprised on Slide 18.)
-  * *"The simplest thing that works."* (Slide 5; the walk-off on Slide 21.)
+  * *"Which axis are you on?"* (Slide 12; reprised on Slide 19.)
+  * *"The simplest thing that works."* (Slide 5; the walk-off on Slide 22.)
   * *"Make it purr."* (Love-of-craft counterweight — Slide 3 (About Me) setup,
-    Slide 5 thesis framing, Slide 21 payoff. Keeps the whole talk on the
+    Slide 5 thesis framing, Slide 22 payoff. Keeps the whole talk on the
     enthusiast-with-judgment side, not the grumpy-old-man side.)
   * *"The map outlasts the tools."* (Honest-scoping beat — Slide 12 reveal,
-    reprised on Slides 15 and 17. Signals the deep dives are deliberately
+    reprised on Slides 16 and 18. Signals the deep dives are deliberately
     chosen narrow slices, names what's skipped, and owns the academic-HPC
     bias as a strength. The takeaway is the two *questions*, not the brands.)
 * **The four jobs of this talk (keep all four alive — Slide 3 names them):**
@@ -822,20 +915,24 @@ HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
   reframe.
 * **Risk register:**
   * *Time slips.* Cut Slide 2 (About RCAC) to one sentence first; then collapse
-    Slide 14 (Slurm array) into a verbal aside, trim Slide 7 to one line, and
-    drop the Slide 6 Zoo to a few seconds. Never compress 3, 4, 12, 18, 21.
+    Slide 14 (`xargs`) to one sentence and Slide 15 (Slurm array) into a verbal
+    aside, trim Slide 7 to one line, and drop the Slide 6 Zoo to a few seconds.
+    Never compress 3, 4, 12, 16, 19, 22.
   * *Time expands.* Add a second worked example to the data-management slide
-    (Slide 19), or expand the nf-core beat on Slide 17.
+    (Slide 20), expand the nf-core beat on Slide 18, or give the executor-axis
+    callouts more air (the ParaFly/GNU Parallel/HTCondor asides on Slides
+    14–16).
   * *HPC-novice room.* Slow down on Slide 7 (capability vs. capacity) and
     Slide 13 (the bash loop); these are the undergrad on-ramps.
-  * *Practitioner-heavy room.* Lean into the asides (GNU Parallel on Slide 15,
-    the Make-in-data-science history on Slide 16) and move faster through the
+  * *Practitioner-heavy room.* Lean into the executor-axis asides (GNU Parallel
+    and HTCondor on Slides 14/16, the `slurmctld`-DDoS detail on Slide 16, the
+    Make-in-data-science history on Slide 17) and move faster through the
     on-ramp.
   * ***Tone drift — the "old man yells at cloud" failure mode.*** The single
     biggest delivery risk: the thesis, the merchants beat, and the cron-job
     lament can stack up into pure grumbling. **Antidote:** front-load the
     love-of-craft (Slide 3 About Me, Slide 5 thesis), keep HyperShell as living
-    proof I build *and* love new tools (Slide 15), and land Slide 21 on the
+    proof I build *and* love new tools (Slide 16), and land Slide 22 on the
     *purr*, not on austerity. If you feel yourself getting cranky on stage,
     name a tool you genuinely love and why it earned its keep.
 * **Hallway-track routing:** Snakemake vs. Nextflow vs. Parsl/Dask debates,
@@ -855,7 +952,7 @@ HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
   facilitator/unicorn); decide the final label set vs. the old example
   (HPC / Facilitator / Developer / RSE / Technologist / Data Scientist / AI /
   Educator / Astrophysicist). Geoffrey to relay the local image path.
-* **Slide 4 / Slide 21.** Pick the best "Perfection" meme image for the cold
+* **Slide 4 / Slide 22.** Pick the best "Perfection" meme image for the cold
   open and decide how the inversion re-renders it minimally (the `for`-loop
   box). Optionally consider a custom Purdue-style absurd-stack illustration if
   it reads better than the meme — purely an aesthetic call.
@@ -864,16 +961,27 @@ HyperShell), Slide 20 (agentic beat — one sentence). Never compress 3, 4, 12,
 * **Slide 9.** Final visual direction for the dense "anatomy" diagram — exact
   boxes, vertical vs. layered orientation, and how it re-renders into the
   labeled Slide 10 version.
-* **Slides 13–17.** Confirm the on-slide snippets are the ones you want to
-  stand behind on stage (all snippets are currently on-slide per the agreed
-  direction). Decide whether `analyze.sh` is a good through-line example or
-  whether to swap in a domain example (bioinformatics? astronomy?).
-* **Slide 15.** HyperShell self-disclosure is now framed as a *feature* — the
-  worked example of complexity that earned its keep (a better GNU Parallel for
-  HPC). Confirm you're comfortable with that level of self-reference on stage.
-* **Slide 19.** Confirm the exact RCAC tier names/marketing names and any
-  current guidance you want to cite (Fortress / Data Depot / Scratch).
-* **Slide 22.** Finalize the resource list and which three links get QR codes.
+* **Slides 13–18 (the rung snippets).** Confirm the on-slide snippets are the
+  ones you want to stand behind on stage (all snippets are currently on-slide
+  per the agreed direction). Decide whether `analyze.sh` is a good through-line
+  example or whether to swap in a domain example (bioinformatics? astronomy?).
+  Sanity-check the `xargs -P` one-liner (Slide 14) — the `sh -c '…' _ {}`
+  quoting is correct but dense; consider simplifying for legibility on stage.
+* **Slide 16 (HyperShell + pressure-release valve).** (1) Confirm you're
+  comfortable with the level of self-reference (HyperShell as the "earned its
+  keep" worked example). (2) The feature callout box is drawn from the v2.8.0
+  release notes (`hypershell/docs/blog/20251101_2_8_0_release.rst`) and README
+  — it's **task groups** for dependency management (not "dependency groups"),
+  plus resource-aware scheduling, DB-in-the-loop with retries, and staggered
+  launch to 1000+ nodes / 250k+ workers; confirm the exact 3–4 you want on the
+  slide. (3) Sanity-check the `slurmctld` framing (array-size ceiling *and*
+  RPC/controller pressure) against how you want to phrase the "DDoS" line for a
+  mixed REU audience. (4) Confirm the HTCondor "heavyweight rung above /
+  competing with" framing.
+* **Slide 20 (data tiers).** Confirm the exact RCAC tier names/marketing names
+  and any current guidance you want to cite (Fortress / Data Depot / Scratch).
+* **Slide 23 (resources).** Finalize the resource list and which three links
+  get QR codes.
 * **Scaffolding.** Slidev version pin and a dev port distinct from siblings
   (3032/3033/3034) — proposed **3035**. To be settled in `ROADMAP.md`, not here.
 * **Visual identity.** Port `THEME.md` from the NAIRR deck and note the six
