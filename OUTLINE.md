@@ -7,14 +7,25 @@
 
 ## 1) One-paragraph high-level summary
 
-Task-based, data-centric throughput computing is a fast-growing slice of
-research computing, and the tooling around it has exploded into a zoo:
-schedulers, executors, DAG engines, templating DSLs, containers, databases,
-resource managers. It is easy to look at that landscape and conclude that
-real science requires assembling all of it. This talk argues the opposite.
-We open with a deliberately absurd over-engineered stack — the *"Perfection"*
-gag — to shock the room with how baroque a workflow *can* get, then state the
-thesis plainly: **start simple; add complexity only where it earns its keep.**
+This talk is about *getting the job done at scale* — operationalizing data
+analysis and research workflows all the way **from Jupyter to scale-out
+automation on supercomputers.** Task-based, data-centric throughput computing
+is a fast-growing slice of research computing, and the tooling around it has
+exploded into a zoo: schedulers, executors, DAG engines, templating DSLs,
+containers, databases, observability platforms. This is craft I genuinely
+*love* — there is little better than getting a stack right and watching the
+whole thing *purr* like a rebuilt hot-rod roaring to life. But that same
+satisfaction is a temptation: complexity can get away from you and quietly
+erode both reliability and rationality. It is easy to look at the landscape
+and conclude that real science requires assembling all of it. This talk argues
+for judgment instead. We open with a deliberately absurd over-engineered stack
+— the *"Perfection"* gag — to shock the room with how baroque a workflow *can*
+get, then state the thesis plainly: **start simple; add complexity only where
+it earns its keep.** The posture is not anti-complexity or anti-tool — I've
+been building and debugging workflows since before Kubernetes or Azure
+existed, and I built HyperShell myself because GNU Parallel wasn't right for
+HPC — it's about *maturing with* the complexity rather than being seduced by
+it.
 We give the room a small on-ramp (capability vs. capacity computing), dissect
 the over-engineered stack into named layers so the zoo becomes legible, and
 then deliver the load-bearing idea: workflow tools live on **two distinct
@@ -29,12 +40,17 @@ opening gag: **real perfection is the simplest thing that works.**
 
 ## 2) Narrative spine
 
-* **The zoo is real and it is absurd.** Workflows can be stacked into a
-  Rube Goldberg machine that only the builder understands. We laugh at it
-  first, on purpose.
+* **This is a craft worth loving.** Operationalizing research workflows — from
+  a Jupyter notebook to scale-out automation on a supercomputer — is deeply
+  satisfying work. The goal is *getting the job done at scale*, and getting a
+  stack right feels great. We come at this as an enthusiast, not a cynic.
+* **The zoo is real and it is absurd.** That same enthusiasm can run away from
+  you: workflows get stacked into a Rube Goldberg machine that only the
+  builder understands. We laugh at it first, on purpose — with affection, not
+  contempt.
 * **Thesis: complexity must earn its keep.** Start simple. Add a layer only
-  when the workflow demonstrably needs it. The opposite of "merchants of
-  complexity."
+  when the workflow demonstrably needs it. This is *maturity with* complexity,
+  not hatred of it — the opposite of being a "merchant of complexity."
 * **The zoo is legible.** The over-engineered stack is not magic; it is a
   finite set of named layers (executor, orchestration/DAG, templating/DSL,
   container, persistence, resource manager). Naming them defuses them.
@@ -83,17 +99,27 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
 
 ### Slide 1 — Title (0:00–0:45)
 
-* **Core message:** Who I am and what the next half hour is about.
+* **Core message:** Who I am and what the next half hour is about: getting the
+  job done at scale, *from Jupyter to supercomputers* — from someone who loves
+  this craft and has been doing it a long time.
 * **Talking points:**
   * Geoffrey Lentner, Principal AI Scientist at Purdue's Rosen Center for
     Advanced Computing.
-  * Topic: how to operationalize scientific workflows on research computing
-    infrastructure — and how to do it *without* losing your mind.
+  * Topic, said positively: how to take research and data analysis **from a
+    Jupyter notebook to scale-out automation on a supercomputer** — and how to
+    do it *without* losing your mind.
+  * Establish credibility *gently* (this is the anti-grumpy-old-man anchor):
+    I've been building and debugging research workflows since before
+    Kubernetes, before "the cloud" was a product you could buy — long enough
+    to have strong opinions, and long enough to have *earned* them. I build
+    tools too (HyperShell); I'm an enthusiast first.
   * One-line promise: by the end you'll have a mental model for deciding how
-    much machinery your workflow actually needs.
+    much machinery your workflow actually needs — so you can enjoy the craft
+    without getting buried by it.
 * **Visual:** Purdue 2026 cover layout — black field, gold border, centered
   title/subtitle, **RCAC** horizontal mark, venue + date in the upper margin.
-* **Transition:** *"Let me start by showing you what we're trying to avoid."*
+* **Transition:** *"Now — because I love this stuff, let me start with my
+  favorite cautionary tale."*
 
 ### Slide 2 — Cold open · the "Perfection" stack (0:45–2:15)
 
@@ -119,14 +145,21 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
 
 ### Slide 3 — Thesis card (2:15–3:15)
 
-* **Core message:** The single sentence everything hangs on.
+* **Core message:** The single sentence everything hangs on — framed as
+  *discipline born of love for the craft*, not distaste for it.
 * **Talking points:**
   * *"Start simple. Add complexity only where it earns its keep."*
+  * The counterweight (say it so the rest doesn't read as grumbling): *I'm not
+    here to yell at the cloud.* When you get a workflow stack right, watching
+    it run is like hearing a rebuilt engine turn over and **purr** — it's one
+    of the most satisfying things in this job. The danger is precisely that
+    the satisfaction tempts you to add *more* than the problem needs.
   * Two failure modes: under-engineering (manual, unrepeatable, doesn't
-    scale) and over-engineering (the Slide 2 monster). The craft is finding
-    the floor that actually solves your problem.
+    scale) and over-engineering (the Slide 2 monster). The craft — and the
+    *fun* — is in finding the floor that actually solves your problem.
   * Frame the talk: we'll build a vocabulary for *naming* complexity and a
-    *decision tool* for *adding* it deliberately.
+    *decision tool* for *adding* it deliberately — so you can mature *with* the
+    complexity instead of being sold it.
 * **Visual:** Purdue 2026 "Overview" tan/buff section-divider card, one large
   thesis line, short caption: *"the simplest thing that works."*
 * **Transition:** *"First, a little ground-clearing for those new to HPC."*
@@ -294,6 +327,11 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
   * This is *not* anti-tool — it's anti-*reflexive*-tool. Airflow, Kubernetes,
     and Nextflow are right for real problems; the merchant's sin is selling
     them as the *default*. The antidote is asking what each layer earns.
+  * **Say it plainly (anti-grumpy guardrail):** I'm not telling you never to
+    build new tools — I *build* tools (you'll see HyperShell in a few slides),
+    and I love a well-built stack. The merchants aren't the engineers who build
+    good things; they're the pitch that says you need *all* of it *now*. Be a
+    skeptical buyer, not a tool-hater.
   * Establish this as the recurring callback for the rest of the talk.
 * **Visual:** A two-state diagram: left, a tangled stack labeled *"complexity"*;
   right, the *same* tangle sealed inside a single box labeled *"platform that
@@ -368,16 +406,24 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
 ### Slide 12 — Axis 1 · HyperShell (14:15–15:45)
 
 * **Core message:** HyperShell is the far end of the executor axis: pure
-  distributed task execution at scale, still no DAG.
+  distributed task execution at scale, still no DAG. It's also my own worked
+  example of complexity that **earned its keep** — proof this talk isn't
+  anti-tool.
 * **Talking points:**
   * One tool turns a stream of inputs into thousands of parallel tasks across
     many nodes via SSH or the scheduler — without writing array boilerplate.
-  * It's *my* tool (full disclosure), but the point is conceptual: this is
-    what "maximum executor, zero orchestration" looks like.
+  * It's *my* tool (full disclosure) — and that's the point, not a caveat. I
+    built it because the layer below genuinely ran out of road: **GNU Parallel
+    is wonderful, but it wasn't right for HPC** (multi-node over SSH, scheduler
+    integration, fault tolerance at scale). The concern was real, the existing
+    rung couldn't meet it, so a new rung was justified. *That* is how you're
+    allowed to add complexity — and it's exactly the checklist from Slide 15 in
+    action.
   * It earns its keep when task volume is enormous and you want elastic
     parallelism without standing up a DAG engine.
-  * (Aside for the pros: this is the rung that replaces hand-rolled array +
-    GNU Parallel gymnastics.)
+  * The honest boundary: if a bash loop or a Slurm array already does it,
+    HyperShell is over-kill too. Even the author says: don't reach for it until
+    the rung below stops scaling.
 * **Visual:** Terminal-window one-liner, the real HyperShell idiom on-slide:
   ```sh path=null start=null
   seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster' > task.out
@@ -521,7 +567,12 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
     least machinery that actually solves your problem."*
   * Recap the takeaways in one breath: name the layers; know which axis you're
     on; climb only when a rung earns its keep; tier your data; verify.
-  * *"Don't be a merchant of complexity. Be a buyer who knows the price."*
+  * **End on love, not lecture (closes the tone loop):** the reward for getting
+    this right isn't austerity — it's the *purr*. A right-sized stack that runs
+    clean, scales when you need it, and that you (and the next person) can
+    actually understand is one of the best feelings in this work. Build for
+    that. *"Don't be a merchant of complexity — be a buyer who knows the price,
+    and an engineer who loves a stack that purrs."*
 * **Visual:** The inverted "Perfection" beat — the Slide 2 gag re-rendered
   minimal: a single clean box ("a `for` loop") where the monster used to be.
 * **Transition:** *"Here's where to find everything."*
@@ -600,6 +651,9 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
     Apptainer/Docker · logs+cron/Datadog.)
   * *"Which axis are you on?"* (Slide 9; reprised on Slide 15.)
   * *"The simplest thing that works."* (Slide 3; the walk-off on Slide 18.)
+  * *"Make it purr."* (Love-of-craft counterweight — Slide 1 setup, Slide 3
+    thesis framing, Slide 18 payoff. Keeps the whole talk on the
+    enthusiast-with-judgment side, not the grumpy-old-man side.)
 * **Risk register:**
   * *Time slips.* Collapse Slide 11 (Slurm array) into a verbal aside first;
     then trim Slide 4 to one line. Never compress 2, 9, 15, 18.
@@ -610,6 +664,13 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
   * *Practitioner-heavy room.* Lean into the asides (GNU Parallel on Slide 12,
     the Make-in-data-science history on Slide 13) and move faster through the
     on-ramp.
+  * ***Tone drift — the "old man yells at cloud" failure mode.*** The single
+    biggest delivery risk: the thesis, the merchants beat, and the cron-job
+    lament can stack up into pure grumbling. **Antidote:** front-load the
+    love-of-craft (Slides 1, 3), keep HyperShell as living proof I build
+    *and* love new tools (Slide 12), and land Slide 18 on the *purr*, not on
+    austerity. If you feel yourself getting cranky on stage, name a tool you
+    genuinely love and why it earned its keep.
 * **Hallway-track routing:** Snakemake vs. Nextflow vs. Parsl/Dask debates,
   Kubernetes-vs-Slurm, MCP server design, and "which tool for my specific
   pipeline" — all routed to the hallway after the closing card. The talk is a
@@ -628,8 +689,9 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
   stand behind on stage (all snippets are currently on-slide per the agreed
   direction). Decide whether `analyze.sh` is a good through-line example or
   whether to swap in a domain example (bioinformatics? astronomy?).
-* **Slide 12.** HyperShell self-disclosure framing — how heavily to lean on it
-  being your own tool.
+* **Slide 12.** HyperShell self-disclosure is now framed as a *feature* — the
+  worked example of complexity that earned its keep (a better GNU Parallel for
+  HPC). Confirm you're comfortable with that level of self-reference on stage.
 * **Slide 16.** Confirm the exact RCAC tier names/marketing names and any
   current guidance you want to cite (Fortress / Data Depot / Scratch).
 * **Slide 19.** Finalize the resource list and which three links get QR codes.
