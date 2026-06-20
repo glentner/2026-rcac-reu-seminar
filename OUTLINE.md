@@ -891,30 +891,51 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     least machinery that actually solves your problem."*
   * Recap the takeaways in one breath: name the layers; know which axis you're
     on; climb only when a rung earns its keep; tier your data; verify.
-  * **End on love, not lecture (closes the tone loop):** the reward for getting
-    this right isn't austerity — it's the *purr*. A right-sized stack that runs
-    clean, scales when you need it, and that you (and the next person) can
-    actually understand is one of the best feelings in this work. Build for
-    that. *"Don't be a merchant of complexity — be a buyer who knows the price,
-    and an engineer who loves a stack that purrs."*
-* **Visual:** The inverted "Perfection" beat — the Slide 4 gag re-rendered
-  minimal: a single clean box ("a `for` loop") where the monster used to be.
+  * **End on craft, not lecture (closes the tone loop) — keep it dry, not
+    cheeky:** the reward for getting this right isn't austerity. A right-sized
+    stack that runs clean, scales when you need it, and that you (and the next
+    person) can actually understand is just *good engineering* — and it's a
+    genuinely good feeling. Build for that. Land it plainly: *"Good engineering
+    is complexity that earns its keep — nothing more, nothing less."* (Tone
+    note: the *"purr"* / hot-rod imagery from the open can echo here at most
+    *once*, lightly; do not lean on it, and drop the "merchant/buyer" couplet
+    if it plays as too clever in the room.)
+* **Visual:** The inverted "Perfection" beat, kept simple — *no need to
+  re-render the meme*: a single clean box ("a `for` loop") where the Slide 4
+  monster used to be, in the deck's own chrome.
 * **Transition:** *"Here's where to find everything."*
 
 ### Slide 23 — Resources & contact (25:45–28:00)
 
 * **Core message:** Where to learn more; how to reach me.
 * **Talking points:**
-  * **RCAC training & user guides** — the cluster docs and the throughput /
-    workflow user guides.
-  * **HyperShell** — `hypershell.readthedocs.io`, `github.com/hypershell`.
-  * **Tool docs** — Slurm job arrays, GNU Make, Nextflow / nf-core.
-  * **Data tiers** — RCAC Fortress / Data Depot / Scratch guides.
+  * **HyperShell** — `hypershell.org` (docs) and `github.com/hypershell`
+    (source). The worked example of complexity that earned its keep.
+  * **My recent work (the through-line from this year's other talks):**
+    the PEARC'26 paper *Hello Computer: HPC in the Agentic Era*
+    (`github.com/glentner/pearc26-hello-computer`), `rcac-mcp`
+    (`github.com/purduercac/rcac-mcp`), and `globus-mcp`
+    (`github.com/purduercac/globus-mcp`) — the agentic-era thread behind the
+    one beat on Slide 21.
+  * **RCAC docs** — cluster user guides, the throughput/workflow guides, and
+    the data-tier guides (Fortress / Data Depot / Scratch).
+  * **Tool docs (just the significant ones):** GNU Make and Nextflow / nf-core
+    — the two ends of the orchestration axis. (Slurm arrays live in the RCAC
+    docs above; don't over-list.)
   * **Contact:** `glentner@purdue.edu` — find me after, or by email.
   * **Credit:** work supported by RCAC at Purdue.
-* **Visual:** Clean Purdue 2026 closing card — RCAC mark, a row of QR codes
-  (RCAC docs · HyperShell · Nextflow/nf-core), email and credit line.
+* **Visual:** Clean Purdue 2026 closing card in the **NAIRR `closing-qr-row`
+  convention** (port the layout from `../2026-nairr-workshop-talk/`): a row of
+  back-of-room-scannable QR codes along the bottom, each with a small label,
+  RCAC reverse mark centered below, email + credit line. Proposed QR set
+  (5 — fits the row; cull to 4 if it gets crowded): **HyperShell** ·
+  **PEARC'26 paper** · **rcac-mcp** · **globus-mcp** · **Nextflow / nf-core**.
+  RCAC docs can be a spoken pointer rather than its own code if space is tight.
 * **Closing line:** *"Start simple. Thanks."*
+* **Build note (QR generation, per NAIRR):** generate codes at ≥410px,
+  high error-correction (`-Q` or better), pull in around 5rem, and verify a
+  scan from ~15ft. The `github.com/...` URLs are long enough to make a busy
+  matrix — favor short canonical URLs where one exists (e.g. `hypershell.org`).
 
 ## 5) Slide architecture
 
