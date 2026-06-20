@@ -60,11 +60,11 @@ opening gag: **real perfection is the simplest thing that works.**
 | 0:45–2:15 | 2 | Cold open — the "Perfection" over-engineered stack |
 | 2:15–3:15 | 3 | Thesis card — *complexity must earn its keep* |
 | 3:15–4:30 | 4 | On-ramp — capability vs. capacity |
-| 4:30–5:45 | 5 | Why workflows are different |
+| 4:30–5:45 | 5 | Why the layers exist (concern → layer) |
 | 5:45–7:30 | 6 | Anatomy of an over-engineered workflow (centerpiece) |
 | 7:30–9:00 | 7 | Decompose the layers |
-| 9:00–10:15 | 8 | "Merchants of complexity" |
-| 10:15–11:15 | 9 | Two axes, not one ladder (framework reveal) |
+| 9:00–10:30 | 8 | "Merchants of complexity" (incl. academic vs. industry) |
+| 10:30–11:15 | 9 | Two axes, not one ladder (framework reveal) |
 | 11:15–12:45 | 10 | Axis 1 — executor/scale: the bash loop |
 | 12:45–14:15 | 11 | Axis 1 — Slurm job array |
 | 14:15–15:45 | 12 | Axis 1 — HyperShell (extreme executor end) |
@@ -220,41 +220,68 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
 
 ### Slide 7 — Decompose the layers (7:30–9:00)
 
-* **Core message:** The zoo is a finite set of named layers. Naming defuses.
-* **Talking points (one beat per layer):**
+* **Core message:** The zoo is a finite set of named layers — and those layers
+  are *universal*. The academic stack and the industry stack solve the same
+  layers with different tools.
+* **Talking points (one beat per layer, with the academic↔industry parallel):**
   * **Executor** — actually runs the tasks (the CPU/GPU hands).
-  * **Resource manager / scheduler** — decides *where* and *when* (Slurm,
-    Kubernetes).
-  * **Orchestration / DAG** — encodes *relationships and ordering* between
-    tasks.
+  * **Resource manager / scheduler** — decides *where* and *when*: **Slurm** on
+    our clusters; **Kubernetes** on our on-prem cloud and in industry.
+  * **Orchestration / DAG** — encodes *relationships and ordering*: **Make /
+    Nextflow** in research; **Apache Airflow** and friends in industry.
   * **Templating / DSL** — parameterizes task definitions (e.g. Jinja-style).
-  * **Containerization** — packages the environment for portability.
+  * **Containerization** — packages the environment: **Apptainer** on HPC;
+    **Docker** on the cloud.
   * **Persistence / database** — tracks state, results, and history.
-  * Land it: *"Every box on the last slide is one of these six. Most
-    workflows need one or two — not all six."*
+  * The parallel matters for *this* room: REU students here will touch Slurm
+    and Apptainer, but many will graduate into Kubernetes (our on-prem cloud)
+    or industry stacks built on Airflow and Docker. *Same six layers, every
+    time — only the brand names change.*
+  * Land it: *"Every box on the last slide is one of these six. Most workflows
+    need one or two — not all six."*
 * **Visual:** The Slide 6 diagram re-rendered with each layer labeled and
-  color-coded; a legend mapping label → role.
-* **Transition:** *"Why does anyone build all six? Because complexity sells."*
+  color-coded; alongside each layer, a small *academic | industry* tool pair
+  (Slurm | Kubernetes · Make/Nextflow | Airflow · Apptainer | Docker).
+* **Transition:** *"And here's the trap that spans both worlds: the tools that
+  promise to *tame* this complexity often just *move* it."*
 
-### Slide 8 — "Merchants of complexity" (9:00–10:15) · recurring callback
+### Slide 8 — "Merchants of complexity" (9:00–10:30) · recurring callback
 
-* **Core message:** Complexity is often sold as necessity — in industry and
-  in research. Be a skeptical buyer.
+* **Core message:** The deeper trap isn't tools that *add* complexity — it's
+  the ones that *promise to tame it* and instead just relocate it into a new
+  black box with new problems. Same in academia and industry.
 * **Talking points:**
-  * The phrase is levied at big tech: Kubernetes, Airflow, sprawling cloud
-    platforms pitched to "just do the thing."
-  * Research has the same dynamic: prestige and habit push us toward heavier
-    machinery than the problem requires.
-  * This is *not* anti-tool — it's anti-*reflexive*-tool. The vendors (and
-    our own enthusiasm) are the merchants; the antidote is asking what the
-    layer earns.
+  * "Merchants of complexity" is levied at big tech — Kubernetes, Airflow,
+    sprawling cloud platforms pitched as the way to "just do the thing."
+  * The seductive pitch is always *simplification*: **"all you have to write is
+    a few Python snippets"** (Airflow DAGs), "just declare your pipeline," "let
+    the platform handle the rest."
+  * **The real-world outcome:** you didn't remove the complexity — you shifted
+    it. Now you own a scheduler to operate, a metadata DB to babysit, a
+    deployment to maintain, version-skew to chase. A *new black box with new
+    problems*, and the actual work is still the same five lines it always was.
+  * **The anchor line (say it):** *"This could have been a Makefile and a
+    cron-job!"* — the lament of everyone who has watched a team sink a quarter
+    into standing up a "stack" for a job a Makefile and `cron` would have run.
+  * **The academic vs. industry nuance:** the layers are the same, but the
+    *problems each layer solves are not*. Industry optimizes for always-on
+    services, SLAs, multi-tenancy, and continuous data — Airflow earns its
+    keep there. Academic research workflows are usually bursty, batch, and
+    finite — which is exactly why the heavyweight industry platform is so often
+    the wrong import. Don't cargo-cult an industry stack onto a research
+    problem (or vice-versa).
+  * This is *not* anti-tool — it's anti-*reflexive*-tool. Airflow, Kubernetes,
+    and Nextflow are right for real problems; the merchant's sin is selling
+    them as the *default*. The antidote is asking what each layer earns.
   * Establish this as the recurring callback for the rest of the talk.
-* **Visual:** A wry "for sale" / marketplace motif over a row of heavyweight
-  platform logos-as-archetypes (rendered generically to avoid logo issues),
-  with a small gold "buyer beware" tag.
+* **Visual:** A two-state diagram: left, a tangled stack labeled *"complexity"*;
+  right, the *same* tangle sealed inside a single box labeled *"platform that
+  tames complexity"* — with smaller new problems leaking out of it (ops, DB,
+  deploy, version skew). A gold call-out: *"This could have been a Makefile and
+  a cron-job."*
 * **Transition:** *"Here's the tool I'll give you to be a skeptical buyer."*
 
-### Slide 9 — Two axes, not one ladder (10:15–11:15) · framework reveal · must-not-skip
+### Slide 9 — Two axes, not one ladder (10:30–11:15) · framework reveal · must-not-skip
 
 * **Core message:** The load-bearing idea. Workflow tools live on **two
   different axes**, answering two different questions.
@@ -543,6 +570,11 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
   * *"Does it earn its keep?"* (Thesis on Slide 3; the literal checklist on
     Slide 15; reprised on Slides 14 and 16.)
   * *"Merchants of complexity."* (Slide 8; reprised in the Slide 18 close.)
+  * *"This could have been a Makefile and a cron-job."* (Slide 8; the
+    industry-platform lament — reusable any time someone over-builds.)
+  * *"Same six layers — only the brand names change."* (Slide 7; the
+    academic↔industry parallel, Slurm/Kubernetes · Make/Airflow ·
+    Apptainer/Docker.)
   * *"Which axis are you on?"* (Slide 9; reprised on Slide 15.)
   * *"The simplest thing that works."* (Slide 3; the walk-off on Slide 18.)
 * **Risk register:**
