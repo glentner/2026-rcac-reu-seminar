@@ -133,39 +133,73 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
 
 ### Slide 4 — On-ramp: capability vs. capacity (3:15–4:30)
 
-* **Core message:** Two kinds of computing; this talk is about the second.
+* **Core message:** Two kinds of computing, told through one archetypal
+  contrast: the *monolith* vs. the *layered stack*. This talk is about the
+  second — and that second world is where the scaffolding (and the zoo) comes
+  from.
 * **Talking points:**
-  * **Capability (traditional HPC):** one big tightly-coupled job — a
-    simulation spanning many nodes with MPI, where the whole machine works
-    on one problem at once.
-  * **Capacity (throughput):** many independent or loosely-coupled tasks —
-    parameter sweeps, batch inference, per-sample pipelines. Volume of tasks
-    and data, not size of a single job.
-  * Workflows live overwhelmingly in the capacity world, and that world has
-    different tools and different bottlenecks.
-  * One-liner: *"HPC asks 'how big?'; throughput asks 'how many?'"*
-* **Visual:** A clean two-panel split — left, one large coupled job (many
-  nodes, one problem); right, a swarm of independent tasks. Compress to a
-  single slide; do not belabor.
-* **Transition:** *"Throughput workflows are different in a second way, too."*
+  * **Capability (the monolith).** Picture a research group maintaining one
+    giant, glorious Fortran code-base that does *everything*: an MPI code that
+    spans a leadership-class supercomputer and wrangles all the communication
+    and data handling itself, in one monolithic source tree. The problem is
+    tightly coupled — they *have* to write it this way. The whole machine
+    works on one problem at once. Complexity lives *inside* the code.
+  * **Capacity (the layered stack).** Throughput/workflow computing has the
+    benefit *and* the curse of abstraction. Our tasks aren't coupled — at most
+    they have *dependency relationships* that affect ordering — so instead of
+    one monolith we get a stack of layers, each a separate tool:
+    * **application layer** — our actual task code;
+    * wrapped in an **orchestration layer** (Make / Nextflow) that handles
+      ordering and relationships;
+    * which may delegate to a **data layer** for staging/movement;
+    * on top of a **resource scheduler** that grabs heterogeneous compute
+      (cluster nodes, cloud);
+    * with **containerization** pushed down to wrap each task's environment.
+  * The trade: the monolith *has* to be complex; the workflow gets to *choose*
+    its complexity, layer by layer. That freedom is the benefit — and the
+    curse, because every layer is optional and every layer is a temptation.
+  * **The key move, planted here:** this is **scaffolding with incremental
+    complexity.** You add layers only as the problem demands them. Hold that
+    thought — it's the whole talk.
+  * One-liner: *"The monolith asks 'how big?'; the workflow asks 'how many,
+    and how much scaffolding do I actually need?'"*
+* **Visual:** A two-panel split. **Left:** one solid block labeled
+  *"monolithic MPI code"* spanning a row of nodes — complexity sealed inside.
+  **Right:** the same work as a *stack of labeled layers* (application →
+  orchestration → data → scheduler → containers) sitting over a swarm of
+  independent tasks. The right panel deliberately previews the layer
+  vocabulary that Slides 6–7 will decompose.
+* **Transition:** *"Before we judge any of those layers, it's worth asking why
+  they exist at all."*
 
-### Slide 5 — Why workflows are different (4:30–5:45)
+### Slide 5 — Why the layers exist (4:30–5:45)
 
-* **Core message:** Workflows are tooling- and data-centric, not
-  simulation-centric. That's why there's a whole zoo of tools for them.
+* **Core message:** Each layer answers a real operational concern. The
+  scaffolding isn't arbitrary — every legitimate concern spawned its own
+  layer. That's the *origin* of the zoo (and why it's so tempting to grab the
+  whole thing).
 * **Talking points:**
-  * It's not enough to write code in a notebook in VS Code. You have to
-    *operationalize* it: install/deploy, version, manage inputs, manage data,
-    track completion/history, and match tasks to the right resources
-    (cores, memory, GPU).
-  * Each of those concerns is a place where a tool can help — and a place
-    where a tool can be added needlessly.
-  * That's the origin of the zoo: every legitimate concern spawned its own
-    layer of tooling.
-* **Visual:** A short list of the operational concerns (deploy · version ·
-  inputs · data · history · resources), each as a small labeled tile.
-* **Transition:** *"Put all those concerns together, maximally, and you get
-  this."*
+  * It's not enough to write code in a notebook in VS Code. To run real work
+    you have to *operationalize* it, and each concern maps to a layer from the
+    last slide:
+    * **install/deploy & environment** → containerization;
+    * **versioning & inputs** → templating / DSL;
+    * **ordering & dependencies** → orchestration;
+    * **data movement & locality** → the data layer;
+    * **matching tasks to heterogeneous resources** (cores, memory, GPU,
+      cloud) → the resource scheduler;
+    * **completion / history / state** → persistence.
+  * Each concern is a place a tool genuinely *can* help — and exactly the same
+    place a tool can be added *needlessly*. The layer is justified by the
+    concern, not by its existence.
+  * The honest version of the thesis: the question is never "is this layer
+    good?" It's *"do I have this concern, today, at a scale that the layer
+    below can't handle?"*
+* **Visual:** The Slide 4 layer stack, annotated — each layer paired with the
+  operational concern that justifies it (concern → layer). Sets up Slide 6 as
+  "what happens when you grab every layer whether or not you have the concern."
+* **Transition:** *"Now grab every layer at once, whether you need it or not —
+  and you get this."*
 
 ### Slide 6 — Anatomy of an over-engineered workflow (5:45–7:30) · centerpiece
 
