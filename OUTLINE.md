@@ -113,9 +113,23 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
     Kubernetes, before "the cloud" was a product you could buy — long enough
     to have strong opinions, and long enough to have *earned* them. I build
     tools too (HyperShell); I'm an enthusiast first.
+  * **What this talk is (set expectations honestly, up front — four things at
+    once):**
+    1. *A glimpse of what I'm passionate about and do for a living* — this is
+       my actual job at a real HPC center.
+    2. *A general survey* of the workflow + data-management landscape, so you
+       have the map even if you never need all of it.
+    3. *Practical advice you can use now* — even if this isn't your summer
+       project, you'll leave with a portable rule of thumb and a few commands
+       worth knowing.
+    4. *Honest about scope.* Thirty minutes is short; I'll dive into a couple
+       of **narrow slices** I know well (what I actually watch researchers do
+       on our HPC) and tell you plainly where they sit in the bigger picture
+       and what I'm skipping.
   * One-line promise: by the end you'll have a mental model for deciding how
     much machinery your workflow actually needs — so you can enjoy the craft
-    without getting buried by it.
+    without getting buried by it. *You don't have to be "a workflows person"
+    today for this to be useful later.*
 * **Visual:** Purdue 2026 cover layout — black field, gold border, centered
   title/subtitle, **RCAC** horizontal mark, venue + date in the upper margin.
 * **Transition:** *"Now — because I love this stuff, let me start with my
@@ -354,12 +368,21 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
   * The mistake last year's "flat tool list" made: treating these as one
     ladder. They are not. Many workflows only ever need *one* axis.
   * *"Ask which question you actually have before you reach for a tool."*
+  * **Honest scoping (say it here, once):** I'm going to climb *one example
+    rung-set* on each axis — the ones I actually watch researchers use on our
+    HPC. That's a **deliberately narrow slice.** There's a whole zoo I'm
+    *not* covering for time: Snakemake, Parsl, Dask, Airflow, Cromwell, CWL,
+    Luigi, Ray, and more. The point isn't "use my tools"; it's "learn the two
+    *questions* so you can place **any** tool — including ones I've never
+    heard of — on the right axis." The map outlasts the tools.
 * **Visual:** Two clearly separated arrows/axes on one card — horizontal
   "scale" axis and a distinct "orchestration" axis — each with its rungs
-  labeled but not yet detailed. **New custom layout** (preview of the
-  decision ladder).
-* **Transition:** *"Let's climb Axis 1 — and stop the moment it earns its
-  keep."*
+  labeled but not yet detailed. Faint, *greyed-out* extra tool names floating
+  near each axis (Snakemake/Parsl/Dask near orchestration; Ray/Airflow near
+  the boundary) to show the rungs we climb are a chosen subset, not the whole
+  field. **New custom layout** (preview of the decision ladder).
+* **Transition:** *"Let's climb Axis 1 — my slice of it — and stop the moment
+  it earns its keep."*
 
 ### Slide 10 — Axis 1 · the bash loop (11:15–12:45)
 
@@ -424,6 +447,12 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
   * The honest boundary: if a bash loop or a Slurm array already does it,
     HyperShell is over-kill too. Even the author says: don't reach for it until
     the rung below stops scaling.
+  * **Where this sits / what I'm skipping (15s, honest):** HyperShell is *my*
+    answer at the extreme executor end, shaped by what I see on **our** HPC.
+    Same niche, other tools: **GNU Parallel** (single-node), **Slurm arrays**
+    (built-in), **Ray** / **Dask** (Python-native, also creep onto Axis 2).
+    Pick whatever fills the *executor* box for you — the box is the point, not
+    the brand.
 * **Visual:** Terminal-window one-liner, the real HyperShell idiom on-slide:
   ```sh path=null start=null
   seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster' > task.out
@@ -476,6 +505,16 @@ HDMI tax, and transitions. Nineteen physical slides at ~90s average.*
     you have real inter-task dependencies, heterogeneous environments, long
     pipelines that fail partway, or a community pipeline that already exists.
   * If you don't have those needs, Slide 13 was your answer.
+  * **Where this sits / what I'm skipping (15s, honest — and owning the bias):**
+    I picked Nextflow because it's what I most often see *researchers* actually
+    reach for on our HPC — that's the **view from the trenches at a real HPC
+    center**, and I'll stand behind it. But it's one orchestrator among many:
+    **Snakemake** (Python/Make-flavored, huge in bioinformatics),
+    **CWL/Cromwell**, **Parsl**, **Luigi**, and — over in industry —
+    **Airflow**. I can't do justice to all of them in thirty minutes, and I
+    won't pretend to: I'm deep on the academic-HPC slice and shallow on the
+    always-on industry side. Place each on the *orchestration* axis and apply
+    the same checklist.
 * **Visual:** "Code/definition" treatment of a minimal Nextflow process +
   channel, with a callout box listing the five justifying features:
   ```groovy path=null start=null
@@ -654,6 +693,18 @@ loop and HyperShell), Slide 17 (agentic beat — one sentence). Never compress
   * *"Make it purr."* (Love-of-craft counterweight — Slide 1 setup, Slide 3
     thesis framing, Slide 18 payoff. Keeps the whole talk on the
     enthusiast-with-judgment side, not the grumpy-old-man side.)
+  * *"The map outlasts the tools."* (Honest-scoping beat — Slide 9 reveal,
+    reprised on Slides 12 and 14. Signals the deep dives are deliberately
+    chosen narrow slices, names what's skipped, and owns the academic-HPC
+    bias as a strength. The takeaway is the two *questions*, not the brands.)
+* **The four jobs of this talk (keep all four alive — Slide 1 names them):**
+  (1) show what I'm passionate about and do for a living; (2) give a general
+  *survey* / map of the landscape; (3) leave every student with practical
+  advice useful *now* — a portable rule of thumb and a few commands — *even if
+  workflows aren't their summer project yet*; (4) stay honest about scope:
+  deep on a couple of slices I know from the RCAC trenches, explicit about the
+  rest. If a slide drifts away from all four, it's a candidate to cut or
+  reframe.
 * **Risk register:**
   * *Time slips.* Collapse Slide 11 (Slurm array) into a verbal aside first;
     then trim Slide 4 to one line. Never compress 2, 9, 15, 18.
