@@ -154,9 +154,9 @@ executor-axis rungs.*
     a liability, not an achievement.
   * The turn: *"Some of this complexity is necessary. Most of it isn't.
     Today is about telling the difference."*
-* **Visual:** The "Perfection" gag image as **placeholder** (rights to be
-  resolved; see TODOs), overlaid on / beside a dense absurd-stack diagram.
-  Minimal text; let the image and the spoken stack carry it.
+* **Visual:** The X-Men "Perfection" gag image (use the best available copy),
+  overlaid on / beside a dense absurd-stack diagram. Minimal text; let the
+  image and the spoken stack carry it.
 * **Transition:** *"So here's the one sentence I want you to leave with."*
 * **Delivery note:** Use the silence after "does the work of a `for` loop."
   Let the laugh land before the thesis.
@@ -215,8 +215,8 @@ executor-axis rungs.*
   * **Size ≈ popularity / prevalence** so the eye lands on the heavy hitters.
   * Light foreshadow of the two-axis split (executor cluster vs. orchestration
     cluster sit on opposite sides) without labeling axes yet.
-  * **New custom layout** (the "Zoo logo wall"). **Real brand logos are
-    placeholders pending rights** (see TODOs).
+  * **New custom layout** (the "Zoo logo wall"). Use the real, best brand
+    logos for every tool.
 * **Transition:** *"It looks like chaos. It isn't. Let me give you the
   ground-clearing first, then start sorting this wall."*
 * **Delivery note:** Resist the urge to narrate logos — the *density* is the
@@ -777,13 +777,12 @@ HyperShell), Slide 18 (agentic beat — one sentence). Never compress 2, 10,
 
 ## 8) Open TODOs for Geoffrey
 
-* **Slide 2 / Slide 19.** Resolve the "Perfection" image rights posture — meme
-  image vs. a custom-drawn absurd-stack illustration in the Purdue style. The
-  meme is in as a placeholder for now; the cold open and its inversion may both
-  need a self-made visual to stay on-brand and rights-clean.
-* **Slide 4 (the Zoo).** Resolve logo rights for the literal logo-wall. Real
-  project/vendor logos are placeholders; confirm fair-use posture or commission
-  a stylized look-alike set, and lock the final grouping/size-by-popularity.
+* **Slide 2 / Slide 19.** Pick the best "Perfection" meme image for the cold
+  open and decide how the inversion re-renders it minimally (the `for`-loop
+  box). Optionally consider a custom Purdue-style absurd-stack illustration if
+  it reads better than the meme — purely an aesthetic call.
+* **Slide 4 (the Zoo).** Lock the final logo set, grouping, and
+  size-by-popularity layout.
 * **Slide 7.** Final visual direction for the dense "anatomy" diagram — exact
   boxes, vertical vs. layered orientation, and how it re-renders into the
   labeled Slide 8 version.

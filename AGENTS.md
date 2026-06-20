@@ -73,18 +73,19 @@ judgment from an enthusiast**, never as anti-tool grumbling.
   "Make is all you need" until it isn't; Nextflow's complexity is justified by
   containers, dataflow DAG, `-resume`, executor portability, nf-core.
 The payoff artifact is a **two-axis decision ladder** + a verbal "does this
-layer earn its keep?" checklist (Slide 15). This is the thing undergrads carry
+layer earn its keep?" checklist (Slide 16). This is the thing undergrads carry
 home and what distinguishes the talk from a tool catalog.
 
-**Narrative arc (19 slides):** title → cold-open "Perfection" over-engineered
-stack gag → thesis card → on-ramp (capability *monolith* vs. capacity *layered
-stack*) → why the layers exist (concern → layer) → anatomy of an
-over-engineered workflow (centerpiece "shock" diagram) → decompose the named
-layers (with academic↔industry tool pairs) → "merchants of complexity" →
-two-axis reveal → climb Axis 1 (bash/Slurm/HyperShell) → climb Axis 2
-(Make/Nextflow) → decision ladder + checklist → data management (tiers +
-`rsync`) → one agentic beat → closing inversion ("real perfection is
-simplicity") → resources.
+**Narrative arc (20 slides):** title → cold-open "Perfection" over-engineered
+stack gag → thesis card → **the Zoo (literal logo-wall backdrop, ~45s)** →
+on-ramp (capability *monolith* vs. capacity *layered stack*) → why the layers
+exist (concern → layer) → anatomy of an over-engineered workflow (centerpiece
+"shock" diagram) → decompose the named layers (with academic↔industry tool
+pairs) → "merchants of complexity" → two-axis reveal → climb Axis 1
+(bash/Slurm/HyperShell) → climb Axis 2 (Make/Nextflow) → decision ladder +
+checklist → data management (tiers + `rsync`) → one agentic beat → closing
+inversion ("real perfection is simplicity") → resources. (`OUTLINE.md` is the
+live source for exact slide numbers.)
 
 ## Content principles (non-obvious; easy to violate)
 
@@ -95,7 +96,7 @@ These emerged from explicit tone/framing corrections. Internalize them:
   cloud." Counterweight everywhere: love of the craft, a stack that *purrs*,
   "from Jupyter to scale-out automation on supercomputers," and earned
   authority (building/debugging workflows since before Kubernetes or Azure).
-  See `OUTLINE.md` Slides 1, 3, 8, 12, 18 and the tone-drift risk-register
+  See `OUTLINE.md` Slides 1, 3, 9, 13, 19 and the tone-drift risk-register
   entry.
 - **Not anti-tool — anti-*reflexive*-tool.** New tools are good; Geoffrey built
   HyperShell. HyperShell is the worked example of complexity that *earned its
@@ -132,12 +133,16 @@ To be formalized in `THEME.md`. Defaults agreed so far:
   (`../2026-globus-world/`, `../2026-midwestrcd-talk/`) for the *chrome*. (The
   in-slide terminal-window treatment for command snippets is a deliberate,
   separate content device — not the deck chrome.)
-- **New custom layouts unique to this deck:** the **Rube Goldberg stack**
-  (Slides 6–7), the **two-axis decision ladder** (Slides 9, 15), and the
-  **storage-tier diagram** (Slide 16).
-- **Cold-open image:** the X-Men "Perfection" meme is a **placeholder**; rights
-  are unresolved. It may need a custom Purdue-style absurd-stack illustration
-  for both the cold open (Slide 2) and its inversion (Slide 18).
+- **New custom layouts unique to this deck:** the **Zoo logo-wall** (Slide 4),
+  the **Rube Goldberg stack** (Slides 7–8), the **two-axis decision ladder**
+  (Slides 10, 16), and the **storage-tier diagram** (Slide 17).
+- **Cold-open image:** use the best X-Men "Perfection" meme image; this is a
+  private, non-published talk, so real logos and the meme are fine to use
+  directly (no rights work). A custom Purdue-style absurd-stack illustration
+  for the cold open (Slide 2) and its inversion (Slide 19) is optional and
+  purely an aesthetic choice.
+- **Zoo logo-wall (Slide 4):** use the real, best brand logos, grouped by
+  layer with size ≈ popularity.
 - When porting Slidev specifics, mind the NAIRR hazards: MDC mode is on (no
   blank lines inside inline `<svg>`), `provider: none` for fonts (no licensed
   fonts committed; Source Sans 3 OFL fallback), and pick a **dev port distinct
@@ -158,7 +163,7 @@ To be formalized in `THEME.md`. Defaults agreed so far:
 ## Workflow / next steps
 
 1. Iterate on `OUTLINE.md` with Geoffrey until approved (in progress).
-2. Port `THEME.md` from the NAIRR deck, adapted (note the three new layouts).
+2. Port `THEME.md` from the NAIRR deck, adapted (note the four new layouts).
 3. Author `ROADMAP.md` (phased Slidev build, YAML frontmatter) — only after
    `OUTLINE.md` is approved.
 4. Create the `/continue` (and optionally `/release`) skill under
@@ -176,8 +181,8 @@ To be formalized in `THEME.md`. Defaults agreed so far:
 
 ## Open TODOs
 
-The live list lives in `OUTLINE.md` §8. Highlights: resolve the "Perfection"
-image rights; finalize the through-line example (`analyze.sh` vs. a domain
-example); confirm exact RCAC storage-tier names (Fortress / Data Depot /
-Scratch); finalize Slide 19 resources and QR-code links; settle Slidev version
-pin and dev port in `ROADMAP.md`.
+The live list lives in `OUTLINE.md` §8. Highlights: pick the best "Perfection"
+meme image and lock the Zoo logo set/layout; finalize the through-line example
+(`analyze.sh` vs. a domain example); confirm exact RCAC storage-tier names
+(Fortress / Data Depot / Scratch); finalize Slide 20 resources and QR-code
+links; settle Slidev version pin and dev port in `ROADMAP.md`.
