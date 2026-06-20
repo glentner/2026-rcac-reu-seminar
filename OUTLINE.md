@@ -281,9 +281,10 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
   "zoo." Arrangement carries meaning so it rewards a second look:
   * **Grouped by layer** (soft clustered regions, optionally faintly labeled):
     *schedulers/resource managers* (Slurm, Kubernetes, PBS/Torque, LSF,
-    HTCondor); *executors/scale* (GNU Parallel, HyperShell, Dask, Ray, Parsl);
-    *orchestration/DAG* (GNU Make, Nextflow, Snakemake, Airflow, Luigi,
-    Cromwell/CWL); *containers* (Docker, Apptainer/Singularity, Podman);
+    HTCondor); *executors/scale* (GNU Parallel, HyperShell, Dask, Ray, Parsl,
+    Globus Compute); *orchestration/DAG* (GNU Make, Nextflow, Snakemake,
+    Airflow, Luigi, Cromwell/CWL, Globus Flows); *data movement* (Globus,
+    `rsync`); *containers* (Docker, Apptainer/Singularity, Podman);
     *languages* (Python, R, MATLAB, Julia, Bash); *observability* (Datadog,
     Grafana/Prometheus, plain logs+cron).
   * **Size ≈ popularity / prevalence** so the eye lands on the heavy hitters.
@@ -397,6 +398,10 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     our clusters; **Kubernetes** on our on-prem cloud and in industry.
   * **Orchestration / DAG** — encodes *relationships and ordering*: **Make /
     Nextflow** in research; **Apache Airflow** and friends in industry.
+  * **Data movement / staging** — gets bytes to where the compute is:
+    **`rsync`** for the hand-rolled version, **Globus** (Transfer / Flows) for
+    the managed, automated version on research infrastructure. (RCAC is a
+    strong Globus partner here — more on that at Slide 20.)
   * **Templating / DSL** — parameterizes task definitions (e.g. Jinja-style).
   * **Containerization** — packages the environment: **Apptainer** on HPC;
     **Docker** on the cloud.
@@ -630,9 +635,10 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     array, far less than running your own Condor pool.
   * **Where this sits / what I'm skipping (10s, honest):** same niche, other
     tools — **GNU Parallel** (single-node), **ParaFly** / **TaskFarmer** /
-    **Launcher** (HPC siblings), **Ray** / **Dask** (Python-native, creep onto
-    Axis 2). Pick whatever fills the *executor* box for you — the box is the
-    point, not the brand.
+    **Launcher** (HPC siblings), **Ray** / **Dask** / **Parsl** (Python-native,
+    creep onto Axis 2 — and **Parsl** can drive **Globus Compute** as its
+    remote-execution + data-staging fabric). Pick whatever fills the *executor*
+    box for you — the box is the point, not the brand.
 * **Visual:** Terminal-window one-liner, the real HyperShell idiom on-slide:
   ```sh path=null start=null
   seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster' > task.out
@@ -850,6 +856,19 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     now applied to data). Same trade as before: you give up hand-wired control
     for the framework's plug-points — worth it only when staging-by-hand stops
     scaling.
+  * **The framework-owns-it rung, concretely at RCAC — Globus Flows (own the
+    partnership beat):** the managed version of this rung is **Globus** —
+    **Transfer** for movement, **Flows** for automated, dependency-aware
+    staging pipelines. This is exactly "the framework owns it" for data: you
+    declare the flow, Globus runs it. *"We're a strong partner with Globus on
+    this: we have dedicated staff building automated Globus Flows for data
+    management, and I'm deploying Multi-User Endpoints across our campus
+    clusters — our Anvil MEP was the first public MEP worldwide, which we've
+    showcased at Globus World two years running."* (Parsl + **Globus Compute**
+    is the executor-axis sibling of the same ecosystem — callback to Slide 16.)
+  * Keep it proportionate: this is the *managed* rung, not the starting point.
+    The thesis still holds — `rsync` first; reach for Flows when automated,
+    repeatable, multi-party staging earns its keep.
   * **The explicit callback (land it):** *"Same rule, third time: stage simply
     first; hand control to a framework only when owning it yourself stops
     paying off. Tasks, then orchestration, now data — one lesson about
@@ -916,7 +935,8 @@ to cut if time slips; About Me (Slide 3) is must-tell.*
     (`github.com/glentner/pearc26-hello-computer`), `rcac-mcp`
     (`github.com/purduercac/rcac-mcp`), and `globus-mcp`
     (`github.com/purduercac/globus-mcp`) — the agentic-era thread behind the
-    one beat on Slide 21.
+    one beat on Slide 21. (`globus-mcp` also nods to the **Globus partnership**
+    from Slide 20 — Flows / Compute / MEPs.)
   * **RCAC docs** — cluster user guides, the throughput/workflow guides, and
     the data-tier guides (Fortress / Data Depot / Scratch).
   * **Tool docs (just the significant ones):** GNU Make and Nextflow / nf-core
