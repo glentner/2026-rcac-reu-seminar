@@ -1,0 +1,9 @@
+node_modules
+dist
+reu-2026-talk.pdf
+slides-export/
+.DS_Store
+.vite-inspect
+components.d.ts
+*.local
+.remote-assets

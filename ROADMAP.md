@@ -1,9 +1,9 @@
 ---
 title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
-current_phase: "1"
-phases_completed: ["0"]
-last_updated: "2026-06-21T00:00:00Z"
+current_phase: "2"
+phases_completed: ["0", "1"]
+last_updated: "2026-06-21T01:41:51Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -114,17 +114,17 @@ slides:
 # ─── Improvement #4: custom-layout build-order (a slide cannot be built before its layout exists) ───
 layouts:
   # NAIRR-inherited base layouts (port via THEME.md / styles/index.css in Phase 1)
-  - { name: "purdue-cover",        kind: "inherited", first_slide: "1",  status: "pending" }
-  - { name: "purdue-content",      kind: "inherited", first_slide: "7",  status: "pending" }
-  - { name: "purdue-overview",     kind: "inherited", first_slide: "5",  status: "pending" }
-  - { name: "purdue-fullbleed",    kind: "inherited", first_slide: "2",  status: "pending" }
-  - { name: "closing-qr-row",      kind: "inherited", first_slide: "23", status: "pending", note: "port the NAIRR closing-qr-row convention" }
+  - { name: "purdue-cover",        kind: "inherited", first_slide: "1",  status: "complete" }
+  - { name: "purdue-content",      kind: "inherited", first_slide: "7",  status: "complete" }
+  - { name: "purdue-overview",     kind: "inherited", first_slide: "5",  status: "complete" }
+  - { name: "purdue-fullbleed",    kind: "inherited", first_slide: "2",  status: "complete" }
+  - { name: "closing-qr-row",      kind: "inherited", first_slide: "23", status: "complete", note: "ported as the .purdue-cover.is-closing variant" }
   # Six NEW custom layouts unique to this deck (OUTLINE §5)
   - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "pending", note: "photo cluster + squiggle-boxed pillars" }
   - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "pending", note: "systems · science · software Venn; center = facilitator/unicorn" }
   - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "pending", note: "dense logo wall, size ≈ popularity; optional cascade/pile-up build" }
   - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "pending", note: "teetering over-engineered stack; Slide 10 = labeled re-render" }
-  - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "pending", note: "Slide 12 preview form; Slide 19 full ladder + you-own-it→framework-owns-it gradient" }
+  - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "in_progress", note: "Phase-1 smoke-test stub renders 2 axis columns; Slide 12 preview + Slide 19 full ladder/gradient pending (Phases 4–5)" }
   - { name: "storage-tier",        kind: "custom",    first_slide: "20A", status: "pending", note: "6-property trade-off cloud + cold→warm→hot tier ladder" }
   - { name: "ownership-ladder",    kind: "custom",    first_slide: "20B", status: "pending", note: "two-rung you-own-it / framework-owns-it; reuses Slide 19 gradient" }
 # ─── Improvement #5: open decisions / blocking-on-Geoffrey ledger (route around blocked slides) ───
@@ -287,34 +287,34 @@ Closest structural reference: the NAIRR project. Borrow the *shape*
 (single-file `slides.md`, `styles/index.css` token table, `uno.config.ts`),
 not the content.
 
-* [ ] `package.json` (project `reu-seminar-2026-talk`,
+* [x] `package.json` (project `reu-seminar-2026-talk`,
       `exportFilename: reu-2026-talk`; scripts `dev`, `dev:remote`, `build`,
       `export:pdf`; pin `@slidev/cli` to the NAIRR-proven family; add
       `@slidev/theme-seriph` + `playwright-chromium`)
-* [ ] `.npmrc` (`shamefully-hoist=true`, `auto-install-peers=true`),
+* [x] `.npmrc` (`shamefully-hoist=true`, `auto-install-peers=true`),
       `.gitignore` (node_modules, dist, `reu-2026-talk.pdf`, slides-export,
       `.DS_Store`, `.vite-inspect`, `components.d.ts`, `*.local`,
       `.remote-assets`)
-* [ ] `vite.config.ts` — **dev port `3035`** (3032/3033/3034 are taken;
+* [x] `vite.config.ts` — **dev port `3035`** (3032/3033/3034 are taken;
       keeps all decks runnable concurrently)
-* [ ] `styles/index.css` — `@font-face` (Source Sans 3), Purdue 2026 palette
+* [x] `styles/index.css` — `@font-face` (Source Sans 3), Purdue 2026 palette
       as CSS custom properties (from `THEME.md`), base `.slidev-layout`
       padding, and the **inherited** base layouts (`purdue-cover`,
       `purdue-content`, `purdue-overview`, `purdue-fullbleed`,
       `closing-qr-row`). Custom-layout CSS is stubbed here and fleshed out in
       the phase that first needs it (see `layouts:` build-order).
-* [ ] `uno.config.ts` — Purdue/RCAC color shortcuts
-* [ ] `slides.md` headmatter (`theme: seriph`, `colorSchema: light`,
+* [x] `uno.config.ts` — Purdue/RCAC color shortcuts
+* [x] `slides.md` headmatter (`theme: seriph`, `colorSchema: light`,
       `aspectRatio: 16/9`, gold primary, `fonts: provider: none`,
       `presenter: true`, `download: true`, `exportFilename: reu-2026-talk`,
       `info:` populated). Body is a one-slide placeholder until Phase 2.
-* [ ] `README.md` (build/run/export; port 3035; Source Sans 3 license note;
+* [x] `README.md` (build/run/export; port 3035; Source Sans 3 license note;
       pointers to OUTLINE/THEME/REVIEW/ROADMAP and the two skills)
-* [ ] **Smoke test:** minimal cover + content + overview slide **plus one
+* [x] **Smoke test:** minimal cover + content + overview slide **plus one
       custom-layout stub** (pick `triple-point-venn` or `two-axis-ladder`) to
       prove the custom-layout pipeline early. `npm run build` and
       `npm run export:pdf` both green; RCAC SVG marks sharp at 1×/2×.
-* [ ] Commit: `WIP: Phase 1 — scaffolding + Purdue 2026/RCAC theme + smoke test`
+* [x] Commit: `WIP: Phase 1 — scaffolding + Purdue 2026/RCAC theme + smoke test`
 
 **Checkpoint (integration risk for the new visual identity):** Geoffrey
 eyeball-passes the smoke-test deck on the live dev server (port 3035) before
@@ -570,9 +570,9 @@ June 23, 2026, 11:00 ET**, Envision Center.
 
 ### Chrome (Phase 0 / 1 — via THEME.md)
 
-* ☐ RCAC brand marks (h / h-reverse / v / v-reverse) → `public/images/rcac/`
-* ☐ Source Sans 3 (Regular / SemiBold / Bold, OFL) → `public/fonts/`
-* ☐ Purdue 2026 palette sampled into `styles/index.css` (from THEME.md)
+* ✓ RCAC brand marks (h / h-reverse / v / v-reverse) → `public/images/rcac/`
+* ✓ Source Sans 3 (Regular / SemiBold / Bold, OFL) → `public/fonts/`
+* ✓ Purdue 2026 palette sampled into `styles/index.css` (from THEME.md)
 
 ### Custom-layout-driven assets
 
@@ -585,8 +585,8 @@ June 23, 2026, 11:00 ET**, Envision Center.
 
 ### Project scaffolding (Phase 1)
 
-* ☐ `package.json` · `.npmrc` · `.gitignore` · `vite.config.ts` (port 3035)
-* ☐ `styles/index.css` · `uno.config.ts` · `slides.md` · `README.md`
+* ✓ `package.json` · `.npmrc` · `.gitignore` · `vite.config.ts` (port 3035)
+* ✓ `styles/index.css` · `uno.config.ts` · `slides.md` · `README.md`
 
 ---
 
@@ -635,4 +635,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-20T23:40:00Z*
+*Last updated: 2026-06-21T01:41:51Z*

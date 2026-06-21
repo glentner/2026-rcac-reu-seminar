@@ -1,0 +1,19 @@
+{
+  "name": "reu-seminar-2026-talk",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open --port 3035",
+    "dev:remote": "slidev --remote --port 3035",
+    "build": "slidev build",
+    "export:pdf": "slidev export --output reu-2026-talk.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "52.14.2",
+    "vue": "^3.5.27"
+  },
+  "devDependencies": {
+    "@slidev/theme-seriph": "latest",
+    "playwright-chromium": "^1.58.1"
+  }
+}

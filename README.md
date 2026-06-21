@@ -17,13 +17,14 @@ It is a refinement of last year's REU seminar, which cataloged a *zoo* of
 workflow tools without a thesis. This year gives the zoo a conceptual
 spine: **start simple; add complexity only where it earns its keep.**
 
-> **Project status — context & scaffolding (`v0.1.0`).** This repository
-> currently holds the *design* of the talk — the outline, the visual-identity
-> plan, the build roadmap, and the agent workflow that will assemble it. **The
-> Slidev deck itself has not been built yet** (`slides.md`, `package.json`, and
-> the theme land in Phase 1). The *Build / run / export* section below describes
-> the intended workflow once scaffolding exists; the commands are aspirational
-> until then. See `ROADMAP.md` for live phase status.
+> **Project status — scaffolding stood up (Phase 1).** The Slidev project
+> now exists: `package.json`, `vite.config.ts` (port 3035), `uno.config.ts`,
+> `styles/index.css` (Purdue 2026 + RCAC chrome), and a `slides.md`
+> **smoke-test** body that exercises the inherited base layouts and the
+> `two-axis-ladder` custom layout. **The real slide content has not been
+> authored yet** — Slides 1–23 land Phase 2 onward (content source of truth:
+> `OUTLINE.md`). The *Build / run / export* commands below are live. See
+> `ROADMAP.md` for per-phase status.
 
 ## The argument
 
@@ -48,8 +49,6 @@ Every rung is anchored by a real, runnable artifact on the slide — as
 gag: **real perfection is the simplest thing that works.**
 
 ## Build / run / export
-
-> *Available once Phase 1 scaffolding lands (see `ROADMAP.md`).*
 
 ```sh
 npm install
@@ -85,7 +84,7 @@ GOAL.md ──► OUTLINE.md ──► slides.md          (content: what each sl
   lines, and timing. **Source of truth for slide content.**
 * **`THEME.md`** — authoritative visual identity (Purdue 2026 + RCAC chrome,
   the six custom layouts, the two code aesthetics). **Source of truth for
-  slide chrome.** *(Authored in Phase 0 — not yet present.)*
+  slide chrome.**
 * **`REVIEW.md`** — the meta-journey: critiques, responses, and the
   decisions behind the shape of the talk. **Source of truth for the *why*.**
 * **`ROADMAP.md`** — the phased Slidev implementation plan, with a

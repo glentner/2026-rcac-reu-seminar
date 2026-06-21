@@ -1,0 +1,20 @@
+Source Sans 3 is licensed under the SIL Open Font License, Version 1.1.
+
+This font software is distributed under the OFL with Reserved Font
+Name "Source". The full license text is at:
+
+    https://openfontlicense.org/
+
+The woff2 files in this directory (SourceSans3-Regular.woff2,
+SourceSans3-SemiBold.woff2, SourceSans3-Bold.woff2) were obtained from
+Fontsource (https://fontsource.org/fonts/source-sans-3), which
+redistributes the upstream OFL release from Adobe
+(https://github.com/adobe-fonts/source-sans).
+
+Source Sans is © 2010-2024 Adobe (http://www.adobe.com/), with Reserved
+Font Name "Source". All Rights Reserved.
+
+We ship Source Sans 3 as an OFL-licensed fallback for the deck's
+preferred Franklin Gothic / Franklin Gothic Book stack (which is loaded
+locally only, never committed). See README.md for the font-sourcing
+posture.

@@ -1,0 +1,636 @@
+/**
+ * Custom styles for "Workflow Engineering, Data Management, and Advanced
+ * Automation — or, How Not to Build a Rube Goldberg Machine"
+ * — Summer REU Seminar 2026 (Envision Center, Purdue University).
+ *
+ * Visual identity is the Purdue 2026 brand refresh + RCAC marks, ported
+ * from ../2026-nairr-workshop-talk/styles/index.css (see THEME.md):
+ *
+ *   --bg-ink         #000000   cover / closing-card ground
+ *   --bg-paper       #FFFFFF   content slide ground
+ *   --bg-overview    #E9E6E3   section-divider / thesis-card cream
+ *   --ink            #000000   body copy
+ *   --ink-subhead    #55585F   subhead and secondary text
+ *   --ink-muted      #9D9694   muted gray (rules, captions)
+ *   --gold           #CFB891   Purdue gold-buff — rules, border insets
+ *   --gold-deep      #8D6F3D   deep gold — emphasis
+ *   --gold-bright    #DAAA00   saturated Purdue gold — accent numbers
+ *   --accent-orange  #FBAE40   warm accent (used sparingly)
+ *
+ * Swatches sampled from ~/Documents/Purdue/Purdue-Template-2026.pptx
+ * (ppt/theme/theme1.xml + ppt/slideLayouts/*.xml) for the NAIRR deck and
+ * carried over verbatim. Re-verify against the .pptx if a swatch drifts.
+ *
+ * Typography substitutes ITC Franklin Gothic / Franklin Gothic Book for
+ * Acumin Pro (the template's commercial display+body face, not committed).
+ * Source Sans 3 is the OFL fallback shipped in public/fonts/.
+ *
+ * Light-mode only.
+ *
+ * NOTE (build-order): the five inherited base layouts below are complete.
+ * The seven custom layouts (§ "Custom layouts") are intentionally STUBBED
+ * in Phase 1 and fleshed out in the phase that first consumes each one,
+ * per the ROADMAP.md `layouts:` build-order. `.two-axis-ladder` carries a
+ * minimal-but-visible Phase-1 smoke-test treatment to prove the
+ * custom-layout pipeline early; the rest are placeholders.
+ */
+
+
+/* ---------- Source Sans 3 (OFL fallback) ---------- */
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/SourceSans3-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/SourceSans3-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  src: url('/fonts/SourceSans3-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ---------- Purdue 2026 palette (CSS custom properties) ---------- */
+
+:root {
+  --bg-ink:         #000000;
+  --bg-paper:       #FFFFFF;
+  --bg-overview:    #E9E6E3;
+  --ink:            #000000;
+  --ink-subhead:    #55585F;
+  --ink-muted:      #9D9694;
+  --gold:           #CFB891;
+  --gold-deep:      #8D6F3D;
+  --gold-bright:    #DAAA00;
+  --accent-orange:  #FBAE40;
+
+  /* Slidev theme primary maps to the saturated Purdue gold. */
+  --slidev-theme-primary: var(--gold-bright);
+}
+
+
+/* ---------- Base typography ---------- */
+
+html,
+body,
+#app,
+.slidev-layout {
+  font-family: "ITC Franklin Gothic", "Franklin Gothic Book",
+               "Franklin Gothic Medium", "Source Sans 3",
+               system-ui, sans-serif;
+  background: var(--bg-paper);
+  color: var(--ink);
+}
+
+.slidev-layout {
+  padding: 1.75rem 3rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: inherit;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--ink-subhead);
+  font-weight: 600;
+}
+
+p, li {
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+a {
+  color: var(--gold-deep);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-deep);
+}
+
+a:hover {
+  border-bottom-style: solid;
+}
+
+code, pre, .slidev-code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.92em;
+}
+
+
+/* ---------- Layout primitive 1: .purdue-cover ---------- *
+ *
+ * Cover slide / closing-card chrome. Black ground, gold-buff inset
+ * border, centered title + subtitle, bottom-centered reverse RCAC mark.
+ * Date caption (optional) sits above the title.
+ *
+ * Used by: Slide 1 (Title); Slide 23 via the .is-closing variant.
+ */
+
+.purdue-cover {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-ink);
+  color: var(--bg-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+}
+
+.purdue-cover::before {
+  /* Gold-buff inset border, mimicking the Purdue template cover. */
+  content: '';
+  position: absolute;
+  inset: 1.25rem;
+  border: 1px solid var(--gold);
+  pointer-events: none;
+}
+
+.purdue-cover .cover-date {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.purdue-cover h1 {
+  color: var(--bg-paper);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 22ch;
+}
+
+.purdue-cover .cover-subtitle {
+  color: var(--gold);
+  font-size: 1.15rem;
+  font-style: italic;
+  margin-top: 0.75rem;
+  max-width: 40ch;
+}
+
+.purdue-cover .cover-speaker {
+  margin-top: 2.5rem;
+  color: var(--bg-paper);
+  font-weight: 600;
+}
+
+.purdue-cover .cover-affiliation {
+  margin-top: 0.4rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.purdue-cover .cover-mark {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 24rem;
+}
+
+
+/* ---------- Layout primitive 2: .purdue-content ---------- *
+ *
+ * Standard content chrome. Paper ground, gold rule top and bottom,
+ * H1 + subhead at upper-left, RCAC mark upper-right, page number
+ * lower-right. The deck's workhorse.
+ *
+ * Used by: Slides 7, 8, 11, 13–18, 21, 22.
+ */
+
+.purdue-content {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  padding: 3.25rem 3rem 2.5rem;
+  height: 100%;
+}
+
+.purdue-content::before {
+  /* Top gold rule. */
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.purdue-content::after {
+  /* Bottom gold rule. */
+  content: '';
+  position: absolute;
+  bottom: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.purdue-content h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.purdue-content .subhead {
+  color: var(--ink-subhead);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.purdue-content .rcac-mark {
+  position: absolute;
+  top: 1.9rem;
+  right: 3rem;
+  max-width: 14rem;
+}
+
+.purdue-content .page-num {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+
+/* ---------- Layout primitive 3: .purdue-overview ---------- *
+ *
+ * Section-divider / thesis-card chrome. Warm cream ground, large
+ * left-side section label, thin vertical rule, right-side stacked body
+ * with a `.lede`.
+ *
+ * Used by: Slide 5 (Thesis card). Also a good fallback divider layout.
+ */
+
+.purdue-overview {
+  position: relative;
+  background: var(--bg-overview);
+  color: var(--ink);
+  padding: 3rem 3rem 2.5rem;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(8rem, 14rem) 1px 1fr;
+  column-gap: 2rem;
+  align-items: center;
+}
+
+.purdue-overview .section-label {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+}
+
+.purdue-overview .section-rule {
+  background: var(--ink);
+  width: 1px;
+  align-self: stretch;
+  margin: 2rem 0;
+}
+
+.purdue-overview .section-body {
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+
+.purdue-overview .section-body .lede {
+  font-weight: 600;
+  font-size: 1.45rem;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+.purdue-overview .section-body .caption {
+  color: var(--ink-subhead);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
+.purdue-overview .page-num {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+
+/* ---------- Layout primitive 4: .purdue-fullbleed ---------- *
+ *
+ * Full-bleed image slide with no template chrome — no gold rules, no
+ * upper-right mark, no page number. A whisper-quiet caption sits in the
+ * lower-right disclosing image provenance where needed.
+ *
+ * Used by: Slide 2 (the "Perfection" cold open).
+ *
+ * The image is set inline on the slide (background-image) so each
+ * full-bleed slide can pick its own without per-slide CSS, and so it
+ * covers cleanly at non-16:9 export resolutions.
+ */
+
+.purdue-fullbleed {
+  position: absolute;
+  inset: 0;
+  background: var(--bg-ink) center / cover no-repeat;
+}
+
+.purdue-fullbleed .fullbleed-disclosure {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.7);
+  /* Thin ink scrim keeps the caption legible over light image areas. */
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.25rem 0.55rem;
+  border-radius: 2px;
+  font-style: italic;
+}
+
+
+/* ---------- Layout primitive 5: closing card (.purdue-cover.is-closing) ---------- *
+ *
+ * Slide 23 inverts the cover: black ground, gold inset border, reverse
+ * RCAC mark, a centered QR row, a SemiBold "Thanks." body, and contact +
+ * credit lines. The QR matrix uses image-rendering: pixelated so the
+ * edges stay crisp through playwright-chromium PDF rasterization.
+ *
+ * The .closing-qr-row layout name in the ROADMAP `layouts:` registry maps
+ * to this .is-closing variant.
+ */
+
+.purdue-cover.is-closing {
+  justify-content: flex-start;
+  padding-top: 3.5rem;
+}
+
+.purdue-cover.is-closing .closing-qr-row {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* MDC guard: blank-line-separated children get wrapped in <p>; neutralize
+ * so the QR items remain flex children of the row. */
+.purdue-cover.is-closing .closing-qr-row > p {
+  display: contents;
+}
+
+.purdue-cover.is-closing .closing-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: var(--gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.purdue-cover.is-closing .closing-qr img {
+  width: 5.2rem;
+  height: 5.2rem;
+  background: var(--bg-paper);
+  padding: 0.25rem;
+  margin-bottom: 0.45rem;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.purdue-cover.is-closing .closing-qr .closing-qr-label {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+  color: var(--bg-paper);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+}
+
+.purdue-cover.is-closing .closing-thanks {
+  color: var(--bg-paper);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+}
+
+.purdue-cover.is-closing .closing-contact {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+  color: var(--gold);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.65rem;
+}
+
+.purdue-cover.is-closing .closing-credit {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.78rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+
+/* ==========================================================================
+ * The two code aesthetics (THEME.md §10) — content device, NOT deck chrome.
+ * Stubbed here so the distinction exists from Phase 1; weights/treatment are
+ * finalized when Slides 13–18 / 20B land (Phases 4–6). Keep them visually
+ * distinct: terminal = something you RUN; definition = something you AUTHOR.
+ * ========================================================================== */
+
+/* Terminal-window treatment — commands you run (Slides 13, 14, 15, 16, 20B). */
+.code-terminal {
+  /* STUB (Phase 4): titled terminal pane / prompt framing. */
+  border: 1px solid var(--ink-muted);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Code / definition treatment — workflow definitions (Slides 17, 18). */
+.code-definition {
+  /* STUB (Phase 5): source-file / definition block, distinct from terminal. */
+  border-left: 3px solid var(--gold-deep);
+}
+
+
+/* ==========================================================================
+ * Custom layouts (new to this deck — THEME.md §9 / ROADMAP `layouts:`).
+ *
+ * Custom-layout CSS stays GLOBAL (never per-slide). Each is STUBBED here in
+ * Phase 1 and fleshed out in the phase that first consumes it:
+ *
+ *   about-rcac          Slide 3   (Phase 2)
+ *   triple-point-venn   Slide 4   (Phase 2)
+ *   zoo-logo-wall       Slide 6   (Phase 3)
+ *   rube-goldberg-stack Slides 9, 10 (Phase 3)
+ *   two-axis-ladder     Slides 12 (preview), 19 (full)  (Phases 4, 5)
+ *   storage-tier        Slide 20A (Phase 6)
+ *   ownership-ladder    Slide 20B (Phase 6)
+ *
+ * MDC reminder: keep inline <svg> tightly packed (no blank lines) and use
+ * `> p { display: contents }` on grid/flex containers.
+ * ========================================================================== */
+
+/* --- about-rcac (Slide 3) — STUB (Phase 2) --- *
+ * Photo cluster + squiggle-boxed systems/science/software pillars. */
+.about-rcac {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+/* --- triple-point-venn (Slide 4) — STUB (Phase 2) --- *
+ * systems · science · software Venn; center = facilitator/unicorn. */
+.triple-point-venn {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+/* --- zoo-logo-wall (Slide 6) — STUB (Phase 3) --- *
+ * Dense logo wall grouped by layer, size ≈ popularity. [BREATH] scenery. */
+.zoo-logo-wall {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+/* --- rube-goldberg-stack (Slides 9, 10) — STUB (Phase 3) --- *
+ * Teetering over-engineered stack; Slide 10 = labeled re-render. */
+.rube-goldberg-stack {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+/* --- two-axis-ladder (Slides 12 preview, 19 full) --- *
+ * The load-bearing diagram: two separated axes (executor/scale ·
+ * orchestration/DSL). Slide 19 adds the you-own-it → framework-owns-it
+ * gradient. PHASE-1 SMOKE TEST treatment: minimal but visibly renders two
+ * labeled axis columns so the custom-layout pipeline is proven early.
+ * Fleshed out in Phases 4 (preview) and 5 (full + gradient). */
+.two-axis-ladder {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+.two-axis-ladder::before {
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.two-axis-ladder .axes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+/* MDC guard for the two-column axis grid. */
+.two-axis-ladder .axes > p {
+  display: contents;
+}
+
+.two-axis-ladder .axis {
+  border: 1px solid var(--gold);
+  padding: 1rem 1.25rem;
+  background: var(--bg-paper);
+}
+
+.two-axis-ladder .axis .axis-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.two-axis-ladder .axis .rung {
+  padding: 0.35rem 0;
+  border-top: 1px dotted var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+/* --- storage-tier (Slide 20A) — STUB (Phase 6) --- *
+ * 6-property trade-off cloud over cold→warm→hot tier ladder. */
+.storage-tier {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+/* --- ownership-ladder (Slide 20B) — STUB (Phase 6) --- *
+ * Two-rung you-own-it / framework-owns-it ladder; reuses Slide 19 gradient. */
+.ownership-ladder {
+  position: relative;
+  background: var(--bg-paper);
+  color: var(--ink);
+  height: 100%;
+  padding: 3.25rem 3rem 2.5rem;
+}
+
+
+/* ---------- Shared utilities ---------- */
+
+.text-gold        { color: var(--gold); }
+.text-gold-deep   { color: var(--gold-deep); }
+.text-gold-bright { color: var(--gold-bright); }
+.text-ink-subhead { color: var(--ink-subhead); }
+.text-ink-muted   { color: var(--ink-muted); }
+
+.bg-paper    { background: var(--bg-paper); }
+.bg-ink      { background: var(--bg-ink); color: var(--bg-paper); }
+.bg-overview { background: var(--bg-overview); }
+
+.rule-gold {
+  border-top: 2px solid var(--gold);
+}
