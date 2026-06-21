@@ -1,6 +1,12 @@
-# How Not to Build a Rube Goldberg Machine
+# Workflow Engineering, Data Management, and Advanced Automation
 
-> *Workflow Engineering, Data Management, and Advanced Automation*
+> *or, How Not to Build a Rube Goldberg Machine*
+
+[![Release](https://img.shields.io/github/v/release/glentner/2026-rcac-reu-seminar?sort=semver)](https://github.com/glentner/2026-rcac-reu-seminar/releases)
+[![Status](https://img.shields.io/badge/status-development-orange)](ROADMAP.md)
+<!-- Planned once the PDF export runs in CI (see ROADMAP.md Phase 8):
+[![Build PDF](https://github.com/glentner/2026-rcac-reu-seminar/actions/workflows/export-pdf.yml/badge.svg)](https://github.com/glentner/2026-rcac-reu-seminar/actions/workflows/export-pdf.yml)
+-->
 
 Slidev source for Geoffrey Lentner's **Summer REU Seminar 2026** talk —
 Envision Center, Purdue University, West Lafayette, IN. A ~30-minute
