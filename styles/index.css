@@ -156,9 +156,9 @@ code, pre, .slidev-code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  padding: 3rem;
+  padding: 2.5rem 3rem;
 }
 
 .purdue-cover::before {
@@ -170,48 +170,82 @@ code, pre, .slidev-code {
   pointer-events: none;
 }
 
+/* Top zone: the date kicker, in normal flow at the top of the cover. */
 .purdue-cover .cover-date {
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 1.5rem;
 }
 
-.purdue-cover h1 {
+/* Middle zone: title + subtitle, grown to fill the space between the kicker
+ * and the footer and centered within it, kept together as one block. */
+.purdue-cover .cover-title-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+}
+
+/* NOTE on the selector specificity: Slidev gives the FIRST slide the `cover`
+ * layout by default, and seriph's `.slidev-layout.cover h1` (specificity
+ * 0,2,1) hard-codes `text-6xl` + `leading-20`. A plain `.purdue-cover h1`
+ * (0,1,1) ties/loses to it, so our size never applied. Scoping through
+ * `.slidev-layout` + the title-block wrapper raises us to (0,3,1) so the
+ * cover title is ours to control. */
+.slidev-layout .purdue-cover .cover-title-block h1 {
   color: var(--bg-paper);
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-weight: 700;
-  line-height: 1.1;
-  max-width: 22ch;
+  line-height: 1.2;
+  max-width: 40ch;
+  /* Balance the wrap so the title reads as even lines, not a greedy stack. */
+  text-wrap: balance;
 }
 
 .purdue-cover .cover-subtitle {
   color: var(--gold);
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   font-style: italic;
-  margin-top: 0.75rem;
-  max-width: 40ch;
+  /* Single line — the subtitle is the gag and must read as one breath. */
+  white-space: nowrap;
+}
+
+/* Bottom zone: speaker, role, and the full-size RCAC lockup. */
+.purdue-cover .cover-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* MDC guard: keep the footer items as flex children, not <p>-wrapped. */
+.purdue-cover .cover-footer > p {
+  display: contents;
 }
 
 .purdue-cover .cover-speaker {
-  margin-top: 2.5rem;
   color: var(--bg-paper);
   font-weight: 600;
+  font-size: 2.1rem;
 }
 
 .purdue-cover .cover-affiliation {
-  margin-top: 0.4rem;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
+  font-size: 1.3rem;
 }
 
+/* The RCAC reverse lockup is a wide SVG (viewBox 340×36). With only a
+ * max-width it renders at its small intrinsic size, so set an explicit width
+ * to make it a prominent cover mark; max-width keeps it from overrunning the
+ * inset border on narrow exports. */
 .purdue-cover .cover-mark {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: 24rem;
+  width: 20rem;
+  max-width: 85%;
+  height: auto;
+  margin-top: 0.85rem;
 }
 
 

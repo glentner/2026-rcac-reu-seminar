@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "2"
 phases_completed: ["0", "1"]
-last_updated: "2026-06-21T01:41:51Z"
+last_updated: "2026-06-21T04:26:33Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -86,7 +86,7 @@ context:
 # `must_not_skip: true` here matches OUTLINE §6's canonical six (2,4,12,16,19,22). 17b/18 are
 # "high-value, don't cut lightly" (OUTLINE §6) — captured via `high_value: true`, not must_not_skip.
 slides:
-  - { id: "1",   beat: "Title (lean cover)",                       phase: "2", act: "1",    layout: "purdue-cover",        code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "1",   beat: "Title (lean cover)",                       phase: "2", act: "1",    layout: "purdue-cover",        code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
   - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "pending", assets: ["perfection-meme"] }
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: ["headshot"] }
@@ -331,7 +331,7 @@ any real content lands. Verification gate: `build` + `export:pdf` green.
 
 **Outline reference:** `OUTLINE.md` §4, Slides 1–5.
 
-* [ ] **Slide 1 — Title** (`purdue-cover`). Lean. Name + one positive line;
+* [x] **Slide 1 — Title** (`purdue-cover`). Lean. Name + one positive line;
       cut fast to the gag. **DoD:** ~30s of content only; reverse RCAC mark;
       no agenda.
 * [ ] **Slide 2 — Cold open / "Perfection"** (`purdue-fullbleed`, no chrome).

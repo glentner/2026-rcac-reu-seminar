@@ -49,36 +49,51 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# PHASE 1 SMOKE TEST — placeholder body, NOT the talk.
-# Proves the Purdue 2026 / RCAC chrome and the custom-layout pipeline build +
-# export cleanly before any real content lands. The real Slides 1–23 are
-# authored Phase 2 onward per ROADMAP.md (content source of truth: OUTLINE.md).
-# This body exercises: purdue-cover, purdue-content, purdue-overview, and the
-# two-axis-ladder custom layout (the load-bearing diagram, Slides 12/19).
+# BUILD IN PROGRESS (Phase 2). Slide 1 (Title) below is REAL content per
+# OUTLINE.md §4. The three slides that follow it (purdue-content,
+# purdue-overview, two-axis-ladder) are retained PHASE-1 SMOKE-TEST scaffolding
+# — they keep dev/build/export green and are replaced by their real slides as
+# later phases land (content source of truth: OUTLINE.md; build order: ROADMAP.md).
 # ─────────────────────────────────────────────────────────────────────────
 ---
 
 <div class="purdue-cover">
 
-<div class="cover-date">Summer REU Seminar · June 23, 2026 · Envision Center, Purdue</div>
+<div class="cover-date">Summer REU Seminar · June 23, 2026</div>
 
-<h1>Smoke Test</h1>
+<div class="cover-title-block">
+<h1>Workflow Engineering, Data Management, and Advanced Automation</h1>
+<div class="cover-subtitle">…or, How Not to Build a Rube Goldberg Machine</div>
+</div>
 
-<div class="cover-subtitle">Purdue 2026 + RCAC chrome — placeholder until Phase 2</div>
-
+<div class="cover-footer">
 <div class="cover-speaker">Geoffrey Lentner</div>
-<div class="cover-affiliation">Principal AI Scientist · Rosen Center for Advanced Computing · Purdue University</div>
-
-<img class="cover-mark" src="/images/rcac/rcac-h-reverse.svg" alt="Rosen Center for Advanced Computing" />
+<div class="cover-affiliation">Principal AI Scientist</div>
+<img class="cover-mark" src="/images/rcac/rcac-h-reverse.svg" alt="Rosen Center for Advanced Computing · Purdue University" />
+</div>
 
 </div>
 
 <!--
-[Phase 1 smoke test — cover (purdue-cover)]
+[Slide 1 — Title (purdue-cover) · 0:00–0:30 · lean cover]
 
-Proves: black ground, gold-buff inset border, centered title/subtitle,
-bottom-centered reverse RCAC mark, Franklin Gothic / Source Sans 3 stack.
-This slide is replaced by the real Slide 1 (Title) in Phase 2.
+DELIBERATELY LEAN. The deep self-intro is deferred — we jump straight to the
+cold open (Slide 2) before introducing me. This slide just lands the name and
+the talk's one-line promise, then gets out of the way. No agenda, no
+throat-clearing; the energy comes from cutting FAST to the gag.
+
+Beats:
+1. Name + role, one breath — "I'm Geoffrey Lentner, Principal AI Scientist at
+   Purdue's Rosen Center for Advanced Computing."
+2. The talk in one POSITIVE line (enthusiast tone BEFORE the gag) — "This is
+   about taking research from a Jupyter notebook to scale-out automation on a
+   supercomputer, without losing your mind."
+3. Immediately pivot to the gag.
+
+Transition → Slide 2: "Before I tell you anything about me, let me show you my
+favorite cautionary tale."
+
+Delivery: ~30s, brisk.
 -->
 
 ---
