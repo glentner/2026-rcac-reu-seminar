@@ -1,9 +1,9 @@
 ---
 title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
-current_phase: "0"
-phases_completed: []
-last_updated: "2026-06-20T23:40:00Z"
+current_phase: "1"
+phases_completed: ["0"]
+last_updated: "2026-06-21T00:00:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -37,9 +37,9 @@ context:
   dev_port: 3035                # 3032 Globus World · 3033 Midwest RCD · 3034 NAIRR all taken — use 3035
   mdc_mode: true                # MDC on ⇒ no blank lines inside inline <svg> (NAIRR hazard)
   font_provider: "none"         # no licensed fonts committed; Source Sans 3 (OFL) fallback
-  palette: "PENDING — port from THEME.md (Purdue 2026 + RCAC) in Phase 0; do not hand-author here"
-  fonts: "PENDING — Franklin Gothic preferred stack + Source Sans 3 OFL fallback; defined in THEME.md / styles/index.css"
-  source_assets: "PENDING — resolved in THEME.md (RCAC marks, Purdue template, prelude images from Geoffrey)"
+  palette: "See THEME.md §3 (Purdue 2026 + RCAC, ported from NAIRR styles/index.css). To be promoted into styles/index.css in Phase 1."
+  fonts: "See THEME.md §5 — Franklin Gothic preferred stack + Source Sans 3 OFL fallback (provider: none). To be wired into styles/index.css in Phase 1."
+  source_assets: "See THEME.md §2/§4 (RCAC marks via SVG, Purdue template .pptx, prelude images from Geoffrey via open_decisions)"
   destination_assets: "PENDING — public/images/, public/fonts/, public/qr/ laid out in Phase 1"
   qr_targets:                   # Slide 23 — propose 5, cull to 4 if the row crowds (OUTLINE §4 Slide 23)
     hypershell: "https://hypershell.org"
@@ -255,7 +255,7 @@ export are green. A phase flips to `review` only when every slide in it is
 `AGENTS.md` mandates `THEME.md` before the build and `/continue` + `/release`
 skills before phased implementation.
 
-* [ ] **Port `THEME.md`** from `../2026-nairr-workshop-talk/THEME.md`,
+* [x] **Port `THEME.md`** from `../2026-nairr-workshop-talk/THEME.md`,
       adapted: keep Purdue 2026 + RCAC marks and light mode; substitute RCAC
       for generic Purdue marks; carry over the Franklin Gothic preferred
       stack + Source Sans 3 (OFL) fallback with `provider: none`; **add a
@@ -264,15 +264,16 @@ skills before phased implementation.
       `storage-tier`, `ownership-ladder`) and the **two code aesthetics**
       (terminal vs. definition). Resolve `palette`/`fonts`/`source_assets`
       there, then update this file's `context.palette`/`fonts` pointers.
-* [ ] **Create `.agents/skills/continue/SKILL.md`** mirroring the NAIRR
+* [x] **Create `.agents/skills/continue/SKILL.md`** mirroring the NAIRR
       resume protocol, taught to read this file's `slides:` registry +
       `open_decisions` ledger and to honor the **resume contract** (#7).
-* [ ] **Create `.agents/skills/release/SKILL.md`** mirroring NAIRR: strip /
+      *(Already present — created in commit `bc5a624`.)*
+* [x] **Create `.agents/skills/release/SKILL.md`** mirroring NAIRR: strip /
       squash `WIP:` prefixes, fast-forward `wip → main`, force-push `wip`,
-      optional tag + GitHub release.
-* [ ] Commit: `WIP: Phase 0 — port THEME.md + scaffold /continue and /release skills`
+      optional tag + GitHub release. *(Already present — commit `bc5a624`.)*
+* [x] Commit: `WIP: Phase 0 — port THEME.md + scaffold /continue and /release skills`
 
-**Checkpoint:** `THEME.md` exists and is internally consistent with this
+**Checkpoint:** ✓ `THEME.md` exists and is internally consistent with this
 roadmap's `layouts:` list; both skills exist. No build yet.
 
 ---
