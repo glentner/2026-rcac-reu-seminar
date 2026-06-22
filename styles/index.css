@@ -459,8 +459,16 @@ code, pre, .slidev-code {
   border: 1px solid var(--gold);
   border-radius: 3px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.55);
-  /* Each layer leans a little — the tower teeters. */
-  transform: rotate(var(--tilt));
+  /* Two effects compose (EXPERIMENT — Geoffrey's lean):
+   *  --tilt: per-brick alternating wobble (back-and-forth), unchanged.
+   *  --dx:   a cumulative horizontal lean set per-layer in slides.md. The
+   *          values grow ~geometrically (~1.5x/step) from the grounded base
+   *          (Apptainer = 0) to the top (React), so the increase is
+   *          EXPONENTIAL, not linear — only the top-most bricks visibly
+   *          overhang and look like they might fall. translateX is applied
+   *          before rotate; being a transform it shifts visually without
+   *          reflowing the column (gaps stay even). */
+  transform: translateX(var(--dx, 0rem)) rotate(var(--tilt));
   color: var(--bg-paper);
 }
 

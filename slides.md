@@ -104,16 +104,16 @@ Delivery: ~30s, brisk.
 <div class="cold-open">
 
 <div class="cold-open-stack">
-<div class="layer" style="--tilt:-1.4deg"><div class="l-tech">React dashboard</div><div class="l-role">single-page UI</div></div>
-<div class="layer" style="--tilt:1.1deg"><div class="l-tech">FastAPI · REST</div><div class="l-role">request layer</div></div>
-<div class="layer" style="--tilt:-0.9deg"><div class="l-tech">Keycloak · OAuth2</div><div class="l-role">auth gateway</div></div>
-<div class="layer" style="--tilt:1.5deg"><div class="l-tech">Airflow</div><div class="l-role">workflow scheduler</div></div>
-<div class="layer" style="--tilt:-1.2deg"><div class="l-tech">DAG definition</div><div class="l-role">dependency graph</div></div>
-<div class="layer" style="--tilt:0.8deg"><div class="l-tech">PostgreSQL</div><div class="l-role">metadata store</div></div>
-<div class="layer" style="--tilt:-1.5deg"><div class="l-tech">Redis + Celery</div><div class="l-role">broker + workers</div></div>
-<div class="layer" style="--tilt:1.3deg"><div class="l-tech">Kubernetes</div><div class="l-role">orchestration</div></div>
-<div class="layer" style="--tilt:-1.0deg"><div class="l-tech">Slurm</div><div class="l-role">HPC batch scheduler</div></div>
-<div class="layer" style="--tilt:1.4deg"><div class="l-tech">Apptainer</div><div class="l-role">containers</div></div>
+<div class="layer" style="--tilt:-1.4deg; --dx:7rem"><div class="l-tech">React dashboard</div><div class="l-role">single-page UI</div></div>
+<div class="layer" style="--tilt:1.1deg; --dx:4.5rem"><div class="l-tech">FastAPI · REST</div><div class="l-role">request layer</div></div>
+<div class="layer" style="--tilt:-0.9deg; --dx:2.9rem"><div class="l-tech">Keycloak · OAuth2</div><div class="l-role">auth gateway</div></div>
+<div class="layer" style="--tilt:1.5deg; --dx:1.8rem"><div class="l-tech">Airflow</div><div class="l-role">workflow scheduler</div></div>
+<div class="layer" style="--tilt:-1.2deg; --dx:1.1rem"><div class="l-tech">DAG definition</div><div class="l-role">dependency graph</div></div>
+<div class="layer" style="--tilt:0.8deg; --dx:0.65rem"><div class="l-tech">PostgreSQL</div><div class="l-role">metadata store</div></div>
+<div class="layer" style="--tilt:-1.5deg; --dx:0.35rem"><div class="l-tech">Redis + Celery</div><div class="l-role">broker + workers</div></div>
+<div class="layer" style="--tilt:1.3deg; --dx:0.18rem"><div class="l-tech">Kubernetes</div><div class="l-role">orchestration</div></div>
+<div class="layer" style="--tilt:-1.0deg; --dx:0.06rem"><div class="l-tech">Slurm</div><div class="l-role">HPC batch scheduler</div></div>
+<div class="layer" style="--tilt:1.4deg; --dx:0rem"><div class="l-tech">Apptainer</div><div class="l-role">containers</div></div>
 <div class="payload"><span class="p-label">…all to run</span><code>for sample in samples: analyze(sample)</code></div>
 </div>
 
