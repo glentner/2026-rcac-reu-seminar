@@ -876,14 +876,216 @@ code, pre, .slidev-code {
   font-weight: 700;
 }
 
-/* --- triple-point-venn (Slide 4) — STUB (Phase 2) --- *
- * systems · science · software Venn; center = facilitator/unicorn. */
+/* --- triple-point-venn (Slide 4) — Phase 2 --- *
+ * About Me. Restates the content-family chrome (gold rules top/bottom, RCAC
+ * mark upper-right, page number) around a two-column body: an IDENTITY column
+ * (gold-bordered rounded-rect headshot + name / role / contact, matching the
+ * Slide 3 photo treatment) and a pure-CSS three-circle VENN (systems · science
+ * · software) with opaque Franklin-Gothic role chips placed by lobe.
+ *
+ * DESIGN NOTE (Geoffrey, this session): the dead-center triple-point chip is
+ * AI — his current Principal-AI-Scientist seat and last year's arrangement —
+ * NOT "Facilitator / unicorn" as OUTLINE §4 / THEME §9 currently word it.
+ * Facilitator sits in the Systems lobe instead. The "unicorn at the
+ * triple-point" recurring line still lives in the speaker notes (HE is the
+ * unicorn; AI is the work at the center). Flagged for an OUTLINE/THEME wording
+ * reconciliation rather than silently edited.
+ *
+ * Circles blend via mix-blend-mode:multiply over a white, ISOLATED stage so the
+ * three lobes darken into honest overlaps; chips + domain labels paint above
+ * the blend (higher z-index, no blend mode) so their text stays crisp. */
 .triple-point-venn {
   position: relative;
   background: var(--bg-paper);
   color: var(--ink);
   height: 100%;
   padding: 3.25rem 3rem 2.5rem;
+  /* Flex column so the venn area takes the TRUE remaining height below the
+   * header (h1 + subhead) instead of a magic-number calc that overflowed the
+   * bottom gold rule. The absolute mark/page-num are out of flow. */
+  display: flex;
+  flex-direction: column;
+}
+
+.triple-point-venn::before {
+  /* Top gold rule (matches .purdue-content chrome). */
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.triple-point-venn::after {
+  /* Bottom gold rule. */
+  content: '';
+  position: absolute;
+  bottom: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.triple-point-venn h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.2rem;
+  line-height: 1.15;
+  /* Leave room for the upper-right RCAC mark; keep the title to one line. */
+  max-width: calc(100% - 13rem);
+}
+
+.triple-point-venn .subhead {
+  color: var(--ink-subhead);
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.triple-point-venn .rcac-mark {
+  position: absolute;
+  top: 1.9rem;
+  right: 3rem;
+  max-width: 14rem;
+}
+
+.triple-point-venn .page-num {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* MDC guards: dissolve prose <p> wrappers so the flex/grid children lay out
+ * and the absolutely-positioned venn pieces resolve against .venn-stage. */
+.triple-point-venn > p,
+.triple-point-venn .venn-grid > p,
+.triple-point-venn .identity > p,
+.triple-point-venn .who > p,
+.triple-point-venn .venn-stage > p {
+  display: contents;
+}
+
+.triple-point-venn .venn-grid {
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 1.4rem;
+  align-items: center;
+  /* Fill the remaining flex space and allow shrinking, so the stage centers
+   * with clearance above the bottom gold rule. */
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- Identity column (left): headshot + name / role / contact ---- */
+.triple-point-venn .identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+/* Gold-bordered rounded rectangle — same family as the Slide 3 photo cluster,
+ * grown to a portrait hero. */
+.triple-point-venn .identity .headshot {
+  width: 11.5rem;
+  height: 13.5rem;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+
+.triple-point-venn .identity .name {
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.05;
+}
+
+.triple-point-venn .identity .role {
+  color: var(--gold-deep);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.triple-point-venn .identity .contact {
+  color: var(--ink-subhead);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+/* ---- Venn stage (right): three blended lobes + labels ---- */
+.triple-point-venn .venn-stage {
+  position: relative;
+  width: 100%;
+  /* Slightly shorter than the available area so the centered venn clears the
+   * bottom gold rule (SCIENCE label sat on the rule at 23rem). */
+  height: 20rem;
+  /* Contain the multiply blend to the stage (over white). */
+  isolation: isolate;
+  background: var(--bg-paper);
+}
+
+.triple-point-venn .circle {
+  position: absolute;
+  width: 12.5rem;
+  height: 12.5rem;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: multiply;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  z-index: 1;
+}
+
+/* Three harmonized theme tints: graphite · slate-blue · warm amber. */
+.triple-point-venn .circle.sys  { left: 37%; top: 36%; background: rgba(70, 74, 82, 0.62); }
+.triple-point-venn .circle.soft { left: 63%; top: 36%; background: rgba(224, 162, 38, 0.60); }
+.triple-point-venn .circle.sci  { left: 50%; top: 64%; background: rgba(72, 110, 162, 0.55); }
+
+.triple-point-venn .domain {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Domain labels tinted to match their lobe. */
+.triple-point-venn .domain.systems  { left: 12%; top: 3%;  color: #464a52; }
+.triple-point-venn .domain.software { left: 88%; top: 3%;  color: var(--gold-deep); }
+.triple-point-venn .domain.science  { left: 50%; top: 95%; color: #2f567f; }
+
+.triple-point-venn .role-chip {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  padding: 0.16rem 0.6rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14);
+  z-index: 3;
+}
+
+/* The triple-point: AI is the dead-center chip (Geoffrey's seat). */
+.triple-point-venn .role-chip.is-center {
+  font-weight: 700;
+  font-size: 1.02rem;
+  color: var(--bg-ink);
+  background: var(--gold-bright);
+  border-color: var(--gold-deep);
+  box-shadow: 0 2px 9px rgba(0, 0, 0, 0.32);
+  z-index: 4;
 }
 
 /* --- zoo-logo-wall (Slide 6) — STUB (Phase 3) --- *

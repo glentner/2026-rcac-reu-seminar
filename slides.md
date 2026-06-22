@@ -238,6 +238,102 @@ prelude-rcac — supplied this session; confirm pillar wording if it should chan
 
 ---
 
+<div class="triple-point-venn">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>About Me</h1>
+<div class="subhead">Background and roles.</div>
+
+<div class="venn-grid">
+
+<div class="identity">
+<img class="headshot" src="/images/headshot.jpg" alt="Geoffrey Lentner" />
+<div class="who">
+<div class="name">Geoffrey Lentner</div>
+<div class="role">Principal AI Scientist · RCAC</div>
+<div class="contact">glentner@purdue.edu<br />rcac.purdue.edu/about/staff/glentner</div>
+</div>
+</div>
+
+<div class="venn-stage">
+<div class="circle sys"></div>
+<div class="circle sci"></div>
+<div class="circle soft"></div>
+<div class="domain systems">Systems</div>
+<div class="domain software">Software</div>
+<div class="domain science">Science</div>
+<div class="role-chip" style="left:31%; top:30%">HPC</div>
+<div class="role-chip" style="left:25%; top:47%">Facilitator</div>
+<div class="role-chip" style="left:50%; top:27%">Developer</div>
+<div class="role-chip" style="left:71%; top:30%">RSE</div>
+<div class="role-chip" style="left:78%; top:45%">Technologist</div>
+<div class="role-chip" style="left:72%; top:60%">Data Scientist</div>
+<div class="role-chip is-center" style="left:50%; top:46%">AI</div>
+<div class="role-chip" style="left:50%; top:64%">Educator</div>
+<div class="role-chip" style="left:50%; top:84%">Astrophysicist</div>
+</div>
+
+</div>
+
+<div class="page-num">04 / 24</div>
+
+</div>
+
+<!--
+[Slide 4 — About Me · systems · science · software triple-point (triple-point-venn) · 2:45–4:00 · must-tell]
+
+MY PERSPECTIVE IS THE ARGUMENT. The license to say "add complexity only when it
+earns its keep" comes from sitting at the TRIPLE-POINT of systems, science, and
+software — the "unicorn" facilitator who knows enough of each to translate
+between all three. THIS is the anti-grumpy-old-man anchor: an enthusiast at
+ease, not a novice complaining. In the new order this slide is the PAYOFF to the
+cold open — it answers "who is this person to mock that machine?" The gag earns
+the intro.
+
+The personal arc mirrors the talk's own Jupyter → scale-out journey:
+astrophysics → data-science-at-scale on HPC → full-stack RSE → now AI/agentic.
+Each step ADDED a domain without abandoning the last.
+
+LABEL MAP (last year's set, kept per Geoffrey): Systems lobe — HPC, Facilitator;
+Software lobe — RSE, Technologist, Data Scientist; Science lobe —
+Astrophysicist; Systems∩Software — Developer; lower-center (Science overlaps) —
+Educator; DEAD CENTER triple-point — AI.
+
+DESIGN DECISION (this session): AI sits at the dead-center triple-point (per
+last year + Geoffrey's current Principal-AI-Scientist seat), and Facilitator
+moves into the Systems lobe. This DIVERGES from OUTLINE §4 / THEME §9, which
+word the center as "facilitator / unicorn." The recurring line is preserved
+VERBALLY: I am the unicorn; the work that now lives at the center is AI. Flagged
+for an OUTLINE/THEME reconciliation — not silently edited.
+
+Beats:
+1. Land the Venn: triple-point job; fluent across all three, deepest in none.
+   RECURRING LINE: "the unicorn at the triple-point."
+2. Walk the personal arc fast (four stops), tying it to the talk's arc.
+3. Drop the earned-authority line — WARM, not boastful; "enthusiast first":
+   "I've been building and debugging these workflows since before Kubernetes,
+   before 'the cloud' was something you could buy — long enough to have strong
+   opinions, and long enough to have earned them."
+4. SET UP "make it purr" (love-of-craft counterweight, paid off on Slides 5/22).
+5. One-line promise of the payoff (a mental model for HOW MUCH machinery), then
+   hand off to the thesis.
+
+The old "four jobs of this talk" beat is NOT on this slide and is NOT recited —
+it survives only as a PRIVATE design constraint (show passion; survey the map;
+leave one portable rule; stay honest about scope).
+
+Transition → Slide 5 (Thesis): "So — here's the one sentence I want you to leave
+with."
+
+Delivery: MUST-TELL and the tone-setter. Warm, unhurried — this is NOT an Act-1
+firehose slide. ~60–90s. Headshot supplied this session (public/images/
+headshot.jpg); open_decisions: prelude-me → soft-resolved (labels confirmed by
+Geoffrey; AI-center divergence flagged above).
+-->
+
+---
+
 <div class="purdue-content">
 
 <img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="RCAC" />
