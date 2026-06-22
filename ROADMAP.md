@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "2"
 phases_completed: ["0", "1"]
-last_updated: "2026-06-22T16:56:07Z"
+last_updated: "2026-06-22T17:36:22Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -88,7 +88,7 @@ context:
 slides:
   - { id: "1",   beat: "Title (lean cover)",                       phase: "2", act: "1",    layout: "purdue-cover",        code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
   - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: ["perfection-meme"], note: "Composition (Geoffrey-approved): full-weight teetering HTML/CSS over-engineered stack (10 layers) whose dwarfed for-loop payload is the visual punchline; real meme (public/images/perfection.jpg) stamped as a v-click overlay = the verdict. Slidev exports the composited final frame to PDF. Speaker notes complete." }
-  - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: ["rcac-photo-cluster", "rcac-qr"] }
+  - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: ["headshot"] }
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "pending", assets: ["zoo-logo-set"] }
@@ -120,7 +120,7 @@ layouts:
   - { name: "purdue-fullbleed",    kind: "inherited", first_slide: "2",  status: "complete" }
   - { name: "closing-qr-row",      kind: "inherited", first_slide: "23", status: "complete", note: "ported as the .purdue-cover.is-closing variant" }
   # Six NEW custom layouts unique to this deck (OUTLINE §5)
-  - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "pending", note: "photo cluster + squiggle-boxed pillars" }
+  - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "complete", note: "photo cluster (machine-room aisle banner + rack + Fortress mural) + squiggle-boxed systems/science/software pillars + rcac.purdue.edu QR; squiggle = #rcac-squiggle feDisplacementMap on a border-only ::before" }
   - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "pending", note: "systems · science · software Venn; center = facilitator/unicorn" }
   - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "pending", note: "dense logo wall, size ≈ popularity; optional cascade/pile-up build" }
   - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "pending", note: "teetering over-engineered stack; Slide 10 = labeled re-render" }
@@ -131,7 +131,7 @@ layouts:
 open_decisions:
   - { id: "through-line",   summary: "Through-line example: fastq stays (decided, OUTLINE §REVIEW) — confirm analyze.sh naming for snippets 13–16, 20B", blocks: ["13", "14", "15", "16"], status: "soft-resolved" }
   - { id: "rcac-tiers",     summary: "Confirm exact RCAC storage tier names (Fortress / Data Depot / Scratch) + 6 trade-off axes labels", blocks: ["20A"], status: "open" }
-  - { id: "prelude-rcac",   summary: "Supply About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR; confirm squiggle-box pillars", blocks: ["3"], status: "open" }
+  - { id: "prelude-rcac",   summary: "About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR SUPPLIED + wired (public/images/rcac-*.jpg, public/qr/rcac.jpg); Slide 3 approved by Geoffrey. Pillars built as systems/science/software per OUTLINE — confirm final wording if it should change.", blocks: ["3"], status: "soft-resolved" }
   - { id: "prelude-me",     summary: "Supply headshot; redesign Venn labels onto systems·science·software triple-point", blocks: ["4"], status: "open" }
   - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
   - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "open" }
@@ -342,11 +342,13 @@ any real content lands. Verification gate: `build` + `export:pdf` green.
       teetering HTML/CSS stack + dwarfed for-loop payload, with the real meme
       (`public/images/perfection.jpg`) stamped as a v-click overlay; PDF
       exports the composite.*
-* [ ] **Slide 3 — About RCAC** (`about-rcac` custom). **compressible.**
+* [x] **Slide 3 — About RCAC** (`about-rcac` custom). **compressible.**
       **DoD:** photo cluster + squiggle-boxed systems/science/software
-      pillars; built to be cut to one sentence. *Blocked on
-      `open_decisions: prelude-rcac` for real assets — build with placeholders
-      if needed.*
+      pillars; built to be cut to one sentence. *Real assets supplied this
+      session (machine-room aisle / rack / Fortress mural + rcac.purdue.edu
+      QR), wired, and approved by Geoffrey; `prelude-rcac` → soft-resolved.
+      Title-wrap/spacing + RCAC-mark-size (14rem, matching content slides)
+      fixed in review.*
 * [ ] **Slide 4 — About Me / triple-point Venn** (`triple-point-venn`
       custom). **must-not-skip.** **DoD:** systems · science · software Venn,
       center = facilitator/unicorn; recurring line *"the unicorn at the
@@ -580,8 +582,8 @@ June 23, 2026, 11:00 ET**, Envision Center.
 ### Custom-layout-driven assets
 
 * ✓ `perfection-meme` — X-Men "Perfection" image → `public/images/perfection.jpg` (Slide 2 done; Slide 22 inversion still open) — *open_decisions: perfection-img*
-* ☐ `rcac-photo-cluster` — machine room / Fortress mural / rack (Slide 3) — *open_decisions: prelude-rcac*
-* ☐ `rcac-qr` — `rcac.purdue.edu` QR (Slide 3)
+* ✓ `rcac-photo-cluster` — machine room / Fortress mural / rack (Slide 3) → `public/images/rcac-{machine-room,rack,mural}.jpg` — *open_decisions: prelude-rcac*
+* ✓ `rcac-qr` — `rcac.purdue.edu` QR (Slide 3) → `public/qr/rcac.jpg`
 * ☐ `headshot` — About Me (Slide 4) — *open_decisions: prelude-me*
 * ☐ `zoo-logo-set` — grouped, size-by-popularity logo wall (Slide 6) — *open_decisions: zoo-set*
 * ☐ `qr-set` — Slide 23 QR row (HyperShell · PEARC'26 · rcac-mcp · globus-mcp · nf-core; cull to 4) — *open_decisions: qr-set*

@@ -49,11 +49,11 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 2). Slides 1–2 (Title; "Perfection" cold open)
-# below are REAL content per OUTLINE.md §4. The three slides that follow them
-# (purdue-content, purdue-overview, two-axis-ladder) are retained PHASE-1
-# SMOKE-TEST scaffolding — they keep dev/build/export green and are replaced
-# by their real slides as later phases land (content source of truth:
+# BUILD IN PROGRESS (Phase 2). Slides 1–3 (Title; "Perfection" cold open;
+# About RCAC) below are REAL content per OUTLINE.md §4. The three slides that
+# follow them (purdue-content, purdue-overview, two-axis-ladder) are retained
+# PHASE-1 SMOKE-TEST scaffolding — they keep dev/build/export green and are
+# replaced by their real slides as later phases land (content source of truth:
 # OUTLINE.md; build order: ROADMAP.md).
 # ─────────────────────────────────────────────────────────────────────────
 ---
@@ -168,6 +168,72 @@ tunable in styles/index.css (.cold-open-meme) if it hides too much of the
 tower. The full-weight stack here is deliberate; the serious, side-by-side
 academic-vs-industry re-render of the same idea is deferred to Slides 9–10
 (rube-goldberg-stack). Real meme is fair to use (private talk — see AGENTS.md).
+-->
+
+---
+
+<div class="about-rcac">
+
+<svg class="squiggle-def" aria-hidden="true" focusable="false"><filter id="rcac-squiggle" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.013" numOctaves="2" seed="7" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" /></filter></svg>
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Rosen Center for Advanced Computing</h1>
+<div class="subhead">Research computing &amp; data services at Purdue University.</div>
+
+<div class="about-grid">
+
+<div class="photo-cluster">
+<img class="ph-aisle" src="/images/rcac-machine-room.jpg" alt="RCAC machine-room aisle" />
+<img class="ph-rack" src="/images/rcac-rack.jpg" alt="RCAC staff at a compute rack" />
+<img class="ph-mural" src="/images/rcac-mural.jpg" alt="RCAC Fortress archive mural" />
+<div class="photo-caption">Inside RCAC: machine-room aisle · a rack · the Fortress archive mural.</div>
+</div>
+
+<div class="pillars">
+<div class="pillars-kicker">Where I sit</div>
+<div class="pillar"><div class="p-name">Systems</div><div class="p-desc">clusters · storage · networks</div></div>
+<div class="pillar"><div class="p-name">Science</div><div class="p-desc">domains · methods · data</div></div>
+<div class="pillar"><div class="p-name">Software</div><div class="p-desc">RSE · pipelines · agents</div></div>
+<div class="rcac-qr">
+<img src="/qr/rcac.jpg" alt="rcac.purdue.edu QR code" />
+<div class="qr-label"><strong>rcac.purdue.edu</strong><br />research computing at Purdue</div>
+</div>
+</div>
+
+</div>
+
+<div class="page-num">03 / 24</div>
+
+</div>
+
+<!--
+[Slide 3 — About RCAC · the center & where I sit (about-rcac) · 2:00–2:45 · compressible]
+
+Fast orientation to the Rosen Center for any community visitors — but really a
+SETUP for WHERE I FIT: a versatile member who cuts ACROSS the systems, science,
+and software teams. The pillars are scenery; the cross-cutting move (the three
+squiggle boxes) is the point, and it hands directly into About Me (Slide 4),
+where the same three domains become the triple-point Venn. Lands AFTER the gag,
+so it has momentum — keep the energy up; this is NOT a dead-stop corporate slide.
+Most compressible slide in the deck: if running long, one sentence and move on.
+
+Beats:
+1. One-liner on RCAC — "research computing and data services at Purdue: Top500
+   supercomputers, PB-scale storage, and, yes, this room — the Envision Center."
+2. Name the pillars fast, incl. the Envision Center nod ("we're standing in it").
+3. The real move: I don't live in one of these boxes — my job is to move BETWEEN
+   them (gesture at the three squiggle boxes). Hand off into About Me.
+4. REU framing, said openly — "most of you have heard the RCAC pitch already this
+   summer, so I'll be quick; this is really just to show you where I sit."
+
+Transition → Slide 4 (About Me): "That cross-cutting seat is the whole reason I
+see this the way I do — so, a bit more about me."
+
+Delivery: COMPRESSIBLE — first to cut. If short on time: "you know RCAC; here's
+where I sit," then straight to About Me. Assets are the ported PowerPoint photos
+(machine room / rack / Fortress mural) + the rcac.purdue.edu QR (open_decisions:
+prelude-rcac — supplied this session; confirm pillar wording if it should change).
 -->
 
 ---
