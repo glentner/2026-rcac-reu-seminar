@@ -1,9 +1,9 @@
 ---
 title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
-current_phase: "2"
-phases_completed: ["0", "1"]
-last_updated: "2026-06-22T18:45:00Z"
+current_phase: "3"
+phases_completed: ["0", "1", "2"]
+last_updated: "2026-06-22T19:09:59Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -90,7 +90,7 @@ slides:
   - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: ["perfection-meme"], note: "Composition (Geoffrey-approved): full-weight teetering HTML/CSS over-engineered stack (10 layers) whose dwarfed for-loop payload is the visual punchline; real meme (public/images/perfection.jpg) stamped as a v-click overlay = the verdict. Slidev exports the composited final frame to PDF. Speaker notes complete." }
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: ["headshot"], note: "Headshot supplied (public/images/headshot.jpg). Last year's label set kept (Geoffrey). Dead-center triple-point is AI (his current seat); Facilitator in the Systems lobe. 'unicorn at the triple-point' is a VERBAL device (Geoffrey is the unicorn; AI is the work at the center). OUTLINE §4 + THEME §9 updated to match — divergence RESOLVED. Venn enlarged + SCIENCE-label overlap fixed in review." }
-  - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
   - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "pending", assets: ["zoo-logo-set"] }
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -359,12 +359,15 @@ any real content lands. Verification gate: `build` + `export:pdf` green.
       the unicorn line is an explicitly **verbal** device. `OUTLINE.md` §4 +
       `THEME.md` §9 updated to match — prior DoD wording divergence
       **resolved**. Venn enlarged + SCIENCE-label overlap fixed in review.
-* [ ] **Slide 5 — Thesis card** (`purdue-overview`). **DoD:** the single
+* [x] **Slide 5 — Thesis card** (`purdue-overview`). **DoD:** the single
       thesis line *"start simple; add complexity only where it earns its
       keep"*; recurring lines *"does it earn its keep?"* + *"the simplest
       thing that works"* + *"make it purr"* framing; resolves the Slide 2
-      dangling question.
-* [ ] Commit(s): `WIP: Slide N — <beat>` (one per slide; resume contract #7)
+      dangling question. *Done — `purdue-overview` thesis card (lede + caption
+      `"…the simplest thing that works."`); all four recurring lines fire (lede
+      on-slide; the rest in speaker notes); resolves the Slide 2 cold-open
+      question and both failure modes named; build + export green.*
+* [x] Commit(s): `WIP: Slide N — <beat>` (one per slide; resume contract #7)
 
 **Checkpoint:** The opening must land cold — Geoffrey walks Slides 1–5 on the
 dev server. Gate: build + export green; `grep` confirms the triple-point and
@@ -644,4 +647,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-21T01:41:51Z*
+*Last updated: 2026-06-22T19:09:59Z*

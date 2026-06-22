@@ -49,12 +49,12 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 2). Slides 1–3 (Title; "Perfection" cold open;
-# About RCAC) below are REAL content per OUTLINE.md §4. The three slides that
-# follow them (purdue-content, purdue-overview, two-axis-ladder) are retained
-# PHASE-1 SMOKE-TEST scaffolding — they keep dev/build/export green and are
-# replaced by their real slides as later phases land (content source of truth:
-# OUTLINE.md; build order: ROADMAP.md).
+# BUILD IN PROGRESS (Phase 2 complete). Slides 1–5 (Title; "Perfection" cold
+# open; About RCAC; About Me; Thesis) below are REAL content per OUTLINE.md §4.
+# The single trailing slide (two-axis-ladder) is retained PHASE-1 SMOKE-TEST
+# scaffolding — it keeps dev/build/export green and proves the custom-layout
+# pipeline until the real Slides 12/19 land (Phases 4–5). Content source of
+# truth: OUTLINE.md; build order: ROADMAP.md.
 # ─────────────────────────────────────────────────────────────────────────
 ---
 
@@ -334,53 +334,58 @@ Geoffrey; AI-center divergence flagged above).
 
 ---
 
-<div class="purdue-content">
-
-<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="RCAC" />
-
-<h1>Content chrome</h1>
-<div class="subhead">The deck's workhorse layout — paper ground, gold rules.</div>
-
-This is the `purdue-content` layout: gold rule top and bottom, H1 + subhead
-upper-left, standard RCAC mark upper-right, page number lower-right.
-
-Real content slides (7, 8, 11, 13–18, 21, 22) use this layout in later phases.
-
-<div class="page-num">02 / placeholder</div>
-
-</div>
-
-<!--
-[Phase 1 smoke test — content (purdue-content)]
-
-Proves: the workhorse layout, gold rules, standard RCAC mark upper-right,
-page-number slot. Replaced by real content slides Phase 3 onward.
--->
-
----
-
 <div class="purdue-overview">
 
 <div class="section-label">Thesis</div>
 <div class="section-rule"></div>
 <div class="section-body">
 
-<div class="lede">Start simple; add complexity only where it earns its keep.</div>
+<div class="lede">Start simple. Add complexity only where it earns its keep.</div>
 
-<div class="caption">placeholder thesis card — proves the purdue-overview chrome.</div>
+<div class="caption">…the simplest thing that works.</div>
 
 </div>
 
-<div class="page-num">03 / placeholder</div>
+<div class="page-num">05 / 24</div>
 
 </div>
 
 <!--
-[Phase 1 smoke test — overview (purdue-overview)]
+[Slide 5 — Thesis card (purdue-overview) · 4:00–4:45 · section-divider beat]
 
-Proves: warm cream ground, large left section label, vertical rule, right
-lede + caption. This is the chrome Slide 5 (Thesis card) will use in Phase 2.
-The thesis line shown here is the real recurring line for grep continuity.
+THE ONE SENTENCE EVERYTHING HANGS ON — and the RESOLUTION of the cold open's
+unresolved question. Slide 2 asked "how do you tell necessary complexity from
+the absurd?"; this answers it. Framed as DISCIPLINE BORN OF LOVE FOR THE CRAFT,
+not distaste for it — the "purr" / rebuilt-engine image is the love-of-craft
+counterweight that keeps the whole talk on the enthusiast side (the
+anti-grumpy-old-man anchor).
+
+Beats:
+1. State the thesis, plainly, once — then let it sit. The card says it; you
+   don't have to over-explain. RECURRING LINE (thesis): "Start simple. Add
+   complexity only where it earns its keep." Pause.
+2. Resolve the cold open: "That's the answer to the question I left hanging
+   back on that teetering tower — how do you tell necessary complexity from
+   the absurd? You ask one question of every layer."
+   RECURRING LINE: "Does it earn its keep?"
+3. The counterweight (love of craft, NOT yelling at the cloud): "When a stack
+   is right, watching it run is like hearing a rebuilt engine turn over and
+   purr." RECURRING LINE: "make it purr." Name the trap: that satisfaction is
+   the temptation — it makes you want to add MORE than the problem needs.
+4. Name both failure modes briefly: under-engineering (manual, by-hand,
+   unrepeatable) and over-engineering (the Slide 2 monster). The craft is
+   finding the floor.
+5. Frame the rest of the talk: a VOCABULARY for naming complexity and a TOOL
+   for adding it deliberately. RECURRING LINE: "the simplest thing that works"
+   — planted here (caption), paid off as the walk-off on Slide 22.
+
+Transition → Slide 6 (The Zoo): "Now — before any advice — let me show you the
+whole zoo at once, so you see what we're up against."
+
+Delivery: SLOW DOWN. This is a section-divider beat — one clean idea on screen,
+said with conviction. Let the thesis sit in a beat of silence before you resolve
+the cold open. Resolves the Slide 2 dangling question; sets up the Slide 22
+inversion.
 -->
 
 ---
