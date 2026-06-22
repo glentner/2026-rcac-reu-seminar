@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "2"
 phases_completed: ["0", "1"]
-last_updated: "2026-06-21T04:26:33Z"
+last_updated: "2026-06-22T16:27:44Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -87,7 +87,7 @@ context:
 # "high-value, don't cut lightly" (OUTLINE §6) — captured via `high_value: true`, not must_not_skip.
 slides:
   - { id: "1",   beat: "Title (lean cover)",                       phase: "2", act: "1",    layout: "purdue-cover",        code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
-  - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "pending", assets: ["perfection-meme"] }
+  - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: ["perfection-meme"], note: "Composition (Geoffrey-approved): full-weight teetering HTML/CSS over-engineered stack (10 layers) whose dwarfed for-loop payload is the visual punchline; real meme (public/images/perfection.jpg) stamped as a v-click overlay = the verdict. Slidev exports the composited final frame to PDF. Speaker notes complete." }
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: ["headshot"] }
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -133,7 +133,7 @@ open_decisions:
   - { id: "rcac-tiers",     summary: "Confirm exact RCAC storage tier names (Fortress / Data Depot / Scratch) + 6 trade-off axes labels", blocks: ["20A"], status: "open" }
   - { id: "prelude-rcac",   summary: "Supply About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR; confirm squiggle-box pillars", blocks: ["3"], status: "open" }
   - { id: "prelude-me",     summary: "Supply headshot; redesign Venn labels onto systems·science·software triple-point", blocks: ["4"], status: "open" }
-  - { id: "perfection-img", summary: "Pick best X-Men \"Perfection\" meme image for cold open; decide minimal inversion render on Slide 22", blocks: ["2", "22"], status: "open" }
+  - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
   - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "open" }
   - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "open" }
   - { id: "qr-set",         summary: "Finalize Slide 23 QR set (5 proposed; cull to 4 if crowded) + canonical short URLs", blocks: ["23"], status: "open" }
@@ -334,11 +334,14 @@ any real content lands. Verification gate: `build` + `export:pdf` green.
 * [x] **Slide 1 — Title** (`purdue-cover`). Lean. Name + one positive line;
       cut fast to the gag. **DoD:** ~30s of content only; reverse RCAC mark;
       no agenda.
-* [ ] **Slide 2 — Cold open / "Perfection"** (`purdue-fullbleed`, no chrome).
+* [x] **Slide 2 — Cold open / "Perfection"** (`purdue-fullbleed`, no chrome).
       **must-not-skip · [BREATH].** **DoD:** meme image present (or
       placeholder if `open_decisions: perfection-img` still open); "...does
       the work of a `for` loop" punchline + unresolved-turn line in speaker
-      notes; minimal on-slide text (pure showmanship).
+      notes; minimal on-slide text (pure showmanship). *Done — full-weight
+      teetering HTML/CSS stack + dwarfed for-loop payload, with the real meme
+      (`public/images/perfection.jpg`) stamped as a v-click overlay; PDF
+      exports the composite.*
 * [ ] **Slide 3 — About RCAC** (`about-rcac` custom). **compressible.**
       **DoD:** photo cluster + squiggle-boxed systems/science/software
       pillars; built to be cut to one sentence. *Blocked on
@@ -576,7 +579,7 @@ June 23, 2026, 11:00 ET**, Envision Center.
 
 ### Custom-layout-driven assets
 
-* ☐ `perfection-meme` — best X-Men "Perfection" image (Slide 2; inversion on 22) — *open_decisions: perfection-img*
+* ✓ `perfection-meme` — X-Men "Perfection" image → `public/images/perfection.jpg` (Slide 2 done; Slide 22 inversion still open) — *open_decisions: perfection-img*
 * ☐ `rcac-photo-cluster` — machine room / Fortress mural / rack (Slide 3) — *open_decisions: prelude-rcac*
 * ☐ `rcac-qr` — `rcac.purdue.edu` QR (Slide 3)
 * ☐ `headshot` — About Me (Slide 4) — *open_decisions: prelude-me*

@@ -49,11 +49,12 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 2). Slide 1 (Title) below is REAL content per
-# OUTLINE.md §4. The three slides that follow it (purdue-content,
-# purdue-overview, two-axis-ladder) are retained PHASE-1 SMOKE-TEST scaffolding
-# — they keep dev/build/export green and are replaced by their real slides as
-# later phases land (content source of truth: OUTLINE.md; build order: ROADMAP.md).
+# BUILD IN PROGRESS (Phase 2). Slides 1–2 (Title; "Perfection" cold open)
+# below are REAL content per OUTLINE.md §4. The three slides that follow them
+# (purdue-content, purdue-overview, two-axis-ladder) are retained PHASE-1
+# SMOKE-TEST scaffolding — they keep dev/build/export green and are replaced
+# by their real slides as later phases land (content source of truth:
+# OUTLINE.md; build order: ROADMAP.md).
 # ─────────────────────────────────────────────────────────────────────────
 ---
 
@@ -94,6 +95,79 @@ Transition → Slide 2: "Before I tell you anything about me, let me show you my
 favorite cautionary tale."
 
 Delivery: ~30s, brisk.
+-->
+
+---
+
+<div class="purdue-fullbleed">
+
+<div class="cold-open">
+
+<div class="cold-open-stack">
+<div class="layer" style="--tilt:-1.4deg"><div class="l-tech">React dashboard</div><div class="l-role">single-page UI</div></div>
+<div class="layer" style="--tilt:1.1deg"><div class="l-tech">FastAPI · REST</div><div class="l-role">request layer</div></div>
+<div class="layer" style="--tilt:-0.9deg"><div class="l-tech">Keycloak · OAuth2</div><div class="l-role">auth gateway</div></div>
+<div class="layer" style="--tilt:1.5deg"><div class="l-tech">Airflow</div><div class="l-role">workflow scheduler</div></div>
+<div class="layer" style="--tilt:-1.2deg"><div class="l-tech">DAG definition</div><div class="l-role">dependency graph</div></div>
+<div class="layer" style="--tilt:0.8deg"><div class="l-tech">PostgreSQL</div><div class="l-role">metadata store</div></div>
+<div class="layer" style="--tilt:-1.5deg"><div class="l-tech">Redis + Celery</div><div class="l-role">broker + workers</div></div>
+<div class="layer" style="--tilt:1.3deg"><div class="l-tech">Kubernetes</div><div class="l-role">orchestration</div></div>
+<div class="layer" style="--tilt:-1.0deg"><div class="l-tech">Slurm</div><div class="l-role">HPC batch scheduler</div></div>
+<div class="layer" style="--tilt:1.4deg"><div class="l-tech">Apptainer</div><div class="l-role">containers</div></div>
+<div class="payload"><span class="p-label">…all to run</span><code>for sample in samples: analyze(sample)</code></div>
+</div>
+
+<img class="cold-open-meme" v-click src="/images/perfection.jpg" alt="X-Men “Perfection” meme" />
+
+<div class="fullbleed-disclosure">X-Men “Perfection” meme</div>
+
+</div>
+
+</div>
+
+<!--
+[Slide 2 — Cold open · the "Perfection" stack (purdue-fullbleed) · 0:30–2:00 · must-not-skip · [BREATH]]
+
+PURE SHOWMANSHIP. This comes FIRST — right after the title, before About
+RCAC / About Me. "Jump to the middle, then introduce yourself": hook first,
+credentials second. The gag can't lean on credibility it hasn't earned yet,
+so it works on the image alone — walk on, throw up an absurd machine, get the
+laugh. About Me (Slide 4) is the payoff: "...and here's why I get to make that
+joke." Tone: affection, not contempt — we laugh WITH the absurdity, never down
+at the people who build it.
+
+Beats:
+1. Walk the ridiculous stack top-to-bottom, out loud — let it get sillier:
+   "A web service controls a scheduler that maintains a DAG to spawn workers
+   via Slurm that spin up containers to run... a single Python function."
+2. The "Perfection" punchline: "It's beautiful. It's elegant. And it does the
+   exact work of a `for` loop."
+3. [BREATH] — let the laugh land before saying anything else.
+4. The Rube Goldberg warning: a workflow only its builder understands.
+5. The turn — plant the unresolved question; DON'T answer it yet: "Some of
+   this complexity is necessary. Most of it isn't. Today is about telling the
+   difference — but first, who am I to say that?"
+
+Transition → Slide 3 (About RCAC): "...so let me back up and tell you who's
+making that claim."
+
+Delivery: must-not-skip. Use the silence after "`for` loop." The unresolved
+turn is what makes stepping back to About RCAC/Me feel earned, not like a
+detour; the Thesis (Slide 5) is what finally resolves it.
+
+BUILD NOTE: this slide is a COMPOSITION, not a bare image (Geoffrey's call):
+a full-weight, teetering over-engineered stack (HTML/CSS only — no inline SVG,
+per the MDC hazard) that exists only to run one for-loop. The tiny payload at
+the base is the visual punchline — the whole tower vs. `for sample in samples`.
+The X-Men "Perfection" meme (public/images/perfection.jpg) is the VERDICT,
+stamped over the tower on a click (`v-click`). Live: let the stack breathe,
+walk it top-to-bottom getting sillier, then click at the punchline so the meme
+lands with the laugh. Export: Slidev renders the final click state, so the PDF
+shows the stack + meme composited. The meme position (centered overlay) is
+tunable in styles/index.css (.cold-open-meme) if it hides too much of the
+tower. The full-weight stack here is deliberate; the serious, side-by-side
+academic-vs-industry re-render of the same idea is deferred to Slides 9–10
+(rube-goldberg-stack). Real meme is fair to use (private talk — see AGENTS.md).
 -->
 
 ---
