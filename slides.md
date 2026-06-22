@@ -263,15 +263,15 @@ prelude-rcac — supplied this session; confirm pillar wording if it should chan
 <div class="domain systems">Systems</div>
 <div class="domain software">Software</div>
 <div class="domain science">Science</div>
-<div class="role-chip" style="left:31%; top:30%">HPC</div>
-<div class="role-chip" style="left:25%; top:47%">Facilitator</div>
-<div class="role-chip" style="left:50%; top:27%">Developer</div>
-<div class="role-chip" style="left:71%; top:30%">RSE</div>
-<div class="role-chip" style="left:78%; top:45%">Technologist</div>
-<div class="role-chip" style="left:72%; top:60%">Data Scientist</div>
-<div class="role-chip is-center" style="left:50%; top:46%">AI</div>
-<div class="role-chip" style="left:50%; top:64%">Educator</div>
-<div class="role-chip" style="left:50%; top:84%">Astrophysicist</div>
+<div class="role-chip" style="left:31%; top:29%">HPC</div>
+<div class="role-chip" style="left:25%; top:43%">Facilitator</div>
+<div class="role-chip" style="left:50%; top:25%">Developer</div>
+<div class="role-chip" style="left:71%; top:29%">RSE</div>
+<div class="role-chip" style="left:78%; top:42%">Technologist</div>
+<div class="role-chip" style="left:72%; top:54%">Data Scientist</div>
+<div class="role-chip is-center" style="left:50%; top:42%">AI</div>
+<div class="role-chip" style="left:50%; top:57%">Educator</div>
+<div class="role-chip" style="left:50%; top:77%">Astrophysicist</div>
 </div>
 
 </div>

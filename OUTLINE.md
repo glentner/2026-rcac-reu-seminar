@@ -330,11 +330,14 @@ RCAC; here's where I sit," then straight to About Me.
 
 **Visual:** Port the existing "About Me" slide — three-circle Venn
 (**Systems · Science · Software**) with role labels placed by overlap, headshot +
-name/contact on the left. **Redesign the labels** to map onto the three domains
-and the triple-point (center = *facilitator / the unicorn*; overlaps and
-single-domain anchors chosen to tell the systems↔science↔software story rather
-than list every job title). Final label set is a TODO. (Headshot + source image
-from Geoffrey; new "triple-point Venn" layout.)
+name/contact on the left. **Label set (locked — last year's, kept by Geoffrey):**
+*Systems* lobe — HPC, Facilitator; *Software* lobe — RSE, Technologist, Data
+Scientist; *Science* lobe — Astrophysicist; *Systems∩Software* — Developer;
+lower-center (toward Science) — Educator; **dead-center triple-point — AI**
+(Geoffrey's current Principal-AI-Scientist seat). The *"unicorn at the
+triple-point"* stays a **verbal** device: *I* am the unicorn who lives across all
+three; the work that now sits at the center is **AI**. (Headshot supplied by
+Geoffrey — `public/images/headshot.jpg`; new "triple-point Venn" layout.)
 **Transition:** *"So — here's the one sentence I want you to leave with."*
 **Delivery note:** **must-tell** and the tone-setter. Warm, unhurried — this is
 *not* an Act-1 firehose slide. ~60–90s.

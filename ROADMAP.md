@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "2"
 phases_completed: ["0", "1"]
-last_updated: "2026-06-22T18:30:00Z"
+last_updated: "2026-06-22T18:45:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -89,7 +89,7 @@ slides:
   - { id: "1",   beat: "Title (lean cover)",                       phase: "2", act: "1",    layout: "purdue-cover",        code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
   - { id: "2",   beat: "Cold open — the \"Perfection\" stack",      phase: "2", act: "1",    layout: "purdue-fullbleed",    code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: ["perfection-meme"], note: "Composition (Geoffrey-approved): full-weight teetering HTML/CSS over-engineered stack (10 layers) whose dwarfed for-loop payload is the visual punchline; real meme (public/images/perfection.jpg) stamped as a v-click overlay = the verdict. Slidev exports the composited final frame to PDF. Speaker notes complete." }
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: ["rcac-photo-cluster", "rcac-qr"] }
-  - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: ["headshot"], note: "Headshot supplied (public/images/headshot.jpg). Last year's label set kept (Geoffrey). DESIGN DIVERGENCE: dead-center triple-point is AI (his current seat), NOT 'facilitator/unicorn' as OUTLINE §4 / THEME §9 word it; Facilitator moved into the Systems lobe. 'unicorn at the triple-point' preserved in speaker notes. Flagged for OUTLINE/THEME reconciliation — pending Geoffrey." }
+  - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: ["headshot"], note: "Headshot supplied (public/images/headshot.jpg). Last year's label set kept (Geoffrey). Dead-center triple-point is AI (his current seat); Facilitator in the Systems lobe. 'unicorn at the triple-point' is a VERBAL device (Geoffrey is the unicorn; AI is the work at the center). OUTLINE §4 + THEME §9 updated to match — divergence RESOLVED. Venn enlarged + SCIENCE-label overlap fixed in review." }
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "pending", assets: ["zoo-logo-set"] }
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
@@ -121,7 +121,7 @@ layouts:
   - { name: "closing-qr-row",      kind: "inherited", first_slide: "23", status: "complete", note: "ported as the .purdue-cover.is-closing variant" }
   # Six NEW custom layouts unique to this deck (OUTLINE §5)
   - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "complete", note: "photo cluster (machine-room aisle banner + rack + Fortress mural) + squiggle-boxed systems/science/software pillars + rcac.purdue.edu QR; squiggle = #rcac-squiggle feDisplacementMap on a border-only ::before" }
-  - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "complete", note: "systems · science · software Venn; pure-CSS multiply-blend lobes (graphite/amber/slate) + opaque Franklin-Gothic role chips. Center chip is AI per Geoffrey (NOT facilitator/unicorn — see slide-4 registry note + OUTLINE/THEME reconciliation flag)." }
+  - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "complete", note: "systems · science · software Venn; pure-CSS multiply-blend lobes (graphite/amber/slate) + opaque Franklin-Gothic role chips. Center chip is AI per Geoffrey; OUTLINE §4 + THEME §9 updated to match. Circles 14rem on a 23rem stage; science lobe raised so the SCIENCE label clears it." }
   - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "pending", note: "dense logo wall, size ≈ popularity; optional cascade/pile-up build" }
   - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "pending", note: "teetering over-engineered stack; Slide 10 = labeled re-render" }
   - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "in_progress", note: "Phase-1 smoke-test stub renders 2 axis columns; Slide 12 preview + Slide 19 full ladder/gradient pending (Phases 4–5)" }
@@ -132,7 +132,7 @@ open_decisions:
   - { id: "through-line",   summary: "Through-line example: fastq stays (decided, OUTLINE §REVIEW) — confirm analyze.sh naming for snippets 13–16, 20B", blocks: ["13", "14", "15", "16"], status: "soft-resolved" }
   - { id: "rcac-tiers",     summary: "Confirm exact RCAC storage tier names (Fortress / Data Depot / Scratch) + 6 trade-off axes labels", blocks: ["20A"], status: "open" }
   - { id: "prelude-rcac",   summary: "About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR SUPPLIED + wired (public/images/rcac-*.jpg, public/qr/rcac.jpg); Slide 3 approved by Geoffrey. Pillars built as systems/science/software per OUTLINE — confirm final wording if it should change.", blocks: ["3"], status: "soft-resolved" }
-  - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built. Last year's label set kept (Geoffrey). OPEN sub-item: AI sits at the dead-center triple-point (per Geoffrey/last year), which diverges from OUTLINE §4 / THEME §9 wording 'center = facilitator/unicorn' — needs an OUTLINE/THEME wording reconciliation before Phase 7.", blocks: ["4"], status: "soft-resolved" }
+  - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built + reviewed. Last year's label set kept (Geoffrey); AI at the dead-center triple-point, Facilitator in the Systems lobe. OUTLINE §4 + THEME §9 updated to match — 'center = facilitator/unicorn' divergence RESOLVED (unicorn is now an explicitly VERBAL device).", blocks: ["4"], status: "resolved" }
   - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
   - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "open" }
   - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "open" }
@@ -354,12 +354,11 @@ any real content lands. Verification gate: `build` + `export:pdf` green.
       recurring line *"the unicorn at the triple-point"* (speaker notes);
       *"make it purr"* setup; earned-authority line in notes; the old "four
       jobs" beat is **NOT** on-slide (private constraint only). *Headshot
-      supplied + wired; last year's label set kept (Geoffrey).* **Divergence
-      from DoD:** the dead-center chip is **AI** (Geoffrey's current seat +
-      last year's arrangement), **not** "facilitator/unicorn" — Facilitator
-      moved into the Systems lobe; the unicorn line survives verbally.
-      Flagged for an `OUTLINE.md`/`THEME.md` reconciliation (see
-      `open_decisions: prelude-me`).
+      supplied + wired; last year's label set kept (Geoffrey).* **Center =
+      AI** (Geoffrey's current seat); Facilitator sits in the Systems lobe;
+      the unicorn line is an explicitly **verbal** device. `OUTLINE.md` §4 +
+      `THEME.md` §9 updated to match — prior DoD wording divergence
+      **resolved**. Venn enlarged + SCIENCE-label overlap fixed in review.
 * [ ] **Slide 5 — Thesis card** (`purdue-overview`). **DoD:** the single
       thesis line *"start simple; add complexity only where it earns its
       keep"*; recurring lines *"does it earn its keep?"* + *"the simplest

@@ -1022,9 +1022,9 @@ code, pre, .slidev-code {
 .triple-point-venn .venn-stage {
   position: relative;
   width: 100%;
-  /* Slightly shorter than the available area so the centered venn clears the
-   * bottom gold rule (SCIENCE label sat on the rule at 23rem). */
-  height: 20rem;
+  /* Taller stage uses the available vertical space (Geoffrey's review). The
+   * venn-grid centers it with clearance above the bottom gold rule. */
+  height: 23rem;
   /* Contain the multiply blend to the stage (over white). */
   isolation: isolate;
   background: var(--bg-paper);
@@ -1032,8 +1032,8 @@ code, pre, .slidev-code {
 
 .triple-point-venn .circle {
   position: absolute;
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 14rem;
+  height: 14rem;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   mix-blend-mode: multiply;
@@ -1041,10 +1041,12 @@ code, pre, .slidev-code {
   z-index: 1;
 }
 
-/* Three harmonized theme tints: graphite · slate-blue · warm amber. */
-.triple-point-venn .circle.sys  { left: 37%; top: 36%; background: rgba(70, 74, 82, 0.62); }
-.triple-point-venn .circle.soft { left: 63%; top: 36%; background: rgba(224, 162, 38, 0.60); }
-.triple-point-venn .circle.sci  { left: 50%; top: 64%; background: rgba(72, 110, 162, 0.55); }
+/* Three harmonized theme tints: graphite · slate-blue · warm amber.
+ * The science lobe is raised (top 58% → bottom edge ~88%) so the SCIENCE
+ * domain label below it no longer overlaps the circle stroke. */
+.triple-point-venn .circle.sys  { left: 37%; top: 33%; background: rgba(70, 74, 82, 0.62); }
+.triple-point-venn .circle.soft { left: 63%; top: 33%; background: rgba(224, 162, 38, 0.60); }
+.triple-point-venn .circle.sci  { left: 50%; top: 58%; background: rgba(72, 110, 162, 0.55); }
 
 .triple-point-venn .domain {
   position: absolute;
@@ -1057,9 +1059,9 @@ code, pre, .slidev-code {
 }
 
 /* Domain labels tinted to match their lobe. */
-.triple-point-venn .domain.systems  { left: 12%; top: 3%;  color: #464a52; }
-.triple-point-venn .domain.software { left: 88%; top: 3%;  color: var(--gold-deep); }
-.triple-point-venn .domain.science  { left: 50%; top: 95%; color: #2f567f; }
+.triple-point-venn .domain.systems  { left: 12%; top: 2%;  color: #464a52; }
+.triple-point-venn .domain.software { left: 88%; top: 2%;  color: var(--gold-deep); }
+.triple-point-venn .domain.science  { left: 50%; top: 94%; color: #2f567f; }
 
 .triple-point-venn .role-chip {
   position: absolute;

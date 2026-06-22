@@ -212,9 +212,15 @@ per-slide), matched in optical weight to the inherited layouts.
   compress to one sentence if time slips. *Assets + final pillar wording
   blocked on `open_decisions: prelude-rcac`; build with labeled placeholders.*
 * **`triple-point-venn`** (Slide 4) — a **systems · science · software** Venn;
-  the center triple-point is the **facilitator / unicorn**. Carries the
-  recurring line *"the unicorn at the triple-point."* *Headshot + final label
-  set blocked on `open_decisions: prelude-me`.*
+  the dead-center triple-point chip is **AI** (Geoffrey's current
+  Principal-AI-Scientist seat), with **Facilitator** in the Systems lobe.
+  Carries the recurring line *"the unicorn at the triple-point"* as a
+  **verbal** device — *Geoffrey* is the unicorn across all three; **AI** is the
+  work now at the center. Three harmonized theme tints (graphite Systems ·
+  amber Software · slate-blue Science) blended with `mix-blend-mode: multiply`;
+  opaque Franklin-Gothic role chips placed by lobe. *Headshot supplied
+  (`public/images/headshot.jpg`); label set locked to last year's (see
+  OUTLINE §4 Slide 4).*
 * **`zoo-logo-wall`** (Slide 6) — a **dense logo wall** grouped by layer, with
   **size ≈ popularity**; optional cascade / pile-up build. Real brand logos
   are fair to use (private talk). *Scenery — minimal on-slide text; do not
@@ -292,8 +298,9 @@ ledger and Asset Checklist. The full list lives in `OUTLINE.md` §8 /
   ever committed.
 * **Supply** the prelude assets (`open_decisions: prelude-rcac`,
   `prelude-me`): About RCAC photo cluster + `rcac.purdue.edu` QR; About Me
-  headshot; finalize the squiggle-box pillars and the triple-point Venn
-  labels. Build with labeled placeholders until supplied.
+  headshot. *Both supplied + wired; Slides 3–4 built. Triple-point Venn label
+  set is locked (last year's; AI at center — see §9 + OUTLINE §4 Slide 4).
+  Confirm the squiggle-box pillar wording only if it should change.*
 * **Lock** the `perfection-meme` image (Slides 2 / 22 inversion), the
   `zoo-logo-set` (grouping + size-by-popularity + cascade vs. single reveal),
   the RCAC storage-tier names + 6 trade-off axes (Slide 20A), and the
