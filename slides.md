@@ -410,6 +410,8 @@ inversion.
 <span class="zoo-chip" style="--pop:2">PBS / Torque</span>
 <span class="zoo-chip" style="--pop:1">LSF</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/slurm.svg" alt="Slurm" style="left:87%; top:30%; width:2.6rem; --rot:-6deg" />
+<img class="zoo-logo" src="/images/zoo/kubernetes.svg" alt="Kubernetes" style="left:84%; top:66%; width:2.7rem; --rot:5deg" />
 </div>
 
 <div class="zoo-group g-exec">
@@ -422,6 +424,8 @@ inversion.
 <span class="zoo-chip" style="--pop:2">Parsl</span>
 <span class="zoo-chip" style="--pop:1">Globus Compute</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/dask.svg" alt="Dask" style="left:87%; top:30%; width:2.8rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/hypershell.png" alt="HyperShell" style="left:85%; top:62%; width:2.9rem; --rot:-5deg" />
 </div>
 
 <div class="zoo-group g-orch">
@@ -435,6 +439,9 @@ inversion.
 <span class="zoo-chip" style="--pop:1">Cromwell / CWL</span>
 <span class="zoo-chip" style="--pop:1">Globus Flows</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/airflow.svg" alt="Apache Airflow" style="left:17%; top:66%; width:3rem; --rot:-4deg" />
+<img class="zoo-logo" src="/images/zoo/nextflow.png" alt="Nextflow" style="left:58%; top:60%; width:6.5rem; --rot:2deg" />
+<img class="zoo-logo" src="/images/zoo/snakemake.png" alt="Snakemake" style="left:46%; top:85%; width:6.5rem; --rot:-3deg" />
 </div>
 
 </div>
@@ -448,6 +455,7 @@ inversion.
 <span class="zoo-chip" style="--pop:2">Apptainer</span>
 <span class="zoo-chip" style="--pop:1">Podman</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/docker.svg" alt="Docker" style="left:80%; top:44%; width:3rem; --rot:5deg" />
 </div>
 
 <div class="zoo-group g-data">
@@ -456,6 +464,7 @@ inversion.
 <span class="zoo-chip" style="--pop:3">Globus</span>
 <span class="zoo-chip" style="--pop:2">rsync</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/globus.png" alt="Globus" style="left:58%; top:62%; width:5rem; --rot:-2deg" />
 </div>
 
 <div class="zoo-group g-lang">
@@ -467,6 +476,8 @@ inversion.
 <span class="zoo-chip" style="--pop:1">Julia</span>
 <span class="zoo-chip" style="--pop:1">MATLAB</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/python.svg" alt="Python" style="left:85%; top:32%; width:2.4rem; --rot:-6deg" />
+<img class="zoo-logo" src="/images/zoo/matlab.svg" alt="MATLAB" style="left:70%; top:68%; width:2.5rem; --rot:5deg" />
 </div>
 
 <div class="zoo-group g-obsv">
@@ -476,13 +487,14 @@ inversion.
 <span class="zoo-chip" style="--pop:2">Grafana / Prometheus</span>
 <span class="zoo-chip" style="--pop:1">logs + cron</span>
 </div>
+<img class="zoo-logo" src="/images/zoo/datadog.svg" alt="Datadog" style="left:85%; top:48%; width:2.4rem; --rot:5deg" />
 </div>
 
 </div>
 
 </div>
 
-<div class="zoo-disclosure">Placeholder marks — final brand-logo set pending.</div>
+<div class="zoo-disclosure">Logos are trademarks of their respective projects.</div>
 
 <div class="page-num">06 / 24</div>
 

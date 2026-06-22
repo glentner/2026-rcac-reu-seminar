@@ -1220,9 +1220,13 @@ code, pre, .slidev-code {
 }
 
 /* A layer cluster: faint tinted wash + matching border; the dot color (--mark)
- * also tints the faint layer label so the grouping reads on a second look. */
+ * also tints the faint layer label so the grouping reads on a second look.
+ * position:relative so the floating .zoo-logo "stickers" anchor to the group
+ * (overflow stays visible, so a sticker may spill over the box edge — the
+ * intended "zoo" overlay look). */
 .zoo-logo-wall .zoo-group {
   --mark: var(--gold-deep);
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
@@ -1258,6 +1262,13 @@ code, pre, .slidev-code {
   flex: 1;
 }
 
+/* Orchestration is the tall (two-row) group; push its chips to the TOP so the
+ * freed lower space holds the Airflow / Nextflow / Snakemake floating marks
+ * (Geoffrey's review note). */
+.zoo-logo-wall .zoo-group.g-orch .zoo-chips {
+  align-content: flex-start;
+}
+
 /* A single tool "mark." Placeholder = text + a per-layer tint dot; size ≈
  * popularity via --pop (1 small … 4 large). Swap the text for an <img> mark
  * when the logo set lands (open_decisions: zoo-set). */
@@ -1285,6 +1296,23 @@ code, pre, .slidev-code {
   border-radius: 50%;
   background: var(--mark);
   flex: none;
+}
+
+/* Floating brand-logo "stickers" (the real zoo). Each <img class="zoo-logo">
+ * lives inside its layer group and is placed by inline left/top (the anchor is
+ * the logo's CENTER, via translate(-50%,-50%)) with a per-logo width + slight
+ * --rot tilt. They sit ABOVE the chips and may overlap the boxes — deliberate
+ * "float it overtop near the area" look (Geoffrey). pointer-events:none so they
+ * never trap clicks; drop-shadow lifts them off the paper. */
+.zoo-logo-wall .zoo-logo {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(var(--rot, 0deg));
+  transform-origin: center;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.22));
+  z-index: 6;
 }
 
 /* --- rube-goldberg-stack (Slides 9, 10) — STUB (Phase 3) --- *
