@@ -1090,14 +1090,201 @@ code, pre, .slidev-code {
   z-index: 4;
 }
 
-/* --- zoo-logo-wall (Slide 6) — STUB (Phase 3) --- *
- * Dense logo wall grouped by layer, size ≈ popularity. [BREATH] scenery. */
+/* --- zoo-logo-wall (Slide 6) — Phase 3 --- *
+ * Dense logo wall grouped by layer, size ≈ popularity. [BREATH] scenery:
+ * the density IS the message, so the wall fills the slide and the chrome
+ * stays quiet (content-family gold rules + RCAC mark + page number). A quiet
+ * TWO-AXIS FORESHADOW (axes intentionally UNLABELED — the labeled reveal is
+ * Slide 12): the executor/scale family (schedulers + executors) clusters on
+ * the LEFT, the orchestration/DSL family on the RIGHT, with the cross-cutting
+ * layers (containers · data · languages · observability) as a bottom strip.
+ *
+ * PLACEHOLDER STATE (open_decisions: zoo-set — OPEN): the real brand-logo set
+ * is not yet locked, so each tool is a text "mark" chip with a per-layer tint
+ * dot. When the logo set lands, swap each .zoo-chip's text for an <img> mark;
+ * the grid + size≈popularity (--pop) scaffolding stays. HTML/CSS only — no
+ * inline SVG (MDC blank-line hazard). */
 .zoo-logo-wall {
   position: relative;
   background: var(--bg-paper);
   color: var(--ink);
   height: 100%;
   padding: 3.25rem 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.zoo-logo-wall::before {
+  /* Top gold rule (content-family chrome). */
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.zoo-logo-wall::after {
+  /* Bottom gold rule. */
+  content: '';
+  position: absolute;
+  bottom: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.zoo-logo-wall h1 {
+  font-size: 1.9rem;
+  margin: 0 0 0.15rem;
+  line-height: 1.1;
+  /* Leave room for the upper-right RCAC mark; keep the title to one line. */
+  max-width: calc(100% - 13rem);
+}
+
+.zoo-logo-wall .subhead {
+  color: var(--ink-subhead);
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.zoo-logo-wall .rcac-mark {
+  position: absolute;
+  top: 1.9rem;
+  right: 3rem;
+  max-width: 14rem;
+}
+
+.zoo-logo-wall .page-num {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* Whisper-quiet placeholder provenance, lower-left (clears the page number). */
+.zoo-logo-wall .zoo-disclosure {
+  position: absolute;
+  left: 3rem;
+  bottom: 1.5rem;
+  font-size: 0.6rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* MDC guards: dissolve prose <p> wrappers so the flex/grid children lay out. */
+.zoo-logo-wall > p,
+.zoo-logo-wall .zoo-wall > p,
+.zoo-logo-wall .zoo-top > p,
+.zoo-logo-wall .zoo-bottom > p,
+.zoo-logo-wall .zoo-group > p,
+.zoo-logo-wall .zoo-chips > p {
+  display: contents;
+}
+
+/* The wall fills the space below the header: an executor (left) / orchestration
+ * (right) top grid over a cross-cutting bottom strip. */
+.zoo-logo-wall .zoo-wall {
+  flex: 1;
+  min-height: 0;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zoo-logo-wall .zoo-top {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "sched orch"
+    "exec  orch";
+  gap: 0.5rem;
+}
+
+.zoo-logo-wall .zoo-bottom {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.zoo-logo-wall .zoo-bottom .zoo-group {
+  flex: 1;
+}
+
+/* A layer cluster: faint tinted wash + matching border; the dot color (--mark)
+ * also tints the faint layer label so the grouping reads on a second look. */
+.zoo-logo-wall .zoo-group {
+  --mark: var(--gold-deep);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem 0.5rem;
+  border-radius: 8px;
+  background: rgba(141, 111, 61, 0.05);
+  border: 1px solid rgba(141, 111, 61, 0.20);
+}
+
+.zoo-logo-wall .zoo-group.g-sched { grid-area: sched; --mark: #464a52; background: rgba(70, 74, 82, 0.06);   border-color: rgba(70, 74, 82, 0.22); }
+.zoo-logo-wall .zoo-group.g-exec  { grid-area: exec;  --mark: #8d6f3d; background: rgba(141, 111, 61, 0.07); border-color: rgba(141, 111, 61, 0.26); }
+.zoo-logo-wall .zoo-group.g-orch  { grid-area: orch;  --mark: #2f567f; background: rgba(47, 86, 127, 0.06);  border-color: rgba(47, 86, 127, 0.22); }
+.zoo-logo-wall .zoo-group.g-cont  { --mark: #8a5a86; background: rgba(138, 90, 134, 0.06); border-color: rgba(138, 90, 134, 0.22); }
+.zoo-logo-wall .zoo-group.g-data  { --mark: #3f7d6b; background: rgba(63, 125, 107, 0.06); border-color: rgba(63, 125, 107, 0.22); }
+.zoo-logo-wall .zoo-group.g-lang  { --mark: #9a6a2f; background: rgba(154, 106, 47, 0.06); border-color: rgba(154, 106, 47, 0.22); }
+.zoo-logo-wall .zoo-group.g-obsv  { --mark: #a14e4e; background: rgba(161, 78, 78, 0.06);   border-color: rgba(161, 78, 78, 0.22); }
+
+.zoo-logo-wall .zoo-layer {
+  font-size: 0.5rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--mark);
+  opacity: 0.85;
+}
+
+.zoo-logo-wall .zoo-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+/* A single tool "mark." Placeholder = text + a per-layer tint dot; size ≈
+ * popularity via --pop (1 small … 4 large). Swap the text for an <img> mark
+ * when the logo set lands (open_decisions: zoo-set). */
+.zoo-logo-wall .zoo-chip {
+  --pop: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: calc(0.1rem + var(--pop) * 0.05rem) calc(0.3rem + var(--pop) * 0.12rem);
+  font-size: calc(0.55rem + var(--pop) * 0.12rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ink);
+  background: var(--bg-paper);
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+  white-space: nowrap;
+}
+
+.zoo-logo-wall .zoo-chip::before {
+  content: '';
+  width: calc(0.3rem + var(--pop) * 0.06rem);
+  height: calc(0.3rem + var(--pop) * 0.06rem);
+  border-radius: 50%;
+  background: var(--mark);
+  flex: none;
 }
 
 /* --- rube-goldberg-stack (Slides 9, 10) — STUB (Phase 3) --- *

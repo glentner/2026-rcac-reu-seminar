@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "3"
 phases_completed: ["0", "1", "2"]
-last_updated: "2026-06-22T19:09:59Z"
+last_updated: "2026-06-22T22:32:36Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -91,7 +91,7 @@ slides:
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: ["headshot"], note: "Headshot supplied (public/images/headshot.jpg). Last year's label set kept (Geoffrey). Dead-center triple-point is AI (his current seat); Facilitator in the Systems lobe. 'unicorn at the triple-point' is a VERBAL device (Geoffrey is the unicorn; AI is the work at the center). OUTLINE §4 + THEME §9 updated to match — divergence RESOLVED. Venn enlarged + SCIENCE-label overlap fixed in review." }
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
-  - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "pending", assets: ["zoo-logo-set"] }
+  - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "blocked", assets: ["zoo-logo-set"], note: "BUILT with PLACEHOLDER marks — zoo-logo-wall layout + all 7 layer groups (schedulers/executors/orchestration/containers/data/languages/observability), size≈popularity (--pop), quiet two-axis foreshadow (executor-left/orchestration-right, axes unlabeled). Status blocked (not complete) only on open_decisions: zoo-set — swap text .zoo-chip for <img> brand marks when the logo set + cascade-vs-single-reveal are locked; grid + --pop scaffolding stays. Speaker notes complete (shared-pain turn + [BREATH])." }
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "9",   beat: "Anatomy of an over-engineered workflow",   phase: "3", act: "1",    layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -122,7 +122,7 @@ layouts:
   # Six NEW custom layouts unique to this deck (OUTLINE §5)
   - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "complete", note: "photo cluster (machine-room aisle banner + rack + Fortress mural) + squiggle-boxed systems/science/software pillars + rcac.purdue.edu QR; squiggle = #rcac-squiggle feDisplacementMap on a border-only ::before" }
   - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "complete", note: "systems · science · software Venn; pure-CSS multiply-blend lobes (graphite/amber/slate) + opaque Franklin-Gothic role chips. Center chip is AI per Geoffrey; OUTLINE §4 + THEME §9 updated to match. Circles 14rem on a 23rem stage; science lobe raised so the SCIENCE label clears it." }
-  - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "pending", note: "dense logo wall, size ≈ popularity; optional cascade/pile-up build" }
+  - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "complete", note: "dense logo wall grouped by layer, size ≈ popularity (--pop chip scale); content-family chrome (gold rules + RCAC mark + page-num); executor-left / orchestration-right two-axis foreshadow (axes unlabeled) + cross-cutting bottom strip. PLACEHOLDER text marks until open_decisions: zoo-set (img swap is per-chip; optional cascade/pile-up build deferred with the asset decision)." }
   - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "pending", note: "teetering over-engineered stack; Slide 10 = labeled re-render" }
   - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "in_progress", note: "Phase-1 smoke-test stub renders 2 axis columns; Slide 12 preview + Slide 19 full ladder/gradient pending (Phases 4–5)" }
   - { name: "storage-tier",        kind: "custom",    first_slide: "20A", status: "pending", note: "6-property trade-off cloud + cold→warm→hot tier ladder" }
@@ -134,7 +134,7 @@ open_decisions:
   - { id: "prelude-rcac",   summary: "About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR SUPPLIED + wired (public/images/rcac-*.jpg, public/qr/rcac.jpg); Slide 3 approved by Geoffrey. Pillars built as systems/science/software per OUTLINE — confirm final wording if it should change.", blocks: ["3"], status: "soft-resolved" }
   - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built + reviewed. Last year's label set kept (Geoffrey); AI at the dead-center triple-point, Facilitator in the Systems lobe. OUTLINE §4 + THEME §9 updated to match — 'center = facilitator/unicorn' divergence RESOLVED (unicorn is now an explicitly VERBAL device).", blocks: ["4"], status: "resolved" }
   - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
-  - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "open" }
+  - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "open", note: "Slide 6 BUILT with placeholder text marks (per-layer tint dots, size≈popularity); layout grouping + weighting implemented per OUTLINE §4. Remaining: lock the real brand-logo set + grouping sign-off + cascade-vs-single-reveal, then swap each .zoo-chip text for an <img> mark." }
   - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "open" }
   - { id: "qr-set",         summary: "Finalize Slide 23 QR set (5 proposed; cull to 4 if crowded) + canonical short URLs", blocks: ["23"], status: "open" }
 ---
@@ -384,10 +384,13 @@ labeled on 10).
 
 **Outline reference:** `OUTLINE.md` §4, Slides 6–11.
 
-* [ ] **Slide 6 — The Zoo** (`zoo-logo-wall` custom). **[BREATH] ·
+* [x] **Slide 6 — The Zoo** (`zoo-logo-wall` custom). **[BREATH] ·
       compressible.** **DoD:** dense logo wall grouped by layer, size ≈
       popularity; shared-pain turn line in notes; *scenery — do not narrate
-      logos*; minimal on-slide text. *Blocked on `open_decisions: zoo-set`.*
+      logos*; minimal on-slide text. *Built with **placeholder** text marks;
+      registry `status: blocked` on `open_decisions: zoo-set` (real brand
+      logos + cascade-vs-single-reveal still to lock). Layout, layer grouping,
+      size≈popularity, two-axis foreshadow, and speaker notes are done.*
 * [ ] **Slide 7 — On-ramp: capability vs. capacity** (`purdue-content`).
       **compressible.** **DoD:** monolith vs. layered-stack two-panel; previews
       the layer vocabulary; undergrad on-ramp.
@@ -592,7 +595,7 @@ June 23, 2026, 11:00 ET**, Envision Center.
 * ✓ `rcac-photo-cluster` — machine room / Fortress mural / rack (Slide 3) → `public/images/rcac-{machine-room,rack,mural}.jpg` — *open_decisions: prelude-rcac*
 * ✓ `rcac-qr` — `rcac.purdue.edu` QR (Slide 3) → `public/qr/rcac.jpg`
 * ✓ `headshot` — About Me (Slide 4) → `public/images/headshot.jpg` — *open_decisions: prelude-me*
-* ☐ `zoo-logo-set` — grouped, size-by-popularity logo wall (Slide 6) — *open_decisions: zoo-set*
+* ☐ `zoo-logo-set` — grouped, size-by-popularity logo wall (Slide 6); *placeholder text marks wired — awaiting the real brand-logo set* — *open_decisions: zoo-set*
 * ☐ `qr-set` — Slide 23 QR row (HyperShell · PEARC'26 · rcac-mcp · globus-mcp · nf-core; cull to 4) — *open_decisions: qr-set*
 
 ### Project scaffolding (Phase 1)
@@ -647,4 +650,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-22T19:09:59Z*
+*Last updated: 2026-06-22T22:32:36Z*

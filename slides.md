@@ -390,6 +390,150 @@ inversion.
 
 ---
 
+<div class="zoo-logo-wall">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>The Zoo</h1>
+<div class="subhead">Workflow tooling, all at once.</div>
+
+<div class="zoo-wall">
+
+<div class="zoo-top">
+
+<div class="zoo-group g-sched">
+<div class="zoo-layer">Schedulers</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:4">Slurm</span>
+<span class="zoo-chip" style="--pop:4">Kubernetes</span>
+<span class="zoo-chip" style="--pop:2">HTCondor</span>
+<span class="zoo-chip" style="--pop:2">PBS / Torque</span>
+<span class="zoo-chip" style="--pop:1">LSF</span>
+</div>
+</div>
+
+<div class="zoo-group g-exec">
+<div class="zoo-layer">Executors · scale</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:4">Dask</span>
+<span class="zoo-chip" style="--pop:3">Ray</span>
+<span class="zoo-chip" style="--pop:2">GNU Parallel</span>
+<span class="zoo-chip" style="--pop:2">HyperShell</span>
+<span class="zoo-chip" style="--pop:2">Parsl</span>
+<span class="zoo-chip" style="--pop:1">Globus Compute</span>
+</div>
+</div>
+
+<div class="zoo-group g-orch">
+<div class="zoo-layer">Orchestration · DAG</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:4">Airflow</span>
+<span class="zoo-chip" style="--pop:3">GNU Make</span>
+<span class="zoo-chip" style="--pop:3">Nextflow</span>
+<span class="zoo-chip" style="--pop:3">Snakemake</span>
+<span class="zoo-chip" style="--pop:2">Luigi</span>
+<span class="zoo-chip" style="--pop:1">Cromwell / CWL</span>
+<span class="zoo-chip" style="--pop:1">Globus Flows</span>
+</div>
+</div>
+
+</div>
+
+<div class="zoo-bottom">
+
+<div class="zoo-group g-cont">
+<div class="zoo-layer">Containers</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:4">Docker</span>
+<span class="zoo-chip" style="--pop:2">Apptainer</span>
+<span class="zoo-chip" style="--pop:1">Podman</span>
+</div>
+</div>
+
+<div class="zoo-group g-data">
+<div class="zoo-layer">Data movement</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:3">Globus</span>
+<span class="zoo-chip" style="--pop:2">rsync</span>
+</div>
+</div>
+
+<div class="zoo-group g-lang">
+<div class="zoo-layer">Languages</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:4">Python</span>
+<span class="zoo-chip" style="--pop:2">Bash</span>
+<span class="zoo-chip" style="--pop:2">R</span>
+<span class="zoo-chip" style="--pop:1">Julia</span>
+<span class="zoo-chip" style="--pop:1">MATLAB</span>
+</div>
+</div>
+
+<div class="zoo-group g-obsv">
+<div class="zoo-layer">Observability</div>
+<div class="zoo-chips">
+<span class="zoo-chip" style="--pop:2">Datadog</span>
+<span class="zoo-chip" style="--pop:2">Grafana / Prometheus</span>
+<span class="zoo-chip" style="--pop:1">logs + cron</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="zoo-disclosure">Placeholder marks — final brand-logo set pending.</div>
+
+<div class="page-num">06 / 24</div>
+
+</div>
+
+<!--
+[Slide 6 — The Zoo · a literal logo-wall (zoo-logo-wall) · 4:45–5:45 · Act-1 climax · [BREATH]]
+
+THE IMPRESS. The whole talk is "impress, then walk it back" — this is the
+impress, and it must actually OVERWHELM. The density IS the message: gesture at
+the wall, do NOT read or narrate logos. ~60–75s. The high-water mark of Act-1
+density; right after this we begin sorting.
+
+Beats:
+1. Let the wall land. [BREATH] — ~3s of silence; let it overwhelm.
+2. Gesture, don't read: "this is the zoo."
+3. SHARED-PAIN TURN (the early de-risk of the Slide 11 merchants beat): "Every
+   one of these is a real, capable tool somebody swears by — and, honestly,
+   several of them are the bane of my existence. Yours too, someday."
+4. Honest setup: "I can't cover all of this — nobody could in half an hour. So
+   I'm going to give you a way to THINK about all of it, then go deep on a
+   couple of slices."
+5. Foreshadow (don't teach): "It looks like chaos. It isn't. By the end you'll
+   be able to drop any logo on this wall — even one I've never heard of — into
+   the right box."
+
+Arrangement carries meaning (rewards a second look): grouped by layer, size ≈
+popularity, with a quiet two-axis FORESHADOW — the executor/scale family
+(schedulers + executors) on the LEFT, orchestration/DSL on the RIGHT, axes
+deliberately UNLABELED (the labeled reveal is Slide 12). The cross-cutting
+layers (containers · data · languages · observability) sit along the bottom.
+Bias owned up front: weighted toward what researchers actually run on our HPC.
+
+Transition → Slide 7 (On-ramp): "It looks like chaos. It isn't. Let me give you
+the ground-clearing first, then start sorting this wall."
+
+Delivery: SCENERY, not tour. The [BREATH] after the reveal is load-bearing —
+the silence IS the impress. Resist narrating logos.
+
+BUILD NOTE (open_decisions: zoo-set — OPEN): the tool set, layer grouping, and
+size≈popularity weighting are implemented, but the marks are PLACEHOLDER text
+chips with per-layer tint dots, not the final brand logos. When the logo set +
+grouping + cascade-vs-single-reveal are locked, swap each .zoo-chip's text for
+an <img> brand mark — the grid + size≈popularity scaffolding stays. A
+cascade/pile-up build (density visibly accumulating) is an optional enhancement
+deferred with the asset decision. HTML/CSS chips only — no inline SVG (MDC
+blank-line hazard).
+-->
+
+---
+
 <div class="two-axis-ladder">
 
 <h1>Two axes, not one ladder</h1>
