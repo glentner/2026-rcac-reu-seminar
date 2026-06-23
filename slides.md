@@ -1041,3 +1041,75 @@ show the rungs are a CHOSEN SUBSET, not the whole field. HTML/CSS only — no
 inline SVG (MDC hazard). Slide 19 reuses this layout with the .is-full
 gradient (Phase 5).
 -->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>The humblest workflow: a loop</h1>
+<div class="subhead">For a few dozen independent tasks, this is the right answer — full stop.</div>
+
+<div class="axis-tag" style="--c:#2c7a8c"><span class="at-label">Axis 1 · Executor / scale</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot"></span><span class="at-dot"></span><span class="at-dot"></span></span><span class="at-rung">the bash loop</span></div>
+
+<div class="code-terminal">
+<div class="ct-bar"><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-title">bash</span></div>
+<div class="ct-body">
+<div class="ct-line"><span class="ct-prompt">$</span>for s in samples/*.fastq; do</div>
+<div class="ct-line"><span class="ct-cont">&gt;</span>    ./analyze.sh "$s" &gt; "results/$(basename "$s").out"</div>
+<div class="ct-line"><span class="ct-cont">&gt;</span>done</div>
+</div>
+</div>
+
+<div class="climb-cue">It holds until you want — say — <strong>8 at a time</strong> without melting your laptop. Then you're hand-rolling a job pool.</div>
+
+<div class="page-num">13 / 24</div>
+
+</div>
+
+<!--
+[Slide 13 — Axis 1 · the bash loop · THE FLOOR (purdue-content · terminal aesthetic) · 12:15–13:00 · Act-2 · SCENERY · fast]
+
+THE FIRST RUNG and the start of the executor climb. The snippet is SCENERY —
+gesture at it, do NOT read it. The keeper is the HUMILITY, not the syntax: for
+a few dozen independent tasks a shell loop is THE CORRECT ANSWER — repeatable,
+legible, version-controllable. Start here. Often, stay here.
+
+>> SCENERY-RULE BANNER (Slides 13–18): every snippet from here to Slide 18 is
+   scenery, not a lesson. It just has to look REAL and look like it's getting
+   TALLER. The ideas BETWEEN the snippets get the air; the snippets fly by.
+
+Beats:
+1. "The humblest workflow: a loop." Gesture at it — don't read it.
+2. For a few dozen tasks, this is the right answer. Say it with CONVICTION.
+3. The wall (the cue to climb): real throttling — N-at-a-time — means
+   hand-rolling a job pool; and there's no failure tracking at scale. Fake
+   parallelism with `&`/`wait` only gets you so far.
+
+Example lines (illustrative):
+- "You don't need to read this. It's a loop. For a few dozen tasks, it's the
+  right answer — full stop."
+- "It breaks the moment you want, say, eight at a time without melting your
+  laptop. Now you're writing a job pool by hand."
+
+The axis tag (Axis 1 · Executor/scale, rung ●○○○) anchors us on the Slide 12
+map: we're climbing Axis 1, and this is the floor. The 4-dot ratchet fills one
+more dot on each of Slides 14–16 — the visual form of the recurring arc line
+"EACH RUNG ADDS ONE CAPABILITY" (which starts firing on Slide 14, the first
+rung that adds something; rung 1 here is the baseline, no capability added yet).
+
+Transition → Slide 14 (xargs): "Want it to actually run in parallel without
+hand-rolling a job pool? One small step."
+
+Delivery: SCENERY — fast. Don't linger on the syntax. The keeper is "for a few
+dozen tasks this is correct" — the humility. Act-2 pace overall is deliberate,
+but the snippet itself flies by.
+
+BUILD NOTE: first consumer of the .code-terminal device (THEME §10) — a titled
+terminal window (graphite bar + traffic dots + "bash" title) over a dark
+graphite body with a gold $ prompt and a `>` continuation prompt, so it reads
+as "typed at a shell." Maximally distinct from the .code-definition (authored
+source) treatment coming on Slides 17–18. fastq through-line (domain-flavored
+scenery reads as MORE real). HTML/CSS only — no fenced block, no inline SVG.
+-->

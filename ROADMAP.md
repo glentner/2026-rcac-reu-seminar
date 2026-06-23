@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "4"
 phases_completed: ["0", "1", "2", "3"]
-last_updated: "2026-06-23T16:00:00Z"
+last_updated: "2026-06-23T16:45:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -98,7 +98,7 @@ slides:
   - { id: "10",  beat: "Decompose the layers + the turn",          phase: "3", act: "turn", layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — THE TURN. Same rube-goldberg-stack layout as Slide 9 + the `.is-decomposed` modifier: straightens the teeter (transform:none), lightens the bricks (per-layer --c tint via color-mix), switches each brick to a 3-col grid (layer name · academic · industry). The 7 canonical layers top→bottom: Observability(red) · Persistence(indigo) · Orchestration(slate) · Data movement(green) · Containers(mauve) · Scheduler(graphite) · Executor(teal, foreshadowing Axis 1) — tints reuse the Slides 7/8/Zoo vocabulary. academic|industry pairs under aligned column headers (Slurm|Kubernetes · Make/Nextflow|Airflow · Apptainer|Docker · logs+cron|Datadog + Persistence/Data/Executor rows). Recurring line 'Same handful of layers — only the brand names change.' is the on-slide gold keeper caption AND in notes; turn opener 'It looks like chaos. It isn't.' is the subhead; gear-shift-to-deliberate delivery cue in notes. No for-loop payload here (kept clean; that callback is Slide 9 + Slide 22). color-mix verified in PDF export. Build + export green." }
   - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — two-state trap on .purdue-content: LEFT .mc-tangle (overlapping graphite chips, position + --rot inline) labeled 'complexity' → .mc-pitch arrow ('just write a few snippets…') → RIGHT .mc-platform = the SAME tangle SEALED in one .mc-box ('platform that tames complexity') with red .mc-leak chips (+ ops, + metadata DB, + deploy, + version skew) pinned to the corners + 'you still own all of it' cap. Gold .mc-callout keeper: 'This could have been a Makefile and a cron-job.' Recurring lines fire (title + callout; verbatim in notes). $200M observability eye-roll + industry↔academia nuance + funny/warm tone-drift cue ALL in speaker notes, none on-slide (OUTLINE edit #7). HTML/CSS only. Build + export green." }
   - { id: "12",  beat: "Two axes, not one ladder",                 phase: "4", act: "2",    layout: "two-axis-ladder",     code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: [], note: "COMPLETE — the FRAMEWORK REVEAL, preview form of two-axis-ladder. Two clearly-separated horizontal axis tracks: Axis 1 Executor/scale (teal, bash loop → xargs -P → Slurm array → HyperShell) and Axis 2 Orchestration/DSL (slate, GNU Make → Nextflow), pushed far apart via flex space-between so 'two axes, not one' reads at a glance; tints reuse the Slide 10 decompose vocabulary (teal executor / slate orchestration) + foreshadow Axis 1's climb (Slides 13–16). Each axis: kicker chip + name + the question it answers (emphasized verb) + a `→`-joined rung track with a 'more scale/structure →' hint. Five faint greyed .ta-ghost unclimbed tools (Ray, Airflow near the boundary; Snakemake, Dask, Parsl near orchestration) float in the field = the rungs are a CHOSEN SUBSET, not the whole zoo. One-line .ta-foot renders 'the map outlasts the tools' ('place any tool … even one I've never heard of'). Both recurring lines ('Which axis are you on?' + 'The map outlasts the tools.') fire verbatim in speaker notes; [BREATH] kept airy. HTML/CSS only (no inline SVG, MDC-safe). Build + export green; eyeball-verified at page 12." }
-  - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the FLOOR of the executor climb. First consumer of the .code-terminal DEVICE (THEME §10), now fleshed out from its Phase-1 stub: a titled `bash` window (graphite #2b2e33 bar + red/amber/green traffic dots + title) over a dark graphite #1c1e22 body, off-white mono, gold-bright `$` prompt + muted `>` continuation — reads as 'typed at a shell', maximally distinct from the .code-definition treatment coming on 17–18. Snippet is the real fastq through-line `for s in samples/*.fastq; do ./analyze.sh \"$s\" > \"results/...\"; done` as SCENERY (verified the `*`/redirect/quotes/`$()` survive MDC without mangling). h1 'The humblest workflow: a loop'; conviction keeper is the subhead ('the right answer — full stop'); throttling wall is the gold .climb-cue ('8 at a time … hand-rolling a job pool'). NEW reusable .axis-tag (teal --c Axis-1, 4-dot rung ratchet ●○○○ + 'the bash loop') anchors the climb on the Slide 12 map and will fill one more dot per slide on 14–16 ('each rung adds one capability' made visual; the line itself starts firing on 14). Speaker notes carry the scenery-rule banner + beats + transition. HTML/CSS only. Build + export green; eyeball-verified at page 13." }
   - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "15",  beat: "Axis 1 — Slurm job array",                 phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "16",  beat: "Axis 1 — HyperShell + pressure-release",   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: [] }
@@ -129,7 +129,7 @@ layouts:
   - { name: "ownership-ladder",    kind: "custom",    first_slide: "20B", status: "pending", note: "two-rung you-own-it / framework-owns-it; reuses Slide 19 gradient" }
 # ─── Improvement #5: open decisions / blocking-on-Geoffrey ledger (route around blocked slides) ───
 open_decisions:
-  - { id: "through-line",   summary: "Through-line example: fastq stays (decided, OUTLINE §REVIEW) — confirm analyze.sh naming for snippets 13–16, 20B", blocks: ["13", "14", "15", "16"], status: "soft-resolved" }
+  - { id: "through-line",   summary: "Through-line example: fastq stays (decided, OUTLINE §REVIEW). Slide 13 built with `samples/*.fastq` + `./analyze.sh` naming (the OUTLINE snippet verbatim) — reuse the same names on 14–16, 20B for continuity. Confirm if Geoffrey wants a different script/sample name.", blocks: ["14", "15", "16"], status: "soft-resolved" }
   - { id: "rcac-tiers",     summary: "Confirm exact RCAC storage tier names (Fortress / Data Depot / Scratch) + 6 trade-off axes labels", blocks: ["20A"], status: "open" }
   - { id: "prelude-rcac",   summary: "About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR SUPPLIED + wired (public/images/rcac-*.jpg, public/qr/rcac.jpg); Slide 3 approved by Geoffrey. Pillars built as systems/science/software per OUTLINE — confirm final wording if it should change.", blocks: ["3"], status: "soft-resolved" }
   - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built + reviewed. Last year's label set kept (Geoffrey); AI at the dead-center triple-point, Facilitator in the Systems lobe. OUTLINE §4 + THEME §9 updated to match — 'center = facilitator/unicorn' divergence RESOLVED (unicorn is now an explicitly VERBAL device).", blocks: ["4"], status: "resolved" }
@@ -481,9 +481,17 @@ rule** banner (OUTLINE Slides 13–18): gesture, don't teach.
       caption renders "the map outlasts the tools." Both recurring lines fire
       verbatim in speaker notes. Kept airy for the [BREATH]. HTML/CSS only.
       Build + export green; eyeball-verified at page 12.*
-* [ ] **Slide 13 — bash loop** (terminal). **DoD:** real fastq loop snippet
+* [x] **Slide 13 — bash loop** (terminal). **DoD:** real fastq loop snippet
       as scenery; "for a few dozen tasks this is correct" conviction; the
-      throttling wall planted.
+      throttling wall planted. *Done — first consumer of the `.code-terminal`
+      device: a titled `bash` window (graphite bar + traffic dots) over a dark
+      graphite body with a gold `$` prompt + `>` continuation, the real fastq
+      `for`-loop as scenery (`*` glyph survives MDC; redirect/quotes/`$()`
+      intact). Conviction is the subhead ("the right answer — full stop"); the
+      throttling wall is the gold `.climb-cue` ("8 at a time … hand-rolling a
+      job pool"). New reusable `.axis-tag` anchors the climb on the Slide 12
+      map (teal Axis-1 tint + 4-dot rung ratchet ●○○○). Build + export green;
+      eyeball-verified at page 13.*
 * [ ] **Slide 14 — xargs** (terminal). **compressible.** **DoD:** `-P`
       snippet (quoting need not be legible — scenery); recurring line *"each
       rung adds one capability"*; single-node ceiling planted.
@@ -699,4 +707,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T16:00:00Z*
+*Last updated: 2026-06-23T16:45:00Z*

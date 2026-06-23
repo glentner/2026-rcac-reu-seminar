@@ -1012,12 +1012,138 @@ code, pre, .slidev-code {
  * distinct: terminal = something you RUN; definition = something you AUTHOR.
  * ========================================================================== */
 
-/* Terminal-window treatment — commands you run (Slides 13, 14, 15, 16, 20B). */
+/* Terminal-window treatment — commands you RUN (Slides 13–16, 20B). The
+ * in-slide content DEVICE (THEME §10), NOT deck chrome: a titled window pane
+ * with a $ prompt so the snippet reads as "typed at a shell," maximally
+ * distinct from the .code-definition (authored source file) treatment below.
+ * Dark graphite body (deliberately NOT the pure-black CRT / soft-white-on-black
+ * terminal CHROME banned for this deck — §1) with off-white monospace. The
+ * snippet is SCENERY: it must look real, not be read. HTML/CSS only. */
 .code-terminal {
-  /* STUB (Phase 4): titled terminal pane / prompt framing. */
-  border: 1px solid var(--ink-muted);
-  border-radius: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
   overflow: hidden;
+  border: 1px solid #0d0e10;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.20);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.code-terminal .ct-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #2b2e33;
+  padding: 0.5rem 0.9rem;
+}
+
+.code-terminal .ct-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--ink-muted);
+}
+
+.code-terminal .ct-dot:nth-of-type(1) { background: #e06c61; }
+.code-terminal .ct-dot:nth-of-type(2) { background: #e2b23a; }
+.code-terminal .ct-dot:nth-of-type(3) { background: #5bbf6a; }
+
+.code-terminal .ct-title {
+  margin-left: 0.55rem;
+  color: #c8ccd2;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.code-terminal .ct-body {
+  background: #1c1e22;
+  color: #e9e6e3;
+  padding: 1.15rem 1.4rem;
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+/* MDC guard: keep terminal body lines in normal flow. */
+.code-terminal .ct-body > p {
+  display: contents;
+}
+
+.code-terminal .ct-line {
+  white-space: pre;
+}
+
+.code-terminal .ct-prompt {
+  color: var(--gold-bright);
+  font-weight: 700;
+  margin-right: 0.55rem;
+}
+
+.code-terminal .ct-cont {
+  color: var(--ink-muted);
+  margin-right: 0.55rem;
+}
+
+/* Axis climb marker — anchors the executor climb (Slides 13–16) on the Slide
+ * 12 map so the room always knows WHICH AXIS and HOW FAR UP. Teal Axis-1 tint
+ * via --c (matches the two-axis-ladder). The 4-dot rung ratchet fills one more
+ * dot per slide — "each rung adds one capability" made visual. */
+.axis-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.3rem;
+  font-size: 0.8rem;
+}
+
+.axis-tag .at-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--bg-paper);
+  background: var(--c);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+.axis-tag .at-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.axis-tag .at-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid color-mix(in srgb, var(--c) 55%, var(--ink-muted));
+}
+
+.axis-tag .at-dot.is-on {
+  background: var(--c);
+  border-color: var(--c);
+}
+
+.axis-tag .at-rung {
+  color: var(--ink-subhead);
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+/* The wall that cues the climb — one short line under the snippet (the cue to
+ * step up one rung). Kept lean: scenery slides gesture, they don't teach. */
+.purdue-content .climb-cue {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1.05rem;
+  color: var(--ink-subhead);
+}
+
+.purdue-content .climb-cue strong {
+  color: var(--gold-deep);
+  font-weight: 700;
 }
 
 /* Code / definition treatment — workflow definitions (Slides 17, 18). */
