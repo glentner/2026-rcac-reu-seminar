@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "3"
 phases_completed: ["0", "1", "2"]
-last_updated: "2026-06-23T01:00:00Z"
+last_updated: "2026-06-23T01:30:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -93,7 +93,7 @@ slides:
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
   - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "complete", assets: ["zoo-logo-set"], note: "COMPLETE — zoo-logo-wall layout + all 7 layer groups + 19 REAL floating brand marks in public/images/zoo/ (Slurm[HERO], Kubernetes, HTCondor, Dask, HyperShell, Parsl, GNU Parallel, Globus[data], Docker, GNU-head, Airflow, Nextflow, Snakemake, Python, Bash, Julia, MATLAB, Datadog, Prometheus). Marks float as overlay 'stickers' (centered anchor, per-logo left/top/width/--rot, may overlap boxes) ABOVE the size≈popularity chips; orchestration chips pushed to top. Slurm is the HERO mark (large, bled UP into the title row via .zoo-logo.hero). Content edits this pass (Geoffrey-confirmed, OUTLINE §4 synced): subtitle → 'Workflow tools, all at once.'; schedulers → 'Schedulers / Resource Managers' + cron chip; executors drop the Globus Compute chip; orchestration merges to 'Globus Compute / Flows'; data → 'Data flow' + S3 chip. Globus mark = official BLUE horizontal brand pack; HyperShell = local repo mark; Parsl + GNU-head = Geoffrey's local copies (Parsl ships only a white mark online). Speaker notes complete (shared-pain turn + [BREATH]). zoo-set RESOLVED." }
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "Two-panel monolith-vs-layered-stack on .purdue-content. LEFT: graphite monolith block spanning a row of nodes ('how big?'; complexity sealed INSIDE). RIGHT: 5-bar layered stack (Your analysis → Orchestration → Data → Scheduler → Containers) over a 32-square task swarm ('how many — and how much scaffolding?'; complexity BETWEEN tools). Layer tints deliberately echo the Zoo / decompose vocabulary (slate=orch, green=data, graphite=sched, mauve=containers) so the words recur visually on Slides 9–10. Load-bearing PLANT as a centered dashed pill: 'Start with one box. Add a layer only when the problem demands it.' (incremental scaffolding). On-slide text kept lean (Act-1 compressible). Build + export green; eyeball-verified at 8 pages." }
-  - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "Concern→layer MAPPING on .purdue-content: 6 rows, each pairing a real operational concern (left) with the layer it spawned (right, a tinted pill) via a per-row tinted arrow. The four shared layers keep their Slide 7 / Zoo tints (mauve=Containers, slate=Orchestration, green=Data, graphite=Scheduler); Persistence (indigo #4b4f9c) + Observability (red #a14e4e) complete the set. Gold pivot callout under the map is the KEEPER: 'the question is never is this layer good? — it's do I have this concern, today, at a scale the layer below can't handle?' Mapping = scenery (brisk); pivot = the line. Build + export green; eyeball-verified at 9 pages." }
   - { id: "9",   beat: "Anatomy of an over-engineered workflow",   phase: "3", act: "1",    layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "10",  beat: "Decompose the layers + the turn",          phase: "3", act: "turn", layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -401,9 +401,12 @@ labeled on 10).
       layer tints echo the Zoo/decompose vocabulary; centered "add a layer only
       when the problem demands it" plant; on-slide text lean per the Act-1
       scenery rule. Build + export green.*
-* [ ] **Slide 8 — Why the layers exist** (`purdue-content`). **DoD:**
+* [x] **Slide 8 — Why the layers exist** (`purdue-content`). **DoD:**
       concern → layer mapping; the pivot line ("do I have this concern,
-      today?").
+      today?"). *Done — 6-row concern→layer map (tinted pills reuse the Zoo /
+      Slide 7 vocabulary; Persistence + Observability complete the set); the
+      pivot is an on-slide gold callout. Mapping kept brisk/scenery; build +
+      export green.*
 * [ ] **Slide 9 — Anatomy (centerpiece)** (`rube-goldberg-stack` custom).
       **DoD:** one dense teetering stack; density is the message; *don't
       explain it*; plants the Act-2 question.

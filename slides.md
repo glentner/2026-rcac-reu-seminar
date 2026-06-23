@@ -643,6 +643,72 @@ diagram + the plant carry it); the teaching is spoken.
 
 ---
 
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Why the layers exist</h1>
+<div class="subhead">Every layer answers a real operational concern — that's where the zoo comes from.</div>
+
+<div class="concern-map">
+<div class="cm-head"><span class="cm-h-concern">The concern — a real problem</span><span class="cm-h-layer">The layer it spawned</span></div>
+<div class="cm-row" style="--c:#8a5a86"><span class="cm-concern">Reproduce my environment, anywhere</span><span class="cm-arrow">→</span><span class="cm-layer">Containers</span></div>
+<div class="cm-row" style="--c:#2f567f"><span class="cm-concern">Order the steps; rebuild only what changed</span><span class="cm-arrow">→</span><span class="cm-layer">Orchestration</span></div>
+<div class="cm-row" style="--c:#3f7d6b"><span class="cm-concern">Stage data where the compute is</span><span class="cm-arrow">→</span><span class="cm-layer">Data</span></div>
+<div class="cm-row" style="--c:#464a52"><span class="cm-concern">Match tasks to CPUs · GPUs · nodes</span><span class="cm-arrow">→</span><span class="cm-layer">Scheduler</span></div>
+<div class="cm-row" style="--c:#4b4f9c"><span class="cm-concern">Remember every run — history &amp; state</span><span class="cm-arrow">→</span><span class="cm-layer">Persistence</span></div>
+<div class="cm-row" style="--c:#a14e4e"><span class="cm-concern">Know what ran, what failed, and why</span><span class="cm-arrow">→</span><span class="cm-layer">Observability</span></div>
+</div>
+
+<div class="concern-pivot">The question is never <em>“is this layer good?”</em> It's <em>“do I have this concern, today, at a scale the layer below can't handle?”</em></div>
+
+<div class="page-num">08 / 24</div>
+
+</div>
+
+<!--
+[Slide 8 — Why the layers exist · concern → layer (purdue-content) · 6:45–7:45 · Act-1 brisk]
+
+THE ORIGIN OF THE ZOO. Each layer answers a real operational concern — the
+scaffolding isn't arbitrary; every legitimate concern spawned its own layer.
+This is the concern→layer mapping that makes Slide 9's monster LEGIBLE. The
+mapping is SCENERY (brisk, don't lecture it); the PIVOT line is the keeper.
+
+The honest form of the thesis lives here: the question is never "is this layer
+good?" but "do I have this concern, TODAY, at a scale the layer below can't
+handle?" (the on-slide gold callout).
+
+The four shared layers keep their Slide 7 / Zoo tints (mauve=Containers,
+slate=Orchestration, green=Data, graphite=Scheduler); Persistence (indigo) and
+Observability (red) complete the set — the same vocabulary that gets decomposed
+on Slides 9–10.
+
+Beats:
+1. It's not enough to write code in a notebook — you have to OPERATIONALIZE it.
+2. Walk the concern→layer mapping, BRISK (it's a map, not a lecture): deploy →
+   Containers, ordering → Orchestration, data → Data, resources → Scheduler,
+   history → Persistence, what-happened → Observability.
+3. The PIVOT (the keeper): "Every one of these exists because somebody had a
+   real problem. So the question is never 'is this layer good?' — it's 'do I
+   have this concern, today, at a scale the thing below me can't handle?'"
+
+Example lines (illustrative):
+- "Every one of these layers exists because somebody had a real problem:
+  deploying an environment, ordering steps, moving data, matching tasks to
+  GPUs, remembering what happened."
+- "So the question is never 'is this layer good?' It's 'do I have this concern,
+  today, at a scale the thing below me can't handle?'"
+
+Transition → Slide 9 (Anatomy): "Now grab every layer at once, whether you need
+it or not — and you get this."
+
+Delivery: Act-1 pace — BRISK. The mapping is scenery; the pivot line is the
+keeper. Sets up Slide 9 as "what happens when you grab every layer whether or
+not you have the concern."
+-->
+
+---
+
 <div class="two-axis-ladder">
 
 <h1>Two axes, not one ladder</h1>
