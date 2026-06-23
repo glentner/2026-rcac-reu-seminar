@@ -1584,3 +1584,130 @@ slate .nf-feat strip (sibling of Slide 16's teal .hs-feat); .nf-foot fires the
 map-outlasts line in one compact muted row (the specific tool list lives in
 notes). HTML/CSS only — no inline SVG.
 -->
+
+---
+
+<div class="two-axis-ladder is-full">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Two axes. A few rungs. The whole map.</h1>
+<div class="subhead">Which axis are you on — and how far up?</div>
+
+<div class="taf-grid">
+
+<div class="taf-ladder">
+
+<div class="ta-axis axis-1" style="--c:#2c7a8c">
+<div class="ta-head"><span class="ta-kicker">Axis 1</span><span class="ta-name">Executor / scale</span><span class="ta-q">“How do I run <em>many</em> tasks?”</span></div>
+<div class="ta-track"><span class="ta-rung">bash loop</span><span class="ta-step">→</span><span class="ta-rung">xargs&nbsp;-P</span><span class="ta-step">→</span><span class="ta-rung">Slurm array</span><span class="ta-step">→</span><span class="ta-rung">HyperShell</span><span class="ta-beyond"><span class="ta-step is-ghost">→</span><span class="ta-rung is-ghost">HTCondor</span></span></div>
+<div class="taf-grad"><span class="tg-end tg-l">you hold the wires</span><span class="tg-end tg-r">a framework holds them</span></div>
+</div>
+
+<div class="ta-axis axis-2" style="--c:#2f567f">
+<div class="ta-head"><span class="ta-kicker">Axis 2</span><span class="ta-name">Orchestration / DSL</span><span class="ta-q">“How do I <em>relate</em> tasks?”</span></div>
+<div class="ta-track"><span class="ta-rung">GNU Make</span><span class="ta-step">→</span><span class="ta-rung">Nextflow</span></div>
+<div class="taf-grad"><span class="tg-end tg-l">you hold the wires</span><span class="tg-end tg-r">a framework holds them</span></div>
+</div>
+
+</div>
+
+<div class="taf-checks">
+
+<div class="taf-chk axis-1" style="--c:#2c7a8c">
+<div class="tc-head">Climb Axis 1 when…</div>
+<ul>
+<li>a <em>real</em> scale wall — not just 8 tasks?</li>
+<li>…or you'd DDoS the shared scheduler?</li>
+</ul>
+</div>
+
+<div class="taf-chk axis-2" style="--c:#2f567f">
+<div class="tc-head">Climb Axis 2 when…</div>
+<ul>
+<li><em>real</em> dependencies — not faked by hand?</li>
+<li>you need reproducibility · resume · portability?</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<div class="taf-take">Climb only if it'll <em>earn its keep</em> — is this a <strong>shared</strong> problem now, not a personal one? No → you're done. Yes → climb without guilt.</div>
+
+<div class="page-num">19 / 24</div>
+
+</div>
+
+<!--
+[Slide 19 — The decision ladder + checklist (two-axis-ladder · FULL form) · 19:30–21:15 · Act-2 · MUST-NOT-SKIP · [BREATH] · SLOWEST beat in Act 2 · ~105s]
+
+THE PHOTOGRAPH-SLIDE. The single portable artifact — the thing undergrads carry
+home. It pulls the whole climb into ONE picture: which axis / how far up. This
+is the payoff of the entire talk; the fix to last year's flat tool list.
+
+>> [BREATH]. Reveal the full map, then STOP. Let the room photograph it. Do not
+   talk over the silence. This is the slowest beat in Act 2.
+
+THE GRADIENT IS A VISUAL, NOT A FRAMEWORK. The left→right colour wash under each
+axis is the "you own it → framework owns it" control gradient. Say the felt
+question ONCE — "who's holding the wires?" — and let the picture carry it. Do
+NOT lecture a second formal dimension; the old multi-clause "meta-test" is
+softened to one line on purpose.
+
+Beats:
+1. Show both axes + all rungs together. [BREATH] — let it land, let them shoot it.
+2. Point at the gradient: left, you hold the wires; right, the framework does.
+   ONE felt sentence. "Moving right trades your cleverness for a shared solution."
+3. The checklist, grouped by axis so the two questions stay distinct:
+   - Axis 1 (executor): am I hitting a REAL scale wall — or about to DDoS the
+     shared scheduler? [Slide 16 pressure-release-valve callback.]
+   - Axis 2 (orchestration): do I have REAL (esp. dynamic) dependencies I'm
+     faking by hand? do I need reproducibility / resume / portability?
+4. LAND BOTH DIRECTIONS so it isn't purely deflationary: no → stop, you're done;
+   yes → climb without guilt. That's the rung earning its keep.
+
+Example lines (illustrative):
+- "This is the slide to photograph. Two axes, a few rungs each — that's the
+  whole map."
+- "Underneath runs one gradient: on the left you hold the wires; on the right a
+  framework does. Moving right trades your cleverness for a shared solution."
+- "Climb a rung only if you can say yes: a real scale wall — or about to DDoS the
+  shared scheduler? Real dependencies I'm faking by hand? If the answer's no,
+  you're done — stop climbing. When it's finally yes, climb without guilt."
+
+RECURRING LINES that must fire here (verbatim):
+- "Which axis are you on?" — the subhead renders it; say it on the reveal.
+- "Does it earn its keep?" — the takeaway renders "earn its keep"; this is the
+  thesis line, reprised from Slide 5. The whole checklist is this question.
+- "Each rung adds one capability." — reprised from Slides 13–16; the rung tracks
+  carry it visually (loop→xargs→Slurm→HyperShell each added ONE capability).
+- "Who's holding the wires?" — the gradient end-labels render it; said once,
+  verbally, on beat 2. The FELT question, not a 2nd framework (primary firing
+  was Slide 17b; this is the ladder-gradient reprise).
+- "The map outlasts the tools." — HTCondor sits greyed past HyperShell as the
+  heavyweight above; the map places even the rungs I don't climb.
+
+Transition → Slide 20A (data): "One more thing the tools won't save you from —
+the data."
+
+Delivery: MUST-NOT-SKIP. The SLOWEST beat in Act 2 (~105s). The gradient is a
+VISUAL — say the felt question once, let the picture do the rest. Give the room
+real time to photograph it. Resist re-explaining; the slide IS the explanation.
+
+BUILD NOTE: two-axis-ladder custom layout, FULL form (the .is-full modifier;
+the Slide 12 preview's absolute .ta-stage is replaced by .taf-grid). LEFT =
+the complete ladder, both axes reusing the Slide 12 rung grammar (compacted so
+Axis-1's 5 rungs fit one line) so the photograph MATCHES what the room saw on
+Slide 12; HTCondor is the greyed .is-ghost rung past HyperShell (heavyweight
+above). Under each track, the .taf-grad colour wash is the load-bearing visual:
+left = craft/gold "you", right = the axis tint "framework", with muted end-
+labels = "who's holding the wires?" as a picture. RIGHT = the checklist grouped
+under the two axis headings (.taf-chk, axis-tinted ✓ bullets); the Axis-1 list
+carries the Slide 16 DDoS callback. The single boxed takeaway (.taf-take, gold
+left-rule keeper, sibling of Slide 18's .nf-keep) fires "earn its keep" on-slide
+AND lands both directions (no → done; yes → climb without guilt). HTML/CSS only
+— no inline SVG (MDC hazard); &nbsp; keeps "xargs -P" intact; em/strong survive
+inline. This is the slide that completes the two-axis-ladder layout.
+-->

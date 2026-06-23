@@ -2583,6 +2583,216 @@ code, pre, .slidev-code {
   color: var(--gold-deep);
 }
 
+/* --- two-axis-ladder · .is-full form (Slide 19) — THE PHOTOGRAPH-SLIDE --- *
+ * The same diagram as Slide 12, now COMPLETE: both axes + all rungs in one
+ * picture (the thing undergrads photograph). Two changes from the preview:
+ *  (1) layout flips to a LEFT ladder / RIGHT checklist split (OUTLINE Visual);
+ *  (2) a subtle left→right "you own it → framework owns it" gradient runs
+ *      UNDER each axis as a colour wash — the felt question "who's holding
+ *      the wires?" rendered as a VISUAL, not a memorized second dimension.
+ * The preview's absolute .ta-stage is NOT used here; .taf-grid replaces it.
+ * Still the [BREATH] / must-not-skip beat — kept airy on purpose. */
+.is-full .taf-grid {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  top: 7.7rem;
+  bottom: 5.2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* MDC guards for the new wrappers. */
+.is-full .taf-grid > p,
+.is-full .taf-ladder > p,
+.is-full .taf-checks > p,
+.is-full .taf-chk > p {
+  display: contents;
+}
+
+.is-full .taf-ladder {
+  flex: 2.05;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.is-full .taf-checks {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+/* Compact the rung grammar so a 5-rung Axis-1 track fits one line in the
+ * narrower left column. Same vocabulary as the preview, smaller. */
+.is-full .ta-head {
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+}
+
+.is-full .ta-kicker {
+  font-size: 0.62rem;
+  padding: 0.14rem 0.45rem;
+}
+
+.is-full .ta-name {
+  font-size: 1.15rem;
+}
+
+.is-full .ta-q {
+  font-size: 0.9rem;
+}
+
+.is-full .ta-track {
+  gap: 0.32rem;
+}
+
+.is-full .ta-rung {
+  font-size: 0.78rem;
+  padding: 0.24rem 0.5rem;
+  border-width: 1.25px;
+}
+
+.is-full .ta-step {
+  font-size: 0.9rem;
+}
+
+/* The greyed "heavyweight above" rung (HTCondor past HyperShell) — dashed,
+ * faded, sitting just beyond the climbed set (OUTLINE Slide 19 Visual).
+ * Bound to its leading arrow via .ta-beyond (no-wrap) so it can NEVER orphan
+ * to a new line as a phantom first rung — it always reads as "→ HTCondor",
+ * the next thing up, after HyperShell. */
+.is-full .ta-beyond {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  white-space: nowrap;
+}
+
+.is-full .ta-rung.is-ghost {
+  color: var(--ink-muted);
+  background: transparent;
+  border-style: dashed;
+  border-color: var(--ink-muted);
+  opacity: 0.7;
+}
+
+.is-full .ta-step.is-ghost {
+  color: var(--ink-muted);
+  opacity: 0.55;
+}
+
+/* The control gradient — the load-bearing visual of this slide. A thin wash
+ * under each track running from the craft/gold "you" end (left) to the axis
+ * tint "framework" end (right), with two muted end-labels. "Who's holding
+ * the wires?" as a picture. */
+.is-full .taf-grad {
+  position: relative;
+  margin-top: 0.6rem;
+  height: 1.25rem;
+}
+
+.is-full .taf-grad::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0.42rem;
+  border-radius: 3px;
+  background: linear-gradient(to right, color-mix(in srgb, var(--gold) 30%, transparent), color-mix(in srgb, var(--c) 58%, transparent));
+}
+
+.is-full .tg-end {
+  position: absolute;
+  top: 0.58rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.is-full .tg-l {
+  left: 0;
+}
+
+.is-full .tg-r {
+  right: 0;
+}
+
+/* Checklist, grouped by axis (right column). Climb a rung only if you can
+ * say YES — the ✓ marks read as "answer yes to these." Each group inherits
+ * its axis tint via inline --c. */
+.is-full .taf-chk {
+  border-left: 4px solid var(--c);
+  padding-left: 0.85rem;
+}
+
+.is-full .tc-head {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--c);
+  margin-bottom: 0.4rem;
+}
+
+.is-full .taf-chk ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.is-full .taf-chk li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.32rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.is-full .taf-chk li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  color: var(--c);
+}
+
+.is-full .taf-chk li em {
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* The one boxed takeaway, landing BOTH directions (stop when no; climb
+ * without guilt when yes). Gold left-rule keeper, sibling of Slide 18's
+ * .nf-keep; sits above the bottom rule, clear of the page-num corner. */
+.is-full .taf-take {
+  position: absolute;
+  left: 3rem;
+  right: 8rem;
+  bottom: 1.75rem;
+  border-left: 4px solid var(--gold);
+  padding-left: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.is-full .taf-take em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+
+.is-full .taf-take strong {
+  font-weight: 700;
+}
+
 /* --- storage-tier (Slide 20A) — STUB (Phase 6) --- *
  * 6-property trade-off cloud over cold→warm→hot tier ladder. */
 .storage-tier {
