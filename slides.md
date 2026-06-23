@@ -848,6 +848,112 @@ name · academic · industry). HTML/CSS only — no inline SVG (MDC hazard).
 
 ---
 
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>“Merchants of complexity”</h1>
+<div class="subhead">The pitch is always simplification. The bill is relocation.</div>
+
+<div class="merchants">
+
+<div class="mc-state">
+<div class="mc-tangle">
+<span class="mc-knot" style="top:0.3rem; left:1.1rem; --rot:-6deg">Airflow</span>
+<span class="mc-knot" style="top:1.5rem; left:7rem; --rot:5deg">Kubernetes</span>
+<span class="mc-knot" style="top:3rem; left:2.4rem; --rot:6deg">PostgreSQL</span>
+<span class="mc-knot" style="top:4.3rem; left:7.4rem; --rot:-5deg">Docker</span>
+<span class="mc-knot" style="top:5.6rem; left:0.9rem; --rot:3deg">Jinja DAG</span>
+<span class="mc-knot" style="top:6.8rem; left:5.4rem; --rot:-6deg">Globus · S3</span>
+</div>
+<div class="mc-cap">complexity</div>
+</div>
+
+<div class="mc-pitch"><span class="mc-pitch-arrow">→</span><span class="mc-pitch-label">“just write a few snippets — we'll handle the rest”</span></div>
+
+<div class="mc-state">
+<div class="mc-platform">
+<span class="mc-leak" style="top:0.2rem; left:0">+ ops</span>
+<span class="mc-leak" style="top:0.2rem; right:0">+ metadata DB</span>
+<span class="mc-leak" style="bottom:0.2rem; left:0.4rem">+ deploy</span>
+<span class="mc-leak" style="bottom:0.2rem; right:0">+ version skew</span>
+<div class="mc-box">platform that tames complexity</div>
+</div>
+<div class="mc-cap">you still own all of it</div>
+</div>
+
+</div>
+
+<div class="mc-callout">This could have been a <strong>Makefile</strong> and a <strong>cron-job</strong>.</div>
+
+<div class="page-num">11 / 24</div>
+
+</div>
+
+<!--
+[Slide 11 — "Merchants of complexity" · recurring callback (purdue-content) · 10:15–11:30 · Act 2 · deliberate]
+
+THE SKEPTICAL-BUYER BEAT. The deeper trap isn't tools that ADD complexity —
+it's the ones that PROMISE TO TAME it and instead RELOCATE it into a new black
+box with new problems. The two-state diagram is the keeper visual: left, the
+tangle ("complexity"); right, the SAME tangle sealed inside one box ("platform
+that tames complexity") — but new problems (ops, metadata DB, deploy, version
+skew) leak out, and YOU STILL OWN ALL OF IT. Nothing was removed; it just moved.
+
+LIGHTENED this session per OUTLINE edit #7: the biggest tone risk ("old man
+yells at cloud") is best defused by HUMOR + SHARED PAIN, not by stacking
+counterweight bullets. The old multi-bullet "anti-grumpy guardrail" is CUT;
+the $200M observability line is a THROWAWAY eye-roll, not a worked example.
+The shared-pain framing from the Zoo (Slide 6) already de-risked this — lean
+on it. Still NOT anti-tool — it's anti-REFLEXIVE-tool (I build tools too;
+HyperShell is five slides away).
+
+Beats:
+1. Name the move: the pitch is always SIMPLIFICATION — "just write a few Python
+   snippets," "let the platform handle it."
+2. The reality: you didn't remove complexity, you RELOCATED it — now you own a
+   scheduler, a metadata DB, a deploy, a version-skew problem. The actual work
+   is still the five lines it was.
+3. The anchor lament (the keeper line): "This could have been a Makefile and a cron-job!"
+4. The throwaway (one eye-roll, then MOVE): you can learn the exit code of a
+   nightly job with `2>&1` and a cron email — or pay a seven-figure SaaS bill
+   for the same fact. Demoted to a throwaway, NOT a centerpiece.
+5. The nuance (the substantive keeper): industry's always-on / SLA / multi-
+   tenant reality genuinely justifies heavier platforms; our work is bursty,
+   batch, finite. Don't cargo-cult across the boundary.
+
+Example lines (illustrative):
+- "The pitch is always the same: 'just write a few Python snippets and we'll
+  handle the rest.' And then you own a scheduler, a database, a deployment, and
+  a version-skew problem — and the actual work is still the five lines it was."
+- "This could have been a Makefile and a cron-job!" [RECURRING LINE — reprised
+  light/funny in the Slide 22 close]
+- "You can learn the exit code of a nightly job with `2>&1` and a cron email —
+  or pay a seven-figure observability bill for the same fact. (eye-roll, move on.)"
+- "Industry has always-on services and SLAs — those platforms earn their keep
+  THERE. Our work is bursty and finite. Don't import their stack onto our problem."
+
+RECURRING LINES that must fire here: "Merchants of complexity." (the title) ·
+"This could have been a Makefile and a cron-job!" (the gold callout).
+
+Transition → Slide 12 (Two axes): "Here's the tool I'll give you to be a
+skeptical buyer — a map."
+
+Delivery: KEEP IT FUNNY AND WARM, not bitter (tone-drift antidote). The shared-
+pain framing from the Zoo is the antidote; the $200M line is a throwaway, not a
+centerpiece. If you feel yourself getting cranky, NAME A TOOL YOU LOVE and why
+it earned its keep. Act-2 pace — deliberate, but this beat is rhetoric + a
+laugh, not a lecture.
+
+BUILD NOTE: two-state diagram on .purdue-content (HTML/CSS only — no inline SVG,
+MDC hazard). LEFT .mc-tangle = overlapping graphite chips (position + --rot
+inline), echoing the Slide 9 stack scattered. RIGHT .mc-platform = the same
+tangle sealed in one .mc-box with .mc-leak chips (observability-red) pinned to
+the corners. The gold .mc-callout is the keeper line.
+-->
+
+---
+
 <div class="two-axis-ladder">
 
 <h1>Two axes, not one ladder</h1>

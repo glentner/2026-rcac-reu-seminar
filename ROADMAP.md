@@ -1,9 +1,9 @@
 ---
 title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
-current_phase: "3"
-phases_completed: ["0", "1", "2"]
-last_updated: "2026-06-23T03:15:00Z"
+current_phase: "4"
+phases_completed: ["0", "1", "2", "3"]
+last_updated: "2026-06-23T04:30:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -96,7 +96,7 @@ slides:
   - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "Concern→layer MAPPING on .purdue-content: 6 rows, each pairing a real operational concern (left) with the layer it spawned (right, a tinted pill) via a per-row tinted arrow. The four shared layers keep their Slide 7 / Zoo tints (mauve=Containers, slate=Orchestration, green=Data, graphite=Scheduler); Persistence (indigo #4b4f9c) + Observability (red #a14e4e) complete the set. Gold pivot callout under the map is the KEEPER: 'the question is never is this layer good? — it's do I have this concern, today, at a scale the layer below can't handle?' Mapping = scenery (brisk); pivot = the line. Build + export green; eyeball-verified at 9 pages." }
   - { id: "9",   beat: "Anatomy of an over-engineered workflow",   phase: "3", act: "1",    layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the Slide 2 gag drawn seriously. rube-goldberg-stack layout fleshed out (was a Phase-1 stub): a 9-brick TEETERING tower (React dashboard → Grafana/Datadog → PostgreSQL → Airflow → Jinja-templated DAG → Kubernetes → Docker/Apptainer → Globus/S3 → Slurm) on the PAPER content ground (gold rules + RCAC mark + page-num — distinct from Slide 2's chrome-free ink fullbleed), with a dwarfed `for sample in samples: analyze(sample)` payload at the base (deliberate Slide 2 callback). Bricks are UNIFORM graphite ON PURPOSE — Slide 10 reuses this exact markup color-coded + labeled with academic|industry pairs (the defusing/turn). Teeter mechanics mirror Slide 2: per-brick --tilt (alternating wobble) + cumulative --dx (geometric lean; only top bricks overhang). On-slide text lean (Act-1 centerpiece, density-is-the-message); the 'which of these do you actually need?' Act-2 plant lives in speaker notes. Subhead shortened in review so the leaning top brick doesn't overlap it; rg-stage nudged to top:7.5rem. Build + export green; eyeball-verified at page 9." }
   - { id: "10",  beat: "Decompose the layers + the turn",          phase: "3", act: "turn", layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — THE TURN. Same rube-goldberg-stack layout as Slide 9 + the `.is-decomposed` modifier: straightens the teeter (transform:none), lightens the bricks (per-layer --c tint via color-mix), switches each brick to a 3-col grid (layer name · academic · industry). The 7 canonical layers top→bottom: Observability(red) · Persistence(indigo) · Orchestration(slate) · Data movement(green) · Containers(mauve) · Scheduler(graphite) · Executor(teal, foreshadowing Axis 1) — tints reuse the Slides 7/8/Zoo vocabulary. academic|industry pairs under aligned column headers (Slurm|Kubernetes · Make/Nextflow|Airflow · Apptainer|Docker · logs+cron|Datadog + Persistence/Data/Executor rows). Recurring line 'Same handful of layers — only the brand names change.' is the on-slide gold keeper caption AND in notes; turn opener 'It looks like chaos. It isn't.' is the subhead; gear-shift-to-deliberate delivery cue in notes. No for-loop payload here (kept clean; that callback is Slide 9 + Slide 22). color-mix verified in PDF export. Build + export green." }
-  - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — two-state trap on .purdue-content: LEFT .mc-tangle (overlapping graphite chips, position + --rot inline) labeled 'complexity' → .mc-pitch arrow ('just write a few snippets…') → RIGHT .mc-platform = the SAME tangle SEALED in one .mc-box ('platform that tames complexity') with red .mc-leak chips (+ ops, + metadata DB, + deploy, + version skew) pinned to the corners + 'you still own all of it' cap. Gold .mc-callout keeper: 'This could have been a Makefile and a cron-job.' Recurring lines fire (title + callout; verbatim in notes). $200M observability eye-roll + industry↔academia nuance + funny/warm tone-drift cue ALL in speaker notes, none on-slide (OUTLINE edit #7). HTML/CSS only. Build + export green." }
   - { id: "12",  beat: "Two axes, not one ladder",                 phase: "4", act: "2",    layout: "two-axis-ladder",     code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "pending", assets: [] }
   - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
@@ -434,12 +434,22 @@ labeled on 10).
       gear-shift-to-deliberate delivery cue is in speaker notes. color-mix
       tints verified in the PDF export. Build + export green; eyeball-verified
       at page 10.*
-* [ ] **Slide 11 — Merchants of complexity** (`purdue-content`). **DoD:**
+* [x] **Slide 11 — Merchants of complexity** (`purdue-content`). **DoD:**
       two-state "platform that tames complexity" diagram; recurring lines
       *"merchants of complexity"* + *"this could have been a Makefile and a
       cron-job!"*; **$200M line is a throwaway eye-roll**, no worked example;
-      kept funny/warm (tone-drift antidote).
-* [ ] Commit(s): `WIP: Slide N — <beat>`
+      kept funny/warm (tone-drift antidote). *Done — two-state diagram on
+      `.purdue-content`: LEFT tangle ("complexity", overlapping graphite chips)
+      → the pitch arrow → RIGHT the SAME tangle sealed in one black box
+      ("platform that tames complexity") with red NEW-problem leaks (+ ops, +
+      metadata DB, + deploy, + version skew) pinned to the corners and the
+      "you still own all of it" cap; gold `.mc-callout` keeper line. Both
+      recurring lines fire (title + callout; verbatim strings in notes). The
+      $200M observability line + the industry↔academia nuance + the
+      "keep it funny/warm" tone-drift cue are all in speaker notes, NOT
+      on-slide (OUTLINE edit #7 — no stacked counterweight bullets). HTML/CSS
+      only (no inline SVG). Build + export green; eyeball-verified at page 11.*
+* [x] Commit(s): `WIP: Slide N — <beat>`
 
 **Checkpoint:** Zoo + anatomy are the density peaks; the turn must shift
 gears. Gate: build + export green; `grep` confirms the brand-names and
@@ -680,4 +690,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T03:15:00Z*
+*Last updated: 2026-06-23T04:30:00Z*
