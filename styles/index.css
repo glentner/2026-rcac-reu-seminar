@@ -1956,12 +1956,24 @@ code, pre, .slidev-code {
   color: var(--gold-deep);
 }
 
-/* --- two-axis-ladder (Slides 12 preview, 19 full) --- *
- * The load-bearing diagram: two separated axes (executor/scale ·
- * orchestration/DSL). Slide 19 adds the you-own-it → framework-owns-it
- * gradient. PHASE-1 SMOKE TEST treatment: minimal but visibly renders two
- * labeled axis columns so the custom-layout pipeline is proven early.
- * Fleshed out in Phases 4 (preview) and 5 (full + gradient). */
+/* --- two-axis-ladder (Slides 12 preview, 19 full) — Phase 4/5 --- *
+ * THE LOAD-BEARING DIAGRAM — the single most important intellectual
+ * contribution of the talk. Workflow tools live on TWO different axes, each
+ * answering a different question: Axis 1 = executor/scale ("how do I run MANY
+ * tasks?"), Axis 2 = orchestration/DSL ("how do I RELATE tasks?"). The fix to
+ * last year's flat tool list, which treated everything as one ladder.
+ *
+ * Slide 12 is the PREVIEW form: two clearly-SEPARATED horizontal axis tracks
+ * (pushed far apart so the separation reads at a glance), each carrying its
+ * rungs as a CHOSEN SUBSET, plus faint greyed-out UNCLIMBED tools floating in
+ * the field around them — the rungs we climb are a slice, not the whole zoo.
+ * Slide 19 (Phase 5) adds the .is-full form with the you-own-it →
+ * framework-owns-it gradient. Content-family chrome (gold rules, RCAC mark,
+ * page-num) on the paper ground. A [BREATH] slide — kept airy.
+ *
+ * Per-axis tint via inline --c (teal executor / slate orchestration — the
+ * Slide 10 decompose vocabulary, foreshadowing Axis 1's climb on Slides
+ * 13–16). HTML/CSS only — no inline SVG (MDC blank-line hazard). */
 .two-axis-ladder {
   position: relative;
   background: var(--bg-paper);
@@ -1971,6 +1983,7 @@ code, pre, .slidev-code {
 }
 
 .two-axis-ladder::before {
+  /* Top gold rule (content-family chrome). */
   content: '';
   position: absolute;
   top: 1.25rem;
@@ -1980,37 +1993,174 @@ code, pre, .slidev-code {
   background: var(--gold);
 }
 
-.two-axis-ladder .axes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1.5rem;
+.two-axis-ladder::after {
+  /* Bottom gold rule. */
+  content: '';
+  position: absolute;
+  bottom: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
 }
 
-/* MDC guard for the two-column axis grid. */
-.two-axis-ladder .axes > p {
+.two-axis-ladder h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.two-axis-ladder .subhead {
+  color: var(--ink-subhead);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.two-axis-ladder .rcac-mark {
+  position: absolute;
+  top: 1.9rem;
+  right: 3rem;
+  max-width: 14rem;
+}
+
+.two-axis-ladder .page-num {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* MDC guards: keep slide-root + stage/axis/track/head children in normal flow. */
+.two-axis-ladder > p,
+.two-axis-ladder .ta-stage > p,
+.two-axis-ladder .ta-axis > p,
+.two-axis-ladder .ta-track > p,
+.two-axis-ladder .ta-head > p {
   display: contents;
 }
 
-.two-axis-ladder .axis {
-  border: 1px solid var(--gold);
-  padding: 1rem 1.25rem;
-  background: var(--bg-paper);
+/* The two axes fill the body below the title; space-between pushes them far
+ * apart so "two SEPARATE axes" reads at a glance. Absolute so the floating
+ * ghost tools can be scattered in the field without disturbing the flow. */
+.two-axis-ladder .ta-stage {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  top: 8rem;
+  bottom: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.two-axis-ladder .axis .axis-label {
+.two-axis-ladder .ta-axis {
+  position: relative;
+  padding-left: 1.1rem;
+  border-left: 4px solid var(--c);
+  z-index: 1;
+}
+
+.two-axis-ladder .ta-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 0.95rem;
+}
+
+.two-axis-ladder .ta-kicker {
   font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-deep);
   font-weight: 700;
-  margin-bottom: 0.6rem;
+  color: var(--bg-paper);
+  background: var(--c);
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
 }
 
-.two-axis-ladder .axis .rung {
-  padding: 0.35rem 0;
-  border-top: 1px dotted var(--ink-muted);
-  font-size: 0.95rem;
+.two-axis-ladder .ta-name {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--c);
+}
+
+.two-axis-ladder .ta-q {
+  font-size: 1.05rem;
+  color: var(--ink-subhead);
+}
+
+.two-axis-ladder .ta-q em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.two-axis-ladder .ta-track {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.two-axis-ladder .ta-rung {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0.4rem 0.9rem;
+  border: 1.5px solid color-mix(in srgb, var(--c) 60%, var(--ink-muted));
+  background: color-mix(in srgb, var(--c) 8%, var(--bg-paper));
+  border-radius: 4px;
+}
+
+.two-axis-ladder .ta-step {
+  color: var(--c);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.two-axis-ladder .ta-more {
+  margin-left: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
+/* The unclimbed field — faint greyed tool names floating near each axis, so
+ * the rungs read as a CHOSEN SUBSET, not the whole zoo (OUTLINE Slide 12
+ * Visual). Absolute within the stage; --rot tilt; pointer-events:none so they
+ * never trap a click. z-index:0 keeps them behind the axis tracks. */
+.two-axis-ladder .ta-ghost {
+  position: absolute;
+  font-size: 0.98rem;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--ink-muted);
+  opacity: 0.5;
+  transform: rotate(var(--rot, 0deg));
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* The honest-scoping payoff ("the map outlasts the tools," rendered): learn
+ * the two questions and you can place any tool, even an unfamiliar one. */
+.two-axis-ladder .ta-foot {
+  position: absolute;
+  left: 3rem;
+  right: 8rem;
+  bottom: 1.75rem;
+  font-size: 1.05rem;
+  color: var(--ink-subhead);
+}
+
+.two-axis-ladder .ta-foot em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--gold-deep);
 }
 
 /* --- storage-tier (Slide 20A) — STUB (Phase 6) --- *

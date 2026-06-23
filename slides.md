@@ -49,13 +49,13 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 3). Slides 1–7 (Title; "Perfection" cold open;
-# About RCAC; About Me; Thesis; the Zoo; capability vs. capacity) below are
-# REAL content per OUTLINE.md §4.
-# The single trailing slide (two-axis-ladder) is retained PHASE-1 SMOKE-TEST
-# scaffolding — it keeps dev/build/export green and proves the custom-layout
-# pipeline until the real Slides 12/19 land (Phases 4–5). Content source of
-# truth: OUTLINE.md; build order: ROADMAP.md.
+# BUILD IN PROGRESS (Phase 4). Slides 1–12 below are REAL content per
+# OUTLINE.md §4 (Title; "Perfection" cold open; About RCAC; About Me; Thesis;
+# the Zoo; capability vs. capacity; why the layers exist; anatomy; decompose +
+# the turn; merchants of complexity; two axes, not one ladder). The Phase-1
+# two-axis-ladder smoke-test stub has been replaced by the real Slide 12
+# (preview form). Slides 13–23 land in Phases 4–6. Content source of truth:
+# OUTLINE.md; build order: ROADMAP.md.
 # ─────────────────────────────────────────────────────────────────────────
 ---
 
@@ -956,35 +956,88 @@ the corners. The gold .mc-callout is the keeper line.
 
 <div class="two-axis-ladder">
 
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
 <h1>Two axes, not one ladder</h1>
-<div class="subhead">Custom-layout pipeline smoke test (Slides 12 / 19).</div>
+<div class="subhead">Two questions, not one. Most workflows only ever climb one of them.</div>
 
-<div class="axes">
+<div class="ta-stage">
 
-<div class="axis">
-<div class="axis-label">Executor / scale</div>
-<div class="rung">bash loop</div>
-<div class="rung">xargs -P</div>
-<div class="rung">Slurm job array</div>
-<div class="rung">HyperShell</div>
+<div class="ta-axis axis-1" style="--c:#2c7a8c">
+<div class="ta-head"><span class="ta-kicker">Axis 1</span><span class="ta-name">Executor / scale</span><span class="ta-q">“How do I run <em>many</em> tasks?”</span></div>
+<div class="ta-track"><span class="ta-rung">bash loop</span><span class="ta-step">→</span><span class="ta-rung">xargs&nbsp;-P</span><span class="ta-step">→</span><span class="ta-rung">Slurm array</span><span class="ta-step">→</span><span class="ta-rung">HyperShell</span><span class="ta-more">more scale →</span></div>
 </div>
 
-<div class="axis">
-<div class="axis-label">Orchestration / DSL</div>
-<div class="rung">GNU Make</div>
-<div class="rung">Nextflow</div>
+<div class="ta-axis axis-2" style="--c:#2f567f">
+<div class="ta-head"><span class="ta-kicker">Axis 2</span><span class="ta-name">Orchestration / DSL</span><span class="ta-q">“How do I <em>relate</em> tasks?”</span></div>
+<div class="ta-track"><span class="ta-rung">GNU Make</span><span class="ta-step">→</span><span class="ta-rung">Nextflow</span><span class="ta-more">more structure →</span></div>
 </div>
 
+<span class="ta-ghost" style="top:50%; left:24%; --rot:-6deg">Ray</span>
+<span class="ta-ghost" style="top:30%; left:86%; --rot:5deg">Airflow</span>
+<span class="ta-ghost" style="top:60%; left:40%; --rot:4deg">Snakemake</span>
+<span class="ta-ghost" style="top:52%; left:84%; --rot:-5deg">Dask</span>
+<span class="ta-ghost" style="top:64%; left:64%; --rot:6deg">Parsl</span>
+
 </div>
+
+<div class="ta-foot">Learn the two questions and you can place <em>any</em> tool on the wall — even one I've never heard of.</div>
+
+<div class="page-num">12 / 24</div>
 
 </div>
 
 <!--
-[Phase 1 smoke test — two-axis-ladder (custom layout)]
+[Slide 12 — Two axes, not one ladder · THE FRAMEWORK REVEAL (two-axis-ladder, preview) · 11:30–12:15 · must-not-skip · [BREATH] · Act-2 SLOW]
 
-Proves the CUSTOM-LAYOUT PIPELINE early (per ROADMAP Phase 1 checklist): a
-global CSS class in styles/index.css renders two labeled axis columns with
-the MDC `> p { display: contents }` guard intact. This is a minimal preview
-of the load-bearing diagram; the real Slide 12 (preview) and Slide 19 (full,
-with the you-own-it → framework-owns-it gradient) are built in Phases 4–5.
+THE LOAD-BEARING IDEA — the single most important intellectual contribution of
+the talk, and the fix to last year's flat "zoo" tool list. Workflow tools live
+on TWO different axes, answering two different questions. Everything technical
+from here hangs on this. This is the slide everything else depends on.
+
+REVEAL the two axes, then **[BREATH]** — give the "aha" a beat to register.
+Don't rush past it. Act-2 pace: SLOW.
+
+Beats:
+1. Reveal the two axes. [BREATH] — let it land.
+2. Axis 1 = executor/scale ("how do I run MANY tasks?"). Axis 2 =
+   orchestration/DSL ("how do I RELATE tasks?"). Different questions, different
+   tools.
+3. The correction: these aren't ONE ladder — last year I made it sound like one
+   big ladder. It isn't. MOST workflows only ever need ONE of these axes.
+4. Honest scope: I'll climb a NARROW slice of each — the tools I actually watch
+   people use on our HPC. The greyed names (Ray, Airflow, Snakemake, Dask,
+   Parsl) are the rest of the field I'm NOT climbing — point at them once.
+
+Example lines (illustrative):
+- "There are really only two questions. One: how do I run MANY tasks? Two: how
+  do I express RELATIONSHIPS between tasks? Different questions, different tools."
+- "Most workflows only ever need one of these axes. Last year I made it sound
+  like one big ladder. It isn't."
+- "I'm going to climb a narrow slice of each — the tools I actually watch people
+  use here. Learn the two questions and you can place ANY tool on the wall, even
+  one I've never heard of. THE MAP OUTLASTS THE TOOLS." [RECURRING LINE]
+
+RECURRING LINES that must fire here:
+- "Which axis are you on?" — the felt question this whole map exists to answer
+  (reprised on Slide 19). Say it out loud after the reveal.
+- "The map outlasts the tools." — the honest-scoping keeper (reprised Slides 16,
+  18). The on-slide foot line is its rendered paraphrase; say the line verbatim.
+
+Transition → Slide 13 (the bash loop): "Let's climb Axis 1 — my slice of it —
+and stop the moment it earns its keep."
+
+Delivery: MUST-NOT-SKIP. [BREATH] slide — kept airy on purpose; the diagram +
+two short lines are the whole slide. The pause after the reveal is the point;
+this is where the core idea registers. SLOW.
+
+BUILD NOTE: two-axis-ladder custom layout, PREVIEW form (content chrome on the
+paper ground). Two clearly-separated horizontal axis tracks pushed far apart
+(flex space-between) so "two axes, not one" reads instantly; per-axis tint via
+inline --c (teal executor / slate orchestration — the Slide 10 vocabulary,
+foreshadowing Axis 1). Faint greyed `.ta-ghost` tool names float in the field
+(Ray/Airflow near the boundary; Snakemake/Dask/Parsl near orchestration) to
+show the rungs are a CHOSEN SUBSET, not the whole field. HTML/CSS only — no
+inline SVG (MDC hazard). Slide 19 reuses this layout with the .is-full
+gradient (Phase 5).
 -->
