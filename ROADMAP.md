@@ -1,9 +1,9 @@
 ---
 title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
-current_phase: "4"
-phases_completed: ["0", "1", "2", "3"]
-last_updated: "2026-06-23T04:49:39Z"
+current_phase: "5"
+phases_completed: ["0", "1", "2", "3", "4"]
+last_updated: "2026-06-23T05:11:08Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -101,7 +101,7 @@ slides:
   - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the FLOOR of the executor climb. First consumer of the .code-terminal DEVICE (THEME §10), now fleshed out from its Phase-1 stub: a titled `bash` window (graphite #2b2e33 bar + red/amber/green traffic dots + title) over a dark graphite #1c1e22 body, off-white mono, gold-bright `$` prompt + muted `>` continuation — reads as 'typed at a shell', maximally distinct from the .code-definition treatment coming on 17–18. Snippet is the real fastq through-line `for s in samples/*.fastq; do ./analyze.sh \"$s\" > \"results/...\"; done` as SCENERY (verified the `*`/redirect/quotes/`$()` survive MDC without mangling). h1 'The humblest workflow: a loop'; conviction keeper is the subhead ('the right answer — full stop'); throttling wall is the gold .climb-cue ('8 at a time … hand-rolling a job pool'). NEW reusable .axis-tag (teal --c Axis-1, 4-dot rung ratchet ●○○○ + 'the bash loop') anchors the climb on the Slide 12 map and will fill one more dot per slide on 14–16 ('each rung adds one capability' made visual; the line itself starts firing on 14). Speaker notes carry the scenery-rule banner + beats + transition. HTML/CSS only. Build + export green; eyeball-verified at page 13." }
   - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "COMPLETE — the FIRST RUNG THAT EARNS ITS KEEP. Reuses the Slide 13 infra: .code-terminal `bash` window, .axis-tag with the ratchet advanced to ●●○○ (rung label 'xargs -P'), .climb-cue. Same fastq through-line piped to `xargs -P 8 -I{}` (the dense `sh -c` quoting is SCENERY — not meant to be read; trailing line-continuation `\\` written as &#92; so MDC doesn't parse `\\</div>` as an escaped `<`). The feature-ratchet through-line STARTS here: loop=iteration, xargs=bounded parallelism — recurring line 'EACH RUNG ADDS ONE CAPABILITY' fires as the on-slide subhead + notes. Niche callout (ParaFly=failure log · GNU Parallel=retries) is the small muted .term-aside (OUTLINE's 'tiny grey margin note'); the single-node ceiling is the gold .climb-cue wall ('tops out at one node'). compressible: collapses to one sentence + jump to Slurm if time slips. HTML/CSS only. Build + export green; eyeball-verified at page 14." }
   - { id: "15",  beat: "Axis 1 — Slurm job array",                 phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "COMPLETE — the NEXT RUNG: multi-node fan-out, the capability xargs/GNU Parallel lacked. Reuses the .code-terminal device + .axis-tag (ratchet → ●●●○, rung 'Slurm job array') + .climb-cue from Slides 13/14; same fastq through-line. Rendered as `cat job.sh` revealing the batch SCRIPT (shebang + #SBATCH --array/--cpus-per-task header + the sed-indexed body) so it reads as 'now it's a cluster job' and is visibly TALLER than 13/14 (the climb made visual). The `sbatch job.sh` submission is the VERBAL hand-off (beat 1 + transition), kept OFF-slide so the must-keep climb-cue fits (shebang KEPT per Geoffrey; sbatch line dropped). h1 'Hand it to the scheduler'; subhead = the new capability (cluster fan-out: placement/queuing/requeue for free). Recurring 'each rung adds one capability' reprises in notes (the dots carry it on-slide). The PLANTED WALL is the gold .climb-cue 'one scheduler decision per task — a million of them hammers the controller' (one line; the entire setup for Slide 16's pressure-release valve; MaxArraySize nuance in notes). NEW reusable .ct-dim class dims the shebang/#SBATCH comment+directive lines. HTML/CSS only; `>` as &gt;, `*`/`$()`/`$((...))`/sed-index survive MDC inline. Build + export green; eyeball-verified at page 15 (snippet trimmed 8→6 lines in review so the climb-cue cleared the bottom edge)." }
-  - { id: "16",  beat: "Axis 1 — HyperShell + pressure-release",   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "16",  beat: "Axis 1 — HyperShell + pressure-release",   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the TOP of the executor climb (ratchet ●●●●) and the single best beat. Holds BOTH scenery (one-liner + v2.8 feature strip) AND the must-land IDEA (pressure-release valve), with the IDEA carrying the visual weight so the box never eats the punchline's air (OUTLINE risk #1). h1 IS the recurring line 'A pressure-release valve for the scheduler'. Real `hsx` one-liner `seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster'` (verified against the repo: cluster cmd; -t/--template, -N/--num-threads, --ssh nodelist; `> task.out` redirect dropped so it fits .code-terminal's white-space:pre with no clip; `seq 1000000` is the million-task callback to Slide 15's wall). Feature strip = Geoffrey's 4 picks, accurate to v2.8 release notes: autoscaling · persistence · resource-aware scheduling · monitoring (compact muted .hs-feat chips). NEW .hs-valve two-lane contrast is the climax: red ✗ lane (a million job-steps = self-DDoS on slurmctld, the daemon every user shares) / teal ✓ lane (executor grabs ONE allocation, meters internally → controller sees one job) + gold earn-its-keep keeper ('protects the machine, not just you'). Recurring lines fire: pressure-release-valve (h1 + notes), earn-its-keep (keeper + notes), who's-holding-the-wires (VERBAL/notes reprise — the on-slide foot was cut so the valve keeper + box border fit; primary firing is 17b). HyperShell-as-my-tool framed as PROOF not apology, HTCondor as the heavyweight-above neighbor, honest boundary, full neighbor wave — all in notes. HTML/CSS only (no SVG); `{}` survives MDC inline (as Slide 14). Build + export green; eyeball-verified at page 16 (lanes shortened + spacing tightened in review so the valve closed above the bottom rule). hypershell-box RESOLVED." }
   - { id: "17",  beat: "Axis 2 — \"Make is all you need\"",          phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "17b", beat: "Axis 2 — how far Make reaches (reverse)",  phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, high_value: true, compressible: false, breath: false, status: "pending", assets: [], note: "slide-REVERSE of 17 — NOT a new physical slide; reuse the Slide 17 Makefile verbatim" }
   - { id: "18",  beat: "Axis 2 — Nextflow as justified endpoint",  phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, high_value: true, compressible: false, breath: false, status: "pending", assets: [] }
@@ -135,7 +135,7 @@ open_decisions:
   - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built + reviewed. Last year's label set kept (Geoffrey); AI at the dead-center triple-point, Facilitator in the Systems lobe. OUTLINE §4 + THEME §9 updated to match — 'center = facilitator/unicorn' divergence RESOLVED (unicorn is now an explicitly VERBAL device).", blocks: ["4"], status: "resolved" }
   - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
   - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "resolved", note: "RESOLVED — richer set of 19 logos floated as overlay stickers (allowed to overlap boxes) over the chips, with Slurm as the HERO mark bled up into the title row; orchestration chips moved up. Set: Slurm, Kubernetes, HTCondor, Dask, HyperShell, Parsl, GNU Parallel, Globus[data], Docker, GNU-head, Airflow, Nextflow, Snakemake, Python, Bash, Julia, MATLAB, Datadog, Prometheus. Real marks in public/images/zoo/. Cascade-vs-single-reveal: single reveal kept (cascade still an optional future enhancement, not needed)." }
-  - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "open" }
+  - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "resolved", note: "RESOLVED (Geoffrey) — feature box = autoscaling · persistence · resource-aware scheduling · monitoring (all accurate to the v2.8.0 release notes: resource-aware scheduling + monitoring are v2.8 headliners; persistence = SQLite/Postgres default-on; autoscaling = elastic client pool). slurmctld-DDoS pressure-release framing confirmed. HTCondor confirmed as the heavyweight next thing above. hsx one-liner kept ('good for now'); verified against the repo CLI." }
   - { id: "qr-set",         summary: "Finalize Slide 23 QR set (5 proposed; cull to 4 if crowded) + canonical short URLs", blocks: ["23"], status: "open" }
 ---
 
@@ -515,18 +515,32 @@ rule** banner (OUTLINE Slides 13–18): gesture, don't teach.
       reusable `.ct-dim` class for the dim shebang/`#SBATCH` lines. Build +
       export green; eyeball-verified at page 15 (snippet trimmed 8→6 lines so
       the climb-cue cleared the bottom edge).*
-* [ ] **Slide 16 — HyperShell + pressure-release valve** (terminal).
+* [x] **Slide 16 — HyperShell + pressure-release valve** (terminal).
       **must-not-skip.** **DoD:** real `hsx` one-liner + 3–4-item v2.8 feature
       box (scenery); the **slurmctld-DDoS pressure-release idea given room**
       (the single best beat); recurring lines *"a pressure-release valve for
       the scheduler"* + *"who's holding the wires?"* + *"earn its keep"*;
-      HyperShell-as-my-tool framed as proof, not apology. *See
-      `open_decisions: hypershell-box`.*
-* [ ] Commit(s): `WIP: Slide N — <beat>`
+      HyperShell-as-my-tool framed as proof, not apology. *Done — h1 IS the
+      pressure-release-valve line; the IDEA (new `.hs-valve` two-lane contrast:
+      red ✗ million-submissions self-DDoS on `slurmctld` / teal ✓ one metered
+      allocation → controller sees one job + gold earn-its-keep keeper) carries
+      the visual weight, with the verified real `hsx` one-liner (`seq 1000000 |
+      hsx -t … -N64 --ssh …`, the million-task callback to Slide 15) + Geoffrey's
+      4 v2.8 features (autoscaling · persistence · resource-aware scheduling ·
+      monitoring) corralled as a compact muted chip strip so the box never eats
+      the punchline. who's-holding-the-wires reprised verbally (notes; primary
+      on 17b). HyperShell-as-proof + HTCondor-heavyweight-above + honest boundary
+      all in notes. Build + export green; eyeball-verified at page 16 (lanes
+      shortened + spacing tightened so the valve closed above the bottom rule).
+      `hypershell-box` resolved.*
+* [x] Commit(s): `WIP: Slide N — <beat>`
 
 **Checkpoint:** 12 and 16 are must-not-skip. Gate: build + export green;
 `grep` confirms pressure-release-valve + which-axis lines; verify terminal
 aesthetic is visually distinct from the (not-yet-built) definition aesthetic.
+*Phase 4 COMPLETE — Slides 12–16 all built; the terminal aesthetic (13–16) is
+established and held distinct from the still-stubbed definition aesthetic.
+Stop at the Phase 4 → Phase 5 boundary for Geoffrey's review.*
 
 ---
 
@@ -724,4 +738,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T04:49:39Z*
+*Last updated: 2026-06-23T05:11:08Z*

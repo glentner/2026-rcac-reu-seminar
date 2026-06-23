@@ -1263,3 +1263,112 @@ the shebang + #SBATCH comment/directive lines ("not a command I typed"). `>`
 redirect as &gt;; the `*` glob, `$()`, `$((...))`, sed index arithmetic all
 survive MDC inline (verified on Slides 13/14). HTML/CSS only.
 -->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>A pressure-release valve for the scheduler</h1>
+<div class="subhead">At extreme scale the bottleneck isn't your code — it's the one daemon every user on the machine shares.</div>
+
+<div class="axis-tag" style="--c:#2c7a8c"><span class="at-label">Axis 1 · Executor / scale</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot is-on"></span><span class="at-dot is-on"></span><span class="at-dot is-on"></span></span><span class="at-rung">HyperShell</span></div>
+
+<div class="code-terminal">
+<div class="ct-bar"><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-title">bash</span></div>
+<div class="ct-body">
+<div class="ct-line"><span class="ct-prompt">$</span>seq 1000000 | hsx -t 'echo {}' -N64 --ssh 'a[00-32].cluster'</div>
+</div>
+</div>
+
+<div class="hs-feat"><span class="hsf-key">earned its keep · v2.8</span><span class="hsf-chip">autoscaling</span><span class="hsf-chip">persistence</span><span class="hsf-chip">resource-aware scheduling</span><span class="hsf-chip">monitoring</span></div>
+
+<div class="hs-valve">
+<div class="hv-lane hv-bad"><span class="hv-mark">✗</span><span>A million job-steps to Slurm is a self-inflicted DDoS on <strong>slurmctld</strong> — the daemon every user shares.</span></div>
+<div class="hv-lane hv-good"><span class="hv-mark">✓</span><span>An executor grabs <strong>one allocation</strong> and meters them itself — the controller sees <strong>one job</strong>, not a million.</span></div>
+<div class="hv-keep">It protects the <em>machine</em>, not just you. That's earning its keep.</div>
+</div>
+
+<div class="page-num">16 / 24</div>
+
+</div>
+
+<!--
+[Slide 16 — Axis 1 · HyperShell + the pressure-release valve (purdue-content · terminal) · 14:45–16:15 · Act-2 · MUST-NOT-SKIP · mixed pace · ~120s]
+
+THE TOP OF THE EXECUTOR CLIMB and the SINGLE BEST BEAT in the talk. This slide
+holds BOTH scenery (the one-liner + feature strip — nobody must read them) AND
+the must-land IDEA (the pressure-release valve). Do NOT let the feature strip
+eat the punchline's air. Ratchet completes: ●●●● — the executor axis is done.
+
+>> SCENERY (the snippet + chips): fast, gesture. >> IDEA (the valve): SLOW.
+
+THE IDEA THAT MUST LAND (give it room): at extreme scale the bottleneck isn't
+your code — it's SHARED INFRASTRUCTURE. A million job-steps is a self-inflicted
+DDoS on slurmctld, the daemon every other user on the machine depends on. An
+executor grabs ONE allocation and meters the tasks internally — the controller
+sees one job, not a million. THAT is why it earns its keep: it protects the
+MACHINE, not just you. "Earn its keep" stops being about your convenience and
+becomes about the shared system. [RECURRING: "a pressure-release valve for the
+scheduler" — it's the h1. "does it earn its keep?" — the hv-keep line.]
+
+Beats:
+1. Show the one-liner — SCENERY. "You don't need to read this — it's the xargs
+   idea again, just bigger: a million tasks fanned across the whole cluster.
+   `seq 1000000` — remember that wall from the last slide." Move.
+2. SLOW DOWN. Land the pressure-release-valve idea (the slurmctld DDoS → one
+   metered allocation). This is the must-land beat — give it air.
+3. FULL DISCLOSURE it's MY tool — frame as PROOF, not apology: "GNU Parallel is
+   wonderful but wasn't right for HPC; a job array DDoSes the controller at
+   extreme counts. The concern was real and unmet, so the rung had to exist."
+   This is the whole talk's anti-anti-tool proof (Slide 19 checklist in action).
+4. The felt question — delivered VERBALLY (the on-slide foot was cut so the
+   valve keeper fits cleanly): "Who's holding the wires now? At the loop, you
+   were; up here, the framework is — and now you have to feed it." [RECURRING:
+   "who's holding the wires?" — reprise; the PRIMARY firing is Slide 17b. Don't
+   over-develop it here; it's a flavor.]
+5. Honest boundary + wave at the neighbors: if a loop, xargs, or a Slurm array
+   already does it, HyperShell is overkill TOO. Name a couple of neighbors and
+   wave at the rest — GNU Parallel, ParaFly, TaskFarmer, Launcher, Ray/Dask/
+   Parsl, and HTCondor as the HEAVYWEIGHT above (the next, heavier thing if you
+   genuinely outgrow this). Move on.
+
+Feature strip (v2.8 — accurate to the release notes, hypershell.readthedocs.io ·
+`hs --help`): AUTOSCALING (elastic client pool — policy-driven grow/shrink,
+staggered launch to thousands of nodes, scale to zero when idle) · PERSISTENCE
+(SQLite/Postgres in-the-loop, default in v2.8 — task history, recovery,
+automated retries across runs) · RESOURCE-AWARE SCHEDULING (per-task
+cores/memory/walltime with client-side priority + backfilling — the v2.8
+headline) · MONITORING (live CPU/memory telemetry per task & children via
+`--monitor`, peak + time-series, resource-limit warnings). SCENERY — name one
+or two, don't read them.
+
+Example lines (illustrative):
+- "At a million tasks the bottleneck isn't your code — it's the ONE scheduler
+  daemon everyone on the machine shares. Submit a million job-steps and you've
+  DDoS'd it. So the executor grabs ONE allocation and meters the tasks itself —
+  the controller sees one job, not a million. That's not about your convenience.
+  That's about protecting the machine."
+- "Full disclosure: this is my tool. That's the point, not an apology — GNU
+  Parallel is wonderful but wasn't right for HPC, so the rung had to exist."
+
+Transition → Slide 17 (Axis 2 · Make): "That's pure EXECUTION — a million
+UNRELATED tasks. None of it handles tasks that DEPEND on each other. For that we
+change axes entirely." [The clean hand-off from Axis 1 to Axis 2.]
+
+Delivery: MUST-NOT-SKIP; MIXED PACE. Snippet + feature strip are scenery (fast,
+gesture); the slurmctld beat is the idea (slow, give it room). Don't let the
+feature strip eat the punchline's air. ~120s.
+
+BUILD NOTE: reuses .code-terminal (one-liner) + .axis-tag (ratchet → ●●●●, rung
+"HyperShell") from the climb. The IDEA carries the visual weight via the new
+.hs-valve two-lane contrast (red self-DDoS lane / teal metered-allocation lane +
+gold earn-its-keep keeper); the v2.8 features are a COMPACT muted .hs-feat chip
+strip so the box never dominates (OUTLINE risk #1). who-holds-the-wires is now
+VERBAL only (the .hs-wires foot was cut so the valve keeper + box border fit;
+it's a reprise here — primary firing is 17b). hsx one-liner verified
+against the repo (cluster cmd; -t/--template, -N/--num-threads, --ssh nodelist);
+`> task.out` redirect dropped so the line fits .code-terminal's `white-space:pre`
+(no clip). `{}` survives MDC inline (as on Slide 14). HTML/CSS only — no SVG.
+-->
