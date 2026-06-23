@@ -49,8 +49,9 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 2 complete). Slides 1–5 (Title; "Perfection" cold
-# open; About RCAC; About Me; Thesis) below are REAL content per OUTLINE.md §4.
+# BUILD IN PROGRESS (Phase 3). Slides 1–7 (Title; "Perfection" cold open;
+# About RCAC; About Me; Thesis; the Zoo; capability vs. capacity) below are
+# REAL content per OUTLINE.md §4.
 # The single trailing slide (two-axis-ladder) is retained PHASE-1 SMOKE-TEST
 # scaffolding — it keeps dev/build/export green and proves the custom-layout
 # pipeline until the real Slides 12/19 land (Phases 4–5). Content source of
@@ -550,6 +551,94 @@ an <img> brand mark — the grid + size≈popularity scaffolding stays. A
 cascade/pile-up build (density visibly accumulating) is an optional enhancement
 deferred with the asset decision. HTML/CSS chips only — no inline SVG (MDC
 blank-line hazard).
+-->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Capability vs. capacity</h1>
+<div class="subhead">Two kinds of computing — the zoo is built for the second.</div>
+
+<div class="on-ramp">
+
+<div class="cap-panel is-capability">
+<div class="cap-head"><span class="cap-kicker">Capability</span><span class="cap-q">“how big?”</span></div>
+<div class="cap-stage">
+<div class="monolith">Monolithic MPI code</div>
+<div class="node-row"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+<div class="cap-caption">One giant program. Complexity sealed <em>inside</em> the code.</div>
+</div>
+
+<div class="cap-panel is-capacity">
+<div class="cap-head"><span class="cap-kicker">Capacity</span><span class="cap-q">“how many — and how much scaffolding?”</span></div>
+<div class="cap-stage">
+<div class="layer-stack">
+<div class="wl wl-app">Your analysis</div>
+<div class="wl wl-layer" style="--c:#2f567f">Orchestration</div>
+<div class="wl wl-layer" style="--c:#3f7d6b">Data</div>
+<div class="wl wl-layer" style="--c:#464a52">Scheduler</div>
+<div class="wl wl-layer" style="--c:#8a5a86">Containers</div>
+</div>
+<div class="task-swarm"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+</div>
+<div class="cap-caption">Many independent tasks. Complexity lives <em>between</em> tools — in optional layers.</div>
+</div>
+
+</div>
+
+<div class="on-ramp-plant">Start with one box. Add a layer only when the problem demands it.</div>
+
+<div class="page-num">07 / 24</div>
+
+</div>
+
+<!--
+[Slide 7 — On-ramp: capability vs. capacity (purdue-content) · 5:45–6:45 · compressible]
+
+THE UNDERGRAD ON-RAMP. Two kinds of computing told through one archetypal
+contrast: the MONOLITH vs. the LAYERED STACK. This talk — and the whole zoo —
+is about the second. The one place to SLOW DOWN for HPC-novices; compressible
+to one line for an HPC-literate room.
+
+The load-bearing PLANT (the whole talk in one line): this is SCAFFOLDING WITH
+INCREMENTAL COMPLEXITY — you add layers only as the problem demands. The plant
+banner ("start with one box; add a layer only when the problem demands it")
+pre-echoes the thesis and the Slide 19 checklist. Hold that thought.
+
+The trade to name: the monolith HAS to be complex (tightly coupled) — its
+complexity is sealed inside the code; the workflow gets to CHOOSE its
+complexity, layer by layer. That freedom is both the benefit and the
+temptation.
+
+Beats:
+1. Capability = the monolith: one giant Fortran-and-MPI code spanning a whole
+   supercomputer — it HAS to be complex; the complexity lives inside the code.
+2. Capacity = the layered stack: lots of independent tasks, complexity lives
+   BETWEEN the tools, in a stack of optional layers.
+3. Name the layers fast (application → orchestration → data → scheduler →
+   containers) — this PREVIEWS the vocabulary Slides 9–10 decompose, and the
+   tints match the Zoo (slate=orchestration, green=data, graphite=scheduler,
+   mauve=containers).
+4. The key plant: incremental scaffolding — add layers only as needed.
+
+Example lines (illustrative):
+- "One world is a single giant Fortran-and-MPI code that spans a whole
+  supercomputer — it HAS to be complex; the complexity lives inside the code."
+- "Our world is the opposite: lots of independent tasks, and the complexity
+  lives BETWEEN them — in a stack of optional layers."
+- "The monolith asks 'how big?'; the workflow asks 'how many — and how much
+  scaffolding do I actually need?'"
+
+Transition → Slide 8 (Why the layers exist): "Before we judge any of those
+layers, it's worth asking why they exist at all."
+
+Delivery: Undergrad on-ramp — the one place to slow down for novices.
+COMPRESSIBLE to one line for an HPC-literate room. On-slide text stays lean (the
+diagram + the plant carry it); the teaching is spoken.
 -->
 
 ---

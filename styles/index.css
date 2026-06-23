@@ -316,6 +316,154 @@ code, pre, .slidev-code {
 }
 
 
+/* ---------- Slide 7 content: on-ramp (capability vs. capacity) ---------- *
+ *
+ * Built on .purdue-content. Two panels: LEFT the monolith (complexity
+ * sealed INSIDE one tightly-coupled program spanning a row of nodes);
+ * RIGHT the layered stack (complexity BETWEEN tools, over a swarm of
+ * independent tasks). The layer tints deliberately echo the Zoo /
+ * decompose vocabulary — slate=orchestration, green=data,
+ * graphite=scheduler, mauve=containers — so the words recur visually on
+ * Slides 9–10. The dashed plant under both panels is the load-bearing
+ * idea: incremental scaffolding (add a layer only as the problem demands).
+ */
+
+.purdue-content .on-ramp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+  margin-top: 0.2rem;
+}
+
+/* MDC p-wrap guard — blank-line-induced <p> must not break the grid/flex. */
+.purdue-content .on-ramp > p,
+.purdue-content .cap-panel > p,
+.purdue-content .cap-head > p,
+.purdue-content .cap-stage > p,
+.purdue-content .layer-stack > p,
+.purdue-content .node-row > p,
+.purdue-content .task-swarm > p {
+  display: contents;
+}
+
+.purdue-content .cap-panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ink-muted);
+  border-radius: 0.45rem;
+  padding: 0.6rem 0.9rem 0.62rem;
+}
+.purdue-content .cap-panel.is-capability { background: rgba(70, 74, 82, 0.05); }
+.purdue-content .cap-panel.is-capacity   { background: rgba(207, 184, 145, 0.10); }
+
+.purdue-content .cap-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+.purdue-content .cap-kicker {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+.purdue-content .cap-q {
+  color: var(--gold-deep);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.purdue-content .cap-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.45rem;
+}
+
+/* left — the monolith spanning a row of nodes (fused: one program, one machine) */
+.purdue-content .monolith {
+  background: #464a52;
+  color: var(--bg-paper);
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+.purdue-content .node-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+}
+.purdue-content .node-row span {
+  height: 0.95rem;
+  background: rgba(70, 74, 82, 0.55);
+}
+.purdue-content .node-row span:first-child { border-bottom-left-radius: 0.25rem; }
+.purdue-content .node-row span:last-child  { border-bottom-right-radius: 0.25rem; }
+
+/* right — the layered stack over a swarm of independent tasks */
+.purdue-content .layer-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+}
+.purdue-content .wl {
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.22rem 0.6rem;
+  border-radius: 0.25rem;
+  border-left: 4px solid var(--c, var(--gold-deep));
+  background: var(--bg-paper);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.purdue-content .wl-app {
+  --c: var(--gold-bright);
+  background: rgba(218, 170, 0, 0.12);
+  font-weight: 700;
+}
+.purdue-content .task-swarm {
+  margin-top: 0.3rem;
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 2px;
+}
+.purdue-content .task-swarm span {
+  height: 0.5rem;
+  background: rgba(70, 74, 82, 0.32);
+  border-radius: 1px;
+}
+
+.purdue-content .cap-caption {
+  margin-top: 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--ink-subhead);
+}
+.purdue-content .cap-caption em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.purdue-content .on-ramp-plant {
+  margin: 0.6rem auto 0;
+  max-width: 41rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink);
+  border: 1px dashed var(--gold-deep);
+  border-radius: 0.35rem;
+  padding: 0.45rem 1.4rem;
+  background: rgba(218, 170, 0, 0.07);
+}
+
+
 /* ---------- Layout primitive 3: .purdue-overview ---------- *
  *
  * Section-divider / thesis-card chrome. Warm cream ground, large
