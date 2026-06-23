@@ -1113,3 +1113,71 @@ as "typed at a shell." Maximally distinct from the .code-definition (authored
 source) treatment coming on Slides 17–18. fastq through-line (domain-flavored
 scenery reads as MORE real). HTML/CSS only — no fenced block, no inline SVG.
 -->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>One flag, real concurrency</h1>
+<div class="subhead">Each rung adds exactly one capability: the loop gave you iteration — this adds bounded parallelism.</div>
+
+<div class="axis-tag" style="--c:#2c7a8c"><span class="at-label">Axis 1 · Executor / scale</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot is-on"></span><span class="at-dot"></span><span class="at-dot"></span></span><span class="at-rung">xargs -P</span></div>
+
+<div class="code-terminal">
+<div class="ct-bar"><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-title">bash</span></div>
+<div class="ct-body">
+<div class="ct-line"><span class="ct-prompt">$</span>ls samples/*.fastq | xargs -P 8 -I{} &#92;</div>
+<div class="ct-line"><span class="ct-cont">&gt;</span>    sh -c './analyze.sh "$1" &gt; "results/$(basename "$1").out"' _ {}</div>
+</div>
+</div>
+
+<div class="term-aside">cf. ParaFly (a failure log) · GNU Parallel (retries) — each adds one thing, all still one node.</div>
+
+<div class="climb-cue">Real concurrency — but it all tops out at <strong>one node</strong>. The cluster is right there, and you can't reach it.</div>
+
+<div class="page-num">14 / 24</div>
+
+</div>
+
+<!--
+[Slide 14 — Axis 1 · xargs (the first taming) (purdue-content · terminal aesthetic) · 13:00–13:45 · Act-2 · SCENERY · compressible]
+
+THE FIRST RUNG THAT EARNS ITS KEEP. `xargs -P` gives real node-local
+parallelism with throttling — for free, with a tool you already have. The
+concern was "run many at once without DDoS-ing my own laptop"; this answers it.
+The snippet is SCENERY — gesture at `-P`; the dense quoting does NOT need to be
+legible (nobody's reading it). The keeper is the RATCHET, not the syntax.
+
+RECURRING LINE fires here: "EACH RUNG ADDS ONE CAPABILITY." This is where the
+feature-ratchet through-line starts: the loop gave ITERATION; xargs adds
+BOUNDED PARALLELISM. Exactly one new capability. The axis-tag ratchet ticks to
+●●○○ to show it visually.
+
+Beats:
+1. "One flag, real concurrency." Gesture at `-P`; don't parse the quoting.
+2. The ratchet line: each rung adds exactly one missing capability. [RECURRING]
+3. (Optional, fast) the niche exists — ParaFly (failure log), GNU Parallel
+   (retries) — name a couple, don't enumerate. All single-node.
+4. The wall: still ONE NODE; the cluster is right there and you can't reach it.
+
+Example lines (illustrative):
+- "Same loop — one flag, and now it runs eight at a time. You'll never read this
+  on a slide and that's fine."
+- "There's a whole little niche here — ParaFly, GNU Parallel — each adding one
+  thing: a failure log, retries. But they all stop at one node."
+
+Transition → Slide 15 (Slurm array): "Bounded parallelism on one node — now I
+want the WHOLE CLUSTER. Hand it to the scheduler."
+
+Delivery: SCENERY + COMPRESSIBLE. If time slips, collapse to one sentence —
+"xargs -P parallelizes the loop; GNU Parallel adds retries" — and jump straight
+to Slurm. The single-node ceiling is the must-plant wall.
+
+BUILD NOTE: reuses the .code-terminal device + .axis-tag (ratchet → ●●○○) +
+.climb-cue from Slide 13; same fastq through-line. The niche callout is the
+small muted .term-aside (per OUTLINE's "tiny grey margin note — cf. ParaFly,
+GNU Parallel"). Trailing line-continuation backslash written as &#92; so MDC
+doesn't read `\</div>` as an escaped `<`. HTML/CSS only.
+-->

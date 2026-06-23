@@ -1146,6 +1146,17 @@ code, pre, .slidev-code {
   font-weight: 700;
 }
 
+/* Hallway-track aside — a tiny muted margin note naming the niche tools
+ * (ParaFly, GNU Parallel) without enumerating them. Scenery texture only. */
+.purdue-content .term-aside {
+  margin-top: 0.65rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
 /* Code / definition treatment — workflow definitions (Slides 17, 18). */
 .code-definition {
   /* STUB (Phase 5): source-file / definition block, distinct from terminal. */

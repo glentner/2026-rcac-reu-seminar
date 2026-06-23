@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "4"
 phases_completed: ["0", "1", "2", "3"]
-last_updated: "2026-06-23T16:45:00Z"
+last_updated: "2026-06-23T17:15:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -99,7 +99,7 @@ slides:
   - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — two-state trap on .purdue-content: LEFT .mc-tangle (overlapping graphite chips, position + --rot inline) labeled 'complexity' → .mc-pitch arrow ('just write a few snippets…') → RIGHT .mc-platform = the SAME tangle SEALED in one .mc-box ('platform that tames complexity') with red .mc-leak chips (+ ops, + metadata DB, + deploy, + version skew) pinned to the corners + 'you still own all of it' cap. Gold .mc-callout keeper: 'This could have been a Makefile and a cron-job.' Recurring lines fire (title + callout; verbatim in notes). $200M observability eye-roll + industry↔academia nuance + funny/warm tone-drift cue ALL in speaker notes, none on-slide (OUTLINE edit #7). HTML/CSS only. Build + export green." }
   - { id: "12",  beat: "Two axes, not one ladder",                 phase: "4", act: "2",    layout: "two-axis-ladder",     code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: [], note: "COMPLETE — the FRAMEWORK REVEAL, preview form of two-axis-ladder. Two clearly-separated horizontal axis tracks: Axis 1 Executor/scale (teal, bash loop → xargs -P → Slurm array → HyperShell) and Axis 2 Orchestration/DSL (slate, GNU Make → Nextflow), pushed far apart via flex space-between so 'two axes, not one' reads at a glance; tints reuse the Slide 10 decompose vocabulary (teal executor / slate orchestration) + foreshadow Axis 1's climb (Slides 13–16). Each axis: kicker chip + name + the question it answers (emphasized verb) + a `→`-joined rung track with a 'more scale/structure →' hint. Five faint greyed .ta-ghost unclimbed tools (Ray, Airflow near the boundary; Snakemake, Dask, Parsl near orchestration) float in the field = the rungs are a CHOSEN SUBSET, not the whole zoo. One-line .ta-foot renders 'the map outlasts the tools' ('place any tool … even one I've never heard of'). Both recurring lines ('Which axis are you on?' + 'The map outlasts the tools.') fire verbatim in speaker notes; [BREATH] kept airy. HTML/CSS only (no inline SVG, MDC-safe). Build + export green; eyeball-verified at page 12." }
   - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the FLOOR of the executor climb. First consumer of the .code-terminal DEVICE (THEME §10), now fleshed out from its Phase-1 stub: a titled `bash` window (graphite #2b2e33 bar + red/amber/green traffic dots + title) over a dark graphite #1c1e22 body, off-white mono, gold-bright `$` prompt + muted `>` continuation — reads as 'typed at a shell', maximally distinct from the .code-definition treatment coming on 17–18. Snippet is the real fastq through-line `for s in samples/*.fastq; do ./analyze.sh \"$s\" > \"results/...\"; done` as SCENERY (verified the `*`/redirect/quotes/`$()` survive MDC without mangling). h1 'The humblest workflow: a loop'; conviction keeper is the subhead ('the right answer — full stop'); throttling wall is the gold .climb-cue ('8 at a time … hand-rolling a job pool'). NEW reusable .axis-tag (teal --c Axis-1, 4-dot rung ratchet ●○○○ + 'the bash loop') anchors the climb on the Slide 12 map and will fill one more dot per slide on 14–16 ('each rung adds one capability' made visual; the line itself starts firing on 14). Speaker notes carry the scenery-rule banner + beats + transition. HTML/CSS only. Build + export green; eyeball-verified at page 13." }
-  - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
+  - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "COMPLETE — the FIRST RUNG THAT EARNS ITS KEEP. Reuses the Slide 13 infra: .code-terminal `bash` window, .axis-tag with the ratchet advanced to ●●○○ (rung label 'xargs -P'), .climb-cue. Same fastq through-line piped to `xargs -P 8 -I{}` (the dense `sh -c` quoting is SCENERY — not meant to be read; trailing line-continuation `\\` written as &#92; so MDC doesn't parse `\\</div>` as an escaped `<`). The feature-ratchet through-line STARTS here: loop=iteration, xargs=bounded parallelism — recurring line 'EACH RUNG ADDS ONE CAPABILITY' fires as the on-slide subhead + notes. Niche callout (ParaFly=failure log · GNU Parallel=retries) is the small muted .term-aside (OUTLINE's 'tiny grey margin note'); the single-node ceiling is the gold .climb-cue wall ('tops out at one node'). compressible: collapses to one sentence + jump to Slurm if time slips. HTML/CSS only. Build + export green; eyeball-verified at page 14." }
   - { id: "15",  beat: "Axis 1 — Slurm job array",                 phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "16",  beat: "Axis 1 — HyperShell + pressure-release",   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "17",  beat: "Axis 2 — \"Make is all you need\"",          phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -492,9 +492,16 @@ rule** banner (OUTLINE Slides 13–18): gesture, don't teach.
       job pool"). New reusable `.axis-tag` anchors the climb on the Slide 12
       map (teal Axis-1 tint + 4-dot rung ratchet ●○○○). Build + export green;
       eyeball-verified at page 13.*
-* [ ] **Slide 14 — xargs** (terminal). **compressible.** **DoD:** `-P`
+* [x] **Slide 14 — xargs** (terminal). **compressible.** **DoD:** `-P`
       snippet (quoting need not be legible — scenery); recurring line *"each
-      rung adds one capability"*; single-node ceiling planted.
+      rung adds one capability"*; single-node ceiling planted. *Done — the
+      first rung that earns its keep. Reuses the `.code-terminal` + `.axis-tag`
+      (ratchet → ●●○○) + `.climb-cue` infra; same fastq through-line piped to
+      `xargs -P 8` (continuation `\` via `&#92;` to survive MDC). Recurring
+      line is the on-slide subhead ("Each rung adds exactly one capability …")
+      + in notes. The niche callout (ParaFly · GNU Parallel) is the small muted
+      `.term-aside`; the single-node ceiling is the gold `.climb-cue`. Build +
+      export green; eyeball-verified at page 14.*
 * [ ] **Slide 15 — Slurm job array** (terminal). **compressible.** **DoD:**
       `#SBATCH --array` snippet; the controller-pressure wall planted ("one
       scheduler decision per task").
@@ -707,4 +714,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T16:45:00Z*
+*Last updated: 2026-06-23T17:15:00Z*
