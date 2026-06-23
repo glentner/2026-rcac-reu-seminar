@@ -1475,3 +1475,112 @@ v-click rather than a literal flip-back; the four shim annotations sit in a chip
 row (not margin call-outs on the recipe line). Say if you'd prefer static
 annotations or a true reverse-navigation. HTML/CSS only — no inline SVG.
 -->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Nextflow earns its keep at human scale</h1>
+<div class="subhead">Everything you'd shim by hand — now the framework's job.</div>
+
+<div class="axis-tag" style="--c:#2f567f"><span class="at-label">Axis 2 · Orchestration / DSL</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot is-on"></span></span><span class="at-rung">Nextflow</span></div>
+
+<div class="code-definition is-dense">
+<div class="cd-tab"><span class="cd-ic"></span><span class="cd-file">main.nf</span></div>
+<div class="cd-body">
+<div class="cd-line"><span class="cd-kw">process</span> <span class="cd-tgt">analyze</span> {</div>
+<div class="cd-line">    <span class="cd-kw">container</span> <span class="cd-str">'biocontainers/tool:1.0'</span></div>
+<div class="cd-line">    <span class="cd-kw">input:</span>  <span class="cd-fn">path</span> sample</div>
+<div class="cd-line">    <span class="cd-kw">output:</span> <span class="cd-fn">path</span> <span class="cd-str">"<span class="cd-var">${sample.baseName}</span>.out"</span></div>
+<div class="cd-line">    <span class="cd-kw">script:</span> <span class="cd-str">"./analyze.sh <span class="cd-var">${sample}</span> &gt; <span class="cd-var">${sample.baseName}</span>.out"</span></div>
+<div class="cd-line">}</div>
+<div class="cd-line"><span class="cd-kw">workflow</span> { <span class="cd-tgt">analyze</span>(<span class="cd-fn">Channel.fromPath</span>(<span class="cd-str">'samples/*.fastq'</span>)) }</div>
+</div>
+</div>
+
+<div class="nf-feat"><span class="nff-key">the framework's job</span><span class="nff-chip">containers</span><span class="nff-chip">dynamic DAG</span><span class="nff-chip">-resume</span><span class="nff-chip">executor portability</span><span class="nff-chip">nf-core</span></div>
+
+<div class="nf-keep">The <strong>packaging-index move</strong> — Python ships a package index; nf-core ships pipelines. Offload the complexity to a <em>shared community problem</em>, and you scale <strong>people</strong>, not just tasks.</div>
+
+<div class="nf-foot">I climb Nextflow because it's what I watch people reach for here — but <em>the map outlasts the tools.</em></div>
+
+<div class="page-num">18 / 24</div>
+
+</div>
+
+<!--
+[Slide 18 — Axis 2 · Nextflow as the justified endpoint (purdue-content · DEFINITION aesthetic) · 18:15–19:30 · Act-2 · MUST-NOT-SKIP · mixed pace · ~75s]
+
+THE TOP of the orchestration axis (ratchet ●●). Like Slide 16 at the top of
+Axis 1, this slide holds BOTH scenery (the main.nf snippet + the 5-feature
+strip) AND a must-land IDEA (human scalability = the packaging-index move). The
+IDEA carries the visual weight via the gold .nf-keep keeper; don't let the
+snippet eat its air.
+
+>> SCENERY-RULE BANNER still in force: the main.nf snippet is the DEFINITION
+   aesthetic (authored, not run) — rendered DENSE on purpose so "the top of the
+   axis = a lot of machinery" reads as TEXTURE. Gesture; nobody reads it.
+
+THE IDEA THAT MUST LAND (give it room): the point is NOT that Make can't —
+Slide 17b just showed it can shim all of it. It's that Nextflow makes those
+patterns the FRAMEWORK'S job, and that delegation buys *human* scalability. This
+is the PACKAGING-INDEX move: Python/Node/Rust ship a package index; they offload
+complexity to a *shared community problem*. Nextflow's forced, uniform
+plug-points + nf-core are the same move for pipelines — a shared problem solved
+once, for everyone. That's what "earns its keep" means up here: not your
+convenience, but scaling PEOPLE. [RECURRING: "earn its keep" — it's the h1.
+"the map outlasts the tools" — the .nf-foot line, said verbatim.]
+
+Beats:
+1. Reframe (NOT "Make can't"): five capabilities, now the framework's job —
+   containers, a *dynamic* dataflow DAG (the one thing Make can't do cleanly:
+   data-driven topology, not a fixed target list), `-resume`, executor
+   portability, nf-core. Gesture at the snippet + strip; don't teach them.
+2. THE KEEPER — give it room: human scalability = the packaging-index move.
+   "You don't reinvent a build system to use Python; you don't reinvent a
+   pipeline to use nf-core. A shared problem, solved once, for everyone."
+3. Honest cost (notes, not on-slide): it's a LOT of machinery and it RELOCATES
+   control — the framework now holds the wires (the Slide 17b callback). Worth
+   it when the problem is bigger than one person's conventions. If it isn't,
+   Slide 17 was your answer — climb back down without guilt.
+4. OWN THE BIAS: I climb Nextflow because it's what I most watch researchers
+   reach for on our HPC — the view from the trenches. Snakemake, CWL/Cromwell,
+   Parsl, Luigi, Airflow are all valid; place each on the orchestration axis and
+   apply the same checklist. THE MAP OUTLASTS THE TOOLS. [RECURRING]
+
+Example lines (illustrative):
+- "Everything 17b shimmed by hand, Nextflow makes the framework's job — plus one
+  thing Make can't do cleanly: a *dynamic* dataflow graph driven by the data."
+- "This is the packaging-index move. Python doesn't make you reinvent a build
+  system; nf-core doesn't make you reinvent a pipeline. That's *human*
+  scalability — a shared problem solved once for everyone."
+- "It's a lot of machinery, and it hands control to the framework. Worth it when
+  the problem is bigger than your own conventions. If it isn't — back there, the
+  Makefile was your answer."
+
+Transition → Slide 19 (the decision ladder): "So: two axes, several rungs each.
+Here's how to decide." [The clean hand-off into the photograph-slide.]
+
+Delivery: MUST-NOT-SKIP. Mixed pace — snippet + feature strip are scenery
+(brisk); the human-scalability / packaging argument is the keeper (slow, give it
+room). ~75s.
+
+BUILD NOTE: reuses the .code-definition device (THEME §10) from Slide 17 with the
+NEW .is-dense modifier (smaller font + tighter leading) so the 7-line main.nf
+reads as dense machinery and stays inside the vertical budget (the Slide 17
+lesson). axis-tag → slate Axis-2 ratchet ●● ("Nextflow"), completing the
+orchestration climb (Make ●○ → Nextflow ●●). Groovy syntax reuses the deck's
+definition tints: process/workflow/directives = mauve .cd-kw, process name =
+slate .cd-tgt (parallel to a Make target), strings = green .cd-str, ${...}
+interpolation = gold .cd-var (parallel to the Makefile's gold $< $@). main.nf is
+the OUTLINE §4 snippet verbatim; only the script-string redirect `>` is escaped
+as `&gt;` ({} / ${} / * / quotes survive MDC inline, as on Slides 14/16). The
+IDEA carries the weight via .nf-keep (gold-rule keeper, the sibling of Slide
+17's .mk-wires — converted from a padded box to a top-rule statement in review so
+the .nf-foot map-outlasts line cleared the bottom); the 5 features are the muted
+slate .nf-feat strip (sibling of Slide 16's teal .hs-feat); .nf-foot fires the
+map-outlasts line in one compact muted row (the specific tool list lives in
+notes). HTML/CSS only — no inline SVG.
+-->

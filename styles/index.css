@@ -1372,6 +1372,80 @@ code, pre, .slidev-code {
 .purdue-content .mk-wires strong { color: var(--gold-deep); }
 .purdue-content .mk-wires em { font-style: italic; color: var(--ink-subhead); }
 
+/* ---------- Slide 18: Nextflow as the justified endpoint ---------- *
+ * The TOP of the orchestration axis (ratchet ●●) and a must-not-skip beat. Like
+ * Slide 16, it holds BOTH scenery (the main.nf snippet + a 5-feature strip) AND
+ * a must-land IDEA (human scalability = the packaging-index move) — the IDEA
+ * carries the weight via the gold .nf-keep keeper so the snippet never eats its
+ * air. Reuses the .code-definition device; the 7-line snippet is rendered DENSE
+ * (.is-dense) so "the top of the axis = a lot of machinery" reads as texture
+ * without blowing the vertical budget (the Slide 17 lesson). */
+
+/* dense variant of the definition body — the 7-line main.nf is scenery; small +
+ * tight reads as "more machinery," and keeps the block inside the height budget. */
+.code-definition.is-dense .cd-body {
+  font-size: 0.73rem;
+  line-height: 1.34;
+  padding: 0.58rem 1.25rem;
+}
+
+/* the 5 justifying features — the framework's job (scenery). Slate Axis-2 tint,
+ * the sibling of Slide 16's teal .hs-feat strip. */
+.purdue-content .nf-feat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.5rem 0 0;
+}
+
+.purdue-content .nf-feat .nff-key {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #2f567f;
+  margin-right: 0.3rem;
+}
+
+.purdue-content .nf-feat .nff-chip {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.58rem;
+  border-radius: 3px;
+  background: color-mix(in srgb, #2f567f 9%, white);
+  border: 1px solid color-mix(in srgb, #2f567f 30%, white);
+  color: #2c3e5c;
+  white-space: nowrap;
+}
+
+/* THE MUST-LAND IDEA — human scalability via the packaging-index move. Gold
+ * keeper; this is the air, give it room (mirrors Slide 16's hv-keep). */
+.purdue-content .nf-keep {
+  margin: 0.65rem auto 0;
+  max-width: 52rem;
+  text-align: center;
+  border-top: 1px dashed var(--gold);
+  padding-top: 0.6rem;
+  font-size: 1.14rem;
+  line-height: 1.42;
+  color: var(--ink);
+}
+
+.purdue-content .nf-keep strong { color: var(--gold-deep); }
+.purdue-content .nf-keep em { font-style: normal; color: var(--gold-bright); font-weight: 600; }
+
+/* own-the-bias / map-outlasts-the-tools — one compact muted line (honest scope). */
+.purdue-content .nf-foot {
+  margin: 0.5rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.01em;
+}
+
+.purdue-content .nf-foot em { font-style: italic; color: var(--ink-subhead); }
+
 
 /* ==========================================================================
  * Custom layouts (new to this deck — THEME.md §9 / ROADMAP `layouts:`).
