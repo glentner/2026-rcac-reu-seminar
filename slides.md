@@ -49,13 +49,14 @@ fonts:
   weights: '400,600,700'
 
 # ─────────────────────────────────────────────────────────────────────────
-# BUILD IN PROGRESS (Phase 4). Slides 1–12 below are REAL content per
-# OUTLINE.md §4 (Title; "Perfection" cold open; About RCAC; About Me; Thesis;
-# the Zoo; capability vs. capacity; why the layers exist; anatomy; decompose +
-# the turn; merchants of complexity; two axes, not one ladder). The Phase-1
-# two-axis-ladder smoke-test stub has been replaced by the real Slide 12
-# (preview form). Slides 13–23 land in Phases 4–6. Content source of truth:
-# OUTLINE.md; build order: ROADMAP.md.
+# BUILD IN PROGRESS (Phase 5). Slides 1–17 below are REAL content per
+# OUTLINE.md §4 (Prelude 1–5; Zoo → turn 6–11; Axis 1 executor climb 12–16;
+# Axis 2 opens with "Make is all you need" + the 17b reverse). Two code
+# aesthetics are now both live: the DARK terminal-window device (Slides 13–16)
+# and the LIGHT authored-source DEFINITION device (Slide 17). Slide 17 carries
+# BOTH beat 17 and the 17b slide-REVERSE on ONE physical page (a v-click reveals
+# the reframe) — the deck stays 24 physical slides. Slides 18–23 land in
+# Phases 5–6. Content source of truth: OUTLINE.md; build order: ROADMAP.md.
 # ─────────────────────────────────────────────────────────────────────────
 ---
 
@@ -1371,4 +1372,106 @@ it's a reprise here — primary firing is 17b). hsx one-liner verified
 against the repo (cluster cmd; -t/--template, -N/--num-threads, --ssh nodelist);
 `> task.out` redirect dropped so the line fits .code-terminal's `white-space:pre`
 (no clip). `{}` survives MDC inline (as on Slide 14). HTML/CSS only — no SVG.
+-->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Make is all you need</h1>
+<div class="subhead">Secretly a DAG engine. For a huge fraction of pipelines, the whole answer — <em>out of the box</em>.</div>
+
+<div class="axis-tag" style="--c:#2f567f"><span class="at-label">Axis 2 · Orchestration / DSL</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot"></span></span><span class="at-rung">GNU Make</span></div>
+
+<div class="code-definition">
+<div class="cd-tab"><span class="cd-ic"></span><span class="cd-file">Makefile</span></div>
+<div class="cd-body">
+<div class="cd-line"><span class="cd-tgt">results/%.out</span>: <span class="cd-dep">samples/%.fastq</span></div>
+<div class="cd-line">    ./analyze.sh <span class="cd-var">$&lt;</span> &gt; <span class="cd-var">$@</span></div>
+<div class="cd-line"><span class="cd-tgt">all</span>: <span class="cd-fn">$(patsubst samples/%.fastq,results/%.out,$(wildcard samples/*.fastq))</span></div>
+</div>
+</div>
+
+<div class="mk-reframe" v-click>
+<div class="mk-shims"><span class="mk-key">Same Makefile, new lens — I can shim what people reach for Nextflow to get:</span><span class="mk-shim">containers · <code>$(RUN)</code></span><span class="mk-shim">cluster · <code>srun</code></span><span class="mk-shim">resume · atomic <code>mv</code></span><span class="mk-shim">modules · child-Makefiles</span></div>
+<div class="mk-wires">Make isn't <em>incapable</em> — I can shim all of it. The real question was never <em>what Make can do.</em> It's <strong>who's holding the wires</strong> — you, or a framework you now have to feed?</div>
+</div>
+
+<div class="page-num">17 / 24</div>
+
+</div>
+
+<!--
+[Slides 17 + 17b — Axis 2 · "Make is all you need" + the reverse (purdue-content · DEFINITION aesthetic) · 16:15–18:15 · Act-2 · 17b must-not-skip · mixed pace · ~120s]
+
+ONE physical slide carries TWO beats. 17 = the provocation (clean state, before
+the click). 17b = the reverse (the v-click reveals the reframe layer over the
+SAME Makefile). 17b is NOT a new physical slide — the deck stays 24 physical
+slides. The mechanic is OUTLINE's "literally reverse one slide": here it's a
+single forward reveal so the room never has to watch me navigate backward.
+
+>> SCENERY-RULE BANNER still in force: the Makefile is the OTHER code aesthetic
+   (DEFINITION — something authored, not the terminal you RUN). Gesture at it;
+   nobody reads it. The keepers are the provocation, the planted "out of the
+   box," and the who's-holding-the-wires question — NOT the syntax.
+
+This is the FLOOR of Axis 2. The axis tag flips to slate (#2f567f, the Slide 12
+orchestration tint) with a 2-dot ratchet — Axis 2 has only two rungs (Make ●○ →
+Nextflow ●●), the parallel to the executor climb's 4-dot ratchet.
+
+── BEAT 17 (state 0 — clean, before the click) ──
+1. "Make is secretly a DAG engine: targets, prerequisites, recipes. It already
+   knows what depends on what and only rebuilds what changed." Gesture at the rule.
+2. A Makefile *is* a reproducible pipeline — genuinely huge in data science for
+   exactly this reason.
+3. The provocation: before a bespoke engine, ask whether a Makefile does it.
+   "For a huge fraction of pipelines, Make is all you need."
+4. PLANT the words: "Out of the box it lacks containers and cluster execution —
+   but hold on to those words, 'out of the box.'" [Then CLICK → 17b.]
+
+── BEAT 17b (state 1 — after the click) · MUST-NOT-SKIP ──
+1. "Same Makefile — new lens." (The reveal IS the reverse.)
+2. The four shims, BRISK (scenery — wave, don't teach): containers? one variable
+   `RUN = apptainer exec …`, prefix each recipe. Cluster? `RUN = srun …`. Resume?
+   Make already does it — plus a one-line atomic `mv` so a half-written file
+   never lies to you. Modules? child-Makefiles in Git.
+3. THE KEEPER — say it SLOWLY: "So Make is NOT incapable — I can shim all of
+   this. Nextflow isn't right because Make *can't*. It's a different trade: it
+   takes the patterns I'd own by hand and makes them the framework's job. The
+   question is WHO'S HOLDING THE WIRES — you, or a framework you now have to
+   feed?" [RECURRING: "who's holding the wires?" — this is its PRIMARY firing
+   (it's the on-slide .mk-wires keeper); reprised verbally on Slide 16's climb
+   and again on the Slide 19 ladder gradient. Control, not capability — a FELT
+   question, not a second formal axis.]
+
+Example lines (illustrative):
+- "Containers? One variable: RUN = apptainer exec …, prefix each recipe. Cluster?
+  RUN = srun …. Resume? Make already does it — plus a one-line atomic mv. Modules?
+  child-Makefiles in Git."
+- "Make isn't incapable — I can shim all of this. The real difference isn't what
+  Make can do. It's who's holding the wires."
+
+Transition → Slide 18 (Nextflow): "That's the case FOR doing it yourself. Here's
+why a whole community decided to stop."
+
+Delivery: 17b is MUST-NOT-SKIP. Mixed pace — the Makefile + the four shims are
+scenery (brisk); the who's-holding-the-wires line is the keeper (slow). ~120s
+for both beats together.
+
+BUILD NOTE: first consumer of the .code-definition device (THEME §10) — a LIGHT
+authored-source card with an editor filename TAB ("Makefile") + syntax tints
+drawn from the deck's layer vocabulary (slate target = orchestration, green
+prerequisite = data, gold automatic-vars $< $@), deliberately the inverse of the
+DARK .code-terminal window (Slides 13–16) so "authored vs. run" reads instantly.
+The 17b reframe (.mk-reframe) is gated behind a single `v-click` (the Slide 2
+precedent; Slidev exports the final composited frame, so the PDF shows the
+reframe). Make snippet is the OUTLINE §4 Makefile (the blank separator line dropped so the
+keeper clears the bottom rule; .cd-body sized a shade under the terminal so the
+long patsubst line stays on one row); `$<`/`>` escaped as `$&lt;`/`&gt;` so MDC
+doesn't read them as tags ($@, $(...), %, * survive inline as on Slides 13–16). REVIEW NOTE for Geoffrey: the 17→17b reveal is a forward
+v-click rather than a literal flip-back; the four shim annotations sit in a chip
+row (not margin call-outs on the recipe line). Say if you'd prefer static
+annotations or a true reverse-navigation. HTML/CSS only — no inline SVG.
 -->
