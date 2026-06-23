@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "3"
 phases_completed: ["0", "1", "2"]
-last_updated: "2026-06-23T02:30:00Z"
+last_updated: "2026-06-23T03:15:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -95,7 +95,7 @@ slides:
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "Two-panel monolith-vs-layered-stack on .purdue-content. LEFT: graphite monolith block spanning a row of nodes ('how big?'; complexity sealed INSIDE). RIGHT: 5-bar layered stack (Your analysis → Orchestration → Data → Scheduler → Containers) over a 32-square task swarm ('how many — and how much scaffolding?'; complexity BETWEEN tools). Layer tints deliberately echo the Zoo / decompose vocabulary (slate=orch, green=data, graphite=sched, mauve=containers) so the words recur visually on Slides 9–10. Load-bearing PLANT as a centered dashed pill: 'Start with one box. Add a layer only when the problem demands it.' (incremental scaffolding). On-slide text kept lean (Act-1 compressible). Build + export green; eyeball-verified at 8 pages." }
   - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "Concern→layer MAPPING on .purdue-content: 6 rows, each pairing a real operational concern (left) with the layer it spawned (right, a tinted pill) via a per-row tinted arrow. The four shared layers keep their Slide 7 / Zoo tints (mauve=Containers, slate=Orchestration, green=Data, graphite=Scheduler); Persistence (indigo #4b4f9c) + Observability (red #a14e4e) complete the set. Gold pivot callout under the map is the KEEPER: 'the question is never is this layer good? — it's do I have this concern, today, at a scale the layer below can't handle?' Mapping = scenery (brisk); pivot = the line. Build + export green; eyeball-verified at 9 pages." }
   - { id: "9",   beat: "Anatomy of an over-engineered workflow",   phase: "3", act: "1",    layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the Slide 2 gag drawn seriously. rube-goldberg-stack layout fleshed out (was a Phase-1 stub): a 9-brick TEETERING tower (React dashboard → Grafana/Datadog → PostgreSQL → Airflow → Jinja-templated DAG → Kubernetes → Docker/Apptainer → Globus/S3 → Slurm) on the PAPER content ground (gold rules + RCAC mark + page-num — distinct from Slide 2's chrome-free ink fullbleed), with a dwarfed `for sample in samples: analyze(sample)` payload at the base (deliberate Slide 2 callback). Bricks are UNIFORM graphite ON PURPOSE — Slide 10 reuses this exact markup color-coded + labeled with academic|industry pairs (the defusing/turn). Teeter mechanics mirror Slide 2: per-brick --tilt (alternating wobble) + cumulative --dx (geometric lean; only top bricks overhang). On-slide text lean (Act-1 centerpiece, density-is-the-message); the 'which of these do you actually need?' Act-2 plant lives in speaker notes. Subhead shortened in review so the leaning top brick doesn't overlap it; rg-stage nudged to top:7.5rem. Build + export green; eyeball-verified at page 9." }
-  - { id: "10",  beat: "Decompose the layers + the turn",          phase: "3", act: "turn", layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
+  - { id: "10",  beat: "Decompose the layers + the turn",          phase: "3", act: "turn", layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — THE TURN. Same rube-goldberg-stack layout as Slide 9 + the `.is-decomposed` modifier: straightens the teeter (transform:none), lightens the bricks (per-layer --c tint via color-mix), switches each brick to a 3-col grid (layer name · academic · industry). The 7 canonical layers top→bottom: Observability(red) · Persistence(indigo) · Orchestration(slate) · Data movement(green) · Containers(mauve) · Scheduler(graphite) · Executor(teal, foreshadowing Axis 1) — tints reuse the Slides 7/8/Zoo vocabulary. academic|industry pairs under aligned column headers (Slurm|Kubernetes · Make/Nextflow|Airflow · Apptainer|Docker · logs+cron|Datadog + Persistence/Data/Executor rows). Recurring line 'Same handful of layers — only the brand names change.' is the on-slide gold keeper caption AND in notes; turn opener 'It looks like chaos. It isn't.' is the subhead; gear-shift-to-deliberate delivery cue in notes. No for-loop payload here (kept clean; that callback is Slide 9 + Slide 22). color-mix verified in PDF export. Build + export green." }
   - { id: "11",  beat: "\"Merchants of complexity\"",               phase: "3", act: "2",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "12",  beat: "Two axes, not one ladder",                 phase: "4", act: "2",    layout: "two-axis-ladder",     code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "pending", assets: [] }
   - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -123,7 +123,7 @@ layouts:
   - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "complete", note: "photo cluster (machine-room aisle banner + rack + Fortress mural) + squiggle-boxed systems/science/software pillars + rcac.purdue.edu QR; squiggle = #rcac-squiggle feDisplacementMap on a border-only ::before" }
   - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "complete", note: "systems · science · software Venn; pure-CSS multiply-blend lobes (graphite/amber/slate) + opaque Franklin-Gothic role chips. Center chip is AI per Geoffrey; OUTLINE §4 + THEME §9 updated to match. Circles 14rem on a 23rem stage; science lobe raised so the SCIENCE label clears it." }
   - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "complete", note: "dense logo wall grouped by layer, size ≈ popularity (--pop chip scale); content-family chrome (gold rules + RCAC mark + page-num); executor-left / orchestration-right two-axis foreshadow (axes unlabeled) + cross-cutting bottom strip. NOW carries 19 real floating .zoo-logo brand marks (absolute, centered anchor, --rot tilt, drop-shadow, pointer-events:none) overlaid on the chips; g-orch chips align-content:flex-start to free lower space. Slurm uses the .zoo-logo.hero variant (largest mark, stronger shadow, z-index above siblings, bled UP into the title row). Optional cascade/pile-up build still deferred (not needed)." }
-  - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "complete", note: "BUILT for Slide 9 (Phase 3): teetering over-engineered stack on the paper content ground; per-brick --tilt + geometric --dx teeter (mirrors Slide 2 cold-open), uniform graphite bricks, dwarfed for-loop payload. Slide 10 EXTENDS this same markup with per-layer color tints + academic|industry label pairs (the labeled re-render / the turn) — that CSS lands in the Slide 10 sub-phase." }
+  - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "complete", note: "BUILT for BOTH consumers (Phase 3). Slide 9: teetering over-engineered stack on the paper content ground; per-brick --tilt + geometric --dx teeter (mirrors Slide 2 cold-open), uniform graphite bricks, dwarfed for-loop payload. Slide 10: the `.is-decomposed` modifier re-renders the same markup as THE TURN — straightens the teeter (transform:none), lightens the bricks (per-layer --c tint via color-mix), 3-col grid (layer name · academic · industry) + column headers + the 'brand names change' keeper caption. Layout fully done." }
   - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "in_progress", note: "Phase-1 smoke-test stub renders 2 axis columns; Slide 12 preview + Slide 19 full ladder/gradient pending (Phases 4–5)" }
   - { name: "storage-tier",        kind: "custom",    first_slide: "20A", status: "pending", note: "6-property trade-off cloud + cold→warm→hot tier ladder" }
   - { name: "ownership-ladder",    kind: "custom",    first_slide: "20B", status: "pending", note: "two-rung you-own-it / framework-owns-it; reuses Slide 19 gradient" }
@@ -419,10 +419,21 @@ labeled on 10).
       notes. Teeter = per-brick --tilt + geometric --dx, mirroring Slide 2.
       Build + export green; eyeball-verified at page 9 (subhead shortened so
       the leaning top brick doesn't overlap it).*
-* [ ] **Slide 10 — Decompose + the turn** (`rube-goldberg-stack`, labeled
+* [x] **Slide 10 — Decompose + the turn** (`rube-goldberg-stack`, labeled
       re-render). **act: turn.** **DoD:** each layer labeled with the
       academic | industry pair; recurring line *"same handful of layers —
       only the brand names change"*; **gear-shift to deliberate pace.**
+      *Done — the Slide 9 monster re-rendered via the `.is-decomposed`
+      modifier: the teeter STRAIGHTENS, heavy graphite goes LIGHT, and the 7
+      canonical layers (Observability · Persistence · Orchestration · Data ·
+      Containers · Scheduler · Executor) stand sorted, color-coded (deck
+      vocabulary tints + teal Executor foreshadowing Axis 1), each in a 3-col
+      grid with its academic | industry pair under aligned column headers.
+      The recurring line is the on-slide gold keeper caption (+ in notes);
+      the turn opener "It looks like chaos. It isn't." is the subhead; the
+      gear-shift-to-deliberate delivery cue is in speaker notes. color-mix
+      tints verified in the PDF export. Build + export green; eyeball-verified
+      at page 10.*
 * [ ] **Slide 11 — Merchants of complexity** (`purdue-content`). **DoD:**
       two-state "platform that tames complexity" diagram; recurring lines
       *"merchants of complexity"* + *"this could have been a Makefile and a
@@ -669,4 +680,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T02:30:00Z*
+*Last updated: 2026-06-23T03:15:00Z*

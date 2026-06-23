@@ -1720,6 +1720,96 @@ code, pre, .slidev-code {
   padding: 0.18rem 0.55rem;
 }
 
+/* === Slide 10 — the SAME tower, DECOMPOSED (.is-decomposed). THE TURN. ======
+ * The Slide 9 monster re-rendered: the teeter STRAIGHTENS, the heavy graphite
+ * goes LIGHT, and every brick is now named + color-coded + paired with its
+ * academic | industry tools. The straightening + lightening IS the exhale
+ * (chaos → order). Layer tints reuse the deck vocabulary (Slides 7/8/Zoo):
+ * mauve=Containers, slate=Orchestration, green=Data, graphite=Scheduler,
+ * indigo=Persistence, red=Observability (+ teal=Executor, foreshadowing
+ * Axis 1). Per-brick color is set inline via --c. */
+.rube-goldberg-stack.is-decomposed .rg-stage {
+  top: 7rem;
+  bottom: 4rem;
+}
+
+.rube-goldberg-stack.is-decomposed .rg-stack {
+  gap: 0.28rem;
+}
+
+/* Column headers over the sorted stack (academic | industry). */
+.rube-goldberg-stack .rg-cols {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr 1fr;
+  gap: 0.7rem;
+  width: 31rem;
+  padding: 0 0.9rem 0.1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.rube-goldberg-stack .rg-cols .rg-col-ac { color: var(--gold-deep); }
+
+.rube-goldberg-stack .rg-cols > p {
+  display: contents;
+}
+
+/* The sorted bricks: light, upright, color-tagged on the left edge. */
+.rube-goldberg-stack.is-decomposed .rg-layer {
+  width: 31rem;
+  display: grid;
+  grid-template-columns: 9.5rem 1fr 1fr;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.34rem 0.9rem;
+  background: color-mix(in srgb, var(--c) 9%, #ffffff);
+  border: 1px solid color-mix(in srgb, var(--c) 32%, #ffffff);
+  border-left: 5px solid var(--c);
+  border-radius: 3px;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.07);
+  /* The turn: straighten the teeter. */
+  transform: none;
+  color: var(--ink);
+}
+
+.rube-goldberg-stack.is-decomposed .rg-layer > p {
+  display: contents;
+}
+
+.rube-goldberg-stack.is-decomposed .rg-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+  color: var(--c);
+}
+
+.rube-goldberg-stack.is-decomposed .rg-ac {
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+
+.rube-goldberg-stack.is-decomposed .rg-ind {
+  font-size: 0.78rem;
+  color: var(--ink-subhead);
+}
+
+/* The keeper: the recurring "only the brand names change" line, centered low. */
+.rube-goldberg-stack .rg-turn {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  bottom: 2rem;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.rube-goldberg-stack .rg-turn strong {
+  color: var(--gold-deep);
+}
+
 /* --- two-axis-ladder (Slides 12 preview, 19 full) --- *
  * The load-bearing diagram: two separated axes (executor/scale ·
  * orchestration/DSL). Slide 19 adds the you-own-it → framework-owns-it

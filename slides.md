@@ -775,6 +775,79 @@ no inline SVG (MDC hazard). Slide 10 reuses this markup, labeled + color-coded.
 
 ---
 
+<div class="rube-goldberg-stack is-decomposed">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Decompose the layers</h1>
+<div class="subhead">It looks like chaos. It isn't — the same handful of layers, every time.</div>
+
+<div class="rg-stage">
+<div class="rg-stack">
+<div class="rg-cols"><span class="rg-spacer"></span><span class="rg-col-ac">academic</span><span class="rg-col-ind">industry</span></div>
+<div class="rg-layer" style="--c:#a14e4e"><div class="rg-name">Observability</div><div class="rg-ac">logs + cron</div><div class="rg-ind">Datadog · Grafana</div></div>
+<div class="rg-layer" style="--c:#4b4f9c"><div class="rg-name">Persistence</div><div class="rg-ac">flat files · SQLite</div><div class="rg-ind">PostgreSQL</div></div>
+<div class="rg-layer" style="--c:#2f567f"><div class="rg-name">Orchestration</div><div class="rg-ac">Make · Nextflow</div><div class="rg-ind">Airflow</div></div>
+<div class="rg-layer" style="--c:#3f7d6b"><div class="rg-name">Data movement</div><div class="rg-ac">Globus · rsync</div><div class="rg-ind">S3</div></div>
+<div class="rg-layer" style="--c:#8a5a86"><div class="rg-name">Containers</div><div class="rg-ac">Apptainer</div><div class="rg-ind">Docker</div></div>
+<div class="rg-layer" style="--c:#464a52"><div class="rg-name">Scheduler</div><div class="rg-ac">Slurm</div><div class="rg-ind">Kubernetes</div></div>
+<div class="rg-layer" style="--c:#2c7a8c"><div class="rg-name">Executor</div><div class="rg-ac">bash · array · HyperShell</div><div class="rg-ind">Ray · Celery</div></div>
+</div>
+</div>
+
+<div class="rg-turn"><strong>Same handful of layers — only the brand names change.</strong> Most workflows need one or two. Not all of them.</div>
+
+<div class="page-num">10 / 24</div>
+
+</div>
+
+<!--
+[Slide 10 — Decompose the layers + THE TURN (rube-goldberg-stack · is-decomposed) · 9:00–10:15 · act: turn]
+
+THE TURN. The Slide 9 monster re-rendered, sorted: the teeter straightens, the
+heavy graphite goes light, every box gets a NAME, a COLOR, and its academic |
+industry pair. The straightening IS the exhale — the move from Act-1 overwhelm
+into Act-2 sense-making. SLOW DOWN here; this is where the gears shift from fast
+(Act 1) to deliberate (Act 2). The layer list is scenery; THE TURN is the keeper.
+
+Beats:
+1. The turn: chaos → order. "It looks like chaos. It isn't." Slow down — this is
+   the exhale that opens Act 2.
+2. One beat per layer, fast, with the academic | industry pair.
+3. Land it: every box on the last slide is one of these; most workflows need one
+   or two — NOT all of them.
+
+Example lines (illustrative):
+- "It looks like chaos. It isn't. It's the same handful of layers every time —
+  executor, scheduler, orchestration, data, containers, persistence,
+  observability."
+- "Slurm or Kubernetes. Make or Airflow. Apptainer or Docker. SAME LAYER — only
+  the brand names change." [RECURRING LINE]
+- "Most workflows need one or two of these. Not all of them."
+
+Why the academic|industry parallel matters for THIS room: REUs touch Slurm and
+Apptainer now, but many graduate into Kubernetes/Airflow/Docker/Datadog. Same
+handful of layers; only the brand names change. (Shared-pain credibility can
+echo here.) NUANCE for later: industry's always-on/SLA/multi-tenant reality
+genuinely justifies heavier platforms; academic batch workflows usually don't —
+don't cargo-cult across the boundary (that lands harder on Slide 11).
+
+Transition → Slide 11 (Merchants): "And here's the trap that spans both worlds:
+the tools that promise to TAME this complexity often just MOVE it."
+
+Delivery: HOLDS THE TURN — shift gears from fast to deliberate. Color tints
+reuse the deck vocabulary (Slides 7/8/Zoo: mauve=Containers, slate=Orchestration,
+green=Data, graphite=Scheduler, indigo=Persistence, red=Observability) + teal
+Executor foreshadowing Axis 1.
+
+BUILD NOTE: same rube-goldberg-stack layout as Slide 9, with the .is-decomposed
+modifier — straightens the teeter (transform:none), lightens the bricks (per-
+layer --c tint via color-mix), and switches each brick to a 3-col grid (layer
+name · academic · industry). HTML/CSS only — no inline SVG (MDC hazard).
+-->
+
+---
+
 <div class="two-axis-ladder">
 
 <h1>Two axes, not one ladder</h1>
