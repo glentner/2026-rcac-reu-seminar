@@ -413,10 +413,10 @@ screen, said with conviction.
 **Visual:** A dense, deliberately-busy **logo wall** — the literal "zoo."
 Arrangement carries meaning so it rewards a second look: **grouped by layer**
 (soft clustered regions, optionally faintly labeled) — schedulers/resource
-managers (Slurm, Kubernetes, PBS/Torque, LSF, HTCondor); executors/scale (GNU
-Parallel, HyperShell, Dask, Ray, Parsl, Globus Compute); orchestration/DAG (GNU
-Make, Nextflow, Snakemake, Airflow, Luigi, Cromwell/CWL, Globus Flows); data
-movement (Globus, `rsync`); containers (Docker, Apptainer/Singularity, Podman);
+managers (Slurm, Kubernetes, PBS/Torque, LSF, HTCondor, cron); executors/scale
+(GNU Parallel, HyperShell, Dask, Ray, Parsl); orchestration/DAG (GNU Make,
+Nextflow, Snakemake, Airflow, Luigi, Cromwell/CWL, Globus Compute/Flows); data
+flow (Globus, `rsync`, S3); containers (Docker, Apptainer/Singularity, Podman);
 languages (Python, R, MATLAB, Julia, Bash); observability (Datadog,
 Grafana/Prometheus, plain logs+cron). **Size ≈ popularity.** Light foreshadow of
 the two-axis split (executor cluster vs. orchestration cluster on opposite

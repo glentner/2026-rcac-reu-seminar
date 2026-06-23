@@ -1099,11 +1099,11 @@ code, pre, .slidev-code {
  * the LEFT, the orchestration/DSL family on the RIGHT, with the cross-cutting
  * layers (containers · data · languages · observability) as a bottom strip.
  *
- * PLACEHOLDER STATE (open_decisions: zoo-set — OPEN): the real brand-logo set
- * is not yet locked, so each tool is a text "mark" chip with a per-layer tint
- * dot. When the logo set lands, swap each .zoo-chip's text for an <img> mark;
- * the grid + size≈popularity (--pop) scaffolding stays. HTML/CSS only — no
- * inline SVG (MDC blank-line hazard). */
+ * IMPLEMENTED (open_decisions: zoo-set — RESOLVED): real brand logos float as
+ * <img class="zoo-logo"> "stickers" overtop the text chips (the chips stay as a
+ * size≈popularity scaffold + per-layer tint dots). Slurm is the HERO mark.
+ * Logos are referenced files under /images/zoo (no inline SVG — MDC blank-line
+ * hazard). Logos are trademarks, used for identification in a private talk. */
 .zoo-logo-wall {
   position: relative;
   background: var(--bg-paper);
@@ -1313,6 +1313,15 @@ code, pre, .slidev-code {
   transform-origin: center;
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.22));
   z-index: 6;
+}
+
+/* HERO mark (Slurm): the biggest single logo on the wall, deliberately bled UP
+ * out of the schedulers box into the title row (negative-ish top + large width)
+ * so the wall feels like it's overflowing. Stronger shadow + higher stacking so
+ * it floats clearly above neighbouring stickers. */
+.zoo-logo-wall .zoo-logo.hero {
+  filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.28));
+  z-index: 7;
 }
 
 /* --- rube-goldberg-stack (Slides 9, 10) — STUB (Phase 3) --- *

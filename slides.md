@@ -395,23 +395,25 @@ inversion.
 <img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
 
 <h1>The Zoo</h1>
-<div class="subhead">Workflow tooling, all at once.</div>
+<div class="subhead">Workflow tools, all at once.</div>
 
 <div class="zoo-wall">
 
 <div class="zoo-top">
 
 <div class="zoo-group g-sched">
-<div class="zoo-layer">Schedulers</div>
+<div class="zoo-layer">Schedulers / Resource Managers</div>
 <div class="zoo-chips">
 <span class="zoo-chip" style="--pop:4">Slurm</span>
 <span class="zoo-chip" style="--pop:4">Kubernetes</span>
 <span class="zoo-chip" style="--pop:2">HTCondor</span>
 <span class="zoo-chip" style="--pop:2">PBS / Torque</span>
 <span class="zoo-chip" style="--pop:1">LSF</span>
+<span class="zoo-chip" style="--pop:1">cron</span>
 </div>
-<img class="zoo-logo" src="/images/zoo/slurm.svg" alt="Slurm" style="left:87%; top:30%; width:2.6rem; --rot:-6deg" />
-<img class="zoo-logo" src="/images/zoo/kubernetes.svg" alt="Kubernetes" style="left:84%; top:66%; width:2.7rem; --rot:5deg" />
+<img class="zoo-logo hero" src="/images/zoo/slurm.svg" alt="Slurm" style="left:74%; top:8%; width:6rem; --rot:-4deg" />
+<img class="zoo-logo" src="/images/zoo/htcondor.svg" alt="HTCondor" style="left:27%; top:84%; width:5rem; --rot:-3deg" />
+<img class="zoo-logo" src="/images/zoo/kubernetes.svg" alt="Kubernetes" style="left:72%; top:74%; width:2.7rem; --rot:5deg" />
 </div>
 
 <div class="zoo-group g-exec">
@@ -422,10 +424,11 @@ inversion.
 <span class="zoo-chip" style="--pop:2">GNU Parallel</span>
 <span class="zoo-chip" style="--pop:2">HyperShell</span>
 <span class="zoo-chip" style="--pop:2">Parsl</span>
-<span class="zoo-chip" style="--pop:1">Globus Compute</span>
 </div>
-<img class="zoo-logo" src="/images/zoo/dask.svg" alt="Dask" style="left:87%; top:30%; width:2.8rem; --rot:5deg" />
-<img class="zoo-logo" src="/images/zoo/hypershell.png" alt="HyperShell" style="left:85%; top:62%; width:2.9rem; --rot:-5deg" />
+<img class="zoo-logo" src="/images/zoo/dask.svg" alt="Dask" style="left:88%; top:24%; width:2.9rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/parsl.png" alt="Parsl" style="left:20%; top:72%; width:3.4rem; --rot:-4deg" />
+<img class="zoo-logo" src="/images/zoo/gnu-parallel.png" alt="GNU Parallel" style="left:54%; top:88%; width:4.6rem; --rot:2deg" />
+<img class="zoo-logo" src="/images/zoo/hypershell.png" alt="HyperShell" style="left:84%; top:66%; width:3rem; --rot:-5deg" />
 </div>
 
 <div class="zoo-group g-orch">
@@ -437,11 +440,12 @@ inversion.
 <span class="zoo-chip" style="--pop:3">Snakemake</span>
 <span class="zoo-chip" style="--pop:2">Luigi</span>
 <span class="zoo-chip" style="--pop:1">Cromwell / CWL</span>
-<span class="zoo-chip" style="--pop:1">Globus Flows</span>
+<span class="zoo-chip" style="--pop:1">Globus Compute / Flows</span>
 </div>
-<img class="zoo-logo" src="/images/zoo/airflow.svg" alt="Apache Airflow" style="left:17%; top:66%; width:3rem; --rot:-4deg" />
-<img class="zoo-logo" src="/images/zoo/nextflow.png" alt="Nextflow" style="left:58%; top:60%; width:6.5rem; --rot:2deg" />
-<img class="zoo-logo" src="/images/zoo/snakemake.png" alt="Snakemake" style="left:46%; top:85%; width:6.5rem; --rot:-3deg" />
+<img class="zoo-logo" src="/images/zoo/gnu.png" alt="GNU" style="left:86%; top:30%; width:2.9rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/airflow.svg" alt="Apache Airflow" style="left:15%; top:62%; width:3.1rem; --rot:-4deg" />
+<img class="zoo-logo" src="/images/zoo/nextflow.png" alt="Nextflow" style="left:56%; top:58%; width:6.5rem; --rot:2deg" />
+<img class="zoo-logo" src="/images/zoo/snakemake.png" alt="Snakemake" style="left:44%; top:85%; width:6.5rem; --rot:-3deg" />
 </div>
 
 </div>
@@ -459,10 +463,11 @@ inversion.
 </div>
 
 <div class="zoo-group g-data">
-<div class="zoo-layer">Data movement</div>
+<div class="zoo-layer">Data flow</div>
 <div class="zoo-chips">
 <span class="zoo-chip" style="--pop:3">Globus</span>
 <span class="zoo-chip" style="--pop:2">rsync</span>
+<span class="zoo-chip" style="--pop:2">S3</span>
 </div>
 <img class="zoo-logo" src="/images/zoo/globus.png" alt="Globus" style="left:58%; top:62%; width:5rem; --rot:-2deg" />
 </div>
@@ -476,8 +481,10 @@ inversion.
 <span class="zoo-chip" style="--pop:1">Julia</span>
 <span class="zoo-chip" style="--pop:1">MATLAB</span>
 </div>
-<img class="zoo-logo" src="/images/zoo/python.svg" alt="Python" style="left:85%; top:32%; width:2.4rem; --rot:-6deg" />
-<img class="zoo-logo" src="/images/zoo/matlab.svg" alt="MATLAB" style="left:70%; top:68%; width:2.5rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/python.svg" alt="Python" style="left:86%; top:28%; width:2.5rem; --rot:-6deg" />
+<img class="zoo-logo" src="/images/zoo/bash.svg" alt="Bash" style="left:54%; top:36%; width:2.4rem; --rot:3deg" />
+<img class="zoo-logo" src="/images/zoo/julia.svg" alt="Julia" style="left:28%; top:76%; width:2.7rem; --rot:-4deg" />
+<img class="zoo-logo" src="/images/zoo/matlab.svg" alt="MATLAB" style="left:74%; top:72%; width:2.6rem; --rot:5deg" />
 </div>
 
 <div class="zoo-group g-obsv">
@@ -487,7 +494,8 @@ inversion.
 <span class="zoo-chip" style="--pop:2">Grafana / Prometheus</span>
 <span class="zoo-chip" style="--pop:1">logs + cron</span>
 </div>
-<img class="zoo-logo" src="/images/zoo/datadog.svg" alt="Datadog" style="left:85%; top:48%; width:2.4rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/datadog.svg" alt="Datadog" style="left:84%; top:46%; width:2.5rem; --rot:5deg" />
+<img class="zoo-logo" src="/images/zoo/prometheus.svg" alt="Prometheus" style="left:34%; top:62%; width:2.6rem; --rot:-4deg" />
 </div>
 
 </div>

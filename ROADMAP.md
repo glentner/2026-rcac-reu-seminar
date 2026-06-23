@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "3"
 phases_completed: ["0", "1", "2"]
-last_updated: "2026-06-22T23:55:00Z"
+last_updated: "2026-06-23T00:25:00Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -91,7 +91,7 @@ slides:
   - { id: "3",   beat: "About RCAC — where I sit",                 phase: "2", act: "1",    layout: "about-rcac",          code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: ["rcac-photo-cluster", "rcac-qr"] }
   - { id: "4",   beat: "About Me — triple-point Venn",             phase: "2", act: "1",    layout: "triple-point-venn",   code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: false, status: "complete", assets: ["headshot"], note: "Headshot supplied (public/images/headshot.jpg). Last year's label set kept (Geoffrey). Dead-center triple-point is AI (his current seat); Facilitator in the Systems lobe. 'unicorn at the triple-point' is a VERBAL device (Geoffrey is the unicorn; AI is the work at the center). OUTLINE §4 + THEME §9 updated to match — divergence RESOLVED. Venn enlarged + SCIENCE-label overlap fixed in review." }
   - { id: "5",   beat: "Thesis — complexity must earn its keep",   phase: "2", act: "1",    layout: "purdue-overview",     code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [] }
-  - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "complete", assets: ["zoo-logo-set"], note: "COMPLETE — zoo-logo-wall layout + all 7 layer groups + 12 REAL floating brand marks (Geoffrey-chosen: Slurm, Kubernetes, Dask, HyperShell, Globus[data], Docker, Airflow, Nextflow, Snakemake, Python, MATLAB, Datadog) in public/images/zoo/. Marks float as overlay 'stickers' (centered anchor, per-logo left/top/width/--rot, may overlap boxes) ABOVE the size≈popularity chips; orchestration chips pushed to top to free lower space for Airflow/Nextflow/Snakemake. Globus mark = official BLUE horizontal from Geoffrey's brand pack; HyperShell = local repo logo-light-mode.png. Speaker notes complete (shared-pain turn + [BREATH]). zoo-set RESOLVED." }
+  - { id: "6",   beat: "The Zoo — literal logo-wall",              phase: "3", act: "1",    layout: "zoo-logo-wall",       code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: true,  status: "complete", assets: ["zoo-logo-set"], note: "COMPLETE — zoo-logo-wall layout + all 7 layer groups + 19 REAL floating brand marks in public/images/zoo/ (Slurm[HERO], Kubernetes, HTCondor, Dask, HyperShell, Parsl, GNU Parallel, Globus[data], Docker, GNU-head, Airflow, Nextflow, Snakemake, Python, Bash, Julia, MATLAB, Datadog, Prometheus). Marks float as overlay 'stickers' (centered anchor, per-logo left/top/width/--rot, may overlap boxes) ABOVE the size≈popularity chips; orchestration chips pushed to top. Slurm is the HERO mark (large, bled UP into the title row via .zoo-logo.hero). Content edits this pass (Geoffrey-confirmed, OUTLINE §4 synced): subtitle → 'Workflow tools, all at once.'; schedulers → 'Schedulers / Resource Managers' + cron chip; executors drop the Globus Compute chip; orchestration merges to 'Globus Compute / Flows'; data → 'Data flow' + S3 chip. Globus mark = official BLUE horizontal brand pack; HyperShell = local repo mark; Parsl + GNU-head = Geoffrey's local copies (Parsl ships only a white mark online). Speaker notes complete (shared-pain turn + [BREATH]). zoo-set RESOLVED." }
   - { id: "7",   beat: "On-ramp — capability vs. capacity",        phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
   - { id: "8",   beat: "Why the layers exist (concern → layer)",   phase: "3", act: "1",    layout: "purdue-content",      code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "9",   beat: "Anatomy of an over-engineered workflow",   phase: "3", act: "1",    layout: "rube-goldberg-stack", code_aesthetic: "none",        must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
@@ -122,7 +122,7 @@ layouts:
   # Six NEW custom layouts unique to this deck (OUTLINE §5)
   - { name: "about-rcac",          kind: "custom",    first_slide: "3",  status: "complete", note: "photo cluster (machine-room aisle banner + rack + Fortress mural) + squiggle-boxed systems/science/software pillars + rcac.purdue.edu QR; squiggle = #rcac-squiggle feDisplacementMap on a border-only ::before" }
   - { name: "triple-point-venn",   kind: "custom",    first_slide: "4",  status: "complete", note: "systems · science · software Venn; pure-CSS multiply-blend lobes (graphite/amber/slate) + opaque Franklin-Gothic role chips. Center chip is AI per Geoffrey; OUTLINE §4 + THEME §9 updated to match. Circles 14rem on a 23rem stage; science lobe raised so the SCIENCE label clears it." }
-  - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "complete", note: "dense logo wall grouped by layer, size ≈ popularity (--pop chip scale); content-family chrome (gold rules + RCAC mark + page-num); executor-left / orchestration-right two-axis foreshadow (axes unlabeled) + cross-cutting bottom strip. NOW carries 12 real floating .zoo-logo brand marks (absolute, centered anchor, --rot tilt, drop-shadow, pointer-events:none) overlaid on the chips; g-orch chips align-content:flex-start to free lower space. Optional cascade/pile-up build still deferred (not needed)." }
+  - { name: "zoo-logo-wall",       kind: "custom",    first_slide: "6",  status: "complete", note: "dense logo wall grouped by layer, size ≈ popularity (--pop chip scale); content-family chrome (gold rules + RCAC mark + page-num); executor-left / orchestration-right two-axis foreshadow (axes unlabeled) + cross-cutting bottom strip. NOW carries 19 real floating .zoo-logo brand marks (absolute, centered anchor, --rot tilt, drop-shadow, pointer-events:none) overlaid on the chips; g-orch chips align-content:flex-start to free lower space. Slurm uses the .zoo-logo.hero variant (largest mark, stronger shadow, z-index above siblings, bled UP into the title row). Optional cascade/pile-up build still deferred (not needed)." }
   - { name: "rube-goldberg-stack", kind: "custom",    first_slide: "9",  status: "pending", note: "teetering over-engineered stack; Slide 10 = labeled re-render" }
   - { name: "two-axis-ladder",     kind: "custom",    first_slide: "12", status: "in_progress", note: "Phase-1 smoke-test stub renders 2 axis columns; Slide 12 preview + Slide 19 full ladder/gradient pending (Phases 4–5)" }
   - { name: "storage-tier",        kind: "custom",    first_slide: "20A", status: "pending", note: "6-property trade-off cloud + cold→warm→hot tier ladder" }
@@ -134,7 +134,7 @@ open_decisions:
   - { id: "prelude-rcac",   summary: "About RCAC photo cluster (machine room / Fortress mural / rack) + rcac.purdue.edu QR SUPPLIED + wired (public/images/rcac-*.jpg, public/qr/rcac.jpg); Slide 3 approved by Geoffrey. Pillars built as systems/science/software per OUTLINE — confirm final wording if it should change.", blocks: ["3"], status: "soft-resolved" }
   - { id: "prelude-me",     summary: "Headshot SUPPLIED + wired (public/images/headshot.jpg); Slide 4 built + reviewed. Last year's label set kept (Geoffrey); AI at the dead-center triple-point, Facilitator in the Systems lobe. OUTLINE §4 + THEME §9 updated to match — 'center = facilitator/unicorn' divergence RESOLVED (unicorn is now an explicitly VERBAL device).", blocks: ["4"], status: "resolved" }
   - { id: "perfection-img", summary: "Decide minimal inversion render on Slide 22 (the cold-open meme is locked: public/images/perfection.jpg)", blocks: ["22"], status: "open", note: "Slide 2 RESOLVED — real meme wired in. Remaining: the Slide 22 closing-inversion treatment." }
-  - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "resolved", note: "RESOLVED — Geoffrey chose 12 logos to overlay (Slurm, Kubernetes, Dask, HyperShell, Globus[data], Docker, Airflow, Nextflow, Snakemake, Python, MATLAB, Datadog), floated as overlay stickers near each area (allowed to overlap boxes) over the existing chips; orchestration chips moved up. Real marks in public/images/zoo/. Cascade-vs-single-reveal: single reveal kept (cascade still an optional future enhancement, not needed)." }
+  - { id: "zoo-set",        summary: "Lock Zoo logo set, grouping, size-by-popularity; decide cascade vs. single reveal", blocks: ["6"], status: "resolved", note: "RESOLVED — richer set of 19 logos floated as overlay stickers (allowed to overlap boxes) over the chips, with Slurm as the HERO mark bled up into the title row; orchestration chips moved up. Set: Slurm, Kubernetes, HTCondor, Dask, HyperShell, Parsl, GNU Parallel, Globus[data], Docker, GNU-head, Airflow, Nextflow, Snakemake, Python, Bash, Julia, MATLAB, Datadog, Prometheus. Real marks in public/images/zoo/. Cascade-vs-single-reveal: single reveal kept (cascade still an optional future enhancement, not needed)." }
   - { id: "hypershell-box", summary: "Confirm 3–4 v2.8 feature-box items; sanity-check slurmctld DDoS framing + HTCondor 'heavyweight above' framing", blocks: ["16"], status: "open" }
   - { id: "qr-set",         summary: "Finalize Slide 23 QR set (5 proposed; cull to 4 if crowded) + canonical short URLs", blocks: ["23"], status: "open" }
 ---
@@ -387,10 +387,13 @@ labeled on 10).
 * [x] **Slide 6 — The Zoo** (`zoo-logo-wall` custom). **[BREATH] ·
       compressible.** **DoD:** dense logo wall grouped by layer, size ≈
       popularity; shared-pain turn line in notes; *scenery — do not narrate
-      logos*; minimal on-slide text. ***COMPLETE*** — 12 real Geoffrey-chosen
-      brand marks float as overlay stickers over the chips (may overlap boxes);
-      orchestration chips pushed up to free the lower space; `zoo-set`
-      **resolved**; registry `status: complete`. Build + export green.*
+      logos*; minimal on-slide text. ***COMPLETE*** — 19 real brand marks float
+      as overlay stickers over the chips (may overlap boxes), Slurm as the HERO
+      mark bled up into the title row; orchestration chips pushed up to free the
+      lower space; content edits applied (cron + S3 chips, Schedulers/Resource
+      Managers + Data flow relabels, Globus Compute/Flows merge) and OUTLINE §4
+      synced; `zoo-set` **resolved**; registry `status: complete`. Build +
+      export green.*
 * [ ] **Slide 7 — On-ramp: capability vs. capacity** (`purdue-content`).
       **compressible.** **DoD:** monolith vs. layered-stack two-panel; previews
       the layer vocabulary; undergrad on-ramp.
@@ -595,7 +598,7 @@ June 23, 2026, 11:00 ET**, Envision Center.
 * ✓ `rcac-photo-cluster` — machine room / Fortress mural / rack (Slide 3) → `public/images/rcac-{machine-room,rack,mural}.jpg` — *open_decisions: prelude-rcac*
 * ✓ `rcac-qr` — `rcac.purdue.edu` QR (Slide 3) → `public/qr/rcac.jpg`
 * ✓ `headshot` — About Me (Slide 4) → `public/images/headshot.jpg` — *open_decisions: prelude-me*
-* ✓ `zoo-logo-set` — 12 real floating brand marks over the Slide 6 wall → `public/images/zoo/` (Slurm, Kubernetes, Dask, HyperShell, Globus[data], Docker, Airflow, Nextflow, Snakemake, Python, MATLAB, Datadog); Globus = official brand-pack BLUE horizontal, HyperShell = local repo mark — *open_decisions: zoo-set resolved*
+* ✓ `zoo-logo-set` — 19 real floating brand marks over the Slide 6 wall → `public/images/zoo/` (Slurm[HERO], Kubernetes, HTCondor, Dask, HyperShell, Parsl, GNU Parallel, Globus[data], Docker, GNU-head, Airflow, Nextflow, Snakemake, Python, Bash, Julia, MATLAB, Datadog, Prometheus). +7 this pass: HTCondor (htcondor.org official SVG), Julia/Prometheus/Bash (devicon), GNU Parallel (gnu.org PNG), Parsl + GNU-head (Geoffrey's local copies). Globus = official brand-pack BLUE horizontal, HyperShell = local repo mark — *open_decisions: zoo-set resolved*
 * ☐ `qr-set` — Slide 23 QR row (HyperShell · PEARC'26 · rcac-mcp · globus-mcp · nf-core; cull to 4) — *open_decisions: qr-set*
 
 ### Project scaffolding (Phase 1)
@@ -650,4 +653,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-22T23:55:00Z*
+*Last updated: 2026-06-23T00:25:00Z*
