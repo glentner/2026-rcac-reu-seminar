@@ -1560,14 +1560,164 @@ code, pre, .slidev-code {
   z-index: 7;
 }
 
-/* --- rube-goldberg-stack (Slides 9, 10) — STUB (Phase 3) --- *
- * Teetering over-engineered stack; Slide 10 = labeled re-render. */
+/* --- rube-goldberg-stack (Slides 9, 10) — Phase 3 --- *
+ * The CENTERPIECE: the Slide 2 gag drawn SERIOUSLY. A single, dense,
+ * TEETERING stack — the scattered Zoo (Slide 6) collapsed into one tower —
+ * that exists only to run ONE for-loop. The dwarfed payload at its base is a
+ * deliberate Slide 2 callback (the whole tower vs. `for sample …`). Density
+ * IS the message; resist explaining it. Content-family chrome (gold rules,
+ * RCAC mark, page-num) on the PAPER ground — distinct from Slide 2's
+ * chrome-free ink fullbleed. Bricks are UNIFORM graphite on Slide 9 (the
+ * undifferentiated monster); Slide 10 re-renders the SAME tower color-coded +
+ * labeled with academic|industry pairs (the defusing). HTML/CSS only — no
+ * inline SVG (MDC blank-line hazard).
+ *
+ * Teeter mechanics mirror Slide 2's cold-open stack: per-brick --tilt
+ * (alternating wobble) composes with a cumulative --dx (horizontal lean that
+ * grows ~geometrically toward the top, so only the upper bricks visibly
+ * overhang). translateX is applied before rotate so the lean shifts visually
+ * without reflowing the column (gaps stay even). */
 .rube-goldberg-stack {
   position: relative;
   background: var(--bg-paper);
   color: var(--ink);
   height: 100%;
   padding: 3.25rem 3rem 2.5rem;
+}
+
+.rube-goldberg-stack::before {
+  /* Top gold rule (content-family chrome). */
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.rube-goldberg-stack::after {
+  /* Bottom gold rule. */
+  content: '';
+  position: absolute;
+  bottom: 1.25rem;
+  left: 3rem;
+  right: 3rem;
+  height: 2px;
+  background: var(--gold);
+}
+
+.rube-goldberg-stack h1 {
+  font-size: 2.1rem;
+  margin: 0 0 0.2rem;
+}
+
+.rube-goldberg-stack .subhead {
+  color: var(--ink-subhead);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.rube-goldberg-stack .rcac-mark {
+  position: absolute;
+  top: 1.9rem;
+  right: 3rem;
+  max-width: 14rem;
+}
+
+.rube-goldberg-stack .page-num {
+  position: absolute;
+  bottom: 1.6rem;
+  right: 3rem;
+  color: var(--ink-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+/* MDC guards: keep slide-root + stage + stack children in normal flow. */
+.rube-goldberg-stack > p,
+.rube-goldberg-stack .rg-stage > p,
+.rube-goldberg-stack .rg-stack > p {
+  display: contents;
+}
+
+/* The tower is centered in the body BELOW the title row. Absolute so the tall,
+ * leaning stack can't shove the title or punch through the gold rules. */
+.rube-goldberg-stack .rg-stage {
+  position: absolute;
+  left: 3rem;
+  right: 3rem;
+  top: 7.5rem;
+  bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rube-goldberg-stack .rg-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.rube-goldberg-stack .rg-layer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 21.5rem;
+  padding: 0.24rem 0.85rem;
+  /* Graphite brick on paper: a heavy, precarious block. Uniform on Slide 9 —
+   * Slide 10 tints these per layer. */
+  background: #20232b;
+  border: 1px solid #3a3d46;
+  border-radius: 3px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.26);
+  transform: translateX(var(--dx, 0rem)) rotate(var(--tilt, 0deg));
+  color: var(--bg-paper);
+}
+
+.rube-goldberg-stack .rg-layer .rg-tech {
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: -0.01em;
+}
+
+.rube-goldberg-stack .rg-layer .rg-role {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* The punchline, echoing Slide 2: the whole tower, just to run a for-loop. */
+.rube-goldberg-stack .rg-payload {
+  margin-top: 0.42rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.16rem;
+}
+
+.rube-goldberg-stack .rg-payload .p-label {
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.rube-goldberg-stack .rg-payload code {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+  font-size: 0.74rem;
+  color: var(--gold-deep);
+  background: rgba(218, 170, 0, 0.10);
+  border: 1px dashed var(--gold-deep);
+  border-radius: 3px;
+  padding: 0.18rem 0.55rem;
 }
 
 /* --- two-axis-ladder (Slides 12 preview, 19 full) --- *

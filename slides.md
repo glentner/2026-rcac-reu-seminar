@@ -709,6 +709,72 @@ not you have the concern."
 
 ---
 
+<div class="rube-goldberg-stack">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Anatomy of an over-engineered workflow</h1>
+<div class="subhead">The zoo, collapsed into one teetering stack.</div>
+
+<div class="rg-stage">
+<div class="rg-stack">
+<div class="rg-layer" style="--tilt:-1.4deg; --dx:4.5rem"><div class="rg-tech">React dashboard</div><div class="rg-role">single-page UI</div></div>
+<div class="rg-layer" style="--tilt:1.1deg; --dx:2.9rem"><div class="rg-tech">Grafana · Datadog</div><div class="rg-role">dashboards · alerting</div></div>
+<div class="rg-layer" style="--tilt:-0.9deg; --dx:1.9rem"><div class="rg-tech">PostgreSQL</div><div class="rg-role">run history · metadata</div></div>
+<div class="rg-layer" style="--tilt:1.5deg; --dx:1.2rem"><div class="rg-tech">Airflow</div><div class="rg-role">DAG scheduler</div></div>
+<div class="rg-layer" style="--tilt:-1.2deg; --dx:0.75rem"><div class="rg-tech">Jinja-templated DAG</div><div class="rg-role">pipeline definition</div></div>
+<div class="rg-layer" style="--tilt:0.8deg; --dx:0.4rem"><div class="rg-tech">Kubernetes</div><div class="rg-role">container orchestration</div></div>
+<div class="rg-layer" style="--tilt:-1.5deg; --dx:0.18rem"><div class="rg-tech">Docker · Apptainer</div><div class="rg-role">containerized steps</div></div>
+<div class="rg-layer" style="--tilt:1.3deg; --dx:0.06rem"><div class="rg-tech">Globus · S3</div><div class="rg-role">data movement</div></div>
+<div class="rg-layer" style="--tilt:-1.0deg; --dx:0rem"><div class="rg-tech">Slurm</div><div class="rg-role">HPC batch scheduler</div></div>
+<div class="rg-payload"><span class="p-label">…all to run</span><code>for sample in samples: analyze(sample)</code></div>
+</div>
+</div>
+
+<div class="page-num">09 / 24</div>
+
+</div>
+
+<!--
+[Slide 9 — Anatomy of an over-engineered workflow · the CENTERPIECE (rube-goldberg-stack) · 7:45–9:00]
+
+THE SHOCK SLIDE. The Slide 2 gag, now drawn SERIOUSLY — the scattered Zoo of
+Slide 6 collapsed into one teetering stack: same tools, stacked instead of
+scattered. The visual centerpiece of the talk. Density IS the message — let it
+land; do NOT narrate the boxes (same discipline as the Zoo). ~75s.
+
+Beats:
+1. Reveal the teetering stack. Let it land — DON'T narrate the boxes.
+2. "This is real. People build this. Sometimes — sometimes — they even need to.
+   The hard part is knowing when."
+3. PLANT the question Act 2 answers (don't answer it yet): "How would you know
+   which of these you actually need?"
+
+Example lines (illustrative):
+- "This is the gag from a minute ago, drawn seriously. Every layer, all at once."
+- "People really build this. And sometimes they even need to. The hard part is
+  knowing when."
+
+Callback: the dwarfed payload at the base (`for sample in samples: analyze…`)
+is the SAME punchline as Slide 2 — the whole tower exists to run one for-loop.
+
+Transition → Slide 10 (Decompose + the turn): "Step one to taming it: give every
+box a name."
+
+Delivery: CENTERPIECE — ~75s. Density is the message; resist explaining. The
+bricks are uniform/undifferentiated here ON PURPOSE — Slide 10 re-renders this
+exact tower color-coded + labeled with the academic|industry pairs (the
+defusing, and the turn).
+
+BUILD NOTE: rube-goldberg-stack custom layout (content chrome on PAPER —
+distinct from Slide 2's chrome-free ink fullbleed). Teeter = per-brick --tilt
+(alternating wobble) + cumulative --dx (geometric lean; only the top bricks
+visibly overhang), mirroring the Slide 2 cold-open mechanics. HTML/CSS only —
+no inline SVG (MDC hazard). Slide 10 reuses this markup, labeled + color-coded.
+-->
+
+---
+
 <div class="two-axis-ladder">
 
 <h1>Two axes, not one ladder</h1>
