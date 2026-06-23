@@ -3,7 +3,7 @@ title: "REU Summer Seminar 2026 Talk — Slidev Implementation Roadmap"
 status: pending
 current_phase: "4"
 phases_completed: ["0", "1", "2", "3"]
-last_updated: "2026-06-23T17:15:00Z"
+last_updated: "2026-06-23T04:49:39Z"
 talk_date: "2026-06-23"          # Tuesday · 11:00 ET · Summer REU Seminar Series · Envision Center, Purdue
 talk_time: "11:00 ET"
 repo_visibility: "private-for-now"   # private, non-published talk; real logos + meme fair to use directly (see AGENTS.md)
@@ -100,7 +100,7 @@ slides:
   - { id: "12",  beat: "Two axes, not one ladder",                 phase: "4", act: "2",    layout: "two-axis-ladder",     code_aesthetic: "none",        must_not_skip: true,  compressible: false, breath: true,  status: "complete", assets: [], note: "COMPLETE — the FRAMEWORK REVEAL, preview form of two-axis-ladder. Two clearly-separated horizontal axis tracks: Axis 1 Executor/scale (teal, bash loop → xargs -P → Slurm array → HyperShell) and Axis 2 Orchestration/DSL (slate, GNU Make → Nextflow), pushed far apart via flex space-between so 'two axes, not one' reads at a glance; tints reuse the Slide 10 decompose vocabulary (teal executor / slate orchestration) + foreshadow Axis 1's climb (Slides 13–16). Each axis: kicker chip + name + the question it answers (emphasized verb) + a `→`-joined rung track with a 'more scale/structure →' hint. Five faint greyed .ta-ghost unclimbed tools (Ray, Airflow near the boundary; Snakemake, Dask, Parsl near orchestration) float in the field = the rungs are a CHOSEN SUBSET, not the whole zoo. One-line .ta-foot renders 'the map outlasts the tools' ('place any tool … even one I've never heard of'). Both recurring lines ('Which axis are you on?' + 'The map outlasts the tools.') fire verbatim in speaker notes; [BREATH] kept airy. HTML/CSS only (no inline SVG, MDC-safe). Build + export green; eyeball-verified at page 12." }
   - { id: "13",  beat: "Axis 1 — the bash loop",                   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: false, breath: false, status: "complete", assets: [], note: "COMPLETE — the FLOOR of the executor climb. First consumer of the .code-terminal DEVICE (THEME §10), now fleshed out from its Phase-1 stub: a titled `bash` window (graphite #2b2e33 bar + red/amber/green traffic dots + title) over a dark graphite #1c1e22 body, off-white mono, gold-bright `$` prompt + muted `>` continuation — reads as 'typed at a shell', maximally distinct from the .code-definition treatment coming on 17–18. Snippet is the real fastq through-line `for s in samples/*.fastq; do ./analyze.sh \"$s\" > \"results/...\"; done` as SCENERY (verified the `*`/redirect/quotes/`$()` survive MDC without mangling). h1 'The humblest workflow: a loop'; conviction keeper is the subhead ('the right answer — full stop'); throttling wall is the gold .climb-cue ('8 at a time … hand-rolling a job pool'). NEW reusable .axis-tag (teal --c Axis-1, 4-dot rung ratchet ●○○○ + 'the bash loop') anchors the climb on the Slide 12 map and will fill one more dot per slide on 14–16 ('each rung adds one capability' made visual; the line itself starts firing on 14). Speaker notes carry the scenery-rule banner + beats + transition. HTML/CSS only. Build + export green; eyeball-verified at page 13." }
   - { id: "14",  beat: "Axis 1 — xargs (first taming)",            phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "COMPLETE — the FIRST RUNG THAT EARNS ITS KEEP. Reuses the Slide 13 infra: .code-terminal `bash` window, .axis-tag with the ratchet advanced to ●●○○ (rung label 'xargs -P'), .climb-cue. Same fastq through-line piped to `xargs -P 8 -I{}` (the dense `sh -c` quoting is SCENERY — not meant to be read; trailing line-continuation `\\` written as &#92; so MDC doesn't parse `\\</div>` as an escaped `<`). The feature-ratchet through-line STARTS here: loop=iteration, xargs=bounded parallelism — recurring line 'EACH RUNG ADDS ONE CAPABILITY' fires as the on-slide subhead + notes. Niche callout (ParaFly=failure log · GNU Parallel=retries) is the small muted .term-aside (OUTLINE's 'tiny grey margin note'); the single-node ceiling is the gold .climb-cue wall ('tops out at one node'). compressible: collapses to one sentence + jump to Slurm if time slips. HTML/CSS only. Build + export green; eyeball-verified at page 14." }
-  - { id: "15",  beat: "Axis 1 — Slurm job array",                 phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "pending", assets: [] }
+  - { id: "15",  beat: "Axis 1 — Slurm job array",                 phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: false, compressible: true,  breath: false, status: "complete", assets: [], note: "COMPLETE — the NEXT RUNG: multi-node fan-out, the capability xargs/GNU Parallel lacked. Reuses the .code-terminal device + .axis-tag (ratchet → ●●●○, rung 'Slurm job array') + .climb-cue from Slides 13/14; same fastq through-line. Rendered as `cat job.sh` revealing the batch SCRIPT (shebang + #SBATCH --array/--cpus-per-task header + the sed-indexed body) so it reads as 'now it's a cluster job' and is visibly TALLER than 13/14 (the climb made visual). The `sbatch job.sh` submission is the VERBAL hand-off (beat 1 + transition), kept OFF-slide so the must-keep climb-cue fits (shebang KEPT per Geoffrey; sbatch line dropped). h1 'Hand it to the scheduler'; subhead = the new capability (cluster fan-out: placement/queuing/requeue for free). Recurring 'each rung adds one capability' reprises in notes (the dots carry it on-slide). The PLANTED WALL is the gold .climb-cue 'one scheduler decision per task — a million of them hammers the controller' (one line; the entire setup for Slide 16's pressure-release valve; MaxArraySize nuance in notes). NEW reusable .ct-dim class dims the shebang/#SBATCH comment+directive lines. HTML/CSS only; `>` as &gt;, `*`/`$()`/`$((...))`/sed-index survive MDC inline. Build + export green; eyeball-verified at page 15 (snippet trimmed 8→6 lines in review so the climb-cue cleared the bottom edge)." }
   - { id: "16",  beat: "Axis 1 — HyperShell + pressure-release",   phase: "4", act: "2",    layout: "purdue-content",      code_aesthetic: "terminal",    must_not_skip: true,  compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "17",  beat: "Axis 2 — \"Make is all you need\"",          phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, compressible: false, breath: false, status: "pending", assets: [] }
   - { id: "17b", beat: "Axis 2 — how far Make reaches (reverse)",  phase: "5", act: "2",    layout: "purdue-content",      code_aesthetic: "definition",  must_not_skip: false, high_value: true, compressible: false, breath: false, status: "pending", assets: [], note: "slide-REVERSE of 17 — NOT a new physical slide; reuse the Slide 17 Makefile verbatim" }
@@ -502,9 +502,19 @@ rule** banner (OUTLINE Slides 13–18): gesture, don't teach.
       + in notes. The niche callout (ParaFly · GNU Parallel) is the small muted
       `.term-aside`; the single-node ceiling is the gold `.climb-cue`. Build +
       export green; eyeball-verified at page 14.*
-* [ ] **Slide 15 — Slurm job array** (terminal). **compressible.** **DoD:**
+* [x] **Slide 15 — Slurm job array** (terminal). **compressible.** **DoD:**
       `#SBATCH --array` snippet; the controller-pressure wall planted ("one
-      scheduler decision per task").
+      scheduler decision per task"). *Done — the next rung (multi-node fan-out,
+      the capability xargs/GNU Parallel lacked), rendered as `cat job.sh`
+      revealing the batch script (shebang + `#SBATCH --array=0-999` +
+      `--cpus-per-task` + the sed-indexed fastq body) in the `.code-terminal`
+      device; ratchet → ●●●○. The `sbatch` submission is the verbal hand-off
+      (off-slide so the wall fits; shebang kept per Geoffrey). Controller-
+      pressure wall is the gold `.climb-cue` ("one scheduler decision per task —
+      a million of them hammers the controller") — the setup for Slide 16. New
+      reusable `.ct-dim` class for the dim shebang/`#SBATCH` lines. Build +
+      export green; eyeball-verified at page 15 (snippet trimmed 8→6 lines so
+      the climb-cue cleared the bottom edge).*
 * [ ] **Slide 16 — HyperShell + pressure-release valve** (terminal).
       **must-not-skip.** **DoD:** real `hsx` one-liner + 3–4-item v2.8 feature
       box (scenery); the **slurmctld-DDoS pressure-release idea given room**
@@ -714,4 +724,4 @@ agents against the single `slides.md`.
 
 ---
 
-*Last updated: 2026-06-23T17:15:00Z*
+*Last updated: 2026-06-23T04:49:39Z*

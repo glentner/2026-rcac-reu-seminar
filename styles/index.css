@@ -1084,6 +1084,13 @@ code, pre, .slidev-code {
   margin-right: 0.55rem;
 }
 
+/* Dimmed terminal line — file comments / directives and program output
+ * (e.g. a #SBATCH header, Slurm's "Submitted batch job" reply). Reads as
+ * "not a command I typed." Reusable across the terminal device (Slides 15+). */
+.code-terminal .ct-dim {
+  color: #838c95;
+}
+
 /* Axis climb marker — anchors the executor climb (Slides 13–16) on the Slide
  * 12 map so the room always knows WHICH AXIS and HOW FAR UP. Teal Axis-1 tint
  * via --c (matches the two-axis-ladder). The 4-dot rung ratchet fills one more

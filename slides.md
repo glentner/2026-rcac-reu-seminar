@@ -1181,3 +1181,85 @@ small muted .term-aside (per OUTLINE's "tiny grey margin note — cf. ParaFly,
 GNU Parallel"). Trailing line-continuation backslash written as &#92; so MDC
 doesn't read `\</div>` as an escaped `<`. HTML/CSS only.
 -->
+
+---
+
+<div class="purdue-content">
+
+<img class="rcac-mark" src="/images/rcac/rcac-h.svg" alt="Rosen Center for Advanced Computing" />
+
+<h1>Hand it to the scheduler</h1>
+<div class="subhead">The next rung: Slurm fans the same work across the whole cluster — placement, queuing, requeue, for free.</div>
+
+<div class="axis-tag" style="--c:#2c7a8c"><span class="at-label">Axis 1 · Executor / scale</span><span class="at-dots"><span class="at-dot is-on"></span><span class="at-dot is-on"></span><span class="at-dot is-on"></span><span class="at-dot"></span></span><span class="at-rung">Slurm job array</span></div>
+
+<div class="code-terminal">
+<div class="ct-bar"><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-dot"></span><span class="ct-title">bash</span></div>
+<div class="ct-body">
+<div class="ct-line"><span class="ct-prompt">$</span>cat job.sh</div>
+<div class="ct-line"><span class="ct-dim">#!/bin/bash</span></div>
+<div class="ct-line"><span class="ct-dim">#SBATCH --array=0-999</span></div>
+<div class="ct-line"><span class="ct-dim">#SBATCH --cpus-per-task=4</span></div>
+<div class="ct-line">s=$(ls samples/*.fastq | sed -n "$((SLURM_ARRAY_TASK_ID+1))p")</div>
+<div class="ct-line">./analyze.sh "$s" &gt; "results/$(basename "$s").out"</div>
+</div>
+</div>
+
+<div class="climb-cue">But that's <strong>one scheduler decision per task</strong> — a million of them hammers the controller.</div>
+
+<div class="page-num">15 / 24</div>
+
+</div>
+
+<!--
+[Slide 15 — Axis 1 · Slurm job array (purdue-content · terminal aesthetic) · 13:45–14:45 · Act-2 · SCENERY · compressible]
+
+THE NEXT RUNG. The capability xargs/GNU Parallel LACKED: multi-node fan-out.
+Hand the same independent work to the scheduler and it spreads N copies — one
+per array index — across the WHOLE cluster, with placement, queuing,
+accounting, and requeue for free. Still PURE EXECUTION — no relationships
+between tasks; we have not left Axis 1.
+
+>> SCENERY (Slides 13–18): the #SBATCH header is texture for "now it's on the
+   cluster." Gesture at it; don't read it. The keeper is the PLANTED WALL, not
+   the SBATCH syntax.
+
+RECURRING LINE (reprise): "EACH RUNG ADDS ONE CAPABILITY." The loop gave
+iteration; xargs added bounded parallelism; THIS rung adds multi-node fan-out
+across the cluster — exactly the thing the single-node tools couldn't reach.
+The axis-tag ratchet ticks to ●●●○.
+
+Beats:
+1. "Hand it to Slurm: N copies, one per index, spread across nodes." Gesture
+   at the array directive — don't parse the sed/index arithmetic.
+2. It earns its keep for many tasks: scheduler placement, accounting, requeue.
+3. Still NO relationships between tasks — pure execution. We're still on Axis 1.
+4. Plant the wall: a job array is ONE SCHEDULER DECISION PER TASK. Arrays even
+   have size ceilings (MaxArraySize). Fine for thousands; a million submissions
+   hammer the central controller. "Hold that thought." → Slide 16.
+
+Example lines (illustrative):
+- "Same work — now the SCHEDULER fans it across the whole cluster: placement,
+  queuing, requeue, all for free."
+- "But notice: that's one scheduler decision per task. Fine for thousands. Push
+  it to a million and you've got a problem that isn't your code."
+
+Transition → Slide 16 (HyperShell): "Now push to a MILLION tasks — and you hit
+a wall that isn't about your code at all. That's where HyperShell comes in."
+
+Delivery: SCENERY + COMPRESSIBLE. If time slips, collapse to a verbal bridge
+between xargs and HyperShell — "and a Slurm job array fans that across the
+cluster; but one decision per task means a million tasks DDoS the controller"
+— and move on. The planted controller-pressure wall is the must-keep; it is
+the entire setup for Slide 16's pressure-release valve.
+
+BUILD NOTE: reuses the .code-terminal device + .axis-tag (ratchet → ●●●○) +
+.climb-cue from Slides 13/14; same fastq through-line. Rendered as `cat job.sh`
+revealing the batch SCRIPT (shebang + #SBATCH header + body) so it reads as "now
+it's a cluster job" — and the snippet is visibly TALLER than 13/14, reinforcing
+the climb. The `sbatch job.sh` submission is the VERBAL hand-off gesture (beat 1
++ transition), kept off-slide so the climb-cue wall fits. New .ct-dim class dims
+the shebang + #SBATCH comment/directive lines ("not a command I typed"). `>`
+redirect as &gt;; the `*` glob, `$()`, `$((...))`, sed index arithmetic all
+survive MDC inline (verified on Slides 13/14). HTML/CSS only.
+-->
